@@ -1,136 +1,86 @@
 ---
 name: mastg-assign-ids
-description: Assign real MASTG IDs to draft files that use fake placeholder IDs (e.g. MASTG-KNOW-0x01, MASTG-BEST-0x56). Use when finishing a PR that introduces new MASTG components with placeholder IDs, or when asked to "fix fake IDs", "assign real IDs", or "use next available IDs". Runs next_id.py to get the correct next IDs, renames all affected files, and replaces all in-content references.
+description: Assign real sequential MASTG IDs to draft components that use placeholder IDs. Use when finishing a PR, fixing fake IDs, assigning real IDs, or getting the next available IDs. Finds placeholders, renames affected paths with Git, updates references, and verifies the changed-file scope.
 ---
 
 # MASTG Assign IDs
 
-Replace all fake/placeholder component IDs (e.g. `MASTG-KNOW-0x01`, `MASTG-BEST-0x56`) with the next real sequential IDs across file names and file contents.
+Use `scripts/assign_ids.py` from the repository root. It requires Python 3.10 or later and the Python standard library.
 
-## When to use
+## Preconditions
 
-- A PR adds new MASTG components using `0x##` placeholder IDs
-- You are asked to "fix fake IDs", "assign real IDs", or "use next available IDs"
+- Stage all new files and all relevant changes before you run a command.
+- Use the same explicit `OLD=NEW` mappings for `rename` and `fix-ids`.
+- Review each next ID before you change files.
 
-## Fake-ID convention
+The script uses files committed after `origin/master` and files in the Git index. It excludes deleted files, `.github/`, and `.agents/`. It stops if a relevant file is unstaged or untracked.
 
-New draft items use the pattern `MASTG-TYPE-0x##` (hex suffix, e.g. `0x01`, `0x0a`).
-Real IDs use zero-padded 4-digit decimal: `MASTG-TYPE-NNNN` (e.g. `MASTG-KNOW-0122`).
+## Workflow
 
-**Non-standard fake IDs**: Some draft items may use a different convention that is NOT caught by the `0x##` pattern — for example `MASTG-BEST-00ea` (lowercase hex digits without the `0x` prefix). These are still fake IDs and must be replaced. After running `find_fakes.sh`, manually scan the `git diff --name-only origin/master...HEAD` output for any ID-like suffix that contains lowercase letters (`a`–`f`) or is not exactly 4 decimal digits.
+1. Find fake IDs in changed paths and content:
 
-## Step-by-step workflow
+   ```text
+   python3 .agents/skills/mastg-assign-ids/scripts/assign_ids.py find-fakes
+   ```
 
-All scripts are in `scripts/` relative to this skill. Run from the repository root.
+2. Get the next ID for each component type:
 
-### 1. Find all fake-ID files in the current branch
+   ```text
+   python3 .agents/skills/mastg-assign-ids/scripts/assign_ids.py next-id
+   ```
 
-```bash
-bash .agents/skills/mastg-assign-ids/scripts/find_fakes.sh
-```
+   If a PR adds multiple components of one type, assign consecutive IDs from the reported value.
 
-See [scripts/find_fakes.sh](scripts/find_fakes.sh).
+3. Record one mapping for each fake ID:
 
-### 2. Get the next available real IDs
+   ```text
+   MASTG-KNOW-0x01=MASTG-KNOW-0142
+   MASTG-KNOW-0x02=MASTG-KNOW-0143
+   MASTG-BEST-0x01=MASTG-BEST-0075
+   ```
 
-```bash
-python3 .agents/skills/mastg-assign-ids/scripts/next_id.py
-```
+4. Rename all affected paths with `git mv`:
 
-Prints one line per component type, e.g.:
+   ```text
+   python3 .agents/skills/mastg-assign-ids/scripts/assign_ids.py rename MASTG-KNOW-0x01=MASTG-KNOW-0142 MASTG-KNOW-0x02=MASTG-KNOW-0143 MASTG-BEST-0x01=MASTG-BEST-0075
+   ```
 
-```txt
-MASTG-APP-0034
-MASTG-BEST-0046
-MASTG-DEMO-0542
-MASTG-KNOW-0132
-MASTG-TECH-0156
-MASTG-TEST-0351
-MASTG-TOOL-0151
-```
+5. Replace the IDs in changed file content:
 
-If multiple new components of the same type are introduced in the same PR,
-allocate IDs sequentially: first new file → next_id, second → next_id+1, etc.
+   ```text
+   python3 .agents/skills/mastg-assign-ids/scripts/assign_ids.py fix-ids MASTG-KNOW-0x01=MASTG-KNOW-0142 MASTG-KNOW-0x02=MASTG-KNOW-0143 MASTG-BEST-0x01=MASTG-BEST-0075
+   ```
 
-See [scripts/next_id.py](scripts/next_id.py).
+   The command restages a changed file only when that file was already staged. Review `git status` and stage other corrected files before verification.
 
-### 3. Build the replacement mapping
+6. Verify the result and confirm that the next IDs increased:
 
-Map each fake ID to the real ID you just allocated. Record the mapping explicitly before proceeding, e.g.:
+   ```text
+   python3 .agents/skills/mastg-assign-ids/scripts/assign_ids.py verify
+   python3 .agents/skills/mastg-assign-ids/scripts/assign_ids.py next-id
+   ```
 
-```txt
-MASTG-KNOW-0x01 → MASTG-KNOW-0122
-MASTG-KNOW-0x02 → MASTG-KNOW-0123
-MASTG-BEST-0x56 → MASTG-BEST-0045
-```
+## ID rules
 
-Important ordering rules: pass longer/more-specific patterns first (e.g. `0x0a` before `0x01`, `0xXX` before anything else).
-
-### 4. Rename files
-
-Use `git mv` to preserve history:
-
-```bash
-git mv old-path/MASTG-TYPE-0x01.md new-path/MASTG-TYPE-NNNN.md
-```
-
-For demos (directory-based IDs):
-
-```bash
-git mv demos/ios/MASVS-CAT/MASTG-DEMO-0x01 demos/ios/MASVS-CAT/MASTG-DEMO-NNNN
-```
-
-### 5. Replace in-content references
-
-Pass `OLD=NEW` pairs as arguments — longer patterns first:
-
-```bash
-python3 .agents/skills/mastg-assign-ids/scripts/fix_ids.py \
-    MASTG-KNOW-0x0a=MASTG-KNOW-0131 \
-    MASTG-KNOW-0x01=MASTG-KNOW-0122 \
-    MASTG-BEST-0x56=MASTG-BEST-0045
-```
-
-This covers frontmatter `id:` fields and `knowledge:` lists automatically (they live in `.md` files). See [scripts/fix_ids.py](scripts/fix_ids.py).
-
-### 6. Verify
-
-```bash
-bash .agents/skills/mastg-assign-ids/scripts/verify.sh
-python3 .agents/skills/mastg-assign-ids/scripts/next_id.py
-```
-
-`verify.sh` exits 1 if any fake IDs remain. `next_id.py` should now report incremented next IDs. See [scripts/verify.sh](scripts/verify.sh).
-
-### 7. Give the user a summary of the changes
-
-Provide a summary of the ID changes, e.g.:
-
-```md
-ID assignments used in this PR:
-
-| Fake ID | Real ID |
-|---------|---------|
-| MASTG-KNOW-0x01 | MASTG-KNOW-0122 |
-| MASTG-KNOW-0x02 | MASTG-KNOW-0123 |
-| MASTG-BEST-0x56 | MASTG-BEST-0045 |
-```
+- Standard fake IDs use `MASTG-TYPE-0xNN`.
+- Split draft IDs can use a decimal suffix, such as `MASTG-TEST-0x01-1`.
+- Map each split draft ID to a separate real ID.
+- Legacy fake IDs can contain hexadecimal letters without `0x`, such as `MASTG-BEST-00ea`.
+- Real IDs use four decimal digits, such as `MASTG-KNOW-0142`.
+- Each mapping must keep the same component type.
+- A real ID must not belong to another component.
+- The frontmatter `id` must match the ID in the path.
 
 ## Component locations
 
-| Type | Files/dirs |
-|------|-----------|
-| MASTG-APP | `apps/*.md` |
-| MASTG-BEST | `best-practices/*.md` |
-| MASTG-DEMO | `demos/<platform>/<MASVS-CAT>/MASTG-DEMO-NNNN/` (directory) |
-| MASTG-KNOW | `knowledge/<platform>/<MASVS-CAT>/MASTG-KNOW-NNNN.md` |
-| MASTG-TECH | `techniques/<platform>/MASTG-TECH-NNNN.md` |
-| MASTG-TEST | `tests-beta/<platform>/<MASVS-CAT>/MASTG-TEST-NNNN.md` |
-| MASTG-TOOL | `tools/<type>/MASTG-TOOL-NNNN.md` |
+| Type | Location |
+| --- | --- |
+| `MASTG-APP` | `apps/<platform>/MASTG-APP-NNNN.md` |
+| `MASTG-BEST` | `best-practices/MASTG-BEST-NNNN.md` |
+| `MASTG-DEMO` | `demos/<platform>/<MASVS-CAT>/MASTG-DEMO-NNNN/` |
+| `MASTG-KNOW` | `knowledge/<platform>/<MASVS-CAT>/MASTG-KNOW-NNNN.md` |
+| `MASTG-TECH` | `techniques/<platform>/MASTG-TECH-NNNN.md` |
+| `MASTG-TEST` | `tests-beta/<platform>/<MASVS-CAT>/MASTG-TEST-NNNN.md` |
+| `MASTG-TOOL` | `tools/<type>/MASTG-TOOL-NNNN.md` |
 
-## Important notes
-
-- Always use `git mv`, never `mv`, so renames are tracked in history.
-- Always scope work to files changed in the current branch. Never touch the whole repo.
-- Exclude `.github/` and `.agents/` from all searches and replacements (all scripts do this automatically).
-- The `id:` field in frontmatter must match the filename.
+After verification, give the user a table that lists each fake ID and its real ID.
