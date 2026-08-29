@@ -29,5 +29,5 @@ This repository contains the OWASP Mobile Application Security Testing Guide (MA
 - Do not edit `apps/index.md` or `tools/index.md`.
 - Do not create related pages only because a link target is absent. Report the missing content unless the task requires the new page.
 - Prefer official platform, vendor, and standards sources for technical claims. Verify current APIs and version-dependent behavior.
-- For MASTG prose, use American English, active voice, short sentences, and direct instructions.
+- Follow ASD-STE100 Simplified Technical English when you write or edit OWASP MASTG documentation.
 - Preserve unrelated user changes and keep each change within the requested scope.
