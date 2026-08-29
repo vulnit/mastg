@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# verify.sh — Check that no fake IDs remain in branch-changed files (excludes .github/).
+# verify.sh — Check that no fake IDs remain in branch-changed files.
 # Run from the repository root.
 # Exits 0 if clean, 1 if fake IDs are still found.
 
 set -euo pipefail
 
-CHANGED=$({ git diff --name-only origin/master...HEAD; git diff --cached --name-only --diff-filter=d; } | sort -u | grep -v "^\.github/")
+CHANGED=$({ git diff --name-only origin/master...HEAD; git diff --cached --name-only --diff-filter=d; } | sort -u | grep -Ev "^\.(github|agents)/")
 
 # Matches both standard fake IDs (MASTG-TYPE-0x##) and non-standard ones
 # where the suffix contains lowercase hex chars (e.g. MASTG-BEST-00ea).

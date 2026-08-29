@@ -6,7 +6,7 @@ Scans the repository for the highest existing numeric ID of each component
 type and prints the next available one. Run from the repository root.
 
 Usage:
-    python3 .github/scripts/next_id.py
+    python3 .agents/skills/mastg-assign-ids/scripts/next_id.py
 """
 
 import re

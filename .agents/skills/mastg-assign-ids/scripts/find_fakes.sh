@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# find_fakes.sh — List fake-ID occurrences in the current branch (excludes .github/).
+# find_fakes.sh — List fake-ID occurrences in the current branch.
 # Run from the repository root.
 #
 # Output:
@@ -8,7 +8,7 @@
 
 set -euo pipefail
 
-CHANGED=$({ git diff --name-only origin/master...HEAD; git diff --cached --name-only --diff-filter=d; } | sort -u | grep -v "^\.github/")
+CHANGED=$({ git diff --name-only origin/master...HEAD; git diff --cached --name-only --diff-filter=d; } | sort -u | grep -Ev "^\.(github|agents)/")
 
 # Matches both standard fake IDs (MASTG-TYPE-0x##) and non-standard ones
 # where the suffix contains lowercase hex chars (e.g. MASTG-BEST-00ea).

@@ -3,13 +3,13 @@
 fix_ids.py — Replace fake MASTG IDs with real IDs in branch-changed files.
 
 Operates only on files changed vs. origin/master in the current branch.
-Excludes .github/.
+Excludes .github/ and .agents/.
 
 Usage (run from repository root):
-    python3 .github/skills/mastg-assign-ids/scripts/fix_ids.py OLD=NEW [OLD=NEW ...]
+    python3 .agents/skills/mastg-assign-ids/scripts/fix_ids.py OLD=NEW [OLD=NEW ...]
 
 Example:
-    python3 .github/skills/mastg-assign-ids/scripts/fix_ids.py \\
+    python3 .agents/skills/mastg-assign-ids/scripts/fix_ids.py \\
         MASTG-KNOW-0x0a=MASTG-KNOW-0131 \\
         MASTG-KNOW-0x01=MASTG-KNOW-0122 \\
         MASTG-BEST-0x56=MASTG-BEST-0045
@@ -45,7 +45,7 @@ def main():
     ).stdout.splitlines()
     files = sorted({
         p for p in committed + staged
-        if not p.startswith(".github/") and os.path.isfile(p)
+        if not p.startswith((".github/", ".agents/")) and os.path.isfile(p)
     })
 
     for path in files:

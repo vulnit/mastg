@@ -26,7 +26,7 @@ All scripts are in `scripts/` relative to this skill. Run from the repository ro
 ### 1. Find all fake-ID files in the current branch
 
 ```bash
-bash .github/skills/mastg-assign-ids/scripts/find_fakes.sh
+bash .agents/skills/mastg-assign-ids/scripts/find_fakes.sh
 ```
 
 See [scripts/find_fakes.sh](scripts/find_fakes.sh).
@@ -34,7 +34,7 @@ See [scripts/find_fakes.sh](scripts/find_fakes.sh).
 ### 2. Get the next available real IDs
 
 ```bash
-python3 .github/skills/mastg-assign-ids/scripts/next_id.py
+python3 .agents/skills/mastg-assign-ids/scripts/next_id.py
 ```
 
 Prints one line per component type, e.g.:
@@ -85,7 +85,7 @@ git mv demos/ios/MASVS-CAT/MASTG-DEMO-0x01 demos/ios/MASVS-CAT/MASTG-DEMO-NNNN
 Pass `OLD=NEW` pairs as arguments — longer patterns first:
 
 ```bash
-python3 .github/skills/mastg-assign-ids/scripts/fix_ids.py \
+python3 .agents/skills/mastg-assign-ids/scripts/fix_ids.py \
     MASTG-KNOW-0x0a=MASTG-KNOW-0131 \
     MASTG-KNOW-0x01=MASTG-KNOW-0122 \
     MASTG-BEST-0x56=MASTG-BEST-0045
@@ -96,8 +96,8 @@ This covers frontmatter `id:` fields and `knowledge:` lists automatically (they 
 ### 6. Verify
 
 ```bash
-bash .github/skills/mastg-assign-ids/scripts/verify.sh
-python3 .github/skills/mastg-assign-ids/scripts/next_id.py
+bash .agents/skills/mastg-assign-ids/scripts/verify.sh
+python3 .agents/skills/mastg-assign-ids/scripts/next_id.py
 ```
 
 `verify.sh` exits 1 if any fake IDs remain. `next_id.py` should now report incremented next IDs. See [scripts/verify.sh](scripts/verify.sh).
@@ -132,5 +132,5 @@ ID assignments used in this PR:
 
 - Always use `git mv`, never `mv`, so renames are tracked in history.
 - Always scope work to files changed in the current branch. Never touch the whole repo.
-- Exclude `.github/` from all searches and replacements (all scripts do this automatically).
+- Exclude `.github/` and `.agents/` from all searches and replacements (all scripts do this automatically).
 - The `id:` field in frontmatter must match the filename.
