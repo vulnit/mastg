@@ -17,6 +17,10 @@ This repository contains the OWASP Mobile Application Security Testing Guide (MA
 
 ## Working Agreements
 
+- Repository skills are stored under `.agents/skills/`.
+- Before you start a task, inspect the `name` and `description` fields in `.agents/skills/*/SKILL.md`.
+- If a skill matches the task, read its complete `SKILL.md` before you act and follow its instructions.
+- Treat `.agents/skills/` as the canonical skill location. Do not copy or install skills into harness-specific directories.
 - Before you edit MASTG content, read the applicable file in `.github/instructions/` while those files remain in the repository.
 - Treat the repository content and automation as authoritative when an instruction conflicts with the current implementation. Report the conflict before you expand the task.
 - Add new tests under `tests-beta/`. Do not use legacy files under `tests/` as structural templates.
