@@ -1,8 +1,3 @@
----
-name: 'Writing mitmproxy Python scripts for MASTG demos'
-applyTo: 'demos/**/mitm_*.py'
----
-
 This guide defines how to write and use mitmproxy scripts in MASTG demos. Scripts live with the demo and are executed by `mitmdump -s` from `run.sh` to produce Observation output.
 
 ## Scope and terminology

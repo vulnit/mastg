@@ -1,8 +1,3 @@
----
-name: 'Writing r2 scripts (radare2) for MASTG demos'
-applyTo: 'demos/**/*.r2'
----
-
 This guide defines how to write and use radare2 scripts in MASTG demos. Scripts are included with the demo and executed by `run.sh` to produce the Observation output.
 
 ## Scope and terminology

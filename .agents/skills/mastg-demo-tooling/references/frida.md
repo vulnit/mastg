@@ -1,11 +1,6 @@
----
-name: 'Writing Frida scripts for MASTG demos'
-applyTo: 'demos/**/script.js'
----
-
 This guide defines how to write and use Frida scripts in MASTG demos. Scripts live alongside the demo content and are executed by `run.sh` to produce the demo's Observation output.
 
-**Note:** Prefer Frooky hooks over Frida scripts where possible, as they require less code. See `mastg-frooky-scripts.instructions.md` for details.
+**Note:** Prefer Frooky hooks over Frida scripts where possible, as they require less code. See [Frooky hook configuration](frooky.md) for details.
 
 ## Location and naming
 
@@ -15,7 +10,7 @@ This guide defines how to write and use Frida scripts in MASTG demos. Scripts li
 Examples:
 
 - `demos/ios/MASVS-AUTH/MASTG-DEMO-0042/script.js`
-- `demos/android/MASVS-NETWORK/MASTG-DEMO-0007/script.js`
+- `demos/android/MASVS-CODE/MASTG-DEMO-0158/script.js`
 
 ## Runtime and invocation
 
@@ -91,4 +86,4 @@ var config = {
 - If a symbol/method is missing, log and continue.
 - Spawn vs attach: use `-f` for early instrumentation when needed.
 - Consider stripped binaries and symbol resolution; prefer Objective-C/Java-level hooks over raw native symbols where possible.
-- Version compatibility: ensure `frida-tools` (CLI on the host) and the device runtime (for example, `frida-server` on Android or injected runtime on iOS) use matching major/minor versions (17.x with 17.x).
+- Version compatibility: ensure the Frida client on the host and the device runtime (for example, `frida-server` on Android or an injected runtime on iOS) use the same major version. For reproducible tests, prefer the exact same version on both sides.
