@@ -410,7 +410,7 @@ Example: semgrep
 
 #### Dynamic
 
-Example: frooky (preferred, see [mastg-frooky-hooks.instructions](mastg-frooky-hooks.instructions.md))
+Example: frooky (preferred, see [Frooky reference](../../.agents/skills/mastg-demo-tooling/references/frooky.md))
 
 `frooky -U -f org.owasp.mastestapp --platform android hooks.json`
 
@@ -418,12 +418,12 @@ Example: frida-trace
 
 `frida-trace -U -f org.owasp.mastestapp --runtime=v8 -j '*!*certificate*/isu' > output.txt`
 
-Example: frida (use only when frooky is not enough, see [mastg-frida-scripts.instructions](mastg-frida-scripts.instructions.md))
+Example: frida (use only when frooky is not enough, see [Frida reference](../../.agents/skills/mastg-demo-tooling/references/frida.md))
 
 `frida -U org.owasp.mastestapp -l hook_edittext.js > output.txt`
 
 #### Networking
 
-Example: mitmproxy (see [mastg-mitmproxy-scripts.instructions](mastg-mitmproxy-scripts.instructions.md))
+Example: mitmproxy (see [mitmproxy reference](../../.agents/skills/mastg-demo-tooling/references/mitmproxy.md))
 
 `mitmdump -s mitm_sensitive_logger.py`

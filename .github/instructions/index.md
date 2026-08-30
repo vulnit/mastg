@@ -21,10 +21,10 @@ The following writing guidelines are available:
 
 ### Scripts and Automation
 
-- **[Frida Scripts](mastg-frida-scripts.instructions.md)** - Guidelines for writing Frida instrumentation scripts
-- **[Frooky Hooks](mastg-frooky-hooks.instructions.md)** - Guidelines for writing Frooky hooks
-- **[MITMProxy Scripts](mastg-mitmproxy-scripts.instructions.md)** - Guidelines for writing MITMProxy scripts for network analysis
-- **[Radare2 Scripts](mastg-r2-scripts.instructions.md)** - Guidelines for writing Radare2 scripts for reverse engineering
+- **[Frida Scripts](../../.agents/skills/mastg-demo-tooling/references/frida.md)** - Guidelines for writing Frida instrumentation scripts
+- **[Frooky Hooks](../../.agents/skills/mastg-demo-tooling/references/frooky.md)** - Guidelines for writing Frooky hooks
+- **[MITMProxy Scripts](../../.agents/skills/mastg-demo-tooling/references/mitmproxy.md)** - Guidelines for writing MITMProxy scripts for network analysis
+- **[Radare2 Scripts](../../.agents/skills/mastg-demo-tooling/references/radare2.md)** - Guidelines for writing Radare2 scripts for reverse engineering
 
 ### General Guidelines
 
