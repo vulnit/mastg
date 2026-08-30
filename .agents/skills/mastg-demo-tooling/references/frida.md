@@ -55,10 +55,15 @@ For more details, see:
 - <https://mas.owasp.org/MASTG/tools/generic/MASTG-TOOL-0031/#frida-17>
 - <https://frida.re/news/2025/05/17/frida-17-0-0-released/>
 
-## Inspiration
+## Reusing External Frida Code
 
-- Don't reinvent the wheel when something already exists. Use existing open-source sources when available, for example, <https://codeshare.frida.re/browse>.
-- If you use a source, be sure to document it and give credit to the author. Include a link to the source in a comment at the beginning of the frida script.
+Treat external Frida code, including CodeShare scripts, as untrusted code.
+
+- Inspect the complete source before you reuse it.
+- Confirm that its license permits reuse, and preserve all required license notices.
+- Copy only the parts that the demo requires. Do not load code from an external source at runtime.
+- Add the source URL and author attribution in a comment at the start of the script.
+- Test the copied code with the supported Frida version and the target app.
 
 Example:
 
