@@ -121,6 +121,8 @@ If the test isn't covered in MASVS v2, enter the reason why.
 
 If you don't know, open a ticket "Add Deprecation Note for MASTG-TEST-00xx".
 
+Before deprecating a v1 test, list every distinct testable behavior, mitigation, and knowledge item in the original page. Map each item to a v2 TEST, BEST, KNOW, or TECH, or to a tracked issue with a reason. Do not close the port issue while any testable behavior remains unmapped.
+
 ### Threat-based alignment
 
 Some findings apply only with stronger attacker capabilities (for example, root/jailbreak—typically L2). Double-check the threat model against the MASWE profile. If there's a mismatch, consider creating a separate MASWE.

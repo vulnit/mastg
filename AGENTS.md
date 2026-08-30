@@ -1,33 +1,74 @@
 # Repository Instructions
 
-## Scope
+This is the official OWASP Mobile Application Security Testing Guide (MASTG) repository.
 
-This repository contains the OWASP Mobile Application Security Testing Guide (MASTG). Keep changes focused on mobile application security testing and the requested content.
+## Before You Start
 
-## Content Boundaries
+Before contributing content:
 
-- Knowledge pages describe platform features and APIs without test criteria or remediation.
-- Tests describe a security issue, the test steps, the expected observation, and the failure criteria.
-- Best practices describe prevention and remediation.
-- Techniques describe reusable testing procedures.
-- Tool pages provide concise tool references. Put multi-step procedures in techniques and runnable examples in demos.
-- Demos provide reproducible evidence for a test and include all demo-specific inputs and expected outputs.
-- App pages describe reference applications.
-- Rules contain reusable static analysis detections.
+1. **Read the relevant guidelines** for the type of content you're writing
+2. **Review existing examples** linked in each guideline document
+3. **Understand the structure** and required metadata for your content type
+4. **Test your content** (especially for demos and scripts) to ensure it works correctly.
+5. **Follow the [Style Guide](https://mas.owasp.org/contributing/5_Style_Guide/)** for general writing and formatting conventions
 
-## Working Agreements
+## Available Guidelines
 
-- Repository skills are stored under `.agents/skills/`.
-- Before you start a task, inspect the `name` and `description` fields in `.agents/skills/*/SKILL.md`.
-- If a skill matches the task, read its complete `SKILL.md` before you act and follow its instructions.
-- Treat `.agents/skills/` as the canonical skill location. Do not copy or install skills into harness-specific directories.
-- Before you edit MASTG content, read the applicable file in `.github/instructions/` while those files remain in the repository.
-- Treat the repository content and automation as authoritative when an instruction conflicts with the current implementation. Report the conflict before you expand the task.
-- Add new tests under `tests-beta/`. Do not use legacy files under `tests/` as structural templates.
-- Use `MASTG-<TYPE>-0xNN` placeholder IDs for new components. Start each component type at `0x01` within a pull request. Do not assign a four-digit decimal ID unless the operator explicitly requests it.
-- In Markdown body text, prefix MASTG and MASWE references with `@`. In YAML front matter, use bare IDs without `@`.
-- Do not edit `apps/index.md` or `tools/index.md`.
-- Do not create related pages only because a link target is absent. Report the missing content unless the task requires the new page.
-- Prefer official platform, vendor, and standards sources for technical claims. Verify current APIs and version-dependent behavior.
-- Follow ASD-STE100 Simplified Technical English when you write or edit OWASP MASTG documentation.
-- Preserve unrelated user changes and keep each change within the requested scope.
+The following writing guidelines are available:
+
+### Core Content Types
+
+- **[Tests](.github/instructions/mastg-test.instructions.md)** - Guidelines for writing security tests that validate MASWE weaknesses
+- **[Demos](.github/instructions/mastg-demo.instructions.md)** - Guidelines for creating demonstrative examples with working code samples
+- **[Knowledge](.github/instructions/mastg-knowledge.instructions.md)** - Guidelines for writing knowledge articles about mobile security concepts
+- **[Techniques](.github/instructions/mastg-techniques.instructions.md)** - Guidelines for documenting security testing techniques
+- **[Tools](.github/instructions/mastg-tools.instructions.md)** - Guidelines for documenting security testing tools
+- **[Apps](.github/instructions/mastg-apps.instructions.md)** - Guidelines for documenting test applications
+- **[Best Practices](.github/instructions/mastg-best-practice.instructions.md)** - Guidelines for writing security best practices and mitigations
+- **[Rules](.github/instructions/mastg-rules.instructions.md)** - Guidelines for writing static analysis rules
+
+### Scripts and Automation
+
+- **[Frida Scripts](.github/instructions/mastg-frida-scripts.instructions.md)** - Guidelines for writing Frida instrumentation scripts
+- **[Frooky Hooks](.github/instructions/mastg-frooky-hooks.instructions.md)** - Guidelines for writing Frooky hooks
+- **[MITMProxy Scripts](.github/instructions/mastg-mitmproxy-scripts.instructions.md)** - Guidelines for writing MITMProxy scripts for network analysis
+- **[Radare2 Scripts](.github/instructions/mastg-r2-scripts.instructions.md)** - Guidelines for writing Radare2 scripts for reverse engineering
+
+### General Guidelines
+
+- **[Markdown](.github/instructions/markdown.instructions.md)** - General markdown formatting guidelines for MASTG content
+- **[Porting MASTG v1 Tests to v2](.github/instructions/porting-mastg-v1-tests-to-v2.instructions.md)** - Guidelines for migrating MASTG V1 tests to the MASTG V2 format
+
+## Content Quality Standards
+
+You MUST ensure that the content follows the MASTG quality standards:
+
+- **Accuracy**: Content must be technically correct and thoroughly tested
+- **Completeness**: All required sections and metadata must be included
+- **Clarity**: Writing should be clear, concise, and easy to understand
+- **Reproducibility**: Examples, demos, and scripts must be reproducible
+- **Relevance**: Content must be relevant to mobile application security testing
+- **Maintenance**: Content should be maintainable and up-to-date with current mobile platforms
+
+## Contribution rules
+
+- When creating or updating MASTG-DEMO files, you MUST NOT perform a Pull Request if the MASTG-DEMO has not been verified in a real device
+- Treat the repository content and automation as authoritative when an instruction conflicts with the current implementation. Report the conflict before you expand the task
+
+## Keep Links Updated
+
+DO NOT make claims from trained documentation. ALWAYS look up official documentation for the topic to ensure it's updated
+
+- Official Android documentation:
+  - https://developer.android.com/
+  - https://source.android.com/docs
+- Official iOS documentation:
+  - https://developer.apple.com/documentation
+  - https://www.swift.org/documentation/
+
+## Agent Skills
+
+- Repository skills are stored under `.agents/skills/`
+- Before you start a task, inspect the `name` and `description` fields in `.agents/skills/*/SKILL.md`
+- If a skill matches the task, read its complete `SKILL.md` before you act and follow its instructions
+- Treat `.agents/skills/` as the canonical skill location. Do not copy or install skills into harness-specific directories

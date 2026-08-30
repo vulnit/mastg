@@ -149,6 +149,17 @@ Example:
 id: MASTG-DEMO-0054
 ```
 
+
+### test
+
+The related test ID.
+
+Example:
+
+```md
+test: MASTG-TEST-0212
+```
+
 ### title
 
 The title should concisely express what the demo is about.

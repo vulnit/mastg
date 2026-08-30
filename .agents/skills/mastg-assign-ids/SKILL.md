@@ -5,10 +5,9 @@ description: Assign real sequential MASTG IDs to draft components that use place
 
 # MASTG Assign IDs
 
-Use `scripts/assign_ids.py` from the repository root. It requires Python 3.10 or later and the Python standard library.
-
 ## Preconditions
 
+- Requires Python 3.10 or later and the Python standard library.
 - Stage all new files and all relevant changes before you run a command.
 - Review each next ID before you change files.
 
