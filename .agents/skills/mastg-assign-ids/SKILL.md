@@ -10,7 +10,6 @@ Use `scripts/assign_ids.py` from the repository root. It requires Python 3.10 or
 ## Preconditions
 
 - Stage all new files and all relevant changes before you run a command.
-- Use the same explicit `OLD=NEW` mappings for `rename` and `fix-ids`.
 - Review each next ID before you change files.
 
 The script uses files committed after `origin/master` and files in the Git index. It excludes deleted files, `.github/`, and `.agents/`. It stops if a relevant file is unstaged or untracked.
@@ -39,21 +38,15 @@ The script uses files committed after `origin/master` and files in the Git index
    MASTG-BEST-0x01=MASTG-BEST-0075
    ```
 
-4. Rename all affected paths with `git mv`:
-
-   ```text
-   python3 .agents/skills/mastg-assign-ids/scripts/assign_ids.py rename MASTG-KNOW-0x01=MASTG-KNOW-0142 MASTG-KNOW-0x02=MASTG-KNOW-0143 MASTG-BEST-0x01=MASTG-BEST-0075
-   ```
-
-5. Replace the IDs in changed file content:
+4. Rename affected paths (`git mv`) and replace IDs in changed file content:
 
    ```text
    python3 .agents/skills/mastg-assign-ids/scripts/assign_ids.py fix-ids MASTG-KNOW-0x01=MASTG-KNOW-0142 MASTG-KNOW-0x02=MASTG-KNOW-0143 MASTG-BEST-0x01=MASTG-BEST-0075
    ```
 
-   The command restages a changed file only when that file was already staged. Review `git status` and stage other corrected files before verification.
+   `git mv` stages renamed paths. For other content changes, the command restages a file only when that file was already staged. Review `git status` and stage other corrected files before verification.
 
-6. Verify the result and confirm that the next IDs increased:
+5. Verify the result and confirm that the next IDs increased:
 
    ```text
    python3 .agents/skills/mastg-assign-ids/scripts/assign_ids.py verify

@@ -241,13 +241,7 @@ def check_collisions(
     tracked = tracked_paths()
     changed_set = set(changed)
     for _old, new in mappings:
-        pattern = re.compile(rf"(?<![0-9A-Za-z]){re.escape(new)}(?![0-9])")
-        users = sorted(path for path in tracked if pattern.search(path))
-        anchors = set()
-        for path in users:
-            parts = path.split("/")
-            index = next(index for index, part in enumerate(parts) if pattern.search(part))
-            anchors.add("/".join(parts[: index + 1]))
+        users, anchors = id_usage(new, tracked)
         conflicts = users if not allow_changed else [path for path in users if path not in changed_set]
         if conflicts or len(anchors) > 1:
             raise UserError(
@@ -256,12 +250,20 @@ def check_collisions(
             )
 
 
-def command_rename(args: argparse.Namespace) -> int:
-    mappings = parse_mappings(args.mapping)
-    check_clean_scope()
+def id_usage(real_id: str, paths: set[str] | list[str]) -> tuple[list[str], set[str]]:
+    pattern = re.compile(rf"(?<![0-9A-Za-z]){re.escape(real_id)}(?![0-9])")
+    users = sorted(path for path in paths if pattern.search(path))
+    anchors = set()
+    for path in users:
+        parts = path.split("/")
+        index = next(index for index, part in enumerate(parts) if pattern.search(part))
+        anchors.add("/".join(parts[: index + 1]))
+    return users, anchors
+
+
+def move_paths(mappings: list[tuple[str, str]]) -> None:
     changed, _staged = changed_paths()
     tracked = tracked_paths()
-    check_collisions(mappings, changed, allow_changed=False)
 
     moves = []
     used = set()
@@ -272,9 +274,30 @@ def command_rename(args: argparse.Namespace) -> int:
         used.update(old for old, _new in mappings if mapping_pattern(old).search(source))
         moves.append((source, target))
 
-    missing = [old for old, _new in mappings if old not in used]
+    missing = []
+    for old, new in mappings:
+        users, existing_anchors = id_usage(new, tracked)
+        mapping_moves = [
+            target for source, target in moves if mapping_pattern(old).search(source)
+        ]
+        if mapping_moves:
+            _targets, expected_anchors = id_usage(new, mapping_moves)
+            conflicts = [path for path in users if path not in changed]
+            if conflicts or not existing_anchors.issubset(expected_anchors) or len(expected_anchors) > 1:
+                raise UserError(
+                    f"Real ID {new} already belongs to another component:\n"
+                    + "\n".join(f"  {path}" for path in users)
+                )
+        elif not any(mapping_pattern(new).search(path) for path in changed):
+            missing.append(old)
+
     if missing:
-        raise UserError("No changed path uses: " + ", ".join(missing))
+        raise UserError("No changed path uses the fake or real ID for: " + ", ".join(missing))
+    check_collisions(
+        [mapping for mapping in mappings if mapping[0] not in used],
+        changed,
+        allow_changed=True,
+    )
     if len({target for _source, target in moves}) != len(moves):
         raise UserError("Two source paths would have the same target path.")
 
@@ -291,12 +314,12 @@ def command_rename(args: argparse.Namespace) -> int:
         Path(target).parent.mkdir(parents=True, exist_ok=True)
         git("mv", "--", source, target)
         print(f"Renamed: {source} -> {target}")
-    return 0
 
 
 def command_fix_ids(args: argparse.Namespace) -> int:
     mappings = parse_mappings(args.mapping)
     check_clean_scope()
+    move_paths(mappings)
     changed, staged = changed_paths()
     check_collisions(mappings, changed, allow_changed=True)
     updated = []
@@ -357,10 +380,7 @@ def parser() -> argparse.ArgumentParser:
     commands.add_parser("next-id", help="Print the next ID for each component type.").set_defaults(
         run=command_next_id
     )
-    rename = commands.add_parser("rename", help="Rename changed files with git mv.")
-    rename.add_argument("mapping", nargs="+", metavar="OLD=NEW")
-    rename.set_defaults(run=command_rename)
-    fix = commands.add_parser("fix-ids", help="Replace fake IDs in changed file content.")
+    fix = commands.add_parser("fix-ids", help="Rename paths and replace fake IDs.")
     fix.add_argument("mapping", nargs="+", metavar="OLD=NEW")
     fix.set_defaults(run=command_fix_ids)
     commands.add_parser("verify", help="Fail if fake IDs remain.").set_defaults(
