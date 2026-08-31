@@ -29,10 +29,10 @@ The following writing guidelines are available:
 
 ### Scripts and Automation
 
-- **[Frida Scripts](.github/instructions/mastg-frida-scripts.instructions.md)** - Guidelines for writing Frida instrumentation scripts
-- **[Frooky Hooks](.github/instructions/mastg-frooky-hooks.instructions.md)** - Guidelines for writing Frooky hooks
-- **[MITMProxy Scripts](.github/instructions/mastg-mitmproxy-scripts.instructions.md)** - Guidelines for writing MITMProxy scripts for network analysis
-- **[Radare2 Scripts](.github/instructions/mastg-r2-scripts.instructions.md)** - Guidelines for writing Radare2 scripts for reverse engineering
+- **[Frida Scripts](.agents/skills/mastg-demo-tooling/references/frida.md)** - Guidelines for writing Frida instrumentation scripts
+- **[Frooky Hooks](.agents/skills/mastg-demo-tooling/references/frooky.md)** - Guidelines for writing Frooky hooks
+- **[MITMProxy Scripts](.agents/skills/mastg-demo-tooling/references/mitmproxy.md)** - Guidelines for writing MITMProxy scripts for network analysis
+- **[Radare2 Scripts](.agents/skills/mastg-demo-tooling/references/radare2.md)** - Guidelines for writing Radare2 scripts for reverse engineering
 
 ### General Guidelines
 
@@ -60,11 +60,11 @@ You MUST ensure that the content follows the MASTG quality standards:
 DO NOT make claims from trained documentation. ALWAYS look up official documentation for the topic to ensure it's updated
 
 - Official Android documentation:
-  - https://developer.android.com/
-  - https://source.android.com/docs
+    - <https://developer.android.com/>
+    - <https://source.android.com/docs>
 - Official iOS documentation:
-  - https://developer.apple.com/documentation
-  - https://www.swift.org/documentation/
+    - <https://developer.apple.com/documentation>
+    - <https://www.swift.org/documentation/>
 
 ## Agent Skills
 
