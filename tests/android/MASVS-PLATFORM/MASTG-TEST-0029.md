@@ -179,7 +179,7 @@ You can enumerate IPC components with @MASTG-TOOL-0035. To list all exported IPC
 The "Sieve" application implements a vulnerable content provider. To list the content providers exported by the Sieve app, execute the following command:
 
 ```bash
-$ adb shell dumpsys package com.mwr.example.sieve | grep -Po "Provider{[\w\d\s\./]+}" | sort -u
+adb shell dumpsys package com.mwr.example.sieve | grep -Po "Provider{[\w\d\s\./]+}" | sort -u
 Provider{34a20d5 com.mwr.example.sieve/.FileBackupProvider}
 Provider{64f10ea com.mwr.example.sieve/.DBContentProvider}
 ```
@@ -206,14 +206,14 @@ public class DBContentProvider extends ContentProvider {
 Use the following commands to call the content provider using the identified URIs:
 
 ```bash
-$ adb shell content query --uri content://com.mwr.example.sieve.DBContentProvider/Keys/
+adb shell content query --uri content://com.mwr.example.sieve.DBContentProvider/Keys/
 Row: 0 Password=1234567890AZERTYUIOPazertyuiop, pin=1234
 
-$ adb shell content query --uri content://com.mwr.example.sieve.DBContentProvider/Passwords/
+adb shell content query --uri content://com.mwr.example.sieve.DBContentProvider/Passwords/
 Row: 0 _id=1, service=test, username=test, password=BLOB, email=t@tedt.com
 Row: 1 _id=2, service=bank, username=owasp, password=BLOB, email=user@tedt.com
 
-$ adb shell content query --uri content://com.mwr.example.sieve.DBContentProvider/Passwords/ --projection email:username:password --where 'service=\"bank\"'
+adb shell content query --uri content://com.mwr.example.sieve.DBContentProvider/Passwords/ --projection email:username:password --where 'service=\"bank\"'
 Row: 0 email=user@tedt.com, username=owasp, password=BLOB
 ```
 
@@ -224,7 +224,7 @@ You're able now to retrieve all database entries (see all lines starting with "R
 To list activities exported by an application, you can use the following command and focus on `activity` elements:
 
 ```bash
-$ aapt d xmltree sieve.apk AndroidManifest.xml
+aapt d xmltree sieve.apk AndroidManifest.xml
 ...
 E: activity (line=32)
   A: android:label(0x01010001)=@0x7f05000f
@@ -302,11 +302,11 @@ Use the command below to launch an activity:
 
 ```bash
 # Start the activity without specifying an action or an category
-$ adb shell am start -n com.mwr.example.sieve/.PWList
+adb shell am start -n com.mwr.example.sieve/.PWList
 Starting: Intent { cmp=com.mwr.example.sieve/.PWList }
 
 # Start the activity indicating an action (-a) and an category (-c)
-$ adb shell am start -n "com.mwr.example.sieve/.MainLoginActivity" -a android.intent.action.MAIN -c android.intent.category.LAUNCHER
+adb shell am start -n "com.mwr.example.sieve/.MainLoginActivity" -a android.intent.action.MAIN -c android.intent.category.LAUNCHER
 Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.mwr.example.sieve/.MainLoginActivity }
 ```
 
@@ -343,7 +343,7 @@ Got a reply from com.mwr.example.sieve/com.mwr.example.sieve.AuthService:
 To list broadcast receivers exported by an application, you can use the following command and focus on `receiver` elements:
 
 ```bash
-$ aapt d xmltree InsecureBankv2.apk AndroidManifest.xml
+aapt d xmltree InsecureBankv2.apk AndroidManifest.xml
 ...
 E: receiver (line=88)
   A: android:name(0x01010003)="com.android.insecurebankv2.MyBroadCastReceiver" (Raw: "com.android.insecurebankv2.MyBroadCastReceiver")
@@ -428,7 +428,7 @@ As you can see in the source code, this broadcast receiver expects two parameter
 # Action is set to "theBroadcast"
 # Parameter "phonenumber" is set to the string "07123456789"
 # Parameter "newpass" is set to the string "12345"
-$ adb shell am broadcast -a theBroadcast --es phonenumber "07123456789" --es newpass "12345"
+adb shell am broadcast -a theBroadcast --es phonenumber "07123456789" --es newpass "12345"
 Broadcasting: Intent { act=theBroadcast flg=0x400000 (has extras) }
 Broadcast completed: result=0
 ```
@@ -459,7 +459,7 @@ Extra: newpass=12345 (java.lang.String)`
 You can also use the following command to sniff the intents. However, the content of the extras passed won't be displayed:
 
 ```bash
-$ adb shell dumpsys activity broadcasts | grep "theBroadcast"
+adb shell dumpsys activity broadcasts | grep "theBroadcast"
 BroadcastRecord{fc2f46f u0 theBroadcast} to user 0
 Intent { act=theBroadcast flg=0x400010 (has extras) }
 BroadcastRecord{7d4f24d u0 theBroadcast} to user 0

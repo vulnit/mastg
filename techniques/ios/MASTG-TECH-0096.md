@@ -63,7 +63,7 @@ As you might expect, you can correlate the addresses of the libraries with the m
 You can also use @MASTG-TOOL-0074 to display the same information.
 
 ```bash
-$ objection -n OWASP.iGoat-Swift start
+objection -n OWASP.iGoat-Swift start
 
 OWASP.iGoat-Swift on (iPhone: 11.1.2) [usb] # memory list modules
 Save the output by adding `--json modules.json` to this command
@@ -173,7 +173,7 @@ You can dump the app's process memory with @MASTG-TOOL-0074 and @MASTG-TOOL-0106
 With objection, it is possible to dump all memory of the running process on the device by using the command `memory dump all`.
 
 ```bash
-$ objection -n Gadget start
+objection -n Gadget start
 
 iPhone on (iPhone: 10.3.1) [usb] # memory dump all /Users/foo/memory_iOS/memory
 Dumping 768.0 KiB from base: 0x1ad200000  [####################################]  100%
@@ -183,7 +183,7 @@ Memory dumped to file: /Users/foo/memory_iOS/memory
 Alternatively, you can use Fridump. First, you need the name of the app you want to dump, which you can get with `frida-ps`.
 
 ```bash
-$ frida-ps -U
+frida-ps -U
  PID  Name
 ----  ------
 1026  Gadget
@@ -192,7 +192,7 @@ $ frida-ps -U
 Afterwards, specify the app name in Fridump.
 
 ```bash
-$ python3 fridump.py -u Gadget -s
+python3 fridump.py -u Gadget -s
 
 Current Directory: /Users/foo/PentestTools/iOS/fridump
 Output directory is set to: /Users/foo/PentestTools/iOS/fridump/dump
@@ -211,7 +211,7 @@ When you add the `-s` flag, all strings are extracted from the dumped raw memory
 In both cases, if you open the file in radare2, you can use its search command (`/`). Note that first we do a standard string search, which doesn't succeed, and next we search for a [wide string](https://en.wikipedia.org/wiki/Wide_character "Wide character"), which successfully finds our string "owasp-mstg".
 
 ```bash
-$ r2 memory_ios
+r2 memory_ios
 [0x00000000]> / owasp-mstg
 Searching 10 bytes in [0x0-0x628c000]
 hits: 0
@@ -237,6 +237,6 @@ owasp-mstg
 Note that to find this string using the `strings` command, you'll have to specify an encoding using the `-e` flag, and in this case, `l` for 16-bit little-endian character.
 
 ```bash
-$ strings -e l memory_ios | grep owasp-mstg
+strings -e l memory_ios | grep owasp-mstg
 owasp-mstg
 ```

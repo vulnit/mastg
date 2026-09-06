@@ -11,7 +11,7 @@ The following example shows how you can dump Objective-C classes and Swift type 
 First verify if the app's main binary is a FAT binary containing ARM64:
 
 ```bash
-$ otool -hv [APP_MAIN_BINARY_FILE]
+otool -hv [APP_MAIN_BINARY_FILE]
 Mach header
       magic cputype cpusubtype  caps    filetype ncmds sizeofcmds      flags
    MH_MAGIC     ARM         V7  0x00     EXECUTE    39       5016   NOUNDEFS DYLDLINK TWOLEVEL PIE
@@ -24,10 +24,10 @@ If yes, then we specify the "--arch" parameter to "arm64", otherwise it isn't ne
 
 ```bash
 # Dump the Objective-C classes to a temporary file
-$ dsdump --objc --color --verbose=5 --arch arm64 --defined [APP_MAIN_BINARY_FILE] > /tmp/OBJC.txt
+dsdump --objc --color --verbose=5 --arch arm64 --defined [APP_MAIN_BINARY_FILE] > /tmp/OBJC.txt
 
 # Dump the Swift type descriptors to a temporary file if the app is implemented in Swift
-$ dsdump --swift --color --verbose=5 --arch arm64 --defined [APP_MAIN_BINARY_FILE] > /tmp/SWIFT.txt
+dsdump --swift --color --verbose=5 --arch arm64 --defined [APP_MAIN_BINARY_FILE] > /tmp/SWIFT.txt
 ```
 
 You can find more information about the inner workings of dsdump and how to programmatically inspect a Mach-O binary to display the compiled Swift types and Objective-C classes in [this article](https://derekselander.github.io/dsdump/ "Building a class-dump in 2020").

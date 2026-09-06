@@ -55,7 +55,7 @@ adb shell "su -c /data/local/tmp/frida-server &" # or if su needs a uid: adb she
 With frida-server running, you should now be able to get a list of running processes with the following command (use the `-U` option to indicate Frida to use a connected USB device or emulator):
 
 ```bash
-$ frida-ps -U
+frida-ps -U
   PID  Name
 -----  --------------------------------------------------------------
   276  adbd
@@ -75,7 +75,7 @@ $ frida-ps -U
 Or restrict the list with the `-Uai` flag combination to get all apps (`-a`) currently installed (`-i`) on the connected USB device (`-U`):
 
 ```bash
-$ frida-ps -Uai
+frida-ps -Uai
   PID  Name                                      Identifier
 -----  ----------------------------------------  ------------------------------
   766  Android System                            android

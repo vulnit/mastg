@@ -16,9 +16,9 @@ Objection offers several features specific to iOS. You can find the [full list o
 All these tasks and more can be easily done by using the commands in objection's REPL. For example, you can obtain the classes used in an app, functions of classes or information about the bundles of an app by running:
 
 ```bash
-$ ios hooking list classes
-$ ios hooking list class_methods <ClassName>
-$ ios bundles list_bundles
+ios hooking list classes
+ios hooking list class_methods <ClassName>
+ios bundles list_bundles
 ```
 
 If you have a jailbroken device with frida-server installed, Objection can connect directly to the running Frida server to provide all its functionality without needing to repackage the application. However, it isn't always possible to jailbreak the latest version of iOS, or you may have an application with advanced jailbreak detection mechanisms.
@@ -32,43 +32,43 @@ For running a patched IPA, the name Gadget should be specified using `-n Gadget`
 
 ```bash
 # Connecting to a patched IPA
-$ objection -n Gadget start
+objection -n Gadget start
 
 # Using Frida-server
 # Using frida-ps to get the correct application name
-$ frida-ps -Ua | grep -i Telegram
+frida-ps -Ua | grep -i Telegram
 983  Telegram
 
 # Connecting to the Telegram app through Frida-server
-$ objection -n "Telegram" start
+objection -n "Telegram" start
 # Alternatively use the process ID (PID)
-$ objection -n 983 start
+objection -n 983 start
 
 # Objection can also spawn the app through Frida-server using the application identifier / package name
-$ objection --spawn -n "org.telegram.messenger"
+objection --spawn -n "org.telegram.messenger"
 ... [usb] resume
 
 # Alternatively with "no pause"
-$ objection -s -p -n "org.telegram.messenger
+objection -s -p -n "org.telegram.messenger
 ```
 
 Once you're in the Objection REPL, you can execute any of the available commands. Below is an overview of some of the most useful ones:
 
 ```bash
 # Show the different storage locations belonging to the app
-$ env
+env
 
 # Disable popular ssl pinning methods
-$ ios sslpinning disable
+ios sslpinning disable
 
 # Dump the Keychain
-$ ios keychain dump
+ios keychain dump
 
 # Dump the Keychain, including access modifiers. The result will be written to the host in myfile.json
-$ ios keychain dump --json <myfile.json>
+ios keychain dump --json <myfile.json>
 
 # Show the content of a plist file
-$ ios plist cat <myfile.plist>
+ios plist cat <myfile.plist>
 
 ```
 

@@ -95,7 +95,7 @@ To test local storage and verify what data is stored in it, an iOS device isn't 
 Once the app is running in the iOS simulator, you can navigate to the directory of the latest simulator started with the following command:
 
 ```bash
-$ cd ~/Library/Developer/CoreSimulator/Devices/$(ls -alht ~/Library/Developer/CoreSimulator/Devices | head -n 2 | awk '{print $9}' | sed -n '1!p')/data/Containers/Data/Application
+cd ~/Library/Developer/CoreSimulator/Devices/$(ls -alht ~/Library/Developer/CoreSimulator/Devices | head -n 2 | awk '{print $9}' | sed -n '1!p')/data/Containers/Data/Application
 ```
 
 The command above will automatically find the UUID of the most recently started simulator and navigate to the Applications Data directory. From there, you can `cd` into the app's data directory by looking for the app's name in the `Documents` folder of each application directory.

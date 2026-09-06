@@ -20,6 +20,7 @@ Before contributing or reviewing content:
 ## Markdown
 
 - Before editing Markdown, read `.markdownlint.jsonc` and `.markdownlint-cli2.jsonc` to understand the repository's enforced Markdown writing and formatting rules
+- Read `.github/instructions/markdown.instructions.md` for contextual Markdown writing rules that can't be enforced automatically
 - Use `npm ci` to install the pinned lint dependencies
 - Run `npm run lint:markdown` to run the lint checks before creating a pull request or merging changes.
 

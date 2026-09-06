@@ -20,7 +20,7 @@ To achieve a [Machine-in-the-Middle (MITM)](../../Document/0x04f-Testing-Network
 Start your preferred network analyzer tool first, then start @MASTG-TOOL-0076 with the following command and replace the IP address below (X.X.X.X) with the target you want to execute the MITM attack against.
 
 ```bash
-$ sudo bettercap -eval "set arp.spoof.targets X.X.X.X; arp.spoof on; set arp.spoof.internal true; set arp.spoof.fullduplex true;"
+sudo bettercap -eval "set arp.spoof.targets X.X.X.X; arp.spoof on; set arp.spoof.internal true; set arp.spoof.fullduplex true;"
 bettercap v2.22 (built for darwin amd64 with go1.12.1) [type 'help' for a list of commands]
 
 [19:21:39] [sys.log] [inf] arp.spoof enabling forwarding

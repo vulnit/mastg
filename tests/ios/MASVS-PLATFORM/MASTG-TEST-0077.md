@@ -80,7 +80,7 @@ do {
 If only having the compiled binary, you can also search for these methods using @MASTG-TOOL-0129:
 
 ```bash
-$ rabin2 -zz ./WheresMyBrowser | grep -i "loadHTMLString"
+rabin2 -zz ./WheresMyBrowser | grep -i "loadHTMLString"
 231 0x0002df6c 24 (4.__TEXT.__objc_methname) ascii loadHTMLString:baseURL:
 ```
 
@@ -101,7 +101,7 @@ In this case, the parameter `allowingReadAccessToURL` contains a single file "WK
 In the compiled binary you can use @MASTG-TOOL-0129:
 
 ```bash
-$ rabin2 -zz ./WheresMyBrowser | grep -i "loadFileURL"
+rabin2 -zz ./WheresMyBrowser | grep -i "loadFileURL"
 237 0x0002dff1 37 (4.__TEXT.__objc_methname) ascii loadFileURL:allowingReadAccessToURL:
 ```
 
@@ -167,7 +167,7 @@ If `WKWebView`'s "scenario 2" of the ["Where's My Browser?"](https://github.com/
 To quickly inspect this, you can use frida-trace and trace all `loadHTMLString` and `URLForResource:withExtension:` methods.
 
 ```bash
-$ frida-trace -U "Where's My Browser?"
+frida-trace -U "Where's My Browser?"
     -m "*[WKWebView *loadHTMLString*]" -m "*[* URLForResource:withExtension:]"
 
  14131 ms  -[NSBundle URLForResource:0x1c0255390 withExtension:0x0]
@@ -233,7 +233,7 @@ allowUniversalAccessFromFileURLs:  0
 Both `allowFileAccessFromFileURLs` and `allowUniversalAccessFromFileURLs` are set to "0", meaning that they are disabled. In this app we can go to the WebView configuration and enable `allowFileAccessFromFileURLs`. If we do so and re-run the script we will see how it is set to "1" this time:
 
 ```bash
-$ frida -U -f com.authenticationfailure.WheresMyBrowser -l webviews_inspector.js
+frida -U -f com.authenticationfailure.WheresMyBrowser -l webviews_inspector.js
 ...
 
 allowFileAccessFromFileURLs:  1

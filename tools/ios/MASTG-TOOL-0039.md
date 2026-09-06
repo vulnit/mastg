@@ -69,7 +69,7 @@ Once it has been installed, the Frida server will automatically run with root pr
 Connect your device via USB and make sure that Frida works by running the `frida-ps` command and the flag `-U`. This should return the list of processes running on the device:
 
 ```bash
-$ frida-ps -U
+frida-ps -U
 PID  Name
 ---  ----------------
 963  Mail

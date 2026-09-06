@@ -10,7 +10,7 @@ Following the example from "Disassembling Native Code" we will use different dis
 Once you've opened your file in radare2 you should first get the address of the function you're looking for. You can do this by listing or getting information `i` about the symbols `s` (`is`) and grepping (`~` radare2's built-in grep) for some keyword, in our case, we're looking for JNI-related symbols, so we enter "Java":
 
 ```bash
-$ r2 -A HelloWord-JNI/lib/armeabi-v7a/libnative-lib.so
+r2 -A HelloWord-JNI/lib/armeabi-v7a/libnative-lib.so
 ...
 [0x00000e3c]> is~Java
 003 0x00000e78 0x00000e78 GLOBAL   FUNC   16 Java_sg_vantagepoint_helloworldjni_MainActivity_stringFromJNI
@@ -45,7 +45,7 @@ Let's explain the previous commands:
 Using radare2 you can quickly run commands and exit by using the flags `-qc '<commands>'`. From the previous steps, we know already what to do, so we will simply put everything together:
 
 ```bash
-$ r2 -qc 'e emu.str=true; s 0x00000e78; af; pdf' HelloWord-JNI/lib/armeabi-v7a/libnative-lib.so
+r2 -qc 'e emu.str=true; s 0x00000e78; af; pdf' HelloWord-JNI/lib/armeabi-v7a/libnative-lib.so
 
 ╭ (fcn) sym.Java_sg_vantagepoint_helloworldjni_MainActivity_stringFromJNI 12
 │   sym.Java_sg_vantagepoint_helloworldjni_MainActivity_stringFromJNI (int32_t arg1);

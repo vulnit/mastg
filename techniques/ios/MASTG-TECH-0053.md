@@ -12,7 +12,7 @@ As we know now, files from our app are stored in the Data directory. You can now
 ```bash
 iPhone:~ root# tar czvf /tmp/data.tgz /private/var/mobile/Containers/Data/Application/8C8E7EB0-BC9B-435B-8EF8-8F5560EB0693
 iPhone:~ root# exit
-$ scp -P 2222 root@localhost:/tmp/data.tgz .
+scp -P 2222 root@localhost:/tmp/data.tgz .
 ```
 
 ## Grapefruit

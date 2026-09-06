@@ -12,7 +12,7 @@ IPSW calls itself an "iOS/macOS Research Swiss Army Knife". In general, IPSW all
 IPSW can extract Objective-C class information from a MachO binary. The desired architecture can be specified using `--arch` in case of a universal MachO file:
 
 ```bash
-$ ipsw class-dump --arch arm64 UnCrackable\ Level\ 1
+ipsw class-dump --arch arm64 UnCrackable\ Level\ 1
 
 @protocol NSObject
 
@@ -199,7 +199,7 @@ $ ipsw class-dump --arch arm64 UnCrackable\ Level\ 1
 IPSW can output the available Swift symbols with `ipsw swift-dump`. By default, the location of the identified structures and symbols isn't printed, but this can be enabled by using the `-V` flag:
 
 ```bash
-$ ipsw swift-dump --arch arm64 ./MASTestApp -V
+ipsw swift-dump --arch arm64 ./MASTestApp -V
 
 Swift TOC
 --------

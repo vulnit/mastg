@@ -88,7 +88,7 @@ For testing the local storage and verifying what data is stored within it, it's 
 Once the app is running in the iOS simulator, you can navigate to the directory of the latest simulator started with the following command:
 
 ```bash
-$ cd ~/Library/Developer/CoreSimulator/Devices/$(
+cd ~/Library/Developer/CoreSimulator/Devices/$(
 ls -alht ~/Library/Developer/CoreSimulator/Devices | head -n 2 |
 awk '{print $9}' | sed -n '1!p')/data/Containers/Data/Application
 ```

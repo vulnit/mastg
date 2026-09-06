@@ -69,7 +69,7 @@ Which outputs:
 Use @MASTG-TOOL-0105 to convert any Plist files, such as `Info.plist`, to JSON format:
 
 ```bash
-$ ipsw plist ./Info.plist
+ipsw plist ./Info.plist
 {
     "BuildMachineOSBuild": "23B74",
     "CFBundleDevelopmentRegion": "en",

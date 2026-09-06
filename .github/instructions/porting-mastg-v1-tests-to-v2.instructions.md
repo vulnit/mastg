@@ -87,7 +87,7 @@ Map to MASWE. You can check the new MASWE by searching for the old test ID in th
 9. Link mitigations: Ensure there is a clear mitigation in best practices; add the reference in front matter (field defined in `mastg-test.instructions.md`).
 10. Trim non-essential parts: If parts of the v1 test aren't relevant, remove them and note it in the ticket.
 
-    **Example:** In MASTG-TEST-0017, what's written in dynamic analysis doesn't make sense: why should we validate that `setUserAuthenticationValidityDurationSeconds` is for real (we aren't testing if Android features work; we assume they do). Perhaps we could also employ dynamic analysis, but using a different approach.
+    **Example:** In @MASTG-TEST-0017, what's written in dynamic analysis doesn't make sense: why should we validate that `setUserAuthenticationValidityDurationSeconds` is for real (we aren't testing if Android features work; we assume they do). Perhaps we could also employ dynamic analysis, but using a different approach.
 
 11. Fill missing links to docs and developer references as needed.
 

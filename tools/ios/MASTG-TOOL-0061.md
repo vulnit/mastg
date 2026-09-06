@@ -7,8 +7,8 @@ source: https://github.com/ChiChou/grapefruit
 Grapefruit is an iOS app assessment tool that is using the Frida server on the iOS device and is abstracting many penetration testing tasks into a Web UI. It can be installed via `npm`.
 
 ```bash
-$ npm install -g igf
-$ grapefruit
+npm install -g igf
+grapefruit
 listening on http://localhost:31337
 ```
 

@@ -34,7 +34,7 @@ In the compiled binary you can search in its symbols or strings, for example usi
 #### UIWebView
 
 ```bash
-$ rabin2 -zz ./WheresMyBrowser | egrep "UIWebView$"
+rabin2 -zz ./WheresMyBrowser | egrep "UIWebView$"
 489 0x0002fee9 0x10002fee9   9  10 (5.__TEXT.__cstring) ascii UIWebView
 896 0x0003c813 0x0003c813  24  25 () ascii @_OBJC_CLASS_$_UIWebView
 1754 0x00059599 0x00059599  23  24 () ascii _OBJC_CLASS_$_UIWebView
@@ -43,7 +43,7 @@ $ rabin2 -zz ./WheresMyBrowser | egrep "UIWebView$"
 #### WKWebView
 
 ```bash
-$ rabin2 -zz ./WheresMyBrowser | egrep "WKWebView$"
+rabin2 -zz ./WheresMyBrowser | egrep "WKWebView$"
 490 0x0002fef3 0x10002fef3   9  10 (5.__TEXT.__cstring) ascii WKWebView
 625 0x00031670 0x100031670  17  18 (5.__TEXT.__cstring) ascii unwindToWKWebView
 904 0x0003c960 0x0003c960  24  25 () ascii @_OBJC_CLASS_$_WKWebView
@@ -53,7 +53,7 @@ $ rabin2 -zz ./WheresMyBrowser | egrep "WKWebView$"
 Alternatively you can also search for known methods of these WebView classes. For example, search for the method used to initialize a WKWebView ([`init(frame:configuration:)`](https://developer.apple.com/documentation/webkit/wkwebview/1414998-init "WKWebView init(frame:configuration:)")):
 
 ```bash
-$ rabin2 -zzq ./WheresMyBrowser | egrep "WKWebView.*frame"
+rabin2 -zzq ./WheresMyBrowser | egrep "WKWebView.*frame"
 0x5c3ac 77 76 __T0So9WKWebViewCABSC6CGRectV5frame_So0aB13ConfigurationC13configurationtcfC
 0x5d97a 79 78 __T0So9WKWebViewCABSC6CGRectV5frame_So0aB13ConfigurationC13configurationtcfcTO
 0x6b5d5 77 76 __T0So9WKWebViewCABSC6CGRectV5frame_So0aB13ConfigurationC13configurationtcfC
@@ -63,7 +63,7 @@ $ rabin2 -zzq ./WheresMyBrowser | egrep "WKWebView.*frame"
 You can also demangle it:
 
 ```bash
-$ xcrun swift-demangle __T0So9WKWebViewCABSC6CGRectV5frame_So0aB13ConfigurationC13configurationtcfcTO
+xcrun swift-demangle __T0So9WKWebViewCABSC6CGRectV5frame_So0aB13ConfigurationC13configurationtcfcTO
 
 ---> @nonobjc __C.WKWebView.init(frame: __C_Synthesized.CGRect,
                                 configuration: __C.WKWebViewConfiguration) -> __C.WKWebView
@@ -83,7 +83,7 @@ webPreferences.javaScriptEnabled = false
 If only having the compiled binary you can search for this in it using @MASTG-TOOL-0129:
 
 ```bash
-$ rabin2 -zz ./WheresMyBrowser | grep -i "javascriptenabled"
+rabin2 -zz ./WheresMyBrowser | grep -i "javascriptenabled"
 391 0x0002f2c7 0x10002f2c7  17  18 (4.__TEXT.__objc_methname) ascii javaScriptEnabled
 392 0x0002f2d9 0x10002f2d9  21  22 (4.__TEXT.__objc_methname) ascii setJavaScriptEnabled:
 ```
@@ -97,7 +97,7 @@ In contrast to `UIWebView`s, when using `WKWebView`s it is possible to detect [m
 In the compiled binary you can use @MASTG-TOOL-0129:
 
 ```bash
-$ rabin2 -zz ./WheresMyBrowser | grep -i "hasonlysecurecontent"
+rabin2 -zz ./WheresMyBrowser | grep -i "hasonlysecurecontent"
 
 # nothing found
 ```
@@ -227,7 +227,7 @@ The output shows now that, in fact, JavaScript is enabled:
 
 ```bash
 
-$ frida -U com.authenticationfailure.WheresMyBrowser -l webviews_inspector.js
+frida -U com.authenticationfailure.WheresMyBrowser -l webviews_inspector.js
 
 onMatch:  <WKWebView: 0x1508b1200; frame = (0 0; 320 393); layer = <CALayer: 0x1c4238f20>>
 
@@ -256,7 +256,7 @@ ObjC.choose(ObjC.classes['WKWebView'], {
 The output shows that some of the resources on the page have been loaded through insecure connections:
 
 ```bash
-$ frida -U com.authenticationfailure.WheresMyBrowser -l webviews_inspector.js
+frida -U com.authenticationfailure.WheresMyBrowser -l webviews_inspector.js
 
 onMatch:  <WKWebView: 0x1508b1200; frame = (0 0; 320 393); layer = <CALayer: 0x1c4238f20>>
 

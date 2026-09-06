@@ -255,7 +255,7 @@ Vulnerable Providers:
 Note that `adb` can also be used to query content providers:
 
 ```bash
-$ adb shell content query --uri content://com.owaspomtg.vulnapp.provider.CredentialProvider/credentials
+adb shell content query --uri content://com.owaspomtg.vulnapp.provider.CredentialProvider/credentials
 Row: 0 id=1, username=admin, password=StrongPwd
 Row: 1 id=2, username=test, password=test
 ...

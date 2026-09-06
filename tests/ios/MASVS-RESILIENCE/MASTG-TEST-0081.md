@@ -24,7 +24,7 @@ After you get the application's IPA file, re-save it as a ZIP file and decompres
 Execute the following `codesign` command to display the signing information:
 
 ```bash
-$ codesign -dvvv YOURAPP.app
+codesign -dvvv YOURAPP.app
 Executable=/Users/Documents/YOURAPP/Payload/YOURAPP.app/YOURNAME
 Identifier=com.example.example
 Format=app bundle with Mach-O universal (armv7 arm64)

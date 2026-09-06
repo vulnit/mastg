@@ -8,7 +8,7 @@ To extract the code signature format version from a signed binary, you can use @
 The version is obtained by calling `codesign -dv` and identifying the value of `v` in the `CodeDirectory` row:
 
 ```bash
-$ codesign -dv MASTestApp.app
+codesign -dv MASTestApp.app
 Executable=/Users/user/MASTestApp.app
 Identifier=org.owasp.mastestapp.MASTestApp-iOS
 Format=Mach-O universal (armv7 arm64)

@@ -115,22 +115,22 @@ To be able to get a MITM position you need to run the above configuration. This 
 
 ```bash
 # check if other process is not using WiFi interfaces
-$ airmon-ng check kill
+airmon-ng check kill
 # configure IP address of the AP network interface
-$ ifconfig wlan1 10.0.0.1 up
+ifconfig wlan1 10.0.0.1 up
 # start access point
-$ hostapd hostapd.conf
+hostapd hostapd.conf
 # connect the target network interface
-$ wpa_supplicant -B -i wlan0 -c wpa_supplicant.conf
+wpa_supplicant -B -i wlan0 -c wpa_supplicant.conf
 # run DNS server
-$ dnsmasq -C dnsmasq.conf -d
+dnsmasq -C dnsmasq.conf -d
 # enable routing
-$ echo 1 > /proc/sys/net/ipv4/ip_forward
+echo 1 > /proc/sys/net/ipv4/ip_forward
 # iptables will NAT connections from AP network interface to the target network interface
-$ iptables --flush
-$ iptables --table nat --append POSTROUTING --out-interface wlan0 -j MASQUERADE
-$ iptables --append FORWARD --in-interface wlan1 -j ACCEPT
-$ iptables -t nat -A POSTROUTING -j MASQUERADE
+iptables --flush
+iptables --table nat --append POSTROUTING --out-interface wlan0 -j MASQUERADE
+iptables --append FORWARD --in-interface wlan1 -j ACCEPT
+iptables -t nat -A POSTROUTING -j MASQUERADE
 ```
 
 Now you can connect your mobile devices to the access point.

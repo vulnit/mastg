@@ -1,67 +1,76 @@
 {
     // https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md
 
-    "MD004": {"style": "dash"},                   // ul-style
-    "MD007": { "indent": 4 },                     // ul-indent
-    "MD013": false,                               // line-length
-    "MD014": false,                               // commands-show-output
-    "MD024": {"siblings_only": true},             // no-duplicate-header
-    "MD026": {"punctuation": ".,;:"},             // no-trailing-punctuation (allows !?)
-    "MD033": false,                               // no-inline-html
-    "MD035": {"style": "---"},                    // hr-style
-    "MD036": {"punctuation": ".,;:!。"},          // no-emphasis-as-header
-    "MD041": false,                               // first-line-h1
-    "MD045": false,                               // no-alt-text
-    "MD046": false,                               // code-block-style (unsupported admonitions)
-    "MD049": {"style": "underscore"},             // emphasis-style
-    "MD050": {"style": "asterisk"},               // strong-style
-    "MD055": {"style": "leading_and_trailing"},   // table-pipe-style
-    "MD060": {"style": "compact"},
-    "search-replace": {
+    "MD001": true,                                // Keep heading levels hierarchical.
+    "MD003": { "style": "atx" },                  // Use hash-prefixed headings.
+    "MD004": { "style": "dash" },                 // Use dashes for unordered lists.
+    "MD007": { "indent": 4 },                     // Indent nested list items with four spaces.
+    "MD009": { "br_spaces": 0, "strict": true }, // Remove trailing spaces.
+    "MD012": true,                                // Avoid multiple consecutive blank lines.
+    "MD013": false,                               // Allow lines of any length.
+    "MD022": true,                                // Surround headings with blank lines.
+    "MD024": { "siblings_only": true },           // Allow repeated headings only in separate sections.
+    "MD025": true,                                // Treat a front matter title as the page's only H1.
+    "MD026": { "punctuation": ".,;:" },           // Allow only the project-approved trailing heading punctuation.
+    "MD029": { "style": "ordered" },              // Number ordered-list items sequentially.
+    "MD031": true,                                // Surround fenced code blocks with blank lines.
+    "MD032": true,                                // Surround lists with blank lines.
+    "MD033": false,                               // Allow inline HTML for images and generated content.
+    "MD034": true,                                // Require explicit Markdown links or angle-bracket autolinks.
+    "MD036": { "punctuation": ".,;:!。" },        // Do not use emphasis in place of headings.
+    "MD040": true,                                // Add a language identifier to fenced code blocks.
+    "MD041": false,                               // Do not require generated pages to start with a Markdown H1.
+    "MD045": false,                               // Allow HTML images whose context supplies accessibility information.
+    "MD046": false,                               // Allow indented MkDocs admonition bodies alongside fenced code.
+    "MD048": { "style": "backtick" },             // Fence code blocks with backticks.
+    "MD049": { "style": "underscore" },           // Use underscores for emphasis.
+    "MD050": { "style": "asterisk" },             // Use asterisks for strong emphasis.
+    "MD055": { "style": "leading_and_trailing" }, // Include leading and trailing table pipes.
+    "MD056": true,                                // Keep the same number of cells in every table row.
+    "MD060": { "style": "compact" },              // Use compact spacing around table delimiters.
+    "MAS-LINT-009": true,                         // Prohibit horizontal rules outside YAML front matter.
+    "MAS-LINT-010": true,                         // Require HTML images with src as the first attribute.
+    "MAS-LINT-011": true,                         // Enforce project identifier syntax by Markdown context.
+    "MAS-LINT-012": true,                         // Format chapter references so URLs print in generated PDFs.
+    "MAS-LINT-013": true,                         // Omit dollar-sign prompts from every shell command block.
+    "search-replace": {                          // Apply deterministic text substitutions defined below.
       "rules": [
         {
-          "name": "curly-double-quotes",
+          "name": "curly-double-quotes", // Replace curly double quotes with portable straight quotes.
           "message": "MAS-LINT-001/Do not use curly double quotes.",
           "searchPattern": "/“|”/g",
           "replace": "\"",
           "searchScope": "text"
         },
         {
-          "name": "nbsp",
+          "name": "nbsp", // Replace invisible no-break spaces with normal spaces.
           "message": "MAS-LINT-002/Don't use no-break spaces",
           "searchPattern": "/ /g",
           "replace": " ",
           "searchScope": "all"
         },
         {
-          "name": "curly-single-quotes",
+          "name": "curly-single-quotes", // Replace curly apostrophes and single quotes with straight ones.
           "message": "MAS-LINT-003/Don't use curly single quotes",
           "searchPattern": "/‘|’/g",
           "replace": "'",
           "searchScope": "text"
         },
         {
-          "name": "gender-neutrality",
+          "name": "gender-neutrality", // Detect gendered pronouns that require neutral wording.
           "message": "MAS-LINT-004/Ensure gender-neutral language is used.",
           "searchPattern": "/\\bhe\\b|\\bshe\\b|\\bhis\\b|\\bhimself\\b|\\bherself\\b|\\bher\\b|\\bhim\\b|\\bhers\\b/g",
           "replace": ""
         },
         {
-          "name": "trailing-spaces",
-          "message": "MAS-LINT-005/Avoid trailing spaces",
-          "searchPattern": "/  +$/gm",
-          "replace": "",
-          "searchScope": "all"
-        },
-        {
-          "name": "double-spaces",
+          "name": "double-spaces", // Collapse accidental double spaces in prose.
           "message": "MAS-LINT-006/Avoid double spaces",
           "searchPattern": "/([^\\s>])  ([^\\s|])/g",
           "replace": "$1 $2",
           "searchScope": "text"
         },
         {
-          "name": "project-terminology",
+          "name": "project-terminology", // Normalize deterministic MASTG terminology without changing code or quotations.
           "message": "MAS-LINT-007/Use the preferred project terminology.",
           "searchPattern": [
             "/(?<!^\\s{0,3}>.*)(?<![\\x2F:_.?&=#(-])\\b(?:MacOS|Mac OS|macos)\\b/gm",
@@ -114,7 +123,7 @@
           "searchScope": "text"
         },
         {
-          "name": "contractions",
+          "name": "contractions", // Require only unambiguous contractions without changing code or quotations.
           "message": "MAS-LINT-008/Use the preferred contraction.",
           "searchPattern": [
             "/(?<!^\\s{0,3}>.*)\\b([Aa])re not\\b/gm",

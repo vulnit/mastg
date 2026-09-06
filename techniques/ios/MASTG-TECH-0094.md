@@ -6,7 +6,7 @@ platform: ios
 In the Frida REPL Objective-C runtime, the `ObjC` command can be used to access information within the running app. Within the `ObjC` command, the function `enumerateLoadedClasses` lists the loaded classes for a given application.
 
 ```bash
-$ frida -U -f com.iOweApp
+frida -U -f com.iOweApp
 
 [iPhone::com.iOweApp]-> ObjC.enumerateLoadedClasses()
 {

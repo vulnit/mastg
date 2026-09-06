@@ -189,11 +189,11 @@ This technique is usually applied within the JNI native libraries in C, as shown
 When trying to implement such a method yourself, you can manually check the value of TracerPid with @MASTG-TOOL-0004. The following listing uses Google's NDK sample app [hello-jni (com.example.hellojni)](https://github.com/android/ndk-samples/tree/android-mk/hello-jni "hello-jni sample") to perform the check after attaching lldb (@MASTG-TOOL-0152):
 
 ```bash
-$ adb shell ps -A | grep com.example.hellojni
+adb shell ps -A | grep com.example.hellojni
 u0_a271      11657   573 4302108  50600 ptrace_stop         0 t com.example.hellojni
-$ adb shell cat /proc/11657/status | grep -e "^TracerPid:" | sed "s/^TracerPid:\t//"
+adb shell cat /proc/11657/status | grep -e "^TracerPid:" | sed "s/^TracerPid:\t//"
 TracerPid:      11839
-$ adb shell ps -A | grep 11839
+adb shell ps -A | grep 11839
 root      11839 11837   14024   4548 poll_schedule_timeout 0 S lldb-server
 ```
 

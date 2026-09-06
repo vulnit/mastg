@@ -28,36 +28,36 @@ objection -f explore
 
 # Using Frida-server
 # Find the correct name using frida-ps
-$ frida-ps -Ua | grep -i telegram
+frida-ps -Ua | grep -i telegram
 30268  Telegram                               org.telegram.messenger
 
 # Connecting to the Telegram app through Frida-server
-$ objection -n "Telegram" start
+objection -n "Telegram" start
 # Alternatively use the process ID (PID)
-$ objection -n 30268 start
+objection -n 30268 start
 
 # Objection can also spawn the app through Frida-server using the application identifier / package name
-$ objection -s -n "org.telegram.messenger"
+objection -s -n "org.telegram.messenger"
 ... [usb] resume
 
 # Alternatively with "no pause"
-$ objection -s -p -n "org.telegram.messenger"
+objection -s -p -n "org.telegram.messenger"
 ```
 
 Once you're in the Objection REPL, you can execute any of the available commands. Below is an overview of some of the most useful ones:
 
 ```bash
 # Show the different storage locations belonging to the app
-$ env
+env
 
 # Disable popular SSL pinning methods
-$ android sslpinning disable
+android sslpinning disable
 
 # List items in the keystore
-$ android keystore list
+android keystore list
 
 # Try to circumvent root detection
-$ android root disable
+android root disable
 
 ```
 

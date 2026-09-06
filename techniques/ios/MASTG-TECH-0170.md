@@ -16,7 +16,7 @@ There you find the names of all embedded app extensions followed by `.appex` and
 Without the source code, explore the app package (@MASTG-TECH-0058) and list the contents of the `PlugIns/` directory inside the `.app` bundle:
 
 ```bash
-$ ls -1 "Payload/Telegram X.app/PlugIns"
+ls -1 "Payload/Telegram X.app/PlugIns"
 NotificationContent.appex
 Share.appex
 SiriIntents.appex
@@ -26,7 +26,7 @@ Widget.appex
 Alternatively, grep for `NSExtensionPointIdentifier` across the app bundle to locate the extensions' `Info.plist` files:
 
 ```bash
-$ grep -nr NSExtensionPointIdentifier "Payload/Telegram X.app/"
+grep -nr NSExtensionPointIdentifier "Payload/Telegram X.app/"
 Binary file Payload/Telegram X.app//PlugIns/SiriIntents.appex/Info.plist matches
 Binary file Payload/Telegram X.app//PlugIns/Share.appex/Info.plist matches
 Binary file Payload/Telegram X.app//PlugIns/NotificationContent.appex/Info.plist matches

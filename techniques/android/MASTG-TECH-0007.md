@@ -8,8 +8,8 @@ Once you have collected the package name of the application you want to target, 
 APK files are actually ZIP files that can be unpacked using a standard decompression utility such as `unzip`. However, we recommend using @MASTG-TOOL-0011, which additionally decodes the AndroidManifest.xml and disassembles the app binaries (classes.dex) to smali code:
 
 ```bash
-$ apktool d UnCrackable-Level3.apk
-$ tree
+apktool d UnCrackable-Level3.apk
+tree
 .
 ├── AndroidManifest.xml
 ├── apktool.yml
@@ -41,7 +41,7 @@ The following files are unpacked:
 As unzipping with the standard `unzip` utility leaves some files, such as the `AndroidManifest.xml`, unreadable, it's better to unpack the APK using @MASTG-TOOL-0011.
 
 ```bash
-$ ls -alh
+ls -alh
 total 32
 drwxr-xr-x    9 sven  staff   306B Dec  5 16:29 .
 drwxr-xr-x    5 sven  staff   170B Dec  5 16:29 ..
@@ -98,7 +98,7 @@ Note that the exact directory will be different based on your Android version. I
 You can inspect the `lib` folder in the APK:
 
 ```bash
-$ ls -1 lib/armeabi/
+ls -1 lib/armeabi/
 libdatabase_sqlcipher.so
 libnative.so
 libsqlcipher_android.so

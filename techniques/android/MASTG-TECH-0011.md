@@ -189,8 +189,8 @@ Alternatively, you can follow the following steps manually in order to achieve t
 - Prepare the proxy's CA certificates to match the system certificates format. Export the proxy's certificates in `der` format (this is the default format in Burp Suite), then run the following commands:
 
     ```bash
-    $ openssl x509 -inform DER -in cacert.der -out cacert.pem
-    $ openssl x509 -inform PEM -subject_hash_old -in cacert.pem | head -1
+    openssl x509 -inform DER -in cacert.der -out cacert.pem
+    openssl x509 -inform PEM -subject_hash_old -in cacert.pem | head -1
     mv cacert.pem <hash>.0
     ```
 
@@ -248,7 +248,7 @@ iptables -t nat -A OUTPUT -p tcp --dport 80 -j DNAT --to-destination <Your-Proxy
 Verify the iptables settings and check the IP and port.
 
 ```bash
-$ iptables -t nat -L
+iptables -t nat -L
 Chain PREROUTING (policy ACCEPT)
 target     prot opt source               destination
 
@@ -282,7 +282,7 @@ See @MASTG-TECH-0123 for further preparation and instructions for running better
 The host computer where you run your proxy and the Android device must be connected to the same wireless network. Start bettercap with the following command, replacing the IP address below (X.X.X.X) with the IP address of your Android device.
 
 ```bash
-$ sudo bettercap -eval "set arp.spoof.targets X.X.X.X; arp.spoof on; set arp.spoof.internal true; set arp.spoof.fullduplex true;"
+sudo bettercap -eval "set arp.spoof.targets X.X.X.X; arp.spoof on; set arp.spoof.internal true; set arp.spoof.fullduplex true;"
 bettercap v2.22 (built for darwin amd64 with go1.12.1) [type 'help' for a list of commands]
 
 [19:21:39] [sys.log] [inf] arp.spoof enabling forwarding

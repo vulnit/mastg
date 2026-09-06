@@ -14,7 +14,7 @@ unzip iGoat-Swift.ipa
 Inside you'll find a `Payload` folder containing the so-called Application Bundle (.app). The following is an example of the output. Note that it was truncated for better readability and overview:
 
 ```bash
-$ ls -1 Payload/iGoat-Swift.app
+ls -1 Payload/iGoat-Swift.app
 rutger.html
 mansi.html
 splash.html
@@ -112,7 +112,7 @@ And get a more detailed view, including their imports/exports:
 They are available in the `Frameworks` folder in the IPA you can also inspect them from the terminal:
 
 ```bash
-$ ls -1 Frameworks/
+ls -1 Frameworks/
 Realm.framework
 libswiftCore.dylib
 libswiftCoreData.dylib

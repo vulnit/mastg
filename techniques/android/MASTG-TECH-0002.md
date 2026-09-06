@@ -14,7 +14,7 @@ adb push foo.txt /sdcard/foo.txt
 This approach is commonly used when you know exactly what you want to copy and from/to where, and also supports bulk file transfer, e.g. you can pull (copy) a whole directory from the Android device to your host computer.
 
 ```bash
-$ adb pull /sdcard
+adb pull /sdcard
 /sdcard/: 1190 files pulled. 14.1 MB/s (304526427 bytes in 20.566s)
 ```
 
@@ -33,10 +33,10 @@ This option is useful when you're working on a specific app and want to copy fil
 First, connect to the app with Objection as explained in @MASTG-TOOL-0038. Then, use `ls` and `cd` as you normally would on your terminal to explore the available files:
 
 ```bash
-$ frida-ps -Ua | grep -i owasp
+frida-ps -Ua | grep -i owasp
 21228  Attack me if u can  sg.vp.owasp_mobile.omtg_android
 
-$ objection -n "Attack me if u can" start
+objection -n "Attack me if u can" start
 
 ...g.vp.owasp_mobile.omtg_android on (google: 8.1.0) [usb] # cd ..
 /data/user/0/sg.vp.owasp_mobile.omtg_android

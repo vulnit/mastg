@@ -6,14 +6,14 @@ platform: ios
 You can use @MASTG-TOOL-0134 to generate a Software Bill of Materials (SBOM) in the CycloneDX format when using SwiftPM. Currently, Carthage and CocoaPods aren't supported. You can either ask the development team to provide the SBOM file or create it yourself. To do so, navigate to the root directory of the Xcode project you wish to scan, then execute the following command:
 
 ```bash
-$ cdxgen -o sbom.json
+cdxgen -o sbom.json
 ```
 
 The SBOM file needs to be Base64-encoded and uploaded to @MASTG-TOOL-0132 for analysis.
 
 ```bash
-$ cat sbom.json | base64
-$ curl -X "PUT" "http://localhost:8081/api/v1/bom" \
+cat sbom.json | base64
+curl -X "PUT" "http://localhost:8081/api/v1/bom" \
      -H 'Content-Type: application/json' \
      -H 'X-API-Key: <YOUR API KEY>>' \
      -d $'{

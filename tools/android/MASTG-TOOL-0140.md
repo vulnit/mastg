@@ -9,5 +9,5 @@ Frida-multiple unpinning is a Frida CodeShare script to bypass various forms of 
 You can run the script directly with Frida:
 
 ```bash
-$ frida -U --codeshare akabe1/frida-multiple-unpinning -f YOUR_BINARY
+frida -U --codeshare akabe1/frida-multiple-unpinning -f YOUR_BINARY
 ```

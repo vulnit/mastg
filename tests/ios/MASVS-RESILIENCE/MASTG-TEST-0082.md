@@ -20,7 +20,7 @@ deprecation_note: New version available in MASTG V2
 Extract the entitlements from the app (@MASTG-TECH-0111) and check the value of the `get-task-allow` key. If it is set to `true`, the app is debuggable.
 
 ```bash
-$ ldid -e iGoat-Swift.app/iGoat-Swift
+ldid -e iGoat-Swift.app/iGoat-Swift
 ```
 
 ```xml

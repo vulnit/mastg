@@ -32,7 +32,7 @@ In that case, you can replace the above line `$ mount -o rw,remount /system;` wi
 Execute `tcpdump` once to see if it works. Once a few packets have come in, you can stop tcpdump by pressing CTRL+c.
 
 ```bash
-$ tcpdump
+tcpdump
 tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
 listening on wlan0, link-type EN10MB (Ethernet), capture size 262144 bytes
 04:54:06.590751 00:9e:1e:10:7f:69 (oui Unknown) > Broadcast, RRCP-0x23 reply
@@ -103,7 +103,7 @@ FCM uses the ports 5228, 5229, and 5230 for HTTP communication. Usually, only po
 - Configure local port forwarding for the ports used by FCM. The following example applies to macOS:
 
 ```bash
-$ echo "
+echo "
 rdr pass inet proto tcp from any to any port 5228-> 127.0.0.1 port 8080
 rdr pass inet proto tcp from any to any port 5229 -> 127.0.0.1 port 8080
 rdr pass inet proto tcp from any to any port 5230 -> 127.0.0.1 port 8080
@@ -119,7 +119,7 @@ For XMPP communication, [FCM uses ports](https://firebase.google.com/docs/cloud-
 - Configure local port forwarding for the ports used by FCM. The following example applies to macOS:
 
 ```bash
-$ echo "
+echo "
 rdr pass inet proto tcp from any to any port 5235-> 127.0.0.1 port 8080
 rdr pass inet proto tcp from any to any port 5236 -> 127.0.0.1 port 8080
 " | sudo pfctl -ef -

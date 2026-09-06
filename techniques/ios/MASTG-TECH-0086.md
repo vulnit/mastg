@@ -14,7 +14,7 @@ For detailed tutorials on using frida-trace on iOS, see the [frida-trace section
 Run Safari on the device and make sure the device is connected via USB. Then start `frida-trace` as follows:
 
 ```bash
-$ frida-trace -U -m "-[NSURL *]" Safari
+frida-trace -U -m "-[NSURL *]" Safari
 Instrumenting functions...
 -[NSURL isMusicStoreURL]: Loaded handler at "/Users/berndt/Desktop/__handlers__/__NSURL_isMusicStoreURL_.js"
 -[NSURL isAppStoreURL]: Loaded handler at "/Users/berndt/Desktop/__handlers__/__NSURL_isAppStoreURL_.js"

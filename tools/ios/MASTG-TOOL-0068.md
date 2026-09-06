@@ -22,8 +22,8 @@ cp swiftshield/swiftshield /usr/local/bin/
 - In your terminal go into the SwiftSecurity directory (which you checked out in step 1) and execute the command swiftshield (which you downloaded in step 3):
 
 ```bash
-$ cd SwiftSecurity
-$ swiftshield -automatic -project-root . -automatic-project-file SwiftSecurity.xcodeproj -automatic-project-scheme SwiftSecurity
+cd SwiftSecurity
+swiftshield -automatic -project-root . -automatic-project-file SwiftSecurity.xcodeproj -automatic-project-scheme SwiftSecurity
 SwiftShield 3.4.0
 Automatic mode
 Building project to gather modules and compiler arguments...
@@ -48,7 +48,7 @@ SwiftShield was now replacing all of them with encrypted values that leave no tr
 After executing `swiftshield` a new directory will be created called `swiftshield-output`. In this directory another directory is created with a timestamp in the folder name. This directory contains a text file called `conversionMap.txt`, that maps the encrypted strings to their original values.
 
 ```bash
-$ cat conversionMap.txt
+cat conversionMap.txt
 //
 // SwiftShield Conversion Map
 // Automatic mode for SwiftSecurity, 2020-01-02 13.51.03

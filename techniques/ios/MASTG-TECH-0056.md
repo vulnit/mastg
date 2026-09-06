@@ -24,7 +24,7 @@ On Linux and macOS, you can alternatively use @MASTG-TOOL-0126. This allows you 
 Let's install the @MASTG-APP-0028 app with the following command:
 
 ```bash
-$ ideviceinstaller -i Uncrackable.ipa
+ideviceinstaller -i Uncrackable.ipa
 ...
 Install: Complete
 ```
@@ -56,13 +56,13 @@ After installing @MASTG-TOOL-0071, you can execute the following command to inst
 
 ```bash
 # Get the correct device id
-$ xcrun devicectl list devices
+xcrun devicectl list devices
 Devices:
 Name                 Hostname                                     Identifier                             State                Model
 ------------------   ------------------------------------------   ------------------------------------   ------------------   ------------------------------
 Foobar               00008101-00FF28803FF9001E.coredevice.local   ABD1F3D8-7BC1-52CD-8DB6-9BFD794CE862   available (paired)   iPhone 14 Pro Max (iPhone15,3)
 
-$ xcrun devicectl device install app --device 00008101-00FF28803FF9001E ~/signed.ipa
+xcrun devicectl device install app --device 00008101-00FF28803FF9001E ~/signed.ipa
 11:59:04  Acquired tunnel connection to device.
 11:59:04  Enabling developer disk image services.
 11:59:04  Acquired usage assertion.

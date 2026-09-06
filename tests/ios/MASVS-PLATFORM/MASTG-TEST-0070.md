@@ -110,7 +110,7 @@ From the note above we can highlight that:
 If you don't have the original source code you can use @MASTG-TOOL-0073 or @MASTG-TOOL-0129 to search the binary strings for the link receiver method:
 
 ```bash
-$ rabin2 -zq Telegram\ X.app/Telegram\ X | grep restorationHan
+rabin2 -zq Telegram\ X.app/Telegram\ X | grep restorationHan
 
 0x1000deea9 53 52 application:continueUserActivity:restorationHandler:
 ```
@@ -200,7 +200,7 @@ Note how the app adapts the `scheme` to "https" before opening it and how it use
 If you don't have the original source code, search in the symbols and in the strings of the app binary. For example, we will search for Objective-C methods that contain "openURL":
 
 ```bash
-$ rabin2 -zq Telegram\ X.app/Telegram\ X | grep openURL
+rabin2 -zq Telegram\ X.app/Telegram\ X | grep openURL
 
 0x1000dee3f 50 49 application:openURL:sourceApplication:annotation:
 0x1000dee71 29 28 application:openURL:options:
@@ -316,7 +316,7 @@ Write `https://t.me/addstickers/radare` (found through a quick Internet research
 First we let frida-trace generate the stubs in `__handlers__/`:
 
 ```bash
-$ frida-trace -U Telegram -m "*[* *restorationHandler*]"
+frida-trace -U Telegram -m "*[* *restorationHandler*]"
 Instrumenting functions...
 -[AppDelegate application:continueUserActivity:restorationHandler:]
 ```
@@ -376,7 +376,7 @@ frida-trace -U Telegram -m "*[* *restorationHandler*]" -i "*open*Url*"
 Again, we first let frida-trace generate the stubs in `__handlers__/`:
 
 ```bash
-$ frida-trace -U Telegram -m "*[* *restorationHandler*]" -i "*open*Url*"
+frida-trace -U Telegram -m "*[* *restorationHandler*]" -i "*open*Url*"
 Instrumenting functions...
 -[AppDelegate application:continueUserActivity:restorationHandler:]
 $S10TelegramUI0A19ApplicationBindingsC16openUniversalUrlyySS_AA0ac4OpenG10Completion...
@@ -404,7 +404,7 @@ There is probably no documentation for that Swift function but you can just dema
 > xcrun can be used invoke Xcode developer tools from the command-line, without having them in the path. In this case it will locate and run swift-demangle, an Xcode tool that demangles Swift symbols.
 
 ```bash
-$ xcrun swift-demangle S10TelegramUI15openExternalUrl7account7context3url05forceD016presentationData
+xcrun swift-demangle S10TelegramUI15openExternalUrl7account7context3url05forceD016presentationData
 18applicationContext20navigationController12dismissInputy0A4Core7AccountC_AA14OpenURLContextOSSSbAA0
 12PresentationK0CAA0a11ApplicationM0C7Display010NavigationO0CSgyyctF
 ```

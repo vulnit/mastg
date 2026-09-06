@@ -1,7 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "lint:markdown": "markdownlint-cli2"
+    "lint:markdown": "npm run test:markdownlint-rules && markdownlint-cli2",
+    "test:markdownlint-rules": "node --test .github/markdownlint-rules/mas-markdown.test.js"
   },
   "devDependencies": {
     "markdownlint-cli2": "0.23.2",

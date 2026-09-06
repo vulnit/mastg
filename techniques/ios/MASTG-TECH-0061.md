@@ -10,7 +10,7 @@ Dumping Keychain data can be done with multiple tools, but not all of them work 
 The KeyChain data can be easily viewed in @MASTG-TOOL-0074. First, connect objection to the @MASTG-APP-0028 app as described in "Recommended Tools - Objection". Then, use the `ios keychain dump` command to get an overview of the keychain:
 
 ```bash
-$ objection -n "iGoat-Swift" start
+objection -n "iGoat-Swift" start
 ... [usb] # ios keychain dump
 ...
 Note: You may be asked to authenticate using the devices passcode or TouchID

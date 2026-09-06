@@ -208,7 +208,7 @@ Android leverages Linux user management to isolate apps. This approach is differ
 Generally, apps are assigned UIDs in the range of 10000 and 99999. Android apps receive a user name based on their UID. For example, the app with UID 10188 receives the user name `u0_a188`. If the permissions an app requested are granted, the corresponding group ID is added to the app's process. For example, the user ID of the app below is 10188. It belongs to the group ID 3003 (inet). That group is related to android.permission.INTERNET permission. The output of the `id` command is shown below.
 
 ```bash
-$ id
+id
 uid=10188(u0_a188) gid=10188(u0_a188) groups=10188(u0_a188),3003(inet),
 9997(everybody),50188(all_a188) context=u:r:untrusted_app:s0:c512,c768
 ```
@@ -259,7 +259,7 @@ bundletool build-apks --bundle=/MyApp/my_app.aab --output=/MyApp/my_app.apks
 If you want to create signed APKs ready for deployment to a test device, use:
 
 ```bash
-$ bundletool build-apks --bundle=/MyApp/my_app.aab --output=/MyApp/my_app.apks
+bundletool build-apks --bundle=/MyApp/my_app.aab --output=/MyApp/my_app.apks
 --ks=/MyApp/keystore.jks
 --ks-pass=file:/MyApp/keystore.pwd
 --ks-key-alias=MyKeyAlias

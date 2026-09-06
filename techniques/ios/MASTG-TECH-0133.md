@@ -29,19 +29,19 @@ Before running the scan, obtain an NVD API key. This key is used to retrieve the
 - To start a scan for a project using SwiftPM, execute the following command to scan the `Package.Swift` or `Package.resolved`:
 
 ```bash
-$ dependency-check --enableExperimental -f SARIF --nvdApiKey <YOUR-API-KEY> -s Package.resolved
+dependency-check --enableExperimental -f SARIF --nvdApiKey <YOUR-API-KEY> -s Package.resolved
 ```
 
 - To start a scan for a project using CocoaPods, execute the following command to scan the `Podfile.lock` or `*.podspec`:
 
 ```bash
-$ dependency-check --enableExperimental -f SARIF --nvdApiKey <YOUR-API-KEY> -s Podfile.lock
+dependency-check --enableExperimental -f SARIF --nvdApiKey <YOUR-API-KEY> -s Podfile.lock
 ```
 
 - To start a scan for a project using Carthage, execute the following command to scan the `Cartfile.resolved.`:
 
 ```bash
-$ dependency-check --enableExperimental -f SARIF --nvdApiKey <YOUR-API-KEY> -s Cartfile.resolved
+dependency-check --enableExperimental -f SARIF --nvdApiKey <YOUR-API-KEY> -s Cartfile.resolved
 ```
 
 The output is always a SARIF file, which can be viewed using the Sarif viewer plugin in @MASTG-TOOL-0133. Any known vulnerabilities will be listed with their CVE numbers and descriptions.

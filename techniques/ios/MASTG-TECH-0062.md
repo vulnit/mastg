@@ -9,7 +9,7 @@ You can remotely sniff all traffic in real-time on iOS by [creating a Remote Vir
 2. You would need to know the UDID of your iOS device before you can start sniffing. Check the section ["Obtaining the UDID of an iOS device"](../../Document/0x06b-iOS-Security-Testing.md#obtaining-the-udid-of-an-ios-device) on how to retrieve it. Open the Terminal on macOS and run the following command, replacing the UDID with your iOS device's UDID.
 
 ```bash
-$ rvictl -s <UDID>
+rvictl -s <UDID>
 Starting device <UDID> [SUCCEEDED] with interface rvi0
 ```
 

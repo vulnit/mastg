@@ -16,7 +16,7 @@ In @MASTG-TECH-0052, you can learn how to use @MASTG-TOOL-0055 to use SSH via US
 First, we need to use @MASTG-TOOL-0055 to enable SSH from iOS to connect to localhost.
 
 ```bash
-$ iproxy 2222 22
+iproxy 2222 22
 waiting for connection
 ```
 

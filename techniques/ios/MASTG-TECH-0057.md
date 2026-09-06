@@ -6,7 +6,7 @@ platform: ios
 When targeting apps installed on the device, you'll first need to determine the correct bundle identifier for the application you want to analyze. You can use `frida-ps -Uai` to get all apps (`-a`) currently installed (`-i`) on the connected USB device (`-U`):
 
 ```bash
-$ frida-ps -Uai
+frida-ps -Uai
  PID  Name                 Identifier
 ----  -------------------  -----------------------------------------
 6853  iGoat-Swift          OWASP.iGoat-Swift

@@ -11,7 +11,7 @@ masvs_v1_levels:
 profiles: [L1, L2]
 status: deprecated
 covered_by: []
-deprecation_note: "This test has no MASTG v2 successor by design. Whether to share a given item through the Share Sheet is a user-consent decision, and the `excludedActivityTypes` property is not a security control because it cannot restrict the third-party share extensions that are the dominant sharing channel on modern iOS. See @MASTG-KNOW-0081 for background. The static and dynamic analysis techniques from this test have been preserved as @MASTG-TECH-0167 and @MASTG-TECH-0168."
+deprecation_note: "This test has no MASTG v2 successor by design. Whether to share a given item through the Share Sheet is a user-consent decision, and the `excludedActivityTypes` property is not a security control because it cannot restrict the third-party share extensions that are the dominant sharing channel on modern iOS. See MASTG-KNOW-0081 for background. The static and dynamic analysis techniques from this test have been preserved as MASTG-TECH-0167 and MASTG-TECH-0168."
 ---
 
 ## Overview
@@ -39,7 +39,7 @@ If having the source code, you should take a look at the `UIActivityViewControll
 If you only have the compiled/installed app, try searching for the previous method and property, for example using @MASTG-TOOL-0129:
 
 ```bash
-$ rabin2 -zq Telegram\ X.app/Telegram\ X | grep -i activityItems
+rabin2 -zq Telegram\ X.app/Telegram\ X | grep -i activityItems
 0x1000df034 45 44 initWithActivityItems:applicationActivities:
 ```
 

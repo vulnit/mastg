@@ -170,14 +170,14 @@ Crafting robust policies and procedures for protecting PII confidentiality is es
 
 ## References
 
-- [OWASP MAS \- Using the MASVS](https://mas.owasp.org/MASVS/03-Using_the_MASVS/)
-- [Threat Modeling | OWASP Foundation](https://owasp.org/www-community/Threat_Modeling)
-- [NIST.SP.800-163r1 \- Vetting the Security of Mobile Applications](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-163r1.pdf)
-- [OWASP Secure Product Design Cheat Sheet \- The principle of Defense-in-Depth](https://cheatsheetseries.owasp.org/cheatsheets/Secure_Product_Design_Cheat_Sheet.html#2-the-principle-of-defense-in-depth)
-- [NIST SP 800-122, Guide to Protecting the Confidentiality of Personally Identifiable Information (PII)](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-122.pdf)
-- [General Data Protection Regulation (GDPR) - EU](https://gdpr-info.eu/)
-- [Health Insurance Portability and Accountability Act of 1996 (HIPAA) - USA | CDC](https://www.cdc.gov/phlp/php/resources/health-insurance-portability-and-accountability-act-of-1996-hipaa.html)
-- [Children's Online Privacy Protection Rule (COPPA) - USA](https://www.ftc.gov/legal-library/browse/rules/childrens-online-privacy-protection-rule-coppa)
-- [Personal Information Protection and Electronic Documents Act (PIPEDA) - Canada](https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/)
-- [Protection of Personal Information Act (POPIA) - South Africa](https://inforegulator.org.za/popia/)
-- [OWASP MASTG \- Mobile App User Privacy Protection](https://mas.owasp.org/MASTG/0x04i-Testing-User-Privacy-Protection/)
+- OWASP MAS - Using the MASVS - <https://mas.owasp.org/MASVS/03-Using_the_MASVS/>
+- Threat Modeling | OWASP Foundation - <https://owasp.org/www-community/Threat_Modeling>
+- NIST.SP.800-163r1 - Vetting the Security of Mobile Applications - <https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-163r1.pdf>
+- OWASP Secure Product Design Cheat Sheet - The principle of Defense-in-Depth - <https://cheatsheetseries.owasp.org/cheatsheets/Secure_Product_Design_Cheat_Sheet.html#2-the-principle-of-defense-in-depth>
+- NIST SP 800-122, Guide to Protecting the Confidentiality of Personally Identifiable Information (PII) - <https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-122.pdf>
+- General Data Protection Regulation (GDPR) - EU - <https://gdpr-info.eu/>
+- Health Insurance Portability and Accountability Act of 1996 (HIPAA) - USA | CDC - <https://www.cdc.gov/phlp/php/resources/health-insurance-portability-and-accountability-act-of-1996-hipaa.html>
+- Children's Online Privacy Protection Rule (COPPA) - USA - <https://www.ftc.gov/legal-library/browse/rules/childrens-online-privacy-protection-rule-coppa>
+- Personal Information Protection and Electronic Documents Act (PIPEDA) - Canada - <https://www.priv.gc.ca/en/privacy-topics/privacy-laws-in-canada/the-personal-information-protection-and-electronic-documents-act-pipeda/>
+- Protection of Personal Information Act (POPIA) - South Africa - <https://inforegulator.org.za/popia/>
+- OWASP MASTG - Mobile App User Privacy Protection - <https://mas.owasp.org/MASTG/0x04i-Testing-User-Privacy-Protection/>

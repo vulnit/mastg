@@ -9,11 +9,11 @@ Uber-apk-signer is a tool that helps to sign, [zip align](https://developer.andr
 Download the jar from the [latest release](https://github.com/patrickfav/uber-apk-signer/releases/latest) and run:
 
 ```bash
-$ java -jar uber-apk-signer.jar --apks </path/to/apks>
+java -jar uber-apk-signer.jar --apks </path/to/apks>
 ```
 
 Demo:
 
-[![asciicast](https://asciinema.org/a/91092.png)](https://asciinema.org/a/91092)
+<a href="https://asciinema.org/a/91092"><img src="https://asciinema.org/a/91092.png" alt="asciicast" /></a>
 
 For more information go to the [GitHub repository](https://github.com/patrickfav/uber-apk-signer).

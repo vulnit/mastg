@@ -13,24 +13,24 @@ In order to install Cycript, first download, unpack, and install the SDK.
 
 ```bash
 #on iphone
-$ wget https://cydia.saurik.com/api/latest/3 -O cycript.zip && unzip cycript.zip
-$ sudo cp -a Cycript.lib/*.dylib /usr/lib
-$ sudo cp -a Cycript.lib/cycript-apl /usr/bin/cycript
+wget https://cydia.saurik.com/api/latest/3 -O cycript.zip && unzip cycript.zip
+sudo cp -a Cycript.lib/*.dylib /usr/lib
+sudo cp -a Cycript.lib/cycript-apl /usr/bin/cycript
 ```
 
 To spawn the interactive Cycript shell, run "./cycript" or "cycript" if Cycript is on your path.
 
 ```bash
-$ cycript
+cycript
 cy#
 ```
 
 To inject into a running process, we first need to find the process ID (PID). Run the application and make sure the app is in the foreground. Running `cycript -p <PID>` injects Cycript into the process. To illustrate, we will inject into SpringBoard (which is always running).
 
 ```bash
-$ ps -ef | grep SpringBoard
+ps -ef | grep SpringBoard
 501 78 1 0 0:00.00 ?? 0:10.57 /System/Library/CoreServices/SpringBoard.app/SpringBoard
-$ ./cycript -p 78
+./cycript -p 78
 cy#
 ```
 

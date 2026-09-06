@@ -164,7 +164,7 @@ Notes - mobilenotes://
 We search for this method in the Telegram source code, this time without using Xcode, just with `egrep`:
 
 ```bash
-$ egrep -nr "open.*options.*completionHandler" ./Telegram-iOS/
+egrep -nr "open.*options.*completionHandler" ./Telegram-iOS/
 
 ./AppDelegate.swift:552: return UIApplication.shared.open(parsedUrl,
     options: [UIApplicationOpenURLOptionUniversalLinksOnly: true as NSNumber],
@@ -177,7 +177,7 @@ $ egrep -nr "open.*options.*completionHandler" ./Telegram-iOS/
 If we inspect the results we will see that `openURL:options:completionHandler:` is actually being used for universal links, so we have to keep searching. For example, we can search for `openURL(`:
 
 ```bash
-$ egrep -nr "openURL\(" ./Telegram-iOS/
+egrep -nr "openURL\(" ./Telegram-iOS/
 
 ./ApplicationContext.swift:763:  UIApplication.shared.openURL(parsedUrl)
 ./ApplicationContext.swift:792:  UIApplication.shared.openURL(URL(
@@ -238,7 +238,7 @@ strings <yourapp> | grep "someURLscheme://"
 or even better, use radare2's `iz/izz` command or rafind2, both will find strings where the unix `strings` command won't. Example from @MASTG-APP-0028:
 
 ```bash
-$ r2 -qc izz~iGoat:// iGoat-Swift
+r2 -qc izz~iGoat:// iGoat-Swift
 37436 0x001ee610 0x001ee610  23  24 (4.__TEXT.__cstring) ascii iGoat://?contactNumber=
 ```
 
@@ -253,7 +253,7 @@ Search for deprecated methods like:
 For example, using @MASTG-TOOL-0129 we find those three:
 
 ```bash
-$ rabin2 -zzq Telegram\ X.app/Telegram\ X | grep -i "openurl"
+rabin2 -zzq Telegram\ X.app/Telegram\ X | grep -i "openurl"
 
 0x1000d9e90 31 30 UIApplicationOpenURLOptionsKey
 0x1000dee3f 50 49 application:openURL:sourceApplication:annotation:
@@ -441,7 +441,7 @@ You can now test the same situation when clicking on a link contained on a page.
 First of all we let frida-trace generate the stubs for us:
 
 ```bash
-$ frida-trace -U Telegram -m "*[* *restorationHandler*]" -i "*open*Url*"
+frida-trace -U Telegram -m "*[* *restorationHandler*]" -i "*open*Url*"
     -m "*[* *application*URL*]" -m "*[* openURL]"
 
 ...
@@ -616,7 +616,7 @@ Doing this with Frida is pretty easy, as explained in this [blog post](https://g
 Before running the fuzzer we need the URL schemes as inputs. From the static analysis we know that the iGoat-Swift app supports the following URL scheme and parameters: `iGoat://?contactNumber={0}&message={0}`.
 
 ```bash
-$ frida -U SpringBoard -l ios-url-scheme-fuzzing.js
+frida -U SpringBoard -l ios-url-scheme-fuzzing.js
 [iPhone::SpringBoard]-> fuzz("iGoat", "iGoat://?contactNumber={0}&message={0}")
 Watching for crashes from iGoat...
 No logs were moved.

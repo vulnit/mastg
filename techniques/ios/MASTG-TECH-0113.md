@@ -26,7 +26,7 @@ Alternatively, you can use @MASTG-TOOL-0129 to [obtain the symbols](https://book
 The following snippet shows how you can apply @MASTG-TOOL-0121 on `MASTestApp` (the iOS main app executable) with the typical output of a binary containing debug symbols. Those are marked with the `d` (debug) flag. Check the [objdump man page](https://www.unix.com/man-page/osx/1/objdump/ "objdump man page") for information about various other symbol flag characters.
 
 ```bash
-$ objdump --syms MASTestApp | grep " d " | grep "swift"
+objdump --syms MASTestApp | grep " d " | grep "swift"
 ...
 0000000000000000      d  *UND* MastgTest.swift
 0000000000000000      d  *UND* __swift_FORCE_LOAD_$_swiftFoundation_$_MASTestApp
@@ -41,7 +41,7 @@ $ objdump --syms MASTestApp | grep " d " | grep "swift"
 With @MASTG-TOOL-0041, you can compare the symbols from a plain call to `nm` with the output of a call to `nm -a`. The latter also prints the debug symbols. The following command will show only debug symbols in a diff format. If this is empty, now debug symbols are present.
 
 ```bash
-$ diff <(nm MASTestApp) <(nm -a MASTestApp)
+diff <(nm MASTestApp) <(nm -a MASTestApp)
 ...
 28a228
 > 0000000100009928 - 01 0000   FUN _$s10MASTestApp11ContentViewV7SwiftUI0D0AadEP05_makeD4List4view6inputsAD01_dH7OutputsVAD11_GraphValueVyxG_AD01_dH6InputsVtFZTW

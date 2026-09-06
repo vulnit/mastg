@@ -74,7 +74,7 @@ As you might expect, you can correlate the addresses of the libraries with the m
 You can also use an objection to display the same information.
 
 ```bash
-$ objection -s -p -n sg.vantagepoint.helloworldjni start
+objection -s -p -n sg.vantagepoint.helloworldjni start
 
 sg.vantagepoint.helloworldjni on (google: 8.1.0) [usb] # memory list modules
 Save the output by adding `--json modules.json` to this command
@@ -190,7 +190,7 @@ You can dump the app's process memory with @MASTG-TOOL-0038 and @MASTG-TOOL-0106
 With objection, it is possible to dump all memory of the running process on the device by using the command `memory dump all`.
 
 ```bash
-$ objection --name sg.vantagepoint.helloworldjni start
+objection --name sg.vantagepoint.helloworldjni start
 
 sg.vantagepoint.helloworldjni on (google: 8.1.0) [usb] # memory dump all /Users/foo/memory_Android/memory
 
@@ -205,7 +205,7 @@ Memory dumped to file: /Users/foo/memory_Android/memory
 Next, we can find the "Hello from C++" strings with radare2:
 
 ```bash
-$ r2 /Users/foo/memory_Android/memory
+r2 /Users/foo/memory_Android/memory
 [0x00000000]> izz~Hello from
 1136 0x00065270 0x00065270  14  15 () ascii Hello from C++
 ```
@@ -238,7 +238,7 @@ dump/1007943680_dump.data dump/357826560_dump.data  dump/630456320_dump.data ...
 Finally, search for the input string in the dump directory:
 
 ```bash
-$ grep -nri owasp-mstg dump/
+grep -nri owasp-mstg dump/
 Binary file dump//316669952_dump.data matches
 Binary file dump//strings.txt matches
 ```

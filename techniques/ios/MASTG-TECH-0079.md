@@ -32,7 +32,7 @@ Install @MASTG-TOOL-0070 and create a new iOS application with any language and 
 After these steps, you can use the @MASTG-TOOL-0063 command to list your signing identities:
 
 ```bash
-$ security find-identity -v -p codesigning
+security find-identity -v -p codesigning
  1) 50034388646913B117AF1D6E51D9E045B77EA916 "Apple Development: MAS@owasp.org (LVGBSLUQB4)"
      1 valid identities found
 ```
@@ -40,7 +40,7 @@ $ security find-identity -v -p codesigning
 Additionally, the provisioning profile is stored on your host in the `~/Library/Developer/Xcode/DerivedData` folder:
 
 ```bash
-$ find  ~/Library/Developer/Xcode/DerivedData | grep embedded
+find  ~/Library/Developer/Xcode/DerivedData | grep embedded
 /Users/MAS/Library/Developer/Xcode/DerivedData/apptest-aijwmhfiximgzkhcmnluxrscflyc/Build/Products/Debug-iphoneos/apptest.app/embedded.mobileprovision
 ```
 
@@ -55,7 +55,7 @@ cp /Users/MAS/Library/Developer/Xcode/DerivedData/apptest-aijwmhfiximgzkhcmnluxr
 Once you've got the provisioning profile, you can inspect its contents with the @MASTG-TOOL-0063 command. You'll find the entitlements granted to the app in the profile, along with the allowed certificates and devices.
 
 ```bash
-$ security cms -D -i embedded.mobileprovision
+security cms -D -i embedded.mobileprovision
 ```
 
 ```xml

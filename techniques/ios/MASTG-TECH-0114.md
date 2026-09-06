@@ -12,7 +12,7 @@ You can use demangling tools to reverse the mangling process. For Swift, see @MA
 Pass the mangled symbol to @MASTG-TOOL-0067:
 
 ```bash
-$ xcrun swift-demangle __T0So9WKWebViewCABSC6CGRectV5frame_So0aB13ConfigurationC13configurationtcfcTO
+xcrun swift-demangle __T0So9WKWebViewCABSC6CGRectV5frame_So0aB13ConfigurationC13configurationtcfcTO
 _T0So9WKWebViewCABSC6CGRectV5frame_So0aB13ConfigurationC13configurationtcfcTO ---> @nonobjc __C.WKWebView.init(frame: __C_Synthesized.CGRect, configuration: __C.WKWebViewConfiguration) -> __C.WKWebView
 ```
 

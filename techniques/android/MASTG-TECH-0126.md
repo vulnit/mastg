@@ -14,7 +14,7 @@ Extract the `AndroidManifest.xml` as explained in @MASTG-TECH-0117 and retrieve 
 `aapt` can be used to view the permissions requested by an application.
 
 ```bash
-$ aapt d permissions org.owasp.mastestapp.apk
+aapt d permissions org.owasp.mastestapp.apk
 package: org.owasp.mastestapp
 uses-permission: name='android.permission.INTERNET'
 uses-permission: name='android.permission.CAMERA'
@@ -29,7 +29,7 @@ uses-permission: name='org.owasp.mastestapp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMIS
 `adb` can be used to view the permissions requested by an application. It also shows the status of the permissions (granted or denied) at runtime.
 
 ```bash
-$ adb shell dumpsys package org.owasp.mastestapp | grep permission
+adb shell dumpsys package org.owasp.mastestapp | grep permission
     declared permissions:
     requested permissions:
       android.permission.INTERNET

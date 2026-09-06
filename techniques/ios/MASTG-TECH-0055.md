@@ -15,7 +15,7 @@ After installing the application with @MASTG-TECH-0056, you can launch it in deb
 First, ensure you have the correct Bundle Identifier. Depending on how you signed the application, the actual Bundle Identifier may differ from the original. To get an overview of the installed applications, use the `ideviceinstaller` tool (see @MASTG-TOOL-0126):
 
 ```bash
-$ ideviceinstaller list
+ideviceinstaller list
 CFBundleIdentifier, CFBundleShortVersionString, CFBundleDisplayName
 sg.vp.UnCrackable1.QH868V5764, "1.0", "UnCrackable1"
 org.owasp.mastestapp.MASTestApp, "3.0.0", "Adyen3DS2Demo"
@@ -27,7 +27,7 @@ In this example, @MASTG-TOOL-0118 appended the team identifier (`QH868V5764`) to
 Next, we need to get the correct device identifier, which we can get using `idevice_id` (see @MASTG-TOOL-0126):
 
 ```bash
-$ idevice_id
+idevice_id
 00008101-1234567890123456 (USB)
 00008101-1234567890123456 (Network)
 ```
@@ -45,7 +45,7 @@ Finally, you can attach @MASTG-TOOL-0057 using the following commands:
 
 ```bash
 # Execute the lldb debugger
-$ lldb
+lldb
 # Select the iOS device you want to interact with
 (lldb) device select 00008101-1234567890123456
 
@@ -83,7 +83,7 @@ More information on debugging iOS apps is available in @MASTG-TECH-0084.
 If you manually injected a Frida Gadget, Frida will now be waiting for you to attach to it. Until you do so, the application will appear frozen.
 
 ```bash
-$ frida-ps -Ua
+frida-ps -Ua
 PID  Name           Identifier
 ---  -------------  -------------------------------
 389  Calendar       com.apple.mobilecal
@@ -96,7 +96,7 @@ PID  Name           Identifier
 The `783` process has launched a new thread called Gadget to which you can attach:
 
 ```bash
-$ frida -U -n Gadget
+frida -U -n Gadget
      ____
     / _  |   Frida 16.5.9 - A world-class dynamic instrumentation toolkit
    | (_| |
@@ -123,14 +123,14 @@ On older versions of iOS, you can use either `idevicedebug` (see @MASTG-TOOL-012
 
 ```bash
 # Get the package name
-$ ideviceinstaller list
+ideviceinstaller list
 CFBundleIdentifier, CFBundleShortVersionString, CFBundleDisplayName
 sg.vp.UnCrackable1.QH868V5764, "1.0", "UnCrackable1"
 com.apple.TestFlight, "3.7.0", "TestFlight"
 com.google.Maps, "24.50.0", "Google Maps"
 
 # Run in debug mode
-$ idevicedebug -d run sg.vp.UnCrackable1.QH868V5764
+idevicedebug -d run sg.vp.UnCrackable1.QH868V5764
 working_directory: /private/var/mobile/Containers/Data/Application/438DE865-2714-4BD9-B1EE-881AD4E54AD1
 
 Setting logging bitmask...
@@ -148,13 +148,13 @@ Continue running process...
 To use @MASTG-TOOL-0054, you first have to unzip the IPA file:
 
 ```bash
-$ unzip Uncrackable1-frida-codesigned.ipa -d unzipped
+unzip Uncrackable1-frida-codesigned.ipa -d unzipped
 ```
 
 Next, use ios-deploy with the path of the app folder inside of the unzipped IPA:
 
 ```bash
-$ ios-deploy --bundle 'unzipped/Payload/UnCrackable Level 1.app' -W -d -v
+ios-deploy --bundle 'unzipped/Payload/UnCrackable Level 1.app' -W -d -v
 ios-deploy --bundle 'pram/Payload/UnCrackable Level 1.app' -W -d -v
 [....] Waiting for iOS device to be connected
 Handling device type: 1
@@ -182,7 +182,7 @@ If your application was repackaged with a Frida Gadget, it will wait for you to 
 In a new terminal window, connect to the Frida gadget, just like in the iOS 17 scenario:
 
 ```bash
-$ frida-ps -Ua
+frida-ps -Ua
 PID  Name           Identifier
 ---  -------------  -----------------------------
 ...
@@ -191,7 +191,7 @@ PID  Name           Identifier
 468  UnCrackable1   sg.vp.UnCrackable1.QH868V5764
 
 
-$ frida -U -n Gadget
+frida -U -n Gadget
      ____
     / _  |   Frida 16.5.9 - A world-class dynamic instrumentation toolkit
    | (_| |

@@ -22,7 +22,7 @@ To verify the existence of debug symbols you can use objdump from [binutils](htt
 In the following snippet we run objdump over `TargetApp` (the iOS main app executable) to show the typical output of a binary containing debug symbols which are marked with the `d` (debug) flag. Check the [objdump man page](https://www.unix.com/man-page/osx/1/objdump/ "objdump man page") for information about various other symbol flag characters.
 
 ```bash
-$ objdump --syms TargetApp
+objdump --syms TargetApp
 
 0000000100007dc8 l    d  *UND* -[ViewController handleSubmitButton:]
 000000010000809c l    d  *UND* -[ViewController touchesBegan:withEvent:]

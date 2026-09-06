@@ -63,9 +63,9 @@ You can either configure @MASTG-TOOL-0120 or create `iptables` rules to redirect
 - If you aren't using proxyDroid, execute the following commands on the rooted Android device to configure `iptables` to redirect the incoming requests from the application to @MASTG-TOOL-0077:
 
     ```bash
-    $ iptables -t nat -A OUTPUT -p tcp --dport 80 -j DNAT --to-destination <Your-Proxy-IP>:8080 
+    iptables -t nat -A OUTPUT -p tcp --dport 80 -j DNAT --to-destination <Your-Proxy-IP>:8080
 
-    $ iptables -t nat -A OUTPUT -p tcp --dport 443 -j DNAT --to-destination <Your-Proxy-IP>:8080 
+    iptables -t nat -A OUTPUT -p tcp --dport 443 -j DNAT --to-destination <Your-Proxy-IP>:8080
     ```
 
 - Configure the interception proxy, like @MASTG-TOOL-0077:
@@ -78,7 +78,7 @@ You can either configure @MASTG-TOOL-0120 or create `iptables` rules to redirect
 - Run the @MASTG-TOOL-0101 Frida script.
 
      ```bash
-     $ frida -U -f eu.nviso.flutterPinning -l disable-flutter-tls.js
+     frida -U -f eu.nviso.flutterPinning -l disable-flutter-tls.js
      ```
 
 - Use the app, and you should be able to intercept the HTTP traffic of the Flutter app.

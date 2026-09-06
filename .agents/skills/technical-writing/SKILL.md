@@ -57,8 +57,6 @@ These rules come from the [OWASP MAS Style Guide](https://mas.owasp.org/contribu
 
 ## Additional MASTG Writing Rules
 
-These project rules supplement the OWASP MAS Style Guide and ASD-STE100 rules.
-
 1. State actors, conditions, and results explicitly.
 2. Use a list for three or more related items or steps.
 3. Keep technical terms that improve precision.

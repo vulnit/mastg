@@ -32,7 +32,7 @@ jadx outputs the manifest in full to `out_dir/resources/AndroidManifest.xml`, in
 The AndroidManifest can be extracted using apktool:
 
 ```sh
-$ apktool d -s -f -o output_dir MASTG-DEMO-0001.apk
+apktool d -s -f -o output_dir MASTG-DEMO-0001.apk
 I: Using Apktool 2.11.1 on MASTG-DEMO-0001.apk with 8 threads
 I: Copying raw classes.dex file...
 ...
@@ -63,7 +63,7 @@ If you're only interested in specific values of the manifest, you can use aapt2.
 Note that **the output isn't an XML file**.
 
 ```bash
-$ aapt2 d badging MASTG-DEMO-0001.apk
+aapt2 d badging MASTG-DEMO-0001.apk
 package: name='org.owasp.mastestapp' versionCode='1' versionName='1.0' platformBuildVersionName='15' platformBuildVersionCode='35' compileSdkVersion='35' compileSdkVersionCodename='15'
 sdkVersion:'29'
 targetSdkVersion:'35'

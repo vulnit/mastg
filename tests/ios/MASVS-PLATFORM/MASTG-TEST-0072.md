@@ -38,7 +38,7 @@ If not having the original source code:
 Grep for `NSExtensionPointIdentifier` among all files inside the app bundle (IPA or installed app):
 
 ```bash
-$ grep -nr NSExtensionPointIdentifier Payload/Telegram\ X.app/
+grep -nr NSExtensionPointIdentifier Payload/Telegram\ X.app/
 Binary file Payload/Telegram X.app//PlugIns/SiriIntents.appex/Info.plist matches
 Binary file Payload/Telegram X.app//PlugIns/Share.appex/Info.plist matches
 Binary file Payload/Telegram X.app//PlugIns/NotificationContent.appex/Info.plist matches

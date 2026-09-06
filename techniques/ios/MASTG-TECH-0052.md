@@ -16,7 +16,7 @@ To enable SSH access on your iOS device, install the OpenSSH package. Once insta
 You can now access the remote device's shell by running `ssh root@<device_ip_address>`, which will log you in as the root user:
 
 ```bash
-$ ssh root@192.168.197.234
+ssh root@192.168.197.234
 root@192.168.197.234's password:
 iPhone:~ root#
 ```
@@ -50,7 +50,7 @@ During a real black box test, a reliable Wi-Fi connection may not be available. 
 Connect macOS to an iOS device by installing and starting @MASTG-TOOL-0055:
 
 ```bash
-$ iproxy 2222 22
+iproxy 2222 22
 waiting for connection
 ```
 
@@ -59,7 +59,7 @@ The above command maps port `22` on the iOS device to port `2222` on localhost. 
 With the following command in a new terminal window, you can connect to the device:
 
 ```bash
-$ ssh -p 2222 mobile@localhost
+ssh -p 2222 mobile@localhost
 mobile@localhost's password:
 iPhone:~ mobile%
 ```

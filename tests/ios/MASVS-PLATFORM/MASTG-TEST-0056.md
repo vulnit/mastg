@@ -11,7 +11,7 @@ masvs_v1_levels:
 profiles: [L1, L2]
 status: deprecated
 covered_by: []
-deprecation_note: The content from this test was insufficient to port it properly. See @MASTG-KNOW-0104 and related knowledge for more details on IPC mechanisms. New tests will be added in the future to cover specific IPC mechanisms and their security implications.
+deprecation_note: The content from this test was insufficient to port it properly. See MASTG-KNOW-0104 and related knowledge for more details on IPC mechanisms. New tests will be added in the future to cover specific IPC mechanisms and their security implications.
 ---
 
 ## Overview

@@ -29,7 +29,7 @@ mv frida-gadget-X.Y.Z-ios-universal.dylib /Users/MAS/.cache/frida/gadget-ios.dyl
 Next, run `frida` as you would normally:
 
 ```bash
-$ frida -U -f org.mas.myapp
+frida -U -f org.mas.myapp
      ____
     / _  |   Frida 16.5.9 - A world-class dynamic instrumentation toolkit
    | (_| |

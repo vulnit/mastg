@@ -25,7 +25,7 @@ wget https://github.com/OWASP/mastg/raw/master/Samples/Android/01_HelloWorld-JNI
 Decompile the APK with `apkx`.
 
 ```bash
-$ apkx HelloWord-JNI.apk
+apkx HelloWord-JNI.apk
 Extracting HelloWord-JNI.apk to HelloWord-JNI
 Converting: classes.dex -> classes.jar (dex2jar)
 dex2jar HelloWord-JNI/classes.dex -> HelloWord-JNI/classes.jar
@@ -66,14 +66,14 @@ So, where is the native implementation of this function? If you look into the "l
 Following the naming convention mentioned above, you can expect the library to export a symbol called `Java_sg_vantagepoint_helloworld_MainActivity_stringFromJNI`. On Linux systems, you can retrieve the list of symbols with `readelf` (included in GNU binutils) or `nm`. Do this on macOS with the `greadelf` tool, which you can install via Macports or Homebrew. The following example uses `greadelf`:
 
 ```bash
-$ greadelf -W -s libnative-lib.so | grep Java
+greadelf -W -s libnative-lib.so | grep Java
      3: 00004e49   112 FUNC    GLOBAL DEFAULT   11 Java_sg_vantagepoint_helloworld_MainActivity_stringFromJNI
 ```
 
 You can also see this using radare2's @MASTG-TOOL-0129:
 
 ```bash
-$ rabin2 -s HelloWord-JNI/lib/armeabi-v7a/libnative-lib.so | grep -i Java
+rabin2 -s HelloWord-JNI/lib/armeabi-v7a/libnative-lib.so | grep -i Java
 003 0x00000e78 0x00000e78 GLOBAL   FUNC   16 Java_sg_vantagepoint_helloworldjni_MainActivity_stringFromJNI
 ```
 
@@ -94,7 +94,7 @@ Most disassemblers can handle any of those architectures. Below, we'll be viewin
 To open the file in radare2, you only have to run `r2 -A HelloWord-JNI/lib/armeabi-v7a/libnative-lib.so`. The chapter "[Android Basic Security Testing](../../Document/0x05b-Android-Security-Testing.md "Android Basic Security Testing")" already introduced radare2. Remember that you can use the flag `-A` to run the `aaa` command right after loading the binary in order to analyze all referenced code.
 
 ```bash
-$ r2 -A HelloWord-JNI/lib/armeabi-v7a/libnative-lib.so
+r2 -A HelloWord-JNI/lib/armeabi-v7a/libnative-lib.so
 
 [x] Analyze all flags starting with sym. and entry0 (aa)
 [x] Analyze function calls (aac)

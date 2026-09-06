@@ -35,7 +35,7 @@ Besides going through the AndroidManifest.xml file manually, you can also use th
 > aapt comes with the Android SDK within the build-tools folder. It requires an APK file as input. You may list the APKs in the device by running `adb shell pm list packages -f | grep -i <keyword>` as seen in @MASTG-TECH-0006.
 
 ```bash
-$ aapt d permissions app-x86-debug.apk
+aapt d permissions app-x86-debug.apk
 package: sg.vp.owasp_mobile.omtg_android
 uses-permission: name='android.permission.WRITE_EXTERNAL_STORAGE'
 uses-permission: name='android.permission.INTERNET'
@@ -44,7 +44,7 @@ uses-permission: name='android.permission.INTERNET'
 Alternatively you may obtain a more detailed list of permissions via adb and the dumpsys tool:
 
 ```bash
-$ adb shell dumpsys package sg.vp.owasp_mobile.omtg_android | grep permission
+adb shell dumpsys package sg.vp.owasp_mobile.omtg_android | grep permission
     requested permissions:
       android.permission.WRITE_EXTERNAL_STORAGE
       android.permission.INTERNET
@@ -183,7 +183,7 @@ When analyzing permissions, you should investigate the concrete use case scenari
 Permissions for installed applications can be retrieved with `adb`. The following extract demonstrates how to examine the permissions used by an application.
 
 ```bash
-$ adb shell dumpsys package com.google.android.youtube
+adb shell dumpsys package com.google.android.youtube
 ...
 declared permissions:
   com.google.android.youtube.permission.C2D_MESSAGE: prot=signature, INSTALLED

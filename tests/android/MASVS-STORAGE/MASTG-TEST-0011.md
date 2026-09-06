@@ -10,7 +10,7 @@ masvs_v1_levels:
 profiles: [L2]
 status: deprecated
 covered_by: []
-deprecation_note: The associated weaknesses are best addressed during the development process. See @MASTG-KNOW-0051 for more details.
+deprecation_note: The associated weaknesses are best addressed during the development process. See MASTG-KNOW-0051 for more details.
 ---
 
 ## Overview
@@ -282,10 +282,10 @@ After the memory has been dumped (e.g. to a file called "memory"), depending on 
 
 ```bash
 # using strings
-$ strings memory > strings.txt
+strings memory > strings.txt
 
 # using rabin2
-$ rabin2 -ZZ memory > strings.txt
+rabin2 -ZZ memory > strings.txt
 ```
 
 Open `strings.txt` in your favorite editor and dig through it to identify sensitive information.
@@ -293,7 +293,7 @@ Open `strings.txt` in your favorite editor and dig through it to identify sensit
 However if you'd like to inspect other kind of data, you'd rather want to use radare2 and its search capabilities. See radare2's help on the search command (`/?`) for more information and a list of options. The following shows only a subset of them:
 
 ```bash
-$ r2 <name_of_your_dump_file>
+r2 <name_of_your_dump_file>
 
 [0x00000000]> /?
 Usage: /[!bf] [arg]  Search stuff (see 'e??search' for options)

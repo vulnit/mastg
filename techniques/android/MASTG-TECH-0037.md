@@ -8,15 +8,15 @@ Symbolic execution is a very useful technique to have in your toolbox, especiall
 To demonstrate this technique, we'll use a crackme called @MASTG-APP-0002. The crackme consists of a single ELF executable file, which can be executed on any Android device by following the instructions below:
 
 ```bash
-$ adb push validate /data/local/tmp
+adb push validate /data/local/tmp
 [100%] /data/local/tmp/validate
 
-$ adb shell chmod 755 /data/local/tmp/validate
+adb shell chmod 755 /data/local/tmp/validate
 
-$ adb shell /data/local/tmp/validate
+adb shell /data/local/tmp/validate
 Usage: ./validate <serial>
 
-$ adb shell /data/local/tmp/validate 12345
+adb shell /data/local/tmp/validate 12345
 Incorrect serial (wrong format).
 
 ```
@@ -197,7 +197,7 @@ Also, it may appear as if the script is simply reading the solution string from 
 Running this script should return the following output:
 
 ```bash
-$ python3 solve.py
+python3 solve.py
 WARNING | ... | cle.loader | The main binary is a position-independent executable. It is being loaded with a base address of 0x400000.
 
 b'JACE6ACIARNAAIIA'

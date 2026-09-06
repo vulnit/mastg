@@ -32,7 +32,7 @@ end
 Afterwards, execute the `fastlane resignipa` command.
 
 ```bash
-$ fastlane resignipa
+fastlane resignipa
 [✔] 🚀 
 [15:21:51]: Get started using a Gemfile for fastlane https://docs.fastlane.tools/getting-started/ios/setup/#use-a-gemfile
 [15:21:52]: Driving the lane 'resignipa' 🚀

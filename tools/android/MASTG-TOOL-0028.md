@@ -20,15 +20,15 @@ For example, you can use `rafind2` to read strings directly from an encoded Andr
 
 ```bash
 # Permissions
-$ rafind2 -ZS permission AndroidManifest.xml
+rafind2 -ZS permission AndroidManifest.xml
 # Activities
-$ rafind2 -ZS activity AndroidManifest.xml
+rafind2 -ZS activity AndroidManifest.xml
 # Content providers
-$ rafind2 -ZS provider AndroidManifest.xml
+rafind2 -ZS provider AndroidManifest.xml
 # Services
-$ rafind2 -ZS service AndroidManifest.xml
+rafind2 -ZS service AndroidManifest.xml
 # Receivers
-$ rafind2 -ZS receiver AndroidManifest.xml
+rafind2 -ZS receiver AndroidManifest.xml
 ```
 
 Or use @MASTG-TOOL-0129 to get information about a binary file.

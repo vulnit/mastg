@@ -6,7 +6,7 @@ platform: android
 When targeting apps that are installed on the device, you'll first have to figure out the correct package name of the application you want to analyze. You can retrieve the installed apps either by using `pm` (Android Package Manager) or by using `frida-ps`:
 
 ```bash
-$ adb shell pm list packages
+adb shell pm list packages
 package:sg.vantagepoint.helloworldjni
 package:eu.chainfire.supersu
 package:org.teamsik.apps.hackingchallenge.easy
@@ -17,7 +17,7 @@ package:sg.vp.owasp_mobile.omtg_android
 You can include flags to show only third-party apps (`-3`) and the location of their APK file (`-f`), which you can use afterwards to download it via `adb pull`:
 
 ```bash
-$ adb shell pm list packages -3 -f
+adb shell pm list packages -3 -f
 package:/data/app/sg.vantagepoint.helloworldjni-1/base.apk=sg.vantagepoint.helloworldjni
 package:/data/app/eu.chainfire.supersu-1/base.apk=eu.chainfire.supersu
 package:/data/app/org.teamsik.apps.hackingchallenge.easy-1/base.apk=org.teamsik.apps.hackingchallenge.easy
@@ -28,14 +28,14 @@ package:/data/app/sg.vp.owasp_mobile.omtg_android-kR0ovWl9eoU_yh0jPJ9caQ==/base.
 This is the same as running `adb shell pm path <app_package_id>` on an app package ID:
 
 ```bash
-$ adb shell pm path sg.vp.owasp_mobile.omtg_android
+adb shell pm path sg.vp.owasp_mobile.omtg_android
 package:/data/app/sg.vp.owasp_mobile.omtg_android-kR0ovWl9eoU_yh0jPJ9caQ==/base.apk
 ```
 
 Use `frida-ps -Uai` to get all apps (`-a`) currently installed (`-i`) on the connected USB device (`-U`):
 
 ```bash
-$ frida-ps -Uai
+frida-ps -Uai
   PID  Name                                      Identifier
 -----  ----------------------------------------  ---------------------------------------
   766  Android System                            android

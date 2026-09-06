@@ -42,7 +42,7 @@ dependencyCheck {
 Open a terminal in Android Studio and execute the following command:
 
 ```bash
-$ ./gradlew dependencyCheckAnalyze
+./gradlew dependencyCheckAnalyze
 ...
 BUILD SUCCESSFUL in 6s
 1 actionable task: 1 executed

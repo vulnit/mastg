@@ -22,7 +22,7 @@ Beware that you don't have control over these sites, and you can't guarantee wha
 You can use @MASTG-TOOL-0016 to download (`-d`) the selected APK by specifying its AppID (add `-p` to show a progress bar and `-v` for verbosity):
 
 ```bash
-$ gplaycli -p -v -d com.google.android.keep
+gplaycli -p -v -d com.google.android.keep
 [INFO] GPlayCli version 3.26 [Python3.7.4]
 [INFO] Configuration file is ~/.config/gplaycli/gplaycli.conf
 [INFO] Device is bacon

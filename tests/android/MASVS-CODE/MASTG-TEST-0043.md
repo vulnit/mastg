@@ -11,7 +11,7 @@ masvs_v1_levels:
 profiles: [L1, L2]
 status: deprecated
 covered_by: []
-deprecation_note: The associated weaknesses are best addressed during the development process. See @MASTG-KNOW-0005 for more details.
+deprecation_note: The associated weaknesses are best addressed during the development process. See MASTG-KNOW-0005 for more details.
 ---
 
 ## Overview
