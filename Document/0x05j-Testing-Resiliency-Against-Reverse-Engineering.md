@@ -9,7 +9,7 @@ platform: android
 
 **General Disclaimer:**
 
-The **lack of any of these measures does not cause a vulnerability** - instead, they are meant to increase the app's resilience against reverse engineering and specific client-side attacks.
+The **lack of any of these measures doesn't cause a vulnerability** - instead, they are meant to increase the app's resilience against reverse engineering and specific client-side attacks.
 
 None of these measures can assure a 100% effectiveness, as the reverse engineer will always have full access to the device and will therefore always win (given enough time and resources)!
 

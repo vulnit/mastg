@@ -40,4 +40,4 @@ And an API key:
 
 ## Evaluation
 
-This test fails because the files are not encrypted and contain sensitive data (a password and an API key). You can further confirm this by reverse engineering the app and inspecting the code.
+This test fails because the files aren't encrypted and contain sensitive data (a password and an API key). You can further confirm this by reverse engineering the app and inspecting the code.

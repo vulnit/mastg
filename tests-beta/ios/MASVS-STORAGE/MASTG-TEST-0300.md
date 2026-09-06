@@ -32,4 +32,4 @@ The output should contain:
 
 ## Evaluation
 
-The test case fails if the sensitive data is not encrypted before being written to private storage or the Keychain API isn't used to store the sensitive data.
+The test case fails if the sensitive data isn't encrypted before being written to private storage or the Keychain API isn't used to store the sensitive data.

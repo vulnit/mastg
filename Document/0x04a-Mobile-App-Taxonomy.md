@@ -26,7 +26,7 @@ However, since Android provides two development kits - the Android SDK and the A
 
 ## Cross-platform Mobile Frameworks
 
-The most obvious disadvantage of _native apps_ is that they are limited to one specific platform. If developers want to build their app for both Android and iOS, one needs to maintain two independent code bases, or introduce often complex development tools to port a single code base to two platforms.
+The most obvious disadvantage of _native apps_ is that they are limited to one specific platform. If developers want to build their app for both Android and iOS, one needs to maintain two independent code bases, or introduce often complex development tools to port a single codebase to two platforms.
 
 Here are some cross-platform mobile frameworks that allow developers to compile a single codebase for different targets, including both Android and iOS:
 
@@ -45,11 +45,11 @@ Although it is rare, apps can combine native code and cross-platform frameworks,
 
 Mobile web apps (or simply, _web apps_) are websites designed to look and feel like a _native app_. These apps run in the device's browser and are usually developed in HTML5, much like a modern web page. Launcher icons may be used to parallel the same feel of accessing a _native app_; however, these icons are essentially the same as a browser bookmark, simply opening the default web browser to load the referenced web page.
 
-Because they run within the confines of a browser, web apps have limited integration with the general components of the device (i.e. they are "sandboxed") and their performance is usually inferior compared to native apps. Since developers usually target multiple platforms with a web app, their UIs generally do not follow the design principles of any specific platform. However, _web apps_ are popular because developers can use a single code base to reduce development and maintenance costs and distribute updates without going through the platform-specific app stores. For example, a change to the HTML file for a _web app_ can serve as viable, cross-platform update whereas an update to a store-based app requires considerably more effort.
+Because they run within the confines of a browser, web apps have limited integration with the general components of the device (i.e. they are "sandboxed") and their performance is usually inferior compared to native apps. Since developers usually target multiple platforms with a web app, their UIs generally don't follow the design principles of any specific platform. However, _web apps_ are popular because developers can use a single codebase to reduce development and maintenance costs and distribute updates without going through the platform-specific app stores. For example, a change to the HTML file for a _web app_ can serve as viable, cross-platform update whereas an update to a store-based app requires considerably more effort.
 
 ## Hybrid Apps
 
-_Hybrid apps_ are a specific type of _cross-platform app_ which try to benefit from the best aspects of _native_ and _web apps_. This type of app executes like a _native app_, but a majority of the processes rely on web technologies, meaning a portion of the app runs in an embedded web browser (commonly called "WebView"). As such, _hybrid apps_ inherit both pros and cons of _native_ and _web apps_. These apps can use a web-to-native abstraction layer to access to device capabilities that are not accessible to a pure _web app_. Depending on the framework used for development, a _hybrid app_ code base can generate multiple apps that target different platforms and take advantage of UI elements that closely resemble a device's original platform.
+_Hybrid apps_ are a specific type of _cross-platform app_ which try to benefit from the best aspects of _native_ and _web apps_. This type of app executes like a _native app_, but a majority of the processes rely on web technologies, meaning a portion of the app runs in an embedded web browser (commonly called "WebView"). As such, _hybrid apps_ inherit both pros and cons of _native_ and _web apps_. These apps can use a web-to-native abstraction layer to access to device capabilities that aren't accessible to a pure _web app_. Depending on the framework used for development, a _hybrid app_ codebase can generate multiple apps that target different platforms and take advantage of UI elements that closely resemble a device's original platform.
 
 Here are some popular frameworks for developing _hybrid apps_:
 
@@ -64,4 +64,4 @@ Here are some popular frameworks for developing _hybrid apps_:
 
 _Progressive web apps_ (PWAs) combine different open standards of the web offered by modern browsers to provide benefits of a rich mobile experience. A Web App Manifest, which is a simple JSON file, can be used to configure the behavior of the app after "installation". These apps load like regular web pages, but differ from usual web apps in several ways.
 
-For example, it's possible to work offline and access to mobile device hardware is possible, which has been a capacity that was only available to _native apps_. PWAs are supported by both Android and iOS, but not all hardware features are yet available. For example, Push Notifications, Face ID on iPhone X, or ARKit for augmented reality is not available yet on iOS.
+For example, it's possible to work offline and access to mobile device hardware is possible, which has been a capacity that was only available to _native apps_. PWAs are supported by both Android and iOS, but not all hardware features are yet available. For example, Push Notifications, Face ID on iPhone X, or ARKit for augmented reality isn't available yet on iOS.

@@ -78,22 +78,22 @@ The CommonCrypto library provides the `CCRandomGenerateBytes` and `CCRandomCopyB
 
 ## /dev/random
 
-Direct use of `/dev/random` via `open` and `read` is discouraged because it is a low level interface that is easy to misuse from application code. On Apple platforms, `/dev/random` and `/dev/urandom` are backed by the same Fortuna based kernel CSPRNG and behave equivalently, so the usual Linux advice about `/dev/random` blocking when entropy is low does not apply here. For iOS apps, Apple recommends using higher level APIs such as `SecRandomCopyBytes` or the Swift standard library random APIs instead of reading these device files directly.
+Direct use of `/dev/random` via `open` and `read` is discouraged because it is a low level interface that is easy to misuse from application code. On Apple platforms, `/dev/random` and `/dev/urandom` are backed by the same Fortuna based kernel CSPRNG and behave equivalently, so the usual Linux advice about `/dev/random` blocking when entropy is low doesn't apply here. For iOS apps, Apple recommends using higher level APIs such as `SecRandomCopyBytes` or the Swift standard library random APIs instead of reading these device files directly.
 
 ## arc4random
 
 The `arc4random` family of functions (`arc4random()`, `arc4random_buf()`, `arc4random_uniform()`) is also available on iOS. On modern Apple platforms these functions are backed by the same kernel CSPRNG as `SecRandomCopyBytes`, and are suitable for cryptographic use, but they are legacy C style interfaces and are easier to misuse than the Swift standard library or `SecRandomCopyBytes`. For example:
 
 - Using `arc4random() % n` to generate a bounded value can introduce [modulo bias](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#Modulo_bias), where some outcomes are slightly more likely than others.
-- `arc4random_buf()` produces cryptographically strong random bytes into a caller provided buffer, and does not itself suffer from modulo bias. Any bias only appears if you convert those bytes to a bounded range incorrectly, for example by doing `% n` on derived integers.
+- `arc4random_buf()` produces cryptographically strong random bytes into a caller provided buffer, and doesn't itself suffer from modulo bias. Any bias only appears if you convert those bytes to a bounded range incorrectly, for example by doing `% n` on derived integers.
 - `arc4random_uniform(n)` is specifically designed to avoid modulo bias for arbitrary upper bounds, returning a uniformly distributed integer in the range `[0, n)`, and should be preferred over `arc4random() % n`.
 
 For new Swift code, prefer `UInt8.random(in:)` and related APIs or `SecRandomCopyBytes`, and reserve the `arc4random` family for interoperating with existing C and Objective C code.
 
 ## Standard C Library Functions
 
-The standard C library functions `rand()`, `random()`, and their seed setting counterparts `srand()` and `srandom()` are not suitable for cryptographic purposes. Implementations of `rand()` are usually linear congruential generators, and on Apple systems `random()` uses a non linear additive feedback generator, but in all cases these are deterministic pseudorandom generators whose output can be predicted once the internal state or seed is known. See ["Bugs" section of rand(3)](https://www.manpagez.com/man/3/random/) for more details.
+The standard C library functions `rand()`, `random()`, and their seed setting counterparts `srand()` and `srandom()` aren't suitable for cryptographic purposes. Implementations of `rand()` are usually linear congruential generators, and on Apple systems `random()` uses a non linear additive feedback generator, but in all cases these are deterministic pseudorandom generators whose output can be predicted once the internal state or seed is known. See ["Bugs" section of rand(3)](https://www.manpagez.com/man/3/random/) for more details.
 
 These APIs still exist inside `libSystem` at runtime, but the Darwin headers mark them as unavailable to Swift by attaching a Swift availability attribute. In `stdlib.h` the declarations for `rand`, `srand`, `random`, `rand_r` and several `*rand48` functions carry the availability annotation `__swift_unavailable`. So calling them from Swift produces an error that tells you they are unavailable in Swift.
 
-Some of the `*rand48` functions, for example [`drand48()`](https://www.manpagez.com/man/3/drand48/), are still available, but they are also unsuitable for cryptographic purposes and should be avoided. These functions implement a linear congruential generator with a 48-bit state, which is not secure for cryptographic applications. They are also not thread safe and can produce predictable outputs if the seed is known.
+Some of the `*rand48` functions, for example [`drand48()`](https://www.manpagez.com/man/3/drand48/), are still available, but they are also unsuitable for cryptographic purposes and should be avoided. These functions implement a linear congruential generator with a 48-bit state, which isn't secure for cryptographic applications. They are also not thread safe and can produce predictable outputs if the seed is known.

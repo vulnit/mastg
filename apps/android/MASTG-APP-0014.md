@@ -16,4 +16,4 @@ The majority of these vulnerabilities can be exploited on non-rooted devices, po
 - **Insecure Broadcast Receiver**: Registration of a broadcast enabling URL injection.
 - **Insecure Content Provider**: Accessible content provider putting user data at risk.
 
-Complementing these learning experiences, InsecureShop provided documentation about the implemented vulnerabilities and their associated code. This documentation, however, refrains from offering complete solutions for each vulnerability showcased within the InsecureShop app. The documentation website is not accessible anymore.
+Complementing these learning experiences, InsecureShop provided documentation about the implemented vulnerabilities and their associated code. This documentation, however, refrains from offering complete solutions for each vulnerability showcased within the InsecureShop app. The documentation website isn't accessible anymore.

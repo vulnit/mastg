@@ -11,7 +11,7 @@ Runtime Application Self-Protection (RASP) is a security technology embedded in 
 RASP implementations typically include several defensive mechanisms:
 
 - **Environment Detection**: Identifying rooted devices, emulators, debuggers attached to the process, or the presence of hooking frameworks.
-- **Code Integrity Verification**: Ensuring the app's code has not been modified at runtime, including detecting hooks on methods and functions.
+- **Code Integrity Verification**: Ensuring the app's code hasn't been modified at runtime, including detecting hooks on methods and functions.
 - **Anti-Tampering**: Detecting modifications to the app's binary, resources, or configuration files.
 - **Anti-Debugging**: Preventing or detecting when a debugger is attached to the app's process.
 - **Response Mechanisms**: Taking action when threats are detected, such as terminating the app, clearing sensitive data, or alerting a backend server.

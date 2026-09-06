@@ -16,7 +16,7 @@ This test verifies if the app implements checks to detect the presence of an iOS
 See @MASTG-KNOW-0135 for a detailed overview about virtual device detection mechanisms and patterns performed by applications.
 
 !!! note "Out of Scope"
-    This test does not cover robustness or effectiveness of these mechanisms, which can be very difficult to assess through automated testing alone and may require manual reverse engineering and custom instrumentation. See @MASTG-BEST-0053 for best practices on implementing virtual device detection effectively.
+    This test doesn't cover robustness or effectiveness of these mechanisms, which can be very difficult to assess through automated testing alone and may require manual reverse engineering and custom instrumentation. See @MASTG-BEST-0053 for best practices on implementing virtual device detection effectively.
 
 ## Steps
 
@@ -34,4 +34,4 @@ The test case fails if no instances of virtual device detection checks are obser
 
 **Expected False Negatives:**
 
-This test may produce false negatives if the app uses virtual device detection mechanisms that are not covered by the hooks or traces used, or if the virtual device detection logic is implemented in a way that evades detection (for example, through obfuscation, dynamic code loading, or anti-instrumentation techniques). In such cases, the absence of findings does not guarantee the absence of virtual device detection, and additional manual reverse engineering or custom instrumentation may be required to identify and analyze virtual device detection mechanisms.
+This test may produce false negatives if the app uses virtual device detection mechanisms that aren't covered by the hooks or traces used, or if the virtual device detection logic is implemented in a way that evades detection (for example, through obfuscation, dynamic code loading, or anti-instrumentation techniques). In such cases, the absence of findings doesn't guarantee the absence of virtual device detection, and additional manual reverse engineering or custom instrumentation may be required to identify and analyze virtual device detection mechanisms.

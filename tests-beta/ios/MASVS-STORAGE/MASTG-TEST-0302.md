@@ -41,4 +41,4 @@ The output should contain:
 
 The test case fails if sensitive data appears in plaintext or trivially encoded in new or modified files.
 
-Inspect the list of files and Keychain entries for sensitive data. Attempt to identify and decode data that has been encoded using methods such as base64 encoding, hexadecimal representation, URL-encoding, escape sequences, binary plist files, compressed archives like zip, wide characters and common data obfuscation methods such as xoring. Also consider identifying and decompressing compressed files such as tar or zip. These methods obscure but do not protect sensitive data.
+Inspect the list of files and Keychain entries for sensitive data. Attempt to identify and decode data that has been encoded using methods such as Base64 encoding, hexadecimal representation, URL-encoding, escape sequences, binary plist files, compressed archives like zip, wide characters and common data obfuscation methods such as xoring. Also consider identifying and decompressing compressed files such as tar or zip. These methods obscure but don't protect sensitive data.

@@ -11,7 +11,7 @@ kind: fail
 
 This sample demonstrates how overly broad file read access in a WebView can increase the impact of a separate HTML injection flaw. The app loads a trusted local HTML file and grants the WebView read access to the entire `Documents` directory by calling [`loadFileURL(_:allowingReadAccessTo:)`](https://developer.apple.com/documentation/webkit/wkwebview/loadfileurl(_:allowingreadaccessto:)).
 
-By itself, that broad read access is not enough to expose files. The issue becomes exploitable because the page also reads the `username` parameter from the URL and inserts it into the DOM using `innerHTML`. Since attacker-controlled input is treated as HTML, an attacker can inject markup that loads other local files from the same directory. See @MASTG-DEMO-0095 for more details on the HTML injection aspect of the vulnerability.
+By itself, that broad read access isn't enough to expose files. The issue becomes exploitable because the page also reads the `username` parameter from the URL and inserts it into the DOM using `innerHTML`. Since attacker-controlled input is treated as HTML, an attacker can inject markup that loads other local files from the same directory. See @MASTG-DEMO-0095 for more details on the HTML injection aspect of the vulnerability.
 
 Because the WebView can read the full `Documents` directory, injected elements such as an `<iframe>` can load sibling files like `secret.txt`. This shows how overly broad local file access can turn a separate WebView injection bug into a local file disclosure issue.
 
@@ -55,7 +55,7 @@ The output shows the `loadFileURL:allowingReadAccessToURL:` call site, the `docD
 
 The test fails because the app grants the WebView read access to the entire `Documents` directory using `loadFileURL(_:allowingReadAccessTo:)`. `docDir` points to the app's `Documents` directory, and it's passed directly as `allowingReadAccessTo` in `webView.loadFileURL(url, allowingReadAccessTo: docDir)`. This grants the WebView read access to the entire `Documents` directory, which also contains `secret.txt` (written in `createSecretFile`). An attacker can inject `<iframe src='./secret.txt'></iframe>` as their name to expose this file.
 
-The attack succeeds because of the combination of this overly broad read access and the fact that attacker controlled input is inserted into the page. The decompiled code and local HTML show that attacker-controlled input (the `username` value) is inserted into the page by assigning it directly to `innerHTML` via JavaScript. Because this value is not HTML-escaped, tags such as `<iframe>`, `<img>`, and `<script>` are interpreted as markup, allowing the attacker's payload to be rendered as HTML. See @MASTG-DEMO-0095 for more details on the HTML injection aspect of the vulnerability.
+The attack succeeds because of the combination of this overly broad read access and the fact that attacker controlled input is inserted into the page. The decompiled code and local HTML show that attacker-controlled input (the `username` value) is inserted into the page by assigning it directly to `innerHTML` via JavaScript. Because this value isn't HTML-escaped, tags such as `<iframe>`, `<img>`, and `<script>` are interpreted as markup, allowing the attacker's payload to be rendered as HTML. See @MASTG-DEMO-0095 for more details on the HTML injection aspect of the vulnerability.
 
 The following analysis complements the one in @MASTG-DEMO-0095 by focusing on the overly broad file access aspect of the vulnerability.
 
@@ -136,7 +136,7 @@ typedef NS_OPTIONS(NSUInteger, NSSearchPathDomainMask) {
 
 **Tracing `x2` (the file URL argument):**
 
-`x26` is set at `0x100004edc` by bridging a Swift lazy static `URL` to an `NSURL`. We locate its initializer via the iOS API it calls: `axt @ 0x10000a738` (the `appendingPathComponent` import stub) leads to `func.10000418c` (the materializer `ZTm_`). `axt @ 0x10000418c` then reveals its swift_once guard `func.100004144` (`Z_`) (all xref results are in `output.txt`). `Z_` encodes the filename `"index.html"` inline as immediate character constants (from `fileURL-init.asm`, which also includes `ZTm_` appended after):
+`x26` is set at `0x100004edc` by bridging a Swift lazy static `URL` to an `NSURL`. We locate its initializer via the iOS API it calls: `axt @ 0x10000a738` (the `appendingPathComponent` import stub) leads to `func.10000418c` (the materializer `ZTm_`). `axt @ 0x10000418c` then reveals its swift_once guard `func.100004144` (`Z_`) (all xref results are in `output.txt`). `Z_` encodes the file name `"index.html"` inline as immediate character constants (from `fileURL-init.asm`, which also includes `ZTm_` appended after):
 
 ```text
 0x10000414c      mov x2, 0x6e69                            ; 'in'
@@ -146,7 +146,7 @@ typedef NS_OPTIONS(NSUInteger, NSSearchPathDomainMask) {
 0x10000415c      mov x3, 0x6c6d                            ; 'ml'
 ```
 
-The `ZTm_` materializer then loads the `docDir` lazy static and passes the encoded filename to `appendingPathComponent`:
+The `ZTm_` materializer then loads the `docDir` lazy static and passes the encoded file name to `appendingPathComponent`:
 
 ```text
 0x100004200      ldr x8, [x8, 0x1b0]   ; sym.MASTestApp.MastgTest.docDir._6E8AB2C58CE173A727EF27CB85DF8CD8_...z_

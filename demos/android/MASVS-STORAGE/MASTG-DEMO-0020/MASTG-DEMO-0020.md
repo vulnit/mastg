@@ -53,4 +53,4 @@ The test fails because `secret.txt` is restored from the backup and it contains 
 
 {{ restored_files/secret.txt }}
 
-Note that `output_after.txt` does not contain the `backup_excluded_secret.txt` file, which is expected as it was marked as `exclude` in the `backup_rules.xml` file.
+Note that `output_after.txt` doesn't contain the `backup_excluded_secret.txt` file, which is expected as it was marked as `exclude` in the `backup_rules.xml` file.

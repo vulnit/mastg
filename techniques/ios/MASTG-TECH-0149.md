@@ -25,7 +25,7 @@ To confirm the effective TLS behavior enforced for a specific domain, connect th
 This is especially important when validating the scope of `NSExceptionRequiresForwardSecrecy` exceptions found during static analysis, since those entries describe what is _configured_, not what is _actually negotiated_. See @MASTG-KNOW-0071 for details on ATS configuration and exceptions.
 
 !!! note "nscurl is an ATS diagnostic helper, not a substitute for on-device testing"
-    `nscurl --ats-diagnostics` is useful for identifying whether ATS policy would block a connection on the host macOS system, but results don't always match iOS behavior. On modern macOS versions network settings can be stricter than on iOS and rejecting handshakes that iOS still accepts under an ATS exception. A `FAIL` in `nscurl` does not necessarily mean the same configuration fails in the iOS app. Therefore always confirm with on-device testing.
+    `nscurl --ats-diagnostics` is useful for identifying whether ATS policy would block a connection on the host macOS system, but results don't always match iOS behavior. On modern macOS versions network settings can be stricter than on iOS and rejecting handshakes that iOS still accepts under an ATS exception. A `FAIL` in `nscurl` doesn't necessarily mean the same configuration fails in the iOS app. Therefore always confirm with on-device testing.
 
 ## Examples
 
@@ -93,4 +93,4 @@ Result : PASS
 ---
 ```
 
-The default ATS connection fails, but disabling PFS succeeds. This means the server does not support ephemeral key exchange, so ATS blocks it by default under its PFS requirement. The minimal exception needed is `NSExceptionRequiresForwardSecrecy: false` for that domain. Apple recommends fixing the server to support ECDHE instead of adding this exception.
+The default ATS connection fails, but disabling PFS succeeds. This means the server doesn't support ephemeral key exchange, so ATS blocks it by default under its PFS requirement. The minimal exception needed is `NSExceptionRequiresForwardSecrecy: false` for that domain. Apple recommends fixing the server to support ECDHE instead of adding this exception.

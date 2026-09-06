@@ -27,7 +27,7 @@ Examples of unacceptable behavior by participants include:
 
 Project maintainers are responsible for clarifying the standards of acceptable behavior and are expected to take appropriate and fair corrective action in response to any instances of unacceptable behavior.
 
-Project maintainers have the right and responsibility to remove, edit, or reject comments, commits, code, wiki edits, issues, and other contributions that are not aligned with this Code of Conduct, or to temporarily or permanently ban any contributor for behaviors they deem inappropriate, threatening, offensive, or harmful.
+Project maintainers have the right and responsibility to remove, edit, or reject comments, commits, code, wiki edits, issues, and other contributions that aren't aligned with this Code of Conduct, or to temporarily or permanently ban any contributor for behaviors they deem inappropriate, threatening, offensive, or harmful.
 
 ## Disclaimer
 
@@ -35,11 +35,11 @@ The OWASP MAS and its materials are conceived for educational and research purpo
 
 Refrain from violating the laws of your country by carefully consulting them before executing any tests against mobile applications when utilizing OWASP MAS materials.
 
-The OWASP MAS project does not support unethical activities in any way. If you encounter such requests, please reach out to the project leaders and raise the issue with them.
+The OWASP MAS project doesn't support unethical activities in any way. If you encounter such requests, please reach out to the project leaders and raise the issue with them.
 
 Neither OWASP, the OWASP MAS project leaders, authors, nor anyone else involved in this project takes responsibility for your actions.
 
-The intention of the OWASP MAS project is not to encourage hacking or malicious activities. Instead, its goal is to document different attacks against mobile applications, outline their risks, and offer ways to reduce or mitigate those risks.
+The intention of the OWASP MAS project isn't to encourage hacking or malicious activities. Instead, its goal is to document different attacks against mobile applications, outline their risks, and offer ways to reduce or mitigate those risks.
 
 ## Scope
 

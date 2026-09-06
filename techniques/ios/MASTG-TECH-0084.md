@@ -3,7 +3,7 @@ title: Debugging
 platform: ios
 ---
 
-Coming from a Linux background, you'd expect the `ptrace` system call to be as powerful as you're used to, but, for some reason, Apple decided to leave it incomplete. iOS debuggers such as LLDB use it to attach, step, or continue the process, but they cannot use it to read or write memory (all `PT_READ_*` and `PT_WRITE*` requests are missing). Instead, they have to get a so-called Mach task port (by calling `task_for_pid` with the target process ID) and then use the Mach IPC interface API functions to perform actions such as suspending the target process and reading/writing register states (`thread_get_state`/`thread_set_state`) and virtual memory (`mach_vm_read`/`mach_vm_write`).
+Coming from a Linux background, you'd expect the `ptrace` system call to be as powerful as you're used to, but, for some reason, Apple decided to leave it incomplete. iOS debuggers such as LLDB use it to attach, step, or continue the process, but they can't use it to read or write memory (all `PT_READ_*` and `PT_WRITE*` requests are missing). Instead, they have to get a so-called Mach task port (by calling `task_for_pid` with the target process ID) and then use the Mach IPC interface API functions to perform actions such as suspending the target process and reading/writing register states (`thread_get_state`/`thread_set_state`) and virtual memory (`mach_vm_read`/`mach_vm_write`).
 
 > For more information you can refer to the LLVM project in GitHub which contains the [source code for LLDB](https://github.com/llvm/llvm-project/tree/main/lldb "LLDB") as well as Chapter 5 and 13 from "Mac OS X and iOS Internals: To the Apple's Core" [#levin] and Chapter 4 "Tracing and Debugging" from "The Mac Hacker's Handbook" [#miller].
 
@@ -140,7 +140,7 @@ In the previous section, we learned about how to set up a debugging environment 
 
 In contrast to a debug build, code compiled for a release build is optimized for maximum performance and minimal binary size. As a general best practice, most debug symbols are stripped in release builds, which adds complexity when reverse-engineering and debugging binaries.
 
-Because the debug symbols are missing, symbol names are absent from the backtraces, and setting breakpoints using function names is not possible. Fortunately, debuggers also support setting breakpoints directly on memory addresses. In the remainder of this section, we will learn how to do so and ultimately solve the crackme challenge.
+Because the debug symbols are missing, symbol names are absent from the backtraces, and setting breakpoints using function names isn't possible. Fortunately, debuggers also support setting breakpoints directly on memory addresses. In the remainder of this section, we will learn how to do so and ultimately solve the crackme challenge.
 
 Some groundwork is needed before setting a breakpoint using memory addresses. It requires determining two offsets:
 
@@ -163,7 +163,7 @@ For the second address, we need to determine the _ASLR shift offset_ for a given
 
 <img src="Images/Chapters/0x06c/debugging_lldb_image_list.png" width="100%" />
 
-In the output, the first column contains the sequence number of the image ([X]), and the second column contains the randomly generated ASLR offset. In contrast, the 3rd column contains the full path to the image, and towards the end, the content in brackets shows the image base address after applying the ASLR offset to the original image base (0x100000000 + 0x70000 = 0x100070000). You will notice that the image base address 0x100000000 matches that in Ghidra. To obtain the effective memory address for a code location, we only need to add the ASLR offset to the address identified in Ghidra. The effective address to set the breakpoint will be 0x100004520 + 0x70000 = 0x100074520. The breakpoint can be set using the command `b 0x100074520`.
+In the output, the first column contains the sequence number of the image ([X]), and the second column contains the randomly generated ASLR offset. In contrast, the 3rd column contains the full path to the image, and towards the end, the content in brackets shows the image base address after applying the ASLR offset to the original image base (0x100000000 + 0x70000 = 0x100070000). You'll notice that the image base address 0x100000000 matches that in Ghidra. To obtain the effective memory address for a code location, we only need to add the ASLR offset to the address identified in Ghidra. The effective address to set the breakpoint will be 0x100004520 + 0x70000 = 0x100074520. The breakpoint can be set using the command `b 0x100074520`.
 
 > In the above output, you may also notice that many of the paths listed as images do not point to the file system on the iOS device. Instead, they point to a specific location on the host computer where LLDB is running. These images are system libraries for which debug symbols are available on the host computer to aid in application development and debugging (as part of the Xcode iOS SDK). Therefore, you may set breakpoints in these libraries directly by using function names.
 

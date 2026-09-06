@@ -4,7 +4,7 @@ platform: ios
 title: App Sandbox Directories
 ---
 
-On iOS, each application gets a sandboxed folder to store its data. As per the iOS security model, an application's sandboxed folder cannot be accessed by another application. Additionally, the users do not have direct access to the [iOS filesystem](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html#//apple_ref/doc/uid/TP40010672-CH2-SW12), thus preventing browsing or extraction of data from the filesystem.
+On iOS, each application gets a sandboxed folder to store its data. As per the iOS security model, an application's sandboxed folder can't be accessed by another application. Additionally, the users don't have direct access to the [iOS filesystem](https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html#//apple_ref/doc/uid/TP40010672-CH2-SW12), thus preventing browsing or extraction of data from the filesystem.
 
 There are several ways to access the app's sandboxed folder:
 
@@ -21,7 +21,7 @@ The following illustration represents the application folder structure:
 
 <img src="Images/Chapters/0x06a/iOS_Folder_Structure.png" width="400px" />
 
-On iOS, system applications can be found in the `/Applications` directory while user-installed apps are available under `/private/var/containers/`. However, finding the right folder just by navigating the file system is not a trivial task as every app gets a random 128-bit UUID (Universal Unique Identifier) assigned for its directory names.
+On iOS, system applications can be found in the `/Applications` directory while user-installed apps are available under `/private/var/containers/`. However, finding the right folder just by navigating the file system isn't a trivial task as every app gets a random 128-bit UUID (Universal Unique Identifier) assigned for its directory names.
 
 ```txt
 Bundle: /private/var/containers/Bundle/Application/3ADAF47D-A734-49FA-B274-FBCA66589E67
@@ -40,8 +40,8 @@ These folders contain information that must be examined closely during applicati
 
 - **AppName.app**
     - This is the application bundle as seen in the IPA, it contains essential application resources as well as the compiled binary.
-    - This directory is not writable at runtime and is not normally visible to users in the Files app.
-    - Content in this directory is not backed up, it is distributed with the app and can be restored by reinstalling the app.
+    - This directory isn't writable at runtime and isn't normally visible to users in the Files app.
+    - Content in this directory isn't backed up, it is distributed with the app and can be restored by reinstalling the app.
     - The contents of this folder are used to validate the code signature.
 
 ### Data directory
@@ -52,18 +52,18 @@ These folders contain information that must be examined closely during applicati
     - Content in this directory is backed up by default.
 
 - **Library/**
-    - Contains app specific support files, such as caches, preferences, cookies, and configuration data that is not directly user facing.
+    - Contains app specific support files, such as caches, preferences, cookies, and configuration data that isn't directly user facing.
     - iOS apps usually use the `Application Support` and `Caches` subdirectories, but the app can create custom subdirectories under `Library`.
 
 - **Library/Caches/**
     - Contains semi-persistent cached files that can be regenerated.
-    - Invisible to users and users cannot write to it directly.
-    - Content in this directory is not backed up.
+    - Invisible to users and users can't write to it directly.
+    - Content in this directory isn't backed up.
     - The OS may delete files in this directory automatically, for example when storage space is low.
 
 - **Library/Application Support/**
     - Contains persistent files necessary for running the app, such as databases or other support data.
-    - Invisible to users and users cannot write to it directly.
+    - Invisible to users and users can't write to it directly.
     - Content in this directory is backed up by default.
 
 - **Library/Preferences/**
@@ -73,8 +73,8 @@ These folders contain information that must be examined closely during applicati
     - Content in this directory is backed up by default.
 
 - **tmp/**
-    - Use this directory to write temporary files that do not need to persist between app launches.
+    - Use this directory to write temporary files that don't need to persist between app launches.
     - Contains non-persistent cached or scratch files.
-    - Invisible to users and users cannot write to it directly.
-    - Content in this directory is not backed up.
-    - The OS may delete files in this directory automatically at any time, including while the app is not running, especially when storage space is low.
+    - Invisible to users and users can't write to it directly.
+    - Content in this directory isn't backed up.
+    - The OS may delete files in this directory automatically at any time, including while the app isn't running, especially when storage space is low.

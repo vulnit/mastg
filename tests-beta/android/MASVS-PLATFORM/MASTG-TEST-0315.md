@@ -14,9 +14,9 @@ knowledge: [MASTG-KNOW-0054]
 
 ## Overview
 
-This test verifies that the app correctly handles notifications, ensuring that sensitive information, such as personally identifiable information (PII), one-time passwords (OTPs), or other sensitive data, like health or financial details, is not exposed.
+This test verifies that the app correctly handles notifications, ensuring that sensitive information, such as personally identifiable information (PII), one-time passwords (OTPs), or other sensitive data, like health or financial details, isn't exposed.
 
-On Android 13 and higher, apps targeting API level 33 or above must request the runtime permission [`POST_NOTIFICATIONS`](https://developer.android.com/reference/android/Manifest.permission#POST_NOTIFICATIONS) to send notifications. Below API level 33, this permission is not required. For testing purposes, we consider the value of the app's `minSdkVersion` because it indicates the lowest Android version on which the app can run.
+On Android 13 and higher, apps targeting API level 33 or above must request the runtime permission [`POST_NOTIFICATIONS`](https://developer.android.com/reference/android/Manifest.permission#POST_NOTIFICATIONS) to send notifications. Below API level 33, this permission isn't required. For testing purposes, we consider the value of the app's `minSdkVersion` because it indicates the lowest Android version on which the app can run.
 
 Notifications can be created using the [`setContentTitle`](https://developer.android.com/reference/android/app/Notification.Builder#setContentTitle(java.lang.CharSequence)) and [`setContentText`](https://developer.android.com/reference/android/app/Notification.Builder#setContentText(java.lang.CharSequence)) methods of [`Notification.Builder`](https://developer.android.com/reference/android/app/Notification.Builder) or [`NotificationCompat.Builder`](https://developer.android.com/reference/androidx/core/app/NotificationCompat.Builder).
 
@@ -47,4 +47,4 @@ The test case fails if the app exposes any sensitive data in any notifications a
 
 **Why `minSdkVersion` and not `targetSdkVersion`?**: Using `minSdkVersion` ensures the test accounts for the **least secure environment** in which the app can operate, which is what determines the real exposure risk.
 
-`targetSdkVersion` only influences how the app behaves on newer Android versions and how the system enforces newer platform restrictions. It does not change the behavior of older Android versions. As a result, an app with a high `targetSdkVersion` but a low `minSdkVersion` must still be evaluated against the security guarantees, or lack thereof, of those older versions.
+`targetSdkVersion` only influences how the app behaves on newer Android versions and how the system enforces newer platform restrictions. It doesn't change the behavior of older Android versions. As a result, an app with a high `targetSdkVersion` but a low `minSdkVersion` must still be evaluated against the security guarantees, or lack thereof, of those older versions.

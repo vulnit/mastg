@@ -32,6 +32,6 @@ The output should contain:
 
 ## Evaluation
 
-The test case fails if the sensitive data is not encrypted before being written to private storage or the Keychain API isn't used to store the sensitive data.
+The test case fails if the sensitive data isn't encrypted before being written to private storage or the Keychain API isn't used to store the sensitive data.
 
 Determining whether data is encrypted when written to private storage may be challenging. However, by monitoring the APIs used for writing data and analyzing the data written, you can infer whether encryption is being applied based on the methods and libraries used. You'll have to correlate the data written to private storage with the APIs used to write it, as identified through runtime method hooking. You'll also have to correlate the File System APIs with the Keychain APIs to verify that they are used together to store sensitive data securely. Sensitive data can be stored securely in the Keychain or be encrypted using a key from the Keychain before being written to private storage.

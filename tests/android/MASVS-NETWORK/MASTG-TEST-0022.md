@@ -145,7 +145,7 @@ Learn more:
 
 ### Cordova Applications
 
-Hybrid applications based on Cordova do not support Certificate Pinning natively, so plugins are used to achieve this. The most common one is [PhoneGap SSL Certificate Checker](https://github.com/EddyVerbruggen/SSLCertificateChecker-PhoneGap-Plugin "PhoneGap SSL Certificate Checker plugin"). The `check` method is used to confirm the fingerprint and callbacks will determine the next steps.
+Hybrid applications based on Cordova don't support Certificate Pinning natively, so plugins are used to achieve this. The most common one is [PhoneGap SSL Certificate Checker](https://github.com/EddyVerbruggen/SSLCertificateChecker-PhoneGap-Plugin "PhoneGap SSL Certificate Checker plugin"). The `check` method is used to confirm the fingerprint and callbacks will determine the next steps.
 
 ```javascript
   // Endpoint to verify against certificate pinning.

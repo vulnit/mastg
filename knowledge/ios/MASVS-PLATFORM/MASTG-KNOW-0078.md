@@ -4,7 +4,7 @@ platform: ios
 title: Inter-Process Communication (IPC)
 ---
 
-iOS does not provide a general-purpose mechanism for third-party apps to communicate directly. Instead, apps exchange data through platform-mediated interfaces of varying levels of abstraction.
+iOS doesn't provide a general-purpose mechanism for third-party apps to communicate directly. Instead, apps exchange data through platform-mediated interfaces of varying levels of abstraction.
 
 Each IPC mechanism can be characterized by who can send data, who can receive data, whether user interaction is required, how long the data remains available, and whether the channel is restricted by an entitlement or app group.
 
@@ -28,7 +28,7 @@ Each IPC mechanism can be characterized by who can send data, who can receive da
 
 - @MASTG-KNOW-0082: app extensions, for controlled interaction between a host app and an extension. The extension and its containing app can share data through App Groups.
 
-- @MASTG-KNOW-0127: file coordination APIs, for coordinating concurrent access to shared files, especially in App Group containers. File coordination supports shared file based IPC but is not a data exchange channel by itself.
+- @MASTG-KNOW-0127: file coordination APIs, for coordinating concurrent access to shared files, especially in App Group containers. File coordination supports shared file based IPC but isn't a data exchange channel by itself.
 
 ## Network-based Channels
 

@@ -53,4 +53,4 @@ Using this information we can infer the path of the file written to external sto
 
 ## Evaluation
 
-This test fails because the files are not encrypted and contain sensitive data (such as a password and an API key). This can be further confirmed by reverse-engineering the app to inspect its code and retrieving the files from the device.
+This test fails because the files aren't encrypted and contain sensitive data (such as a password and an API key). This can be further confirmed by reverse-engineering the app to inspect its code and retrieving the files from the device.

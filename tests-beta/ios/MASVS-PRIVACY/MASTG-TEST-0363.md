@@ -49,8 +49,8 @@ Consider the following when evaluating:
 
 - Is the observed entitlement-backed API or entry point reasonably connected to the user action or feature that triggered it?
 - Does the observed runtime behavior create a personal data access, shared storage, cross-app communication, or system integration surface that is broader or more sensitive than the feature requires?
-- Could the app use a narrower alternative instead, such as local app storage instead of an App Group container when cross-app or app-extension sharing is not required?
+- Could the app use a narrower alternative instead, such as local app storage instead of an App Group container when cross-app or app-extension sharing isn't required?
 
-Dynamic analysis may miss entitlement-backed APIs or entry points in flows that were not triggered, code paths that depend on account state, device state, location, permissions granted, remote configuration, feature flags, experiments, extensions, associated domains, backend responses, or unavailable hardware. Treat missing runtime calls as absence of evidence, not proof that the app never uses the entitlement-backed service.
+Dynamic analysis may miss entitlement-backed APIs or entry points in flows that weren't triggered, code paths that depend on account state, device state, location, permissions granted, remote configuration, feature flags, experiments, extensions, associated domains, backend responses, or unavailable hardware. Treat missing runtime calls as absence of evidence, not proof that the app never uses the entitlement-backed service.
 
-Use static analysis to complement the runtime analysis and identify entitlement-backed APIs, identifiers, or entry points that are present in the app's code but were not observed at runtime. See @MASTG-TEST-0362.
+Use static analysis to complement the runtime analysis and identify entitlement-backed APIs, identifiers, or entry points that are present in the app's code but weren't observed at runtime. See @MASTG-TEST-0362.

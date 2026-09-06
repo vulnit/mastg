@@ -40,4 +40,4 @@ The test case fails if:
 - The app writes unencrypted sensitive data to `documentDirectory` (or equivalent shared storage path), and
 - `Info.plist` enables user access to the Documents directory (`UIFileSharingEnabled` and/or `LSSupportsOpeningDocumentsInPlace`).
 
-Note: `documentDirectory` by itself is not inherently insecure; the risk arises when sensitive data is stored there and exposed via file sharing or Files app access. In contrast, data stored in other locations within the app sandbox (e.g., `Library/Application Support`) with encryption, or in the Keychain cannot be accessed even if file sharing is enabled.
+Note: `documentDirectory` by itself isn't inherently insecure; the risk arises when sensitive data is stored there and exposed via file sharing or Files app access. In contrast, data stored in other locations within the app sandbox (e.g., `Library/Application Support`) with encryption, or in the Keychain can't be accessed even if file sharing is enabled.

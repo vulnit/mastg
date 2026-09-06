@@ -14,7 +14,7 @@ There are three widely used package management tools [Swift Package Manager](htt
 
 There are two categories of libraries:
 
-- Libraries that are not (or should not) be packed within the actual production application, such as `OHHTTPStubs` used for testing.
+- Libraries that aren't (or should not) be packed within the actual production application, such as `OHHTTPStubs` used for testing.
 - Libraries that are packed within the actual production application, such as `Alamofire`.
 
 These libraries can lead to unwanted side-effects:

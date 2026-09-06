@@ -13,7 +13,7 @@ knowledge: [MASTG-KNOW-0028]
 
 The `WebView.setWebContentsDebuggingEnabled(true)` API enables debugging for **all** WebViews in the application. This feature can be useful during development, but introduces significant security risks if left enabled in production. When enabled, a connected PC can debug, eavesdrop, or modify communication within any WebView in the application. See the ["Android Documentation"](https://developer.chrome.com/docs/devtools/remote-debugging/webviews/#configure_webviews_for_debugging) for more details.
 
-Note that this flag works independently of the `debuggable` attribute (`ApplicationInfo.FLAG_DEBUGGABLE`) in the `AndroidManifest.xml` (see @MASTG-TEST-0226). Even if the app is not marked as debuggable, the WebViews can still be debugged by calling this API.
+Note that this flag works independently of the `debuggable` attribute (`ApplicationInfo.FLAG_DEBUGGABLE`) in the `AndroidManifest.xml` (see @MASTG-TEST-0226). Even if the app isn't marked as debuggable, the WebViews can still be debugged by calling this API.
 
 ## Steps
 
@@ -29,4 +29,4 @@ The output should list:
 
 ## Evaluation
 
-The test case fails if `WebView.setWebContentsDebuggingEnabled(true)` is called unconditionally or in contexts where the `ApplicationInfo.FLAG_DEBUGGABLE` flag is not checked.
+The test case fails if `WebView.setWebContentsDebuggingEnabled(true)` is called unconditionally or in contexts where the `ApplicationInfo.FLAG_DEBUGGABLE` flag isn't checked.

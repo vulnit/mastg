@@ -26,7 +26,7 @@ Run @MASTG-TOOL-0110 rules against the sample code.
 
 ## Observation
 
-The output shows **4 results** related to WebView configuration calls. However, it is important to note that the method `setAllowContentAccess` is not explicitly called in the code.
+The output shows **4 results** related to WebView configuration calls. However, it is important to note that the method `setAllowContentAccess` isn't explicitly called in the code.
 
 {{ output.txt }}
 
@@ -36,4 +36,4 @@ The test **fails** due to the following WebView settings being configured:
 
 {{ evaluation.txt }}
 
-The method `setAllowContentAccess` is not explicitly called in the code, which means it remains at its default value (`true`).
+The method `setAllowContentAccess` isn't explicitly called in the code, which means it remains at its default value (`true`).

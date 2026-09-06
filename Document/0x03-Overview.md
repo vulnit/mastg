@@ -34,7 +34,7 @@ Many mobile app penetration testers have a background in network and web app pen
 
 ### MASVS-STORAGE: Data Storage and Privacy
 
-The Standard is based on the principle that protecting sensitive data, such as user credentials and private information, is crucial to mobile security. If an app does not use operating system APIs properly, especially those that handle local storage or inter-process communication (IPC), the app could expose sensitive data to other apps running on the same device or may unintentionally leak data to cloud storage, backups, or the keyboard cache. And since mobile devices are more likely to be or lost or stolen, attackers can actually gain physical access to the device, which would make it easier to retrieve the data.
+The Standard is based on the principle that protecting sensitive data, such as user credentials and private information, is crucial to mobile security. If an app doesn't use operating system APIs properly, especially those that handle local storage or inter-process communication (IPC), the app could expose sensitive data to other apps running on the same device or may unintentionally leak data to cloud storage, backups, or the keyboard cache. And since mobile devices are more likely to be or lost or stolen, attackers can actually gain physical access to the device, which would make it easier to retrieve the data.
 
 Thus we must take extra care to protect stored user data in mobile apps. Some solutions may include appropriate key storage APIs and using hardware-backed security features (when available).
 
@@ -42,7 +42,7 @@ Fragmentation is a problem we deal with especially on Android devices. Not every
 
 ### MASVS-CRYPTO: Cryptography
 
-Cryptography is an essential ingredient when it comes to protecting data stored on a mobile device. It is also an area where things can go horribly wrong, especially when standard conventions are not followed. It is essential to ensure that the application uses cryptography according to industry best practices, including the use of proven cryptographic libraries, a proper choice and configuration of cryptographic primitives as well as a suitable random number generator wherever randomness is required.
+Cryptography is an essential ingredient when it comes to protecting data stored on a mobile device. It is also an area where things can go horribly wrong, especially when standard conventions aren't followed. It is essential to ensure that the application uses cryptography according to industry best practices, including the use of proven cryptographic libraries, a proper choice and configuration of cryptographic primitives as well as a suitable random number generator wherever randomness is required.
 
 ### MASVS-AUTH: Authentication and Authorization
 

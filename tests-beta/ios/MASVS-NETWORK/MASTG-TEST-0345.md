@@ -11,7 +11,7 @@ knowledge: [MASTG-KNOW-0073]
 
 ## Overview
 
-Some apps embed networking stacks that manage TLS independently from Apple's ATS-enforced URL Loading System. Examples include OpenSSL, BoringSSL, mbedTLS, curl, and gRPC. Since ATS doesn't apply to these libraries, any weak TLS configuration in them is not protected by ATS or `URLSession` settings.
+Some apps embed networking stacks that manage TLS independently from Apple's ATS-enforced URL Loading System. Examples include OpenSSL, BoringSSL, mbedTLS, curl, and gRPC. Since ATS doesn't apply to these libraries, any weak TLS configuration in them isn't protected by ATS or `URLSession` settings.
 
 Such libraries often expose their own API calls to set the minimum TLS version, maximum TLS version, cipher suite list, certificate verification mode, or custom trust store (for example, `SSL_CTX_set_min_proto_version` for OpenSSL/BoringSSL, `mbedtls_ssl_conf_min_version` for mbedTLS, or `curl_easy_setopt` for libcurl). If these settings permit TLS below 1.2, allow deprecated cipher suites, or disable certificate verification, they introduce vulnerabilities that are entirely independent of the ATS configuration.
 

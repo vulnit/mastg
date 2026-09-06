@@ -14,7 +14,7 @@ This test case checks if [ARC (Automatic Reference Counting)](../../../Document/
 
 - **Objective-C Code:** ARC can be enabled by compiling with the `-fobjc-arc` flag in Clang.
 - **Swift Code:** ARC is enabled by default.
-- **C/C++ Code:** ARC is not applicable, as it pertains specifically to Objective-C and Swift.
+- **C/C++ Code:** ARC isn't applicable, as it pertains specifically to Objective-C and Swift.
 
 When ARC is enabled, binaries will include symbols such as `objc_autorelease` or `objc_retainAutorelease`.
 

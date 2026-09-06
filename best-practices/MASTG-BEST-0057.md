@@ -14,7 +14,7 @@ Prefer `content://` URIs over `file://` URIs when processing externally supplied
 
 ## Sanitize Filenames Provided by External Components
 
-When querying a `ContentProvider` for [`OpenableColumns.DISPLAY_NAME`](https://developer.android.com/reference/android/provider/OpenableColumns#DISPLAY_NAME), sanitize the result before using it as a filename. A malicious provider can return a path-traversal sequence (such as `../lib/native.so`) that redirects writes outside the intended directory. Use [`File.getName`](https://developer.android.com/reference/java/io/File#getName()) via `File(name).name` to strip any directory components:
+When querying a `ContentProvider` for [`OpenableColumns.DISPLAY_NAME`](https://developer.android.com/reference/android/provider/OpenableColumns#DISPLAY_NAME), sanitize the result before using it as a file name. A malicious provider can return a path-traversal sequence (such as `../lib/native.so`) that redirects writes outside the intended directory. Use [`File.getName`](https://developer.android.com/reference/java/io/File#getName()) via `File(name).name` to strip any directory components:
 
 ```kotlin
 fun sanitizeFileName(name: String): String {
@@ -27,7 +27,7 @@ val safeName = sanitizeFileName(rawName)
 
 ## Sanitize Externally Provided Paths Before File Operations
 
-Avoid using paths or filenames received from an intent to construct an output location directly. A malicious responder could supply an absolute path (such as `/sdcard/evil.apk`) that writes to an unintended location. Always anchor the output to a directory you control, such as `filesDir` or `cacheDir`, and append only a sanitized filename:
+Avoid using paths or filenames received from an intent to construct an output location directly. A malicious responder could supply an absolute path (such as `/sdcard/evil.apk`) that writes to an unintended location. Always anchor the output to a directory you control, such as `filesDir` or `cacheDir`, and append only a sanitized file name:
 
 ```kotlin
 // Avoid: output path comes from intent data

@@ -48,7 +48,7 @@ android {
 }
 ```
 
-The file `proguard-rules.pro` is where you define custom @MASTG-TOOL-0022 rules. With the flag `-keep` you can keep certain code that is not being removed by R8, which might otherwise produce errors. For example:
+The file `proguard-rules.pro` is where you define custom @MASTG-TOOL-0022 rules. With the flag `-keep` you can keep certain code that isn't being removed by R8, which might otherwise produce errors. For example:
 
 ```pro
 -keep class com.example.api.PublicApi { *; }
@@ -91,7 +91,7 @@ val loader = InMemoryDexClassLoader(dexBuffer, classLoader)
 val entry = loader.loadClass("com.example.protected.Entry")
 ```
 
-Use @MASTG-TOOL-0009 with @MASTG-TECH-0165 to identify known compilers, obfuscators, and packers in APKs. The absence of a known signature does not prove that dynamic loading or custom packing is not present.
+Use @MASTG-TOOL-0009 with @MASTG-TECH-0165 to identify known compilers, obfuscators, and packers in APKs. The absence of a known signature doesn't prove that dynamic loading or custom packing isn't present.
 
 ### Reflection and Indirect Invocation
 
@@ -117,13 +117,13 @@ The following example shows how control-flow obfuscation can be configured with 
 
 ### Dead Code Injection
 
-Dead code injection adds code paths, methods, branches, or classes that do not contribute to the program's final behavior. This increases the amount of code that appears relevant during reverse engineering and makes static analysis outputs noisier.
+Dead code injection adds code paths, methods, branches, or classes that don't contribute to the program's final behavior. This increases the amount of code that appears relevant during reverse engineering and makes static analysis outputs noisier.
 
-This technique is different from control flow obfuscation. Control flow obfuscation mainly restructures real logic, while dead code injection adds extra logic that is not required for the program's intended result.
+This technique is different from control flow obfuscation. Control flow obfuscation mainly restructures real logic, while dead code injection adds extra logic that isn't required for the program's intended result.
 
 ### Resource and Asset Encryption
 
-Obfuscation in Android apps is not limited to executable code. Apps can also encode or encrypt files stored in `assets/`, `res/raw/`, or other packaged resources so that their content is not directly visible after extracting the APK.
+Obfuscation in Android apps isn't limited to executable code. Apps can also encode or encrypt files stored in `assets/`, `res/raw/`, or other packaged resources so that their content isn't directly visible after extracting the APK.
 
 These resources may contain configuration data, scripts, model files, web assets, or auxiliary data consumed by the Java or Kotlin layer at runtime. The app then includes logic to decode or decrypt the resource before using it.
 
@@ -135,7 +135,7 @@ val cleartext = cipher.doFinal(encrypted)
 val rules = JSONObject(cleartext.decodeToString())
 ```
 
-This protects against direct resource extraction from the APK, but it does not prevent recovery of the decrypted data or decryption material during runtime analysis.
+This protects against direct resource extraction from the APK, but it doesn't prevent recovery of the decrypted data or decryption material during runtime analysis.
 
 ## Native Layer
 

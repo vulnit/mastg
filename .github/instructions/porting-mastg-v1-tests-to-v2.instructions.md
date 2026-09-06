@@ -5,7 +5,7 @@ applyTo: 'tests*/**/*.md'
 
 ## Before you start
 
-This document focuses on the porting workflow. For how to write v2 tests (front matter fields, required sections, styles), see `mastg-test.instructions.md`. Do not duplicate that guidance here—follow it when drafting the ported test.
+This document focuses on the porting workflow. For how to write v2 tests (front matter fields, required sections, styles), see `mastg-test.instructions.md`. Don't duplicate that guidance here—follow it when drafting the ported test.
 
 Check some of the current tests and take them as a reference.
 
@@ -74,7 +74,7 @@ Use the MASTG-KNOW articles first and **extend** with Android/Apple docs.
 Map to MASWE. You can check the new MASWE by searching for the old test ID in the **weaknesses/** directory, for example, MASTG-TEST-0017.
 
 1. Create a branch for the ticket: `port-MASTG-TEST-0017` (adjust ID).
-2. Place files correctly: If the relevant `MASVS-*` folder does not exist yet under `tests-beta/<platform>/`, create it.
+2. Place files correctly: If the relevant `MASVS-*` folder doesn't exist yet under `tests-beta/<platform>/`, create it.
 3. Name the new file using the decimal ID (for example, `MASTG-TEST-0233.md`).
 4. Decide scope changes: One v1 test may become one or multiple v2 tests (or be merged). Capture only what is testable and actionable; move general theory elsewhere (see below).
 5. Gather references: Search for references in `Document/`, `techniques/`, `tools/`, and `knowledge/`.
@@ -87,7 +87,7 @@ Map to MASWE. You can check the new MASWE by searching for the old test ID in th
 9. Link mitigations: Ensure there is a clear mitigation in best practices; add the reference in front matter (field defined in `mastg-test.instructions.md`).
 10. Trim non-essential parts: If parts of the v1 test aren't relevant, remove them and note it in the ticket.
 
-    **Example:** In MASTG-TEST-0017, what's written in dynamic analysis does not make sense: why should we validate that `setUserAuthenticationValidityDurationSeconds` is for real (we are not testing if Android features work; we assume they do). Perhaps we could also employ dynamic analysis, but using a different approach.
+    **Example:** In MASTG-TEST-0017, what's written in dynamic analysis doesn't make sense: why should we validate that `setUserAuthenticationValidityDurationSeconds` is for real (we aren't testing if Android features work; we assume they do). Perhaps we could also employ dynamic analysis, but using a different approach.
 
 11. Fill missing links to docs and developer references as needed.
 
@@ -97,7 +97,7 @@ Map to MASWE. You can check the new MASWE by searching for the old test ID in th
 
 V1 tests often include techniques, tools, and theory/knowledge. Move that to the right place (or create it) and reference it (for example, @MASTG-TECH-0002, @MASTG-KNOW-0011, @MASTG-TOOL-0097). In the test body, use `@` prefixes; in YAML front matter, use bare IDs without `@`. For exact field names and section structure, see `mastg-test.instructions.md`.
 
-Theory must always be linked to the @MASTG-KNOW-xxxx components. If the theory is not covered yet, create a new knowledge page. If it's a general concept, it may still belong in the Document chapter under 0x04.
+Theory must always be linked to the @MASTG-KNOW-xxxx components. If the theory isn't covered yet, create a new knowledge page. If it's a general concept, it may still belong in the Document chapter under 0x04.
 
 Review existing content and **UPDATE** it. Especially references to Android/iOS versions and things you know have changed since the text was written.
 
@@ -121,7 +121,7 @@ If the test isn't covered in MASVS v2, enter the reason why.
 
 If you don't know, open a ticket "Add Deprecation Note for MASTG-TEST-00xx".
 
-Before deprecating a v1 test, list every distinct testable behavior, mitigation, and knowledge item in the original page. Map each item to a v2 TEST, BEST, KNOW, or TECH, or to a tracked issue with a reason. Do not close the port issue while any testable behavior remains unmapped.
+Before deprecating a v1 test, list every distinct testable behavior, mitigation, and knowledge item in the original page. Map each item to a v2 TEST, BEST, KNOW, or TECH, or to a tracked issue with a reason. Don't close the port issue while any testable behavior remains unmapped.
 
 ### Threat-based alignment
 
@@ -168,7 +168,7 @@ List of apps to get ideas from, as inspiration. You may include "inspired by" to
 
 **For Android:** We have agreed on supporting the **current version \- 5**. This yields an average adoption rate of roughly 90%. See [https://apilevels.com/](https://apilevels.com/)
 
-If a test is no longer applicable for specific OS versions, add an applicability note so testers can discard it when it is not relevant.
+If a test is no longer applicable for specific OS versions, add an applicability note so testers can discard it when it isn't relevant.
 
 Avoid creating demos for unsupported versions.
 

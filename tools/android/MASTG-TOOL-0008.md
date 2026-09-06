@@ -7,4 +7,4 @@ covered_by: [MASTG-TOOL-0020, MASTG-TOOL-0025, MASTG-TOOL-0029, MASTG-TOOL-0140]
 source: https://github.com/iSECPartners/Android-SSL-TrustKiller
 ---
 
-Android-SSL-TrustKiller is a Cydia Substrate Module acting as a blackbox tool to bypass SSL certificate pinning for most applications running on a device.
+Android-SSL-TrustKiller is a Cydia Substrate Module acting as a black box tool to bypass SSL certificate pinning for most applications running on a device.

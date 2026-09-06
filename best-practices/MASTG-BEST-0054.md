@@ -37,4 +37,4 @@ Without sanitization, an attacker can craft URLs with malicious parameter values
 - **Script injection**: a parameter like `q=<script>alert(1)</script>` can execute arbitrary JavaScript if rendered in a [`WKWebView`](https://developer.apple.com/documentation/webkit/wkwebview). See @MASTG-BEST-0034 for WebView input validation guidance.
 - **Command or query injection**: parameter values interpolated into shell commands, SQL queries, or predicate strings can alter their logic. Use parameterized queries and avoid string interpolation for constructing commands.
 
-Use allowlists for expected values when the set of valid inputs is known. Reject any value that does not match rather than attempting to strip or escape individual characters.
+Use allowlists for expected values when the set of valid inputs is known. Reject any value that doesn't match rather than attempting to strip or escape individual characters.

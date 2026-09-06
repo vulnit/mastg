@@ -17,7 +17,7 @@ The first step is to obtain and extract the IPA file as described in @MASTG-TECH
 
 ## Patching Example: Making an App Debuggable
 
-By default, apps available on the Apple App Store are not debuggable. To debug an iOS application, it must have the `get-task-allow` entitlement enabled. This entitlement allows other processes (like a debugger) to attach to the app. Xcode doesn't add the `get-task-allow` entitlement in a distribution provisioning profile; it is only included in development provisioning profiles.
+By default, apps available on the Apple App Store aren't debuggable. To debug an iOS application, it must have the `get-task-allow` entitlement enabled. This entitlement allows other processes (like a debugger) to attach to the app. Xcode doesn't add the `get-task-allow` entitlement in a distribution provisioning profile; it is only included in development provisioning profiles.
 
 When reverse engineering apps, you'll often only have access to the release build. Release builds aren't meant to be debugged. Although this is a security feature, being able to attach a debugger and inspect the runtime state of a program makes understanding the program significantly easier.
 
@@ -45,7 +45,7 @@ Ensure **No get-task-allow** is unticked. If you leave it checked, debugging wil
     codesign -d --entitlements - "extracted_app/Payload/TargetApp.app/TargetApp"
     ```
 
-    For release builds from the App Store, you will typically see that `get-task-allow` is either missing or set to `false`.
+    For release builds from the App Store, you'll typically see that `get-task-allow` is either missing or set to `false`.
 
 4. **Re-sign the app**: Use your development provisioning profile to re-sign the app. The provisioning profile contains the `get-task-allow` entitlement. Follow the signing instructions in @MASTG-TECH-0092 to complete this step.
 

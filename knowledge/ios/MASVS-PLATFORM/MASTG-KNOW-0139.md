@@ -12,7 +12,7 @@ available_since: 14
 Three types of content worlds are available:
 
 - **`.page`**: the JavaScript environment of the loaded web page. Scripts and handlers registered here share scope with the page's own JavaScript.
-- **`.defaultClient`**: a pre-defined isolated world separate from the page. Variables and functions declared here are not visible to page JavaScript and do not conflict with the page's globals.
+- **`.defaultClient`**: a pre-defined isolated world separate from the page. Variables and functions declared here aren't visible to page JavaScript and don't conflict with the page's globals.
 - **Custom worlds**: created with [`WKContentWorld.world(withName:)`](https://developer.apple.com/documentation/webkit/wkcontentworld/world(withname:)). Multiple named worlds can coexist, each fully isolated from the others and from the page.
 
 ## Isolation Boundaries
@@ -21,8 +21,8 @@ Three types of content worlds are available:
 
 Each world maintains its own:
 
-- **Global scope**: variables and functions declared in one world do not appear in any other world's `window` or global namespace.
-- **Prototype chain**: built-in prototypes such as `Array.prototype`, `Object.prototype`, and `Function.prototype` are independent copies per world. Modifications to a prototype in one world (for example, adding or overriding methods) do not affect the same prototype in any other world.
+- **Global scope**: variables and functions declared in one world don't appear in any other world's `window` or global namespace.
+- **Prototype chain**: built-in prototypes such as `Array.prototype`, `Object.prototype`, and `Function.prototype` are independent copies per world. Modifications to a prototype in one world (for example, adding or overriding methods) don't affect the same prototype in any other world.
 
 ### What is shared
 

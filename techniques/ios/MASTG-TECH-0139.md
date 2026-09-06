@@ -17,7 +17,7 @@ if #available(iOS 16.4, *) {
 }
 ```
 
-Apps installed from the App Store can still be inspected if the app enables `WKWebView.isInspectable = true`. On jailbroken devices, you can use @MASTG-TOOL-0137, to force enable WebView inspection for apps that do not opt in themselves. After installing it, Safari Web Inspector can attach to `WKWebView` (@MASTG-KNOW-0076) instances in those apps.
+Apps installed from the App Store can still be inspected if the app enables `WKWebView.isInspectable = true`. On jailbroken devices, you can use @MASTG-TOOL-0137, to force enable WebView inspection for apps that don't opt in themselves. After installing it, Safari Web Inspector can attach to `WKWebView` (@MASTG-KNOW-0076) instances in those apps.
 
 To activate web inspection, follow these steps:
 

@@ -60,10 +60,10 @@ There are a couple of things worth noting:
 2. Usually the certificate would also need a password to use (decrypt) it.
 3. The certificate can be stored in the binary itself, data directory or in the Keychain.
 
-The most common and improper way of using mTLS is to store the client certificate within the application bundle and hardcode the password. This obviously does not bring much security, because all clients will share the same certificate.
+The most common and improper way of using mTLS is to store the client certificate within the application bundle and hardcode the password. This obviously doesn't bring much security, because all clients will share the same certificate.
 
 Second way of storing the certificate (and possibly password) is to use the Keychain. Upon first login, the application should download the personal certificate and store it securely in the Keychain.
 
 Sometimes applications have one certificate that is hardcoded and use it for the first login and then the personal certificate is downloaded. In this case, check if it's possible to still use the 'generic' certificate to connect to the server.
 
-Once you have extracted the certificate from the application (e.g. using Frida), add it as client certificate in Burp, and you will be able to intercept the traffic.
+Once you have extracted the certificate from the application (e.g. using Frida), add it as client certificate in Burp, and you'll be able to intercept the traffic.

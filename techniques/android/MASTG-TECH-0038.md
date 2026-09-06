@@ -6,7 +6,7 @@ platform: android
 Making small changes to the Android Manifest or bytecode is often the quickest way to fix small annoyances that prevent you from testing or reverse engineering an app. On Android, two issues in particular happen regularly:
 
 1. You can't intercept HTTPS traffic with a proxy because the app employs SSL pinning.
-2. You can't attach a debugger to the app because the `android:debuggable` flag is not set to `"true"` in the Android Manifest.
+2. You can't attach a debugger to the app because the `android:debuggable` flag isn't set to `"true"` in the Android Manifest.
 
 In most cases, both issues can be fixed by making minor changes to the app (aka. patching) and then re-signing and repackaging it. Apps that run additional integrity checks beyond default Android code-signing are an exception. In those cases, you have to patch the additional checks as well.
 

@@ -26,4 +26,4 @@ When using the Scene lifecycle, URLs can arrive through two paths: [`scene(_:wil
 Apple only populates `sourceApplication` when the calling app belongs to the same [Apple Developer Team](https://developer.apple.com/help/account/manage-your-team/about-the-team-id/). Apps from other teams or system apps (e.g. Safari, Notes) will have `sourceApplication` set to `nil`. This means source validation is most useful for restricting URL scheme triggers to your own app suite, not for identifying arbitrary third-party callers.
 
 !!! note
-    For apps using pure SwiftUI with [`.onOpenURL`](https://developer.apple.com/documentation/swiftui/view/onopenurl(perform:)), `sourceApplication` is not available. If source validation is required, use the Scene lifecycle with `SceneDelegate` instead.
+    For apps using pure SwiftUI with [`.onOpenURL`](https://developer.apple.com/documentation/swiftui/view/onopenurl(perform:)), `sourceApplication` isn't available. If source validation is required, use the Scene lifecycle with `SceneDelegate` instead.

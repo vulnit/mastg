@@ -3,11 +3,11 @@ title: Disassembling Native Code
 platform: android
 ---
 
-Dalvik and ART both support the Java Native Interface (JNI), which defines a way for Java code to interact with native code written in C/C++. As on other Linux-based operating systems, native code is packaged (compiled) into ELF dynamic libraries (\*.so), which the Android app loads at runtime via the `System.load` method. However, instead of relying on widely used C libraries (such as glibc), Android binaries are built against a custom libc named [Bionic](https://github.com/android/platform_bionic "Bionic libc"). Bionic adds support for important Android-specific services such as system properties and logging, and it is not fully POSIX-compatible.
+Dalvik and ART both support the Java Native Interface (JNI), which defines a way for Java code to interact with native code written in C/C++. As on other Linux-based operating systems, native code is packaged (compiled) into ELF dynamic libraries (\*.so), which the Android app loads at runtime via the `System.load` method. However, instead of relying on widely used C libraries (such as glibc), Android binaries are built against a custom libc named [Bionic](https://github.com/android/platform_bionic "Bionic libc"). Bionic adds support for important Android-specific services such as system properties and logging, and it isn't fully POSIX-compatible.
 
 When reversing an Android application containing native code, we need to understand a couple of data structures related to the JNI bridge between Java and native code. From the reverse perspective, we need to be aware of two key data structures: `JavaVM` and `JNIEnv`. Both of them are pointers to pointers to function tables:
 
-- `JavaVM` provides an interface to invoke functions for creating and destroying a JavaVM. Android allows only one `JavaVM` per process and is not really relevant for our reversing purposes.
+- `JavaVM` provides an interface to invoke functions for creating and destroying a JavaVM. Android allows only one `JavaVM` per process and isn't really relevant for our reversing purposes.
 - `JNIEnv` provides access to most of the JNI functions, which are accessible at a fixed offset through the `JNIEnv` pointer. This `JNIEnv` pointer is the first parameter passed to every JNI function. We will discuss this concept again with the help of an example later in this chapter.
 
 It is worth highlighting that analyzing disassembled native code is much more challenging than analyzing disassembled Java code. When reversing the native code in an Android application, we will need a disassembler.

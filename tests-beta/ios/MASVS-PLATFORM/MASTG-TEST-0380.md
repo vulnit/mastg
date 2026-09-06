@@ -40,4 +40,4 @@ The test case fails if `evaluateJavaScript:completionHandler:` is used to assign
 
 **Further Validation Required:**
 
-Inspect each reported call site using @MASTG-TECH-0076 to confirm whether the JavaScript string assigns to a DOM element property (`innerHTML`, `textContent`, `innerText`, or `value`) and that the value assigned to the DOM property is sensitive data derived from a native source, such as a one-time password, account number, or credential, and is not a static placeholder or non-sensitive UI string.
+Inspect each reported call site using @MASTG-TECH-0076 to confirm whether the JavaScript string assigns to a DOM element property (`innerHTML`, `textContent`, `innerText`, or `value`) and that the value assigned to the DOM property is sensitive data derived from a native source, such as a one-time password, account number, or credential, and isn't a static placeholder or non-sensitive UI string.

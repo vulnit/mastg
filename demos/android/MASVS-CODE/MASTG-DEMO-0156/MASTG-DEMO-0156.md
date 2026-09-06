@@ -8,7 +8,7 @@ test: MASTG-TEST-0399
 
 ## Sample
 
-The following sample explicitly enables SafeBrowsing for WebViews in the AndroidManifest.xml by setting the `android.webkit.WebView.EnableSafeBrowsing` meta-data to `true`. However, in the WebView code, SafeBrowsing is disabled via `WebSettings.setSafeBrowsingEnabled(false)`, which takes precedence over the manifest setting. This demonstrates that the manifest setting alone is not sufficient to determine whether SafeBrowsing is enabled.
+The following sample explicitly enables SafeBrowsing for WebViews in the AndroidManifest.xml by setting the `android.webkit.WebView.EnableSafeBrowsing` meta-data to `true`. However, in the WebView code, SafeBrowsing is disabled via `WebSettings.setSafeBrowsingEnabled(false)`, which takes precedence over the manifest setting. This demonstrates that the manifest setting alone isn't sufficient to determine whether SafeBrowsing is enabled.
 
 {{ AndroidManifest.xml # AndroidManifest_reversed.xml # MastgTestWebView.kt # MastgTestWebView_reversed.java }}
 

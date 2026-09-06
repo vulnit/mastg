@@ -13,12 +13,12 @@ Dalvik and ART support the JDWP, a protocol for communication between the debugg
 
 A JDWP debugger allows you to step through Java code, set breakpoints on Java methods, and inspect and modify local and instance variables. You'll use a JDWP debugger most of the time you debug "normal" Android apps (i.e., apps that don't make many calls to native libraries).
 
-If the app is not marked as debuggable, you can patch the manifest as shown in "Patching Example: Making an App Debuggable" in @MASTG-TECH-0038. However, re-signing is invasive and can cause instability or trigger app integrity checks. You can also enable debugging without re-signing:
+If the app isn't marked as debuggable, you can patch the manifest as shown in "Patching Example: Making an App Debuggable" in @MASTG-TECH-0038. However, re-signing is invasive and can cause instability or trigger app integrity checks. You can also enable debugging without re-signing:
 
 - Hook Android framework checks so the app appears debuggable. A framework such as @MASTG-TOOL-0149 can hook checks of the `FLAG_DEBUGGABLE` flag in `ApplicationInfo`. You can use a module such as @MASTG-TOOL-0151 to toggle the debuggable state so JDWP can attach. This approach requires root and a hooking framework, and apps may detect it.
 - Enable system-wide app debugging by changing system properties. On a rooted device in a privileged ADB shell, run `resetprop ro.debuggable 1`. If this causes instability, you can temporarily set SELinux to permissive with `setenforce 0`. This approach is noisy and easy for apps to detect.
 
-In the following section, we'll show how to solve the @MASTG-APP-0003 with @MASTG-TOOL-0019 alone. Note that this is not an _efficient_ way to solve this crackme. You can do it faster with @MASTG-TOOL-0001 and other methods, which we'll introduce later in the guide. This, however, serves as an introduction to the capabilities of the Java debugger.
+In the following section, we'll show how to solve the @MASTG-APP-0003 with @MASTG-TOOL-0019 alone. Note that this isn't an _efficient_ way to solve this crackme. You can do it faster with @MASTG-TOOL-0001 and other methods, which we'll introduce later in the guide. This, however, serves as an introduction to the capabilities of the Java debugger.
 
 ## Debugging with @MASTG-TOOL-0019
 
@@ -45,7 +45,7 @@ Initializing jdb ...
 >
 ```
 
-You're now attached to the suspended process and ready to go ahead with the debugger commands. Entering `?` prints the complete list of commands. Unfortunately, the Android VM doesn't support all available JDWP features. For example, the `redefine` command, which would let you redefine a class code, is not supported. Another important restriction is that line breakpoints won't work because the release bytecode doesn't contain line information. Method breakpoints do work, however. Useful working commands include:
+You're now attached to the suspended process and ready to go ahead with the debugger commands. Entering `?` prints the complete list of commands. Unfortunately, the Android VM doesn't support all available JDWP features. For example, the `redefine` command, which would let you redefine a class code, isn't supported. Another important restriction is that line breakpoints won't work because the release bytecode doesn't contain line information. Method breakpoints do work, however. Useful working commands include:
 
 - classes: list all loaded classes
 - class/methods/fields _class id_: Print details about a class and list its methods and fields

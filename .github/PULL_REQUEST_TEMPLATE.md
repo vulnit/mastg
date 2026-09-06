@@ -10,7 +10,7 @@ Briefly describe what changed and why. Reference the related issue where applica
 
 Check exactly one option.
 
-- [ ] This contribution does not include AI-generated content.
+- [ ] This contribution doesn't include AI-generated content.
 - [ ] This contribution includes AI-generated content.
 
 If AI tools were used to generate or substantially modify code or text, complete the following.
@@ -34,7 +34,7 @@ Undisclosed use of AI tools will result in the PR being closed. Large rewrites o
 - [ ] I have read and understood the contributing guidelines.
 - [ ] I followed the project style guide.
 - [ ] I validated the technical correctness of my changes and understand the topic.
-- [ ] This PR adds clear value and is not spam or low-effort content.
+- [ ] This PR adds clear value and isn't spam or low-effort content.
 
 Relevant documentation.
 
@@ -43,4 +43,4 @@ Relevant documentation.
 - [Porting MASTG v1 Tests to v2](https://github.com/OWASP/mastg/blob/master/.github/instructions/porting-mastg-v1-tests-to-v2.instructions.md)
 - [Instructions for new MASTG components](https://github.com/OWASP/mastg/tree/master/.github/instructions)
 
-Contributors are expected to understand basic git and GitHub workflows, including forks, branches, commits, and pull requests. The project does not provide training. Pull requests that do not meet these minimum requirements may be closed without review.
+Contributors are expected to understand basic git and GitHub workflows, including forks, branches, commits, and pull requests. The project doesn't provide training. Pull requests that don't meet these minimum requirements may be closed without review.

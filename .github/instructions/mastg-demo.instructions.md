@@ -473,7 +473,7 @@ Example: frida-trace
 
 `frida-trace -U -f org.owasp.mastestapp --runtime=v8 -j '*!*certificate*/isu' > output.txt`
 
-Example: frida (use only when frooky is not enough, see [Frida reference](../../.agents/skills/mastg-demo-tooling/references/frida.md))
+Example: frida (use only when frooky isn't enough, see [Frida reference](../../.agents/skills/mastg-demo-tooling/references/frida.md))
 
 `frida -U org.owasp.mastestapp -l hook_edittext.js > output.txt`
 

@@ -39,4 +39,4 @@ TextField("Username", text: $username)
 
 Controls that adopt `UITextInputTraits` may also expose `isSecureTextEntry`, though masking is rarely appropriate for multi-line text views.
 
-Custom input controls that bypass `UITextField` or `SecureField` entirely, for example, those implemented in game engines or cross-platform UI frameworks, do not inherit these masking mechanisms and must implement their own.
+Custom input controls that bypass `UITextField` or `SecureField` entirely, for example, those implemented in game engines or cross-platform UI frameworks, don't inherit these masking mechanisms and must implement their own.

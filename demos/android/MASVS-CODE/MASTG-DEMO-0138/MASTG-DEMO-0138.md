@@ -38,4 +38,4 @@ The output shows one `Intent` dispatch with extras:
 
 The test case fails because the app attaches sensitive extras (`user_id` and `session_token`) to an implicit intent and dispatches it without constraining the recipient.
 
-The reported dispatch does not name a target package or component and does not verify the selected handler's identity before dispatch. The reported block does not show a target-defining call such as `setPackage`, `setClass`, `setClassName`, `setComponent`, or an explicit `Intent(context, Class)` constructor. Any app that declares a matching `<intent-filter>` for `org.owasp.mastestapp.INTERNAL_ACTION` can become a candidate and receive the full extras `Bundle`.
+The reported dispatch doesn't name a target package or component and doesn't verify the selected handler's identity before dispatch. The reported block doesn't show a target-defining call such as `setPackage`, `setClass`, `setClassName`, `setComponent`, or an explicit `Intent(context, Class)` constructor. Any app that declares a matching `<intent-filter>` for `org.owasp.mastestapp.INTERNAL_ACTION` can become a candidate and receive the full extras `Bundle`.

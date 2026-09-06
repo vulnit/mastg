@@ -44,6 +44,6 @@ override fun onReceive(context: Context, intent: Intent) {
 }
 ```
 
-`VaultActivity` does not protect the underlying exported broadcast receiver. Access control must be enforced at the `PasswordResetReceiver` boundary.
+`VaultActivity` doesn't protect the underlying exported broadcast receiver. Access control must be enforced at the `PasswordResetReceiver` boundary.
 
-The output also lists `androidx.profileinstaller.ProfileInstallReceiver`. This receiver is added by the AndroidX Profile Installer library and, although exported, is protected by `android:permission="android.permission.DUMP"`, a signature/privileged permission that ordinary apps can't hold. It is development tooling and is not reported as vulnerable in this test case.
+The output also lists `androidx.profileinstaller.ProfileInstallReceiver`. This receiver is added by the AndroidX Profile Installer library and, although exported, is protected by `android:permission="android.permission.DUMP"`, a signature/privileged permission that ordinary apps can't hold. It is development tooling and isn't reported as vulnerable in this test case.

@@ -30,7 +30,7 @@ The output should contain whether the app implements `application:shouldAllowExt
 
 ## Evaluation
 
-The test case fails if the app handles sensitive data entered through the keyboard and does not reject the custom keyboard extension point app-wide, that is, it does not implement `application:shouldAllowExtensionPointIdentifier:` or returns `true` for the keyboard extension point.
+The test case fails if the app handles sensitive data entered through the keyboard and doesn't reject the custom keyboard extension point app-wide, that is, it doesn't implement `application:shouldAllowExtensionPointIdentifier:` or returns `true` for the keyboard extension point.
 
 **Further Validation Required:**
 

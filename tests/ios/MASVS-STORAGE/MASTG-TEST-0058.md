@@ -74,13 +74,13 @@ func excludeFileFromBackup(filePath: URL) -> Result<Bool, ExcludeFileError> {
 
 ## Dynamic Analysis
 
-In order to test the backup, you obviously need to create one first. The most common way to create a backup of an iOS device is by using iTunes, which is available for Windows, Linux and of course macOS (till macOS Mojave). When creating a backup via iTunes you can always only backup the whole device and not select just a single app. Make sure that the option "Encrypt local backup" in iTunes is not set, so that the backup is stored in cleartext on your hard drive.
+In order to test the backup, you obviously need to create one first. The most common way to create a backup of an iOS device is by using iTunes, which is available for Windows, Linux and of course macOS (till macOS Mojave). When creating a backup via iTunes you can always only backup the whole device and not select just a single app. Make sure that the option "Encrypt local backup" in iTunes isn't set, so that the backup is stored in cleartext on your hard drive.
 
 > iTunes is not available anymore from macOS Catalina onwards. Managing of an iOS device, including updates, backup and restore has been moved to the Finder app. The approach remains the same, as described above.
 
 After the iOS device has been backed up, you need to retrieve the file path of the backup, which are different locations on each OS. The official Apple documentation will help you to [locate backups of your iPhone, iPad, and iPod touch](https://support.apple.com/en-us/HT204215 "Locate backups of your iPhone, iPad, and iPod touch").
 
-When you want to navigate to the backup folder up to High Sierra you can easily do so. Starting with macOS Mojave you will get the following error (even as root):
+When you want to navigate to the backup folder up to High Sierra you can easily do so. Starting with macOS Mojave you'll get the following error (even as root):
 
 ```bash
 $ pwd
@@ -89,11 +89,11 @@ $ ls -alh MobileSync
 ls: MobileSync: Operation not permitted
 ```
 
-This is not a permission issue of the backup folder, but a new feature in macOS Mojave. You can solve this problem by granting full disk access to your terminal application by following the explanation on [OSXDaily](http://osxdaily.com/2018/10/09/fix-operation-not-permitted-terminal-error-macos/ "Fix Terminal -Operation not permitted- Error in MacOS Mojave").
+This isn't a permission issue of the backup folder, but a new feature in macOS Mojave. You can solve this problem by granting full disk access to your terminal application by following the explanation on [OSXDaily](http://osxdaily.com/2018/10/09/fix-operation-not-permitted-terminal-error-macos/ "Fix Terminal -Operation not permitted- Error in macOS Mojave").
 
 Before you can access the directory you need to select the folder with the UDID of your device. Check the section ["Obtaining the UDID of an iOS device"](../../../Document/0x06b-iOS-Security-Testing.md#obtaining-the-udid-of-an-ios-device) on how to retrieve it.
 
-Once you know the UDID you can navigate into this directory and you will find the full backup of the whole device, which does include pictures, app data and whatever might have been stored on the device.
+Once you know the UDID you can navigate into this directory and you'll find the full backup of the whole device, which does include pictures, app data and whatever might have been stored on the device.
 
 Review the data that's in the backed up files and folders. The structure of the directories and file names is obfuscated and will look like this:
 
@@ -106,9 +106,9 @@ $ ls | head -n 3
 000200a644d7d2c56eec5b89c1921dacbec83c3e
 ```
 
-Therefore, it's not straightforward to navigate through it and you will not find any hints of the app you want to analyze in the directory or file name. You can consider using the [iMazing](https://imazing.com "iMazing") shareware utility to assist here. Perform a device backup with iMazing and use its built-in backup explorer to easily analyze app container contents including original paths and file names.
+Therefore, it's not straightforward to navigate through it and you won't find any hints of the app you want to analyze in the directory or file name. You can consider using the [iMazing](https://imazing.com "iMazing") shareware utility to assist here. Perform a device backup with iMazing and use its built-in backup explorer to easily analyze app container contents including original paths and file names.
 
-Without iMazing or similar software you may need to resort to using grep to identify sensitive data. This is not the most thorough approach but you can try searching for sensitive data that you have keyed in while using the app before you made the backup. For example: the username, password, credit card data, PII or any data that is considered sensitive in the context of the app.
+Without iMazing or similar software you may need to resort to using grep to identify sensitive data. This isn't the most thorough approach but you can try searching for sensitive data that you have keyed in while using the app before you made the backup. For example: the username, password, credit card data, PII or any data that is considered sensitive in the context of the app.
 
 ```bash
 ~/Library/Application Support/MobileSync/Backup/<UDID>
@@ -138,7 +138,7 @@ You can also use the tool @MASTG-TOOL-0053 to easily read and extract files from
 
 ### Proof of Concept: Removing UI Lock with Tampered Backup
 
-As discussed earlier, sensitive data is not limited to just user data and PII. It can also be configuration or settings files that affect app behavior, restrict functionality, or enable security controls. If you take a look at the open source bitcoin wallet app, [Bither](https://github.com/bither/bither-ios "Bither for iOS"), you'll see that it's possible to configure a PIN to lock the UI. And after a few easy steps, you will see how to bypass this UI lock with a modified backup on a non-jailbroken device.
+As discussed earlier, sensitive data isn't limited to just user data and PII. It can also be configuration or settings files that affect app behavior, restrict functionality, or enable security controls. If you take a look at the open source bitcoin wallet app, [Bither](https://github.com/bither/bither-ios "Bither for iOS"), you'll see that it's possible to configure a PIN to lock the UI. And after a few easy steps, you'll see how to bypass this UI lock with a modified backup on a non-jailbroken device.
 
 <img src="Images/Chapters/0x06d/bither_demo_enable_pin.png" width="300px" />
 <img src="Images/Chapters/0x06d/bither_demo_pin_screen.png" width="300px" />

@@ -9,7 +9,7 @@ kind: fail
 
 ## Sample
 
-The code sample uses `NWProtocolTLS.Options` with `sec_protocol_options_set_min_tls_protocol_version` to set the minimum TLS version to TLS 1.0 for a Network.framework connection. It also sets the maximum TLS version to TLS 1.0, constraining the connection to TLS 1.0 only. Because ATS doesn't apply to Network.framework, this configuration is not mitigated by any ATS policy and the connection will succeed against a TLS 1.0 server.
+The code sample uses `NWProtocolTLS.Options` with `sec_protocol_options_set_min_tls_protocol_version` to set the minimum TLS version to TLS 1.0 for a Network.framework connection. It also sets the maximum TLS version to TLS 1.0, constraining the connection to TLS 1.0 only. Because ATS doesn't apply to Network.framework, this configuration isn't mitigated by any ATS policy and the connection will succeed against a TLS 1.0 server.
 
 {{ MastgTest.swift }}
 
@@ -63,4 +63,4 @@ sec_protocol_options_set_min_tls_protocol_version(tlsOptions.securityProtocolOpt
 sec_protocol_options_set_max_tls_protocol_version(tlsOptions.securityProtocolOptions, .TLSv10)
 ```
 
-This pins the connection to TLS 1.0 only. Because Network.framework operates entirely outside of ATS, this configuration is not subject to any ATS enforcement and the connection will succeed against a TLS 1.0 server.
+This pins the connection to TLS 1.0 only. Because Network.framework operates entirely outside of ATS, this configuration isn't subject to any ATS enforcement and the connection will succeed against a TLS 1.0 server.

@@ -5,13 +5,13 @@ id: MASTG-BEST-0049
 platform: android
 ---
 
-Content Providers are not inherently unsafe, but database-backed and file-backed providers can expose sensitive data if they are exported, have weak permissions, or grant access through overly broad URI scopes.
+Content Providers aren't inherently unsafe, but database-backed and file-backed providers can expose sensitive data if they are exported, have weak permissions, or grant access through overly broad URI scopes.
 
 To reduce data exposure and follow the least-privilege security principle, apply the below techniques:
 
 ## Keep Content Providers Non-Exported
 
-If a provider is only used within the app, set [`android:exported="false"`](https://developer.android.com/guide/topics/manifest/provider-element#exported) explicitly. Although providers are not exported by default since API level 17, explicit configuration is easier to audit and safer for mixed/legacy codebases.
+If a provider is only used within the app, set [`android:exported="false"`](https://developer.android.com/guide/topics/manifest/provider-element#exported) explicitly. Although providers aren't exported by default since API level 17, explicit configuration is easier to audit and safer for mixed/legacy codebases.
 
 ```xml
 <provider
@@ -20,7 +20,7 @@ If a provider is only used within the app, set [`android:exported="false"`](http
     android:exported="false" />
 ```
 
-As a result, apps on the device are not able to query the provider at all.
+As a result, apps on the device aren't able to query the provider at all.
 
 ## Permissions on Exported Content Providers
 
@@ -85,7 +85,7 @@ Pick the narrowest path that satisfies the use case. For example, if only PDF re
 </paths>
 ```
 
-Files outside the declared subtrees (such as `filesDir/session_token.txt`) cannot be addressed through the provider.
+Files outside the declared subtrees (such as `filesDir/session_token.txt`) can't be addressed through the provider.
 
 ### Configure the FileProvider in the Manifest
 
@@ -105,7 +105,7 @@ Keep the provider non-exported and enable per-URI grants. The `android:grantUriP
 
 ### Share Files via URIs with Temporary Grants
 
-Use [`FileProvider.getUriForFile()`](https://developer.android.com/reference/androidx/core/content/FileProvider#getUriForFile(android.content.Context,%20java.lang.String,%20java.io.File)) to obtain a `content://` URI for a file inside one of the declared subtrees, then attach [`FLAG_GRANT_READ_URI_PERMISSION`](https://developer.android.com/reference/android/content/Intent#FLAG_GRANT_READ_URI_PERMISSION) to the `Intent` that hands the URI to the receiving app. Requests for files outside the declared paths throw `IllegalArgumentException`. The grant is scoped to that single URI, the receiving app does not need to declare any manifest permission, and the grant expires when the receiving task ends.
+Use [`FileProvider.getUriForFile()`](https://developer.android.com/reference/androidx/core/content/FileProvider#getUriForFile(android.content.Context,%20java.lang.String,%20java.io.File)) to obtain a `content://` URI for a file inside one of the declared subtrees, then attach [`FLAG_GRANT_READ_URI_PERMISSION`](https://developer.android.com/reference/android/content/Intent#FLAG_GRANT_READ_URI_PERMISSION) to the `Intent` that hands the URI to the receiving app. Requests for files outside the declared paths throw `IllegalArgumentException`. The grant is scoped to that single URI, the receiving app doesn't need to declare any manifest permission, and the grant expires when the receiving task ends.
 
 ```kotlin
 val report = File(context.filesDir, "reports/lab_result_3829.pdf")
@@ -125,4 +125,4 @@ startActivity(intent)
 For sensitive workflows, minimize each grant to the required access mode (read vs. write), and revoke explicit grants with [`Context.revokeUriPermission()`](https://developer.android.com/reference/android/content/Context#revokeUriPermission(android.net.Uri,%20int)) once they are no longer needed.
 
 !!! warning "Avoid `<root-path>` and `path=\".\"` declarations"
-    `<root-path>` maps the provider root to `/` and can make any app-accessible file reachable through the provider if the app grants such a URI. It does not bypass Android/Linux file permissions, but it is still too broad for secure sharing. Setting `path="."` on any path element exposes the entire corresponding directory, including files added later such as authentication tokens, databases, or logs. Always declare a specific subdirectory.
+    `<root-path>` maps the provider root to `/` and can make any app-accessible file reachable through the provider if the app grants such a URI. It doesn't bypass Android/Linux file permissions, but it is still too broad for secure sharing. Setting `path="."` on any path element exposes the entire corresponding directory, including files added later such as authentication tokens, databases, or logs. Always declare a specific subdirectory.

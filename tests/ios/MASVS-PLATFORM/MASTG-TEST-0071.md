@@ -28,7 +28,7 @@ When testing `UIActivity` Sharing you should pay special attention to:
 
 Data sharing via `UIActivity` works by creating a `UIActivityViewController` and passing it the desired items (URLs, text, a picture) on [`init(activityItems: applicationActivities:)`](https://developer.apple.com/documentation/uikit/uiactivityviewcontroller/1622019-init "UIActivityViewController init(activityItems:applicationActivities:)").
 
-As we mentioned before, it is possible to exclude some of the sharing mechanisms via the controller's [`excludedActivityTypes` property](https://developer.apple.com/documentation/uikit/uiactivityviewcontroller/1622009-excludedactivitytypes "UIActivityViewController excludedActivityTypes"). It is highly recommended to do the tests using the latest versions of iOS as the number of activity types that can be excluded can increase. The developers have to be aware of this and **explicitly exclude** the ones that are not appropriate for the app data. Some activity types might not be even documented like "Create Watch Face".
+As we mentioned before, it is possible to exclude some of the sharing mechanisms via the controller's [`excludedActivityTypes` property](https://developer.apple.com/documentation/uikit/uiactivityviewcontroller/1622009-excludedactivitytypes "UIActivityViewController excludedActivityTypes"). It is highly recommended to do the tests using the latest versions of iOS as the number of activity types that can be excluded can increase. The developers have to be aware of this and **explicitly exclude** the ones that aren't appropriate for the app data. Some activity types might not be even documented like "Create Watch Face".
 
 If having the source code, you should take a look at the `UIActivityViewController`:
 
@@ -48,7 +48,7 @@ $ rabin2 -zq Telegram\ X.app/Telegram\ X | grep -i activityItems
 When receiving items, you should check:
 
 - if the app declares _custom document types_ by looking into Exported/Imported UTIs ("Info" tab of the Xcode project). The list of all system declared UTIs (Uniform Type Identifiers) can be found in the [archived Apple Developer Documentation](https://developer.apple.com/library/archive/documentation/Miscellaneous/Reference/UTIRef/Articles/System-DeclaredUniformTypeIdentifiers.html#//apple_ref/doc/uid/TP40009259 "System-Declared Uniform Type Identifiers").
-- if the app specifies any _document types that it can open_ by looking into Document Types ("Info" tab of the Xcode project). If present, they consist of name and one or more UTIs that represent the data type (e.g. "public.png" for PNG files). iOS uses this to determine if the app is eligible to open a given document (specifying Exported/Imported UTIs is not enough).
+- if the app specifies any _document types that it can open_ by looking into Document Types ("Info" tab of the Xcode project). If present, they consist of name and one or more UTIs that represent the data type (e.g. "public.png" for PNG files). iOS uses this to determine if the app is eligible to open a given document (specifying Exported/Imported UTIs isn't enough).
 - if the app properly _verifies the received data_ by looking into the implementation of [`application:openURL:options:`](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623112-application?language=objc "UIApplicationDelegate application:openURL:options:") (or its deprecated version [`UIApplicationDelegate application:openURL:sourceApplication:annotation:`](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623073-application?language=objc "UIApplicationDelegate application:openURL:sourceApplication:annotation:")) in the app delegate.
 
 If not having the source code you can still take a look into the `Info.plist` file and search for:
@@ -67,7 +67,7 @@ objection --name SomeFileManager run ios plist cat Info.plist
 !!! note
     This is the same as if we would retrieve the IPA from the phone or access it via e.g. SSH and navigate to the corresponding folder in the IPA / app sandbox. However, with objection, we are just _one command away_ from our goal, and this can still be considered static analysis.
 
-The first thing we noticed is that app does not declare any imported custom document types but we could find a couple of exported ones:
+The first thing we noticed is that app doesn't declare any imported custom document types but we could find a couple of exported ones:
 
 ```xml
 UTExportedTypeDeclarations =     (
@@ -126,7 +126,7 @@ There are three main things you can easily inspect by performing dynamic instrum
 
 - The `activityItems`: an array of the items being shared. They might be of different types, e.g. one string and one picture to be shared via a messaging app.
 - The `applicationActivities`: an array of `UIActivity` objects representing the app's custom services.
-- The `excludedActivityTypes`: an array of the Activity Types that are not supported, e.g. `postToFacebook`.
+- The `excludedActivityTypes`: an array of the Activity Types that aren't supported, e.g. `postToFacebook`.
 
 To achieve this you can do two things:
 

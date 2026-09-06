@@ -9,7 +9,7 @@ test: MASTG-TEST-0357
 
 ## Sample
 
-This demo uses the same victim app as @MASTG-DEMO-0122. The victim's `ShareReportActivity` is an exported activity that accepts a caller-supplied `file_name` parameter, calls `FileProvider.getUriForFile()` with the requested filename, and returns the resulting `content://` URI to the caller via `FLAG_GRANT_READ_URI_PERMISSION`.
+This demo uses the same victim app as @MASTG-DEMO-0122. The victim's `ShareReportActivity` is an exported activity that accepts a caller-supplied `file_name` parameter, calls `FileProvider.getUriForFile()` with the requested file name, and returns the resulting `content://` URI to the caller via `FLAG_GRANT_READ_URI_PERMISSION`.
 
 Because `file_paths.xml` declares `path="."`, the `FileProvider` will accept any file under `filesDir` — not just the intended `reports/` subdirectory. The attacker app below (`org.owasp.mastestapp.attacker.provider`) exploits this by passing `session_token.txt` as the `file_name` parameter and reading the returned URI content.
 

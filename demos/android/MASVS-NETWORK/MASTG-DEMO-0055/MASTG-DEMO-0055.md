@@ -8,7 +8,7 @@ test: MASTG-TEST-0283
 
 ## Sample
 
-This sample connects to a URL with an subject alternative name that does not match the hostname and configures a `HostnameVerifier` that allows any hostname.
+This sample connects to a URL with an subject alternative name that doesn't match the hostname and configures a `HostnameVerifier` that allows any hostname.
 
 {{ MastgTest.kt # MastgTest_reversed.java }}
 
@@ -30,7 +30,7 @@ The rule identified one instance of the use of the `HostnameVerifier` in the cod
 
 The test fails because the app uses a `HostnameVerifier` that allows any hostname.
 
-In this case, since the rule only checks for the presence of a `HostnameVerifier` and does not validate the implementation of the verifier, you need to manually validate the app's reverse-engineered code and inspect the provided code locations.
+In this case, since the rule only checks for the presence of a `HostnameVerifier` and doesn't validate the implementation of the verifier, you need to manually validate the app's reverse-engineered code and inspect the provided code locations.
 
 The rule points to MastgTest_reversed.java, where we can see the following code:
 

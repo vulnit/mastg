@@ -9,7 +9,7 @@ test: MASTG-TEST-0357
 
 ## Sample
 
-The code below sets up a `FileProvider` to share lab report PDFs with external apps (e.g., email clients or document viewers). While the provider is not directly exported (`android:exported="false"`), it enables URI grants via `android:grantUriPermissions="true"`. The `filepaths.xml` resource uses `path="."`, which exposes the entire internal `filesDir`, including sensitive files such as `session_token.txt`, to any app that receives a URI grant.
+The code below sets up a `FileProvider` to share lab report PDFs with external apps (e.g., email clients or document viewers). While the provider isn't directly exported (`android:exported="false"`), it enables URI grants via `android:grantUriPermissions="true"`. The `filepaths.xml` resource uses `path="."`, which exposes the entire internal `filesDir`, including sensitive files such as `session_token.txt`, to any app that receives a URI grant.
 
 The Android Manifest exports the activity `ShareReportActivity` that can be queried by any other app.
 
@@ -35,7 +35,7 @@ The test case fails because the `FileProvider` path configuration exposes the en
 
 The rule flags the `files-path` element in `filepaths.xml`:
 
-- `path="."` is an overly broad scope that grants URI-grant access to every file under `filesDir`, not just the intended `reports/` subdirectory. Any app that receives a URI grant from the victim's `ShareReportActivity` can request any filename — including sensitive files such as `session_token.txt`.
+- `path="."` is an overly broad scope that grants URI-grant access to every file under `filesDir`, not just the intended `reports/` subdirectory. Any app that receives a URI grant from the victim's `ShareReportActivity` can request any file name — including sensitive files such as `session_token.txt`.
 
 Additionally, `ShareReportActivity` is declared with `android:exported="true"` in the AndroidManifest, meaning any external app can send it a crafted intent with an arbitrary `file_name` extra and receive back a valid `content://` URI.
 

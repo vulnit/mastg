@@ -36,7 +36,7 @@ Regardless of which approach the app used, Android provides a way to start the b
 
 The output should explicitly show:
 
-- whether the `allowBackup` flag is set to `true` or `false`. If the flag is not specified, it is treated as `true` by default.
+- whether the `allowBackup` flag is set to `true` or `false`. If the flag isn't specified, it is treated as `true` by default.
 - whether the `fullBackupContent` and/or `dataExtractionRules` attributes are present in the `AndroidManifest.xml`.
 - the contents of the `backup_rules.xml` or `data_extraction_rules.xml` file, if present.
 

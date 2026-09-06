@@ -13,7 +13,7 @@ Scope boundaries (this is important for consistency across the project):
 - Tests (MASTG-TEST) are issue-focused: what can go wrong with that thing in apps, and how to detect it.
 - Best Practices (MASTG-BEST) are prescriptive: how to prevent or fix the issues that tests look for.
 
-Because of this separation, do not include "what can go wrong", threat scenarios, failure criteria, or remediation advice in Knowledge pages.
+Because of this separation, don't include "what can go wrong", threat scenarios, failure criteria, or remediation advice in Knowledge pages.
 
 Avoid language and structures that imply security testing or remediation, for example:
 
@@ -30,8 +30,8 @@ Locations and taxonomy:
 
 File naming and IDs:
 
-- The filename defines the knowledge ID: `MASTG-KNOW-\d{4}.md`.
-- Do not add an `id:` field to the YAML front matter.
+- The file name defines the knowledge ID: `MASTG-KNOW-\d{4}.md`.
+- Don't add an `id:` field to the YAML front matter.
 - Place the file in the platform (`android` or `ios`) and MASVS category folder that best matches the subject.
 
 When creating a new knowledge page (whether during porting or writing from scratch), use a **fake ID** starting at `MASTG-KNOW-0x01` and incrementing within the PR (e.g., `MASTG-KNOW-0x01`, `MASTG-KNOW-0x02`, `MASTG-KNOW-0x03`). This prevents conflicts between parallel pull requests.

@@ -3,7 +3,7 @@ This guide defines how to write and use mitmproxy scripts in MASTG demos. Script
 ## Scope and terminology
 
 - "mitmproxy scripts" refers to Python addons for mitmproxy/mitmdump written against the mitmproxy scripting API.
-- Tools background (installation, proxy setup, certificates) lives in @MASTG-TOOL-0097 (mitmproxy). Do not duplicate setup steps here—link to the Tools page.
+- Tools background (installation, proxy setup, certificates) lives in @MASTG-TOOL-0097 (mitmproxy). Don't duplicate setup steps here—link to the Tools page.
 - We use the command-line runner `mitmdump` in demos for reproducibility; `mitmweb` and the interactive `mitmproxy` UI are fine for exploration but not for demo automation.
 
 ## Location and naming
@@ -26,7 +26,7 @@ This guide defines how to write and use mitmproxy scripts in MASTG demos. Script
     - Implement `def request(flow: http.HTTPFlow): ...` and/or `def response(flow: http.HTTPFlow): ...` as needed.
     - Factor common logic into helpers (for example, `process_flow(flow)`).
 - Deterministic logging:
-    - Write to a known output filename (for example, `sensitive_data.log`) for Observation parsing.
+    - Write to a known output file name (for example, `sensitive_data.log`) for Observation parsing.
     - Keep the log format stable: include URL, headers summary, and text body as needed.
 - Sensitive data handling:
     - Define a clear list of sensitive strings or patterns at the top (for example, `SENSITIVE_DATA`), ideally documented in the demo explaining how they were identified (e.g., from the app's Data Safety section).

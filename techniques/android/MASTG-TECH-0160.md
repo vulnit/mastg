@@ -13,7 +13,7 @@ Extract and decode the `AndroidManifest.xml` as described in @MASTG-TECH-0117, t
 
 Declared permissions are part of the activity's access control. An exported activity protected with [`android:permission`](https://developer.android.com/guide/topics/manifest/activity-element#prmsn) can only be started by callers that hold the required permission. Review the referenced permission and its protection level to determine whether it effectively restricts access to the intended callers. See @MASTG-KNOW-0017 for permission protection levels, component permission enforcement, and custom permissions.
 
-Interpret `android:exported` together with the component's intent filters, target SDK, Android version, and associated permission. On apps targeting Android 11 or below, any activity that declares an [`<intent-filter>`](https://developer.android.com/guide/topics/manifest/intent-filter-element) and does not set `android:exported="false"` can become reachable by other apps. Apps targeting Android 12 (API level 31) or higher must explicitly declare `android:exported` on activities with intent filters, or the app fails to install.
+Interpret `android:exported` together with the component's intent filters, target SDK, Android version, and associated permission. On apps targeting Android 11 or below, any activity that declares an [`<intent-filter>`](https://developer.android.com/guide/topics/manifest/intent-filter-element) and doesn't set `android:exported="false"` can become reachable by other apps. Apps targeting Android 12 (API level 31) or higher must explicitly declare `android:exported` on activities with intent filters, or the app fails to install.
 
 For example, with the manifest extracted to standard XML, you can list each `<activity>` and `<activity-alias>` element with its element type (`activity` or `activity-alias`), `android:name` (the name of the activity or alias), `android:exported` (whether it is exported), `android:permission` (the permission required to start it), and number of intent filters:
 
@@ -42,7 +42,7 @@ adb shell dumpsys package <package_name> | awk '/^Activity Resolver Table:/{show
 adb shell cmd package query-activities --components -p <package_name> -a android.intent.action.MAIN -c android.intent.category.LAUNCHER
 ```
 
-Use `dumpsys package` to review the activity resolver table and any associated `permission` values shown by the package manager. `cmd package query-activities` is useful for triage, but it is an intent-resolution view for the supplied package, action, and category. These commands do not replace manifest inspection and do not enumerate every activity declared by the package or every associated permission.
+Use `dumpsys package` to review the activity resolver table and any associated `permission` values shown by the package manager. `cmd package query-activities` is useful for triage, but it is an intent-resolution view for the supplied package, action, and category. These commands don't replace manifest inspection and don't enumerate every activity declared by the package or every associated permission.
 
 To launch an exported activity and observe its behavior, use the activity manager:
 

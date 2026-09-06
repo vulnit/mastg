@@ -16,7 +16,7 @@ deprecation_note: New version available in MASTG V2
 
 ## Overview
 
-All the presented cases must be carefully analyzed as a whole. For example, even if the app does not permit cleartext traffic in its Info.plist, it might actually still be sending HTTP traffic. That could be the case if it's using a low-level API (for which ATS is ignored) or a badly configured cross-platform framework.
+All the presented cases must be carefully analyzed as a whole. For example, even if the app doesn't permit cleartext traffic in its Info.plist, it might actually still be sending HTTP traffic. That could be the case if it's using a low-level API (for which ATS is ignored) or a badly configured cross-platform framework.
 
 > IMPORTANT: You should apply these tests to the app main code but also to any app extensions, frameworks or Watch apps embedded within the app as well.
 
@@ -42,15 +42,15 @@ Make sure that the app:
 - doesn't ignore TLS errors.
 - doesn't use any insecure TLS configurations (see @MASTG-TEST-0066)
 
-These checks are orientative, we cannot name specific APIs since every app might use a different framework. Please use this information as a reference when inspecting the code.
+These checks are orientative, we can't name specific APIs since every app might use a different framework. Please use this information as a reference when inspecting the code.
 
 ### Testing for Cleartext Traffic
 
-Ensure that the app is not allowing cleartext HTTP traffic. Since iOS 9.0 cleartext HTTP traffic is blocked by default (due to App Transport Security (ATS)) but there are multiple ways in which an application can still send it:
+Ensure that the app isn't allowing cleartext HTTP traffic. Since iOS 9.0 cleartext HTTP traffic is blocked by default (due to App Transport Security (ATS)) but there are multiple ways in which an application can still send it:
 
 - Configuring ATS to enable cleartext traffic by setting the `NSAllowsArbitraryLoads` attribute to `true` (or `YES`) on `NSAppTransportSecurity` in the app's `Info.plist`.
 - Retrieve the `Info.plist` (see @MASTG-TECH-0058)
-- Check that `NSAllowsArbitraryLoads` is not set to `true` globally of for any domain.
+- Check that `NSAllowsArbitraryLoads` isn't set to `true` globally of for any domain.
 
 - If the application opens third party web sites in WebViews, then from iOS 10 onwards `NSAllowsArbitraryLoadsInWebContent` can be used to disable ATS restrictions for the content loaded in web views.
 
@@ -66,7 +66,7 @@ The following snippet shows a **vulnerable example** of an app disabling ATS res
 </dict>
 ```
 
-ATS should be examined taking the application's context into consideration. The application may _have to_ define ATS exceptions to fulfill its intended purpose. For example, the [Firefox iOS application has ATS disabled globally](https://github.com/mozilla-mobile/firefox-ios/blob/v97.0/Client/Info.plist#L82). This exception is acceptable because otherwise the application would not be able to connect to any HTTP website that does not have all the ATS requirements. In some cases, apps might disable ATS globally but enable it for certain domains to e.g. securely load metadata or still allow secure login.
+ATS should be examined taking the application's context into consideration. The application may _have to_ define ATS exceptions to fulfill its intended purpose. For example, the [Firefox iOS application has ATS disabled globally](https://github.com/mozilla-mobile/firefox-ios/blob/v97.0/Client/Info.plist#L82). This exception is acceptable because otherwise the application wouldn't be able to connect to any HTTP website that doesn't have all the ATS requirements. In some cases, apps might disable ATS globally but enable it for certain domains to e.g. securely load metadata or still allow secure login.
 
 ATS should include a [justification string](https://developer.apple.com/documentation/security/preventing_insecure_network_connections#3138036) for this (e.g. "The app must connect to a server managed by another entity that doesn't support secure connections.").
 

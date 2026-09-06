@@ -13,7 +13,7 @@ The code sample code uses the `Network` framework to establish a connection to `
 
 {{ MastgTest.swift }}
 
-Note that we do not modify ATS so such a connection should be blocked. However, ATS does not apply to the `Network` framework so the connection will succeed.
+Note that we don't modify ATS so such a connection should be blocked. However, ATS doesn't apply to the `Network` framework so the connection will succeed.
 
 ## Steps
 

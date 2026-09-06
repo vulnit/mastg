@@ -29,7 +29,7 @@ The rule has identified five instances in the code file where an insecure random
 Review each of the reported instances.
 
 - Line 12 seems to be used to generate random numbers for security purposes, in this case for generating authentication tokens.
-- Line 17 is part of the function `get_random`. Review any calls to this function to ensure that the random number is not used in a security-relevant context.
+- Line 17 is part of the function `get_random`. Review any calls to this function to ensure that the random number isn't used in a security-relevant context.
 - Line 27 is part of the password generation function which is a security-critical operation.
 
-Note that line 37 did not trigger the rule because the random number is generated using `SecureRandom` which is a secure random number generator.
+Note that line 37 didn't trigger the rule because the random number is generated using `SecureRandom` which is a secure random number generator.

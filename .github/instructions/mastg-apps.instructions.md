@@ -13,8 +13,8 @@ Standards for authoring reference application pages under `apps/`. These pages d
 
 ## File naming and IDs
 
-- The filename defines the app ID: `MASTG-APP-\d{4}.md`
-- Do not add an `id:` field to the YAML front matter
+- The file name defines the app ID: `MASTG-APP-\d{4}.md`
+- Don't add an `id:` field to the YAML front matter
 
 When creating a new app (whether during porting or writing from scratch), use a **fake ID** starting at `MASTG-APP-0x01` and incrementing within the PR (e.g., `MASTG-APP-0x01`, `MASTG-APP-0x02`, `MASTG-APP-0x03`). This prevents conflicts between parallel pull requests.
 
@@ -40,7 +40,7 @@ Each file begins with a YAML front matter block.
 
 - `download_url`: URL to download the APK/IPA.
 - `store_url:` Store listing URL if relevant (e.g. Google Play, App Store)
-- `status:` use `placeholder` only if it's a draft, otherwise do not include `status` (default is `new` and you don't have to add it explicitly)
+- `status:` use `placeholder` only if it's a draft, otherwise don't include `status` (default is `new` and you don't have to add it explicitly)
 
 **Example:**
 
@@ -55,7 +55,7 @@ package: sg.vantagepoint.uncrackable1
 
 ## Body content
 
-Entries should be short and referential. Do not duplicate installation or usage docs that belong in the app's own repository.
+Entries should be short and referential. Don't duplicate installation or usage docs that belong in the app's own repository.
 
 - One or two sentences describing the app and its purpose
 - Add any platform-specific hints, such as jailbreak expectations or proxy setup
@@ -70,7 +70,7 @@ Example:
 weaknesses: [MASWE-0034, MASWE-0056]
 ```
 
-Do not add specific app versions here. If a MASTG-DEMO requires a particular version of an app, document it in the demo, not in the app entry.
+Don't add specific app versions here. If a MASTG-DEMO requires a particular version of an app, document it in the demo, not in the app entry.
 
 ## Writing conventions
 

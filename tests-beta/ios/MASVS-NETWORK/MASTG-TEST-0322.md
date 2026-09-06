@@ -22,7 +22,7 @@ The following configurations allow cleartext traffic:
 For more information on ATS configuration, see @MASTG-KNOW-0071.
 
 !!! warning Limitations
-    ATS only applies to connections made via the [URL Loading System](https://developer.apple.com/documentation/foundation/url_loading_system). Lower-level APIs such as the [`Network`](https://developer.apple.com/documentation/network) framework or [`CFNetwork`](https://developer.apple.com/documentation/cfnetwork) are not affected by ATS settings and may still allow cleartext traffic regardless of the configuration. See @MASTG-TEST-0323 for more details.
+    ATS only applies to connections made via the [URL Loading System](https://developer.apple.com/documentation/foundation/url_loading_system). Lower-level APIs such as the [`Network`](https://developer.apple.com/documentation/network) framework or [`CFNetwork`](https://developer.apple.com/documentation/cfnetwork) aren't affected by ATS settings and may still allow cleartext traffic regardless of the configuration. See @MASTG-TEST-0323 for more details.
 
 ## Steps
 
@@ -49,4 +49,4 @@ The test case fails if cleartext traffic is permitted. This can happen if **any*
 Inspect the identified ATS exceptions to determine whether they are justified for the app's intended purpose:
 
 - Determine whether the exception is required for the app to fulfill its core functionality (for example, a browser app must connect to arbitrary websites, including those using HTTP).
-- If possible, verify that a proper [justification string](https://developer.apple.com/documentation/security/preventing-insecure-network-connections#Provide-Justification-for-Exceptions) has been provided. This would be only possible if you have contact with the developers, as this information is not included in the app binary.
+- If possible, verify that a proper [justification string](https://developer.apple.com/documentation/security/preventing-insecure-network-connections#Provide-Justification-for-Exceptions) has been provided. This would be only possible if you have contact with the developers, as this information isn't included in the app binary.

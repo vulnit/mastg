@@ -24,7 +24,7 @@ Usage description keys and runtime APIs are separate parts of the iOS permission
 | Health | `NSHealthShareUsageDescription`, `NSHealthUpdateUsageDescription` | `HKHealthStore.requestAuthorization(toShare:read:completion:)`, `HKHealthStore.authorizationStatus(for:)` |
 | Bluetooth | `NSBluetoothAlwaysUsageDescription` | `CBManager.authorization`, `CBCentralManager`, `CBPeripheralManager` |
 
-A declared purpose string is not a privacy violation by itself. The risk exists when the app has a reachable code path that requests or accesses a protected resource without a reasonable connection to a real user-visible feature, or when the purpose string shown to the user is vague, deceptive, inaccurate, or inconsistent with the actual access.
+A declared purpose string isn't a privacy violation by itself. The risk exists when the app has a reachable code path that requests or accesses a protected resource without a reasonable connection to a real user-visible feature, or when the purpose string shown to the user is vague, deceptive, inaccurate, or inconsistent with the actual access.
 
 This test verifies whether reachable protected resource access is justified by app functionality and whether the corresponding purpose string accurately, meaningfully, and specifically explains that access to the user.
 
@@ -54,7 +54,7 @@ The output should contain:
 
 ## Evaluation
 
-The test case fails if there is evidence that the app has a reachable code path that requests or accesses a protected resource and the purpose string does not meaningfully, accurately, and specifically explain why the app needs that protected resource.
+The test case fails if there is evidence that the app has a reachable code path that requests or accesses a protected resource and the purpose string doesn't meaningfully, accurately, and specifically explain why the app needs that protected resource.
 
 The test case also fails if a reachable code path requests or accesses a protected resource without a matching required purpose string.
 

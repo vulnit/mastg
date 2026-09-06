@@ -40,7 +40,7 @@ Reviewing the disassembled code (@MASTG-TECH-0076), the disassembly and AI-rever
 
 Both delegates surface in the "Custom authentication-challenge handlers" section, so both have taken control of the server trust evaluation and warrant manual review. The cross-reference to `SecTrustEvaluateWithError` is what distinguishes the secure handler (`0x4490`) from the insecure one (`0x4000`).
 
-The test case fails because `InsecureURLSessionDelegate`'s implementation (`0x00004000`) does not appear in the "xrefs to SecTrustEvaluateWithError" section.
+The test case fails because `InsecureURLSessionDelegate`'s implementation (`0x00004000`) doesn't appear in the "xrefs to SecTrustEvaluateWithError" section.
 
 The disassembly confirms this:
 

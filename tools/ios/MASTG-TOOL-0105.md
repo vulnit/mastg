@@ -196,7 +196,7 @@ $ ipsw class-dump --arch arm64 UnCrackable\ Level\ 1
 
 ## Extracting Swift Class Information
 
-IPSW can output the available Swift symbols with `ipsw swift-dump`. By default, the location of the identified structures and symbols is not printed, but this can be enabled by using the `-V` flag:
+IPSW can output the available Swift symbols with `ipsw swift-dump`. By default, the location of the identified structures and symbols isn't printed, but this can be enabled by using the `-V` flag:
 
 ```bash
 $ ipsw swift-dump --arch arm64 ./MASTestApp -V

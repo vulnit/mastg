@@ -45,4 +45,4 @@ override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
 }
 ```
 
-`VaultActivity` does not protect the underlying exported service. Access control must be enforced at the `AuthService` boundary.
+`VaultActivity` doesn't protect the underlying exported service. Access control must be enforced at the `AuthService` boundary.

@@ -8,7 +8,7 @@ By running MobSF locally on a macOS host you'll benefit from a slightly better c
 
 Once you have MobSF up and running you can open it in your browser by navigating to <http://127.0.0.1:8000>. Simply drag the IPA you want to analyze into the upload area and MobSF will start its job.
 
-After MobSF is done with its analysis, you will receive a one-page overview of all the tests that were executed. The page is split up into multiple sections giving some first hints on the attack surface of the application.
+After MobSF is done with its analysis, you'll receive a one-page overview of all the tests that were executed. The page is split up into multiple sections giving some first hints on the attack surface of the application.
 
 <img src="Images/Chapters/0x06b/mobsf_ios.png" width="100%" />
 

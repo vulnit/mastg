@@ -75,7 +75,7 @@ List class fields:
 ...
 ```
 
-Imagine that you are interested in `0x000000018eec5c8c - setStringValue:`. You can seek to that address with `s 0x000000018eec5c8c`, analyze that function `af`, and print 10 lines of its disassembly `pd 10`:
+Imagine that you're interested in `0x000000018eec5c8c - setStringValue:`. You can seek to that address with `s 0x000000018eec5c8c`, analyze that function `af`, and print 10 lines of its disassembly `pd 10`:
 
 ```bash
 [0x18eec5c8c]> pd 10

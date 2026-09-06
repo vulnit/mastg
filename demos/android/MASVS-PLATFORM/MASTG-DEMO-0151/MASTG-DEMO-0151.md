@@ -35,9 +35,9 @@ The rule flagged the `http` and `https` `<data>` declarations in the `DeepLinkAc
 
 ## Evaluation
 
-The test case fails because the app declares an `http`/`https` App Link without enabling verification. Without `android:autoVerify="true"`, Android does not confirm that the app owns the `deeplink.example.com` domain, so the app is not its exclusive, verified handler.
+The test case fails because the app declares an `http`/`https` App Link without enabling verification. Without `android:autoVerify="true"`, Android doesn't confirm that the app owns the `deeplink.example.com` domain, so the app isn't its exclusive, verified handler.
 
-Note that the handler validates its input correctly — the issue is not the parameter handling, but that the link itself is unverified. Because the domain is not verified, a malicious app can register the same `https://deeplink.example.com` intent filter and intercept the deep link (and any sensitive data it carries) or present spoofed content. Since the handler is also exported, any app on the device can invoke it directly to trigger the sensitive action. Use @MASTG-TOOL-0004 to confirm the action is reachable:
+Note that the handler validates its input correctly — the issue isn't the parameter handling, but that the link itself is unverified. Because the domain isn't verified, a malicious app can register the same `https://deeplink.example.com` intent filter and intercept the deep link (and any sensitive data it carries) or present spoofed content. Since the handler is also exported, any app on the device can invoke it directly to trigger the sensitive action. Use @MASTG-TOOL-0004 to confirm the action is reachable:
 
 ```bash
 adb shell am start -n org.owasp.mastestapp/.DeepLinkActivity -a android.intent.action.VIEW -d "https://deeplink.example.com/transfer?amount=100"

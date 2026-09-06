@@ -117,7 +117,7 @@ File    ...  libstlport_shared.so
 File    ...  libsqlcipher_android.so
 ```
 
-For now, this is all the information you can get about the native libraries unless you start reverse engineering them, which is done using a different approach than the one used to reverse the app binary, as this code cannot be decompiled but only disassembled. Refer to @MASTG-TECH-0024 for more information about how to reverse engineer these libraries.
+For now, this is all the information you can get about the native libraries unless you start reverse engineering them, which is done using a different approach than the one used to reverse the app binary, as this code can't be decompiled but only disassembled. Refer to @MASTG-TECH-0024 for more information about how to reverse engineer these libraries.
 
 ## Other App Resources
 

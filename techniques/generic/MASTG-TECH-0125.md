@@ -10,7 +10,7 @@ status: deprecated
 
 Xamarin is a mobile app development platform that allows developers to create [native Android](https://docs.microsoft.com/en-us/xamarin/android/get-started/ "Getting Started with Android") and [iOS apps](https://docs.microsoft.com/en-us/xamarin/ios/get-started/ "Getting Started with iOS") using Visual Studio and C#.
 
-When testing a Xamarin app, setting the system proxy in the Device Wi-Fi settings will not capture any HTTP requests in your interception proxy. This is because Xamarin apps do not use the local proxy settings of your device. There are three ways to bypass this limitation:
+When testing a Xamarin app, setting the system proxy in the Device Wi-Fi settings won't capture any HTTP requests in your interception proxy. This is because Xamarin apps don't use the local proxy settings of your device. There are three ways to bypass this limitation:
 
 ## Option 1: Manipulating Xamarin's Network Stack Default Proxy
 

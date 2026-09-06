@@ -11,7 +11,7 @@ best-practices: [MASTG-BEST-0048]
 
 ## Overview
 
-This test verifies whether the app detects and responds to instrumentation and hooking attempts at runtime. For example, if the app does not terminate immediately when the following APIs or functions are hooked:
+This test verifies whether the app detects and responds to instrumentation and hooking attempts at runtime. For example, if the app doesn't terminate immediately when the following APIs or functions are hooked:
 
 - Keychain items, session tokens, credentials, and other secrets could be extracted if [`SecItemCopyMatching`](https://developer.apple.com/documentation/security/secitemcopymatching%28_:_:%29), [`SecItemAdd`](https://developer.apple.com/documentation/security/secitemadd%28_:_:%29), or [`SecItemUpdate`](https://developer.apple.com/documentation/security/secitemupdate%28_:_:%29) are hooked.
 - Cryptographic keys, signatures, plaintext, or decrypted data could be extracted if [`SecKeyCreateSignature`](https://developer.apple.com/documentation/security/seckeycreatesignature%28_:_:_:_:%29), [`SecKeyCreateDecryptedData`](https://developer.apple.com/documentation/security/seckeycreatedecrypteddata%28_:_:_:_:%29), or [`CCCrypt`](https://developer.apple.com/library/archive/documentation/System/Conceptual/ManPages_iPhoneOS/man3/CCCrypt.3cc.html) are hooked.
@@ -23,7 +23,7 @@ This test verifies whether the app detects and responds to instrumentation and h
     This list is just indicative, and each app may have its own defensive response mechanisms.
 
 !!! note "Out of Scope"
-    This test does not assess the robustness or bypass-resistance of the hook detection mechanisms. Detection methods and bypass techniques evolve continuously, and determined attackers with sufficient time and resources can circumvent these protections, for example, by using advanced instrumentation mechanisms. These techniques should be part of a defense-in-depth strategy, not a standalone solution. See @MASTG-BEST-0048 for best practices on implementing effective runtime hook detection.
+    This test doesn't assess the robustness or bypass-resistance of the hook detection mechanisms. Detection methods and bypass techniques evolve continuously, and determined attackers with sufficient time and resources can circumvent these protections, for example, by using advanced instrumentation mechanisms. These techniques should be part of a defense-in-depth strategy, not a standalone solution. See @MASTG-BEST-0048 for best practices on implementing effective runtime hook detection.
 
 ## Steps
 
@@ -44,4 +44,4 @@ The test case fails if the hook executes successfully and returns the expected d
 
 **Expected False Negatives:**
 
-This test may produce false negatives if the selected hooks or traces do not cover the app's security-sensitive code paths, if the exercised flows do not trigger operations that process sensitive data, or if the app's runtime hook detection logic is implemented in a way that evades the instrumentation used in this test (for example, through obfuscation, dynamic loading, native code, anti-instrumentation techniques, or checks that run before the hooks are installed). In such cases, the absence of findings does not guarantee that the app has effective runtime hook detection, and additional manual reverse engineering or custom instrumentation may be required to identify and analyze runtime hook detection mechanisms.
+This test may produce false negatives if the selected hooks or traces don't cover the app's security-sensitive code paths, if the exercised flows don't trigger operations that process sensitive data, or if the app's runtime hook detection logic is implemented in a way that evades the instrumentation used in this test (for example, through obfuscation, dynamic loading, native code, anti-instrumentation techniques, or checks that run before the hooks are installed). In such cases, the absence of findings doesn't guarantee that the app has effective runtime hook detection, and additional manual reverse engineering or custom instrumentation may be required to identify and analyze runtime hook detection mechanisms.

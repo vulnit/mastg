@@ -52,7 +52,7 @@ Try to retrieve the `apple-app-site-association` file from the server using the 
 
 You can retrieve it yourself using your browser and navigating to `https://<domain>/apple-app-site-association`, `https://<domain>/.well-known/apple-app-site-association` or using Apple's CDN at `https://app-site-association.cdn-apple.com/a/v1/<domain>`.
 
-Alternatively, you can use the [Apple App Site Association (AASA) Validator](https://branch.io/resources/aasa-validator/ "AASA"). After entering the domain, it will display the file, verify it for you and show the results (e.g. if it is not being properly served over HTTPS). See the following example from apple.com `https://www.apple.com/.well-known/apple-app-site-association`:
+Alternatively, you can use the [Apple App Site Association (AASA) Validator](https://branch.io/resources/aasa-validator/ "AASA"). After entering the domain, it will display the file, verify it for you and show the results (e.g. if it isn't being properly served over HTTPS). See the following example from apple.com `https://www.apple.com/.well-known/apple-app-site-association`:
 
 <img src="Images/Chapters/0x06h/apple-app-site-association-file_validation.png" width="100%" />
 
@@ -86,13 +86,13 @@ Alternatively, you can use the [Apple App Site Association (AASA) Validator](htt
 
 The "details" key inside "applinks" contains a JSON representation of an array that might contain one or more apps. The "appID" should match the "application-identifier" key from the app's entitlements. Next, using the "paths" key, the developers can specify certain paths to be handled on a per app basis. Some apps, like Telegram use a standalone * (`"paths": ["*"]`) in order to allow all possible paths. Only if specific areas of the website should **not** be handled by some app, the developer can restrict access by excluding them by prepending a `"NOT "` (note the whitespace after the T) to the corresponding path. Also remember that the system will look for matches by following the order of the dictionaries in the array (first match wins).
 
-This path exclusion mechanism is not to be seen as a security feature but rather as a filter that developer might use to specify which apps open which links. By default, iOS does not open any unverified links.
+This path exclusion mechanism isn't to be seen as a security feature but rather as a filter that developer might use to specify which apps open which links. By default, iOS doesn't open any unverified links.
 
-Remember that universal links verification occurs at installation time. iOS retrieves the AASA file for the declared domains (`applinks`) in its `com.apple.developer.associated-domains` entitlement. iOS will refuse to open those links if the verification did not succeed. Some reasons to fail verification might include:
+Remember that universal links verification occurs at installation time. iOS retrieves the AASA file for the declared domains (`applinks`) in its `com.apple.developer.associated-domains` entitlement. iOS will refuse to open those links if the verification didn't succeed. Some reasons to fail verification might include:
 
-- The AASA file is not served over HTTPS.
-- The AASA is not available.
-- The `appID`s do not match (this would be the case of a _malicious_ app). iOS would successfully prevent any possible hijacking attacks.
+- The AASA file isn't served over HTTPS.
+- The AASA isn't available.
+- The `appID`s don't match (this would be the case of a _malicious_ app). iOS would successfully prevent any possible hijacking attacks.
 
 ### Checking the Link Receiver Method
 
@@ -165,16 +165,16 @@ func application(_ application: UIApplication,
 }
 ```
 
-Finally, as stated above, be sure to verify that the actions triggered by the URL do not expose sensitive information or risk the user's data on any way.
+Finally, as stated above, be sure to verify that the actions triggered by the URL don't expose sensitive information or risk the user's data on any way.
 
 ### Checking if the App is Calling Other App's Universal Links
 
-An app might be calling other apps via universal links in order to simply trigger some actions or to transfer information, in that case, it should be verified that it is not leaking sensitive information.
+An app might be calling other apps via universal links in order to simply trigger some actions or to transfer information, in that case, it should be verified that it isn't leaking sensitive information.
 
 If you have the original source code, you can search it for the `openURL:options: completionHandler:` method and check the data being handled.
 
 !!! note
-    The `openURL:options:completionHandler:` method is not only used to open universal links but also to call custom URL schemes.
+    The `openURL:options:completionHandler:` method isn't only used to open universal links but also to call custom URL schemes.
 
 This is an example from the Telegram app:
 
@@ -228,7 +228,7 @@ You can use this now to dynamically test them:
 
 ### Triggering Universal Links
 
-Unlike custom URL schemes, unfortunately you cannot test universal links from Safari just by typing them in the search bar directly as this is not allowed by Apple. But you can test them anytime using other apps like the Notes app:
+Unlike custom URL schemes, unfortunately you can't test universal links from Safari just by typing them in the search bar directly as this isn't allowed by Apple. But you can test them anytime using other apps like the Notes app:
 
 - Open the Notes app and create a new note.
 - Write the links including the domain.
@@ -472,10 +472,10 @@ dismissInput: () -> ()) -> ()
 There you can observe the following:
 
 - It calls `application:continueUserActivity:restorationHandler:` from the app delegate as expected.
-- `application:continueUserActivity:restorationHandler:` handles the URL but does not open it, it calls `TelegramUI.openExternalUrl` for that.
+- `application:continueUserActivity:restorationHandler:` handles the URL but doesn't open it, it calls `TelegramUI.openExternalUrl` for that.
 - The URL being opened is `https://t.me/addstickers/radare`.
 
-You can now keep going and try to trace and verify how the data is being validated. For example, if you have two apps that _communicate_ via universal links you can use this to see if the sending app is leaking sensitive data by hooking these methods in the receiving app. This is especially useful when you don't have the source code as you will be able to retrieve the full URL that you wouldn't see other way as it might be the result of clicking some button or triggering some functionality.
+You can now keep going and try to trace and verify how the data is being validated. For example, if you have two apps that _communicate_ via universal links you can use this to see if the sending app is leaking sensitive data by hooking these methods in the receiving app. This is especially useful when you don't have the source code as you'll be able to retrieve the full URL that you wouldn't see other way as it might be the result of clicking some button or triggering some functionality.
 
 In some cases, you might find data in `userInfo` of the `NSUserActivity` object. In the previous case there was no data being transferred but it might be the case for other scenarios. To see this, be sure to hook the `userInfo` property or access it directly from the `continueUserActivity` object in your hook (e.g. by adding a line like this `log("userInfo:" + ObjC.Object(args[3]).userInfo().toString());`).
 

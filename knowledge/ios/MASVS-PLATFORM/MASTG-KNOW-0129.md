@@ -26,7 +26,7 @@ Common App Intents types include:
 
 App Intents are the main Apple supported mechanism for exposing app actions and content to Siri and Apple Intelligence. From a security perspective, an App Intent is an exposed capability that may be invoked outside the app's normal UI.
 
-This does not mean arbitrary third party AI agents can directly call private app functionality. It means that actions declared through App Intents may become available to Apple supported system surfaces, including AI driven experiences, depending on the platform version, device capabilities, user configuration, and intent metadata.
+This doesn't mean arbitrary third party AI agents can directly call private app functionality. It means that actions declared through App Intents may become available to Apple supported system surfaces, including AI driven experiences, depending on the platform version, device capabilities, user configuration, and intent metadata.
 
 Security testing should treat each App Intent as an external entry point into the app.
 

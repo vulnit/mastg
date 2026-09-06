@@ -57,6 +57,6 @@ A default protection level can also be set for the entire app by configuring the
 
 ## User Exposure
 
-By default, files in the app's private sandbox are not exposed to the user. However, apps can expose files to the user by saving them in specific directories such as the Documents directory and enabling file sharing in the app's Info.plist using the `UIFileSharingEnabled` ("Application supports iTunes file sharing") and `LSSupportsOpeningDocumentsInPlace` ("Supports opening documents in place") keys set to `YES`.
+By default, files in the app's private sandbox aren't exposed to the user. However, apps can expose files to the user by saving them in specific directories such as the Documents directory and enabling file sharing in the app's Info.plist using the `UIFileSharingEnabled` ("Application supports iTunes file sharing") and `LSSupportsOpeningDocumentsInPlace` ("Supports opening documents in place") keys set to `YES`.
 
 They can also use APIs like [`UIDocumentPickerViewController`](https://developer.apple.com/documentation/uikit/uidocumentpickerviewcontroller) to allow users to export files.

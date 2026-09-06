@@ -12,7 +12,7 @@ This sample demonstrates how to dynamically analyze the runtime behavior of `Web
 
 {{ ../MASTG-DEMO-0157/MastgTestWebView.kt # ../MASTG-DEMO-0157/AndroidManifest.xml }}
 
-The code configures a WebView with a custom `WebViewClient` that intercepts URL loading via `shouldOverrideUrlLoading` and `shouldInterceptRequest` methods. The implementation does not perform proper URL validation, potentially allowing navigation to untrusted content.
+The code configures a WebView with a custom `WebViewClient` that intercepts URL loading via `shouldOverrideUrlLoading` and `shouldInterceptRequest` methods. The implementation doesn't perform proper URL validation, potentially allowing navigation to untrusted content.
 
 ## Steps
 

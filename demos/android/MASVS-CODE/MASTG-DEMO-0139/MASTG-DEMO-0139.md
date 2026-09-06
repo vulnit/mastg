@@ -11,7 +11,7 @@ kind: fail
 
 The following sample app requests a file using a custom implicit intent (`org.owasp.mastestapp.REQUEST_FILE`) and handles the result in `onActivityResult`. The selected app controls the returned `Intent` data and the provider metadata that the app reads through `ContentResolver.query`.
 
-The app reads `OpenableColumns.DISPLAY_NAME` from the returned `ContentProvider` and uses it directly as the filename for a `File` under `filesDir/public/`. A malicious app can return a `content://` URI with a display name such as `../private/secret.txt`, causing the victim app to write outside the intended `public/` directory.
+The app reads `OpenableColumns.DISPLAY_NAME` from the returned `ContentProvider` and uses it directly as the file name for a `File` under `filesDir/public/`. A malicious app can return a `content://` URI with a display name such as `../private/secret.txt`, causing the victim app to write outside the intended `public/` directory.
 
 {{ MastgTest.kt # AndroidManifest.xml }}
 
@@ -32,8 +32,8 @@ The app reads `OpenableColumns.DISPLAY_NAME` from the returned `ContentProvider`
 
 The output shows runtime file API calls reached while the app handles the activity result:
 
-- `java.io.File.$init` is called from `VulnerableActivity.onActivityResult` with base directory `/data/user/0/org.owasp.mastestapp/files` and filename `public`.
-- `java.io.File.$init` is called from `VulnerableActivity.onActivityResult` with base directory `/data/user/0/org.owasp.mastestapp/files/public` and filename `../private/secret.txt`.
+- `java.io.File.$init` is called from `VulnerableActivity.onActivityResult` with base directory `/data/user/0/org.owasp.mastestapp/files` and file name `public`.
+- `java.io.File.$init` is called from `VulnerableActivity.onActivityResult` with base directory `/data/user/0/org.owasp.mastestapp/files/public` and file name `../private/secret.txt`.
 - `java.io.FileOutputStream.$init` is called from `VulnerableActivity.onActivityResult` with `/data/user/0/org.owasp.mastestapp/files/public/../private/secret.txt`.
 
 {{ output.json }}
@@ -42,6 +42,6 @@ The output shows runtime file API calls reached while the app handles the activi
 
 The test case fails because data returned from an external intent result reaches a file write operation without validation or sanitization.
 
-The returned filename comes from `OpenableColumns.DISPLAY_NAME`, which is provider-controlled metadata obtained through `ContentResolver.query`. The app uses this value directly in `File(publicDir, fileName)` and then writes to the resulting path with `FileOutputStream`.
+The returned file name comes from `OpenableColumns.DISPLAY_NAME`, which is provider-controlled metadata obtained through `ContentResolver.query`. The app uses this value directly in `File(publicDir, fileName)` and then writes to the resulting path with `FileOutputStream`.
 
-The hook output shows this untrusted value as `../private/secret.txt`, which causes the destination path to become `files/public/../private/secret.txt`. No validation is performed before use: the app does not verify the returned URI/provider, reject path separators, normalize and check the canonical destination path, or otherwise constrain the filename to the intended `public/` directory, amongst other possible validations.
+The hook output shows this untrusted value as `../private/secret.txt`, which causes the destination path to become `files/public/../private/secret.txt`. No validation is performed before use: the app doesn't verify the returned URI/provider, reject path separators, normalize and check the canonical destination path, or otherwise constrain the file name to the intended `public/` directory, amongst other possible validations.

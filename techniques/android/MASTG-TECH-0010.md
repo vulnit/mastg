@@ -54,7 +54,7 @@ The tcpdump command above involves
 
 - listening on the wlan0 interface,
 - defining the size (snapshot length) of the capture in bytes to get everything (-s0), and
-- writing to a file (-w). Instead of a filename, we pass `-`, which will make tcpdump write to stdout.
+- writing to a file (-w). Instead of a file name, we pass `-`, which will make tcpdump write to stdout.
 
 By using the pipe (`|`), we sent all output from tcpdump to netcat, which opens a listener on port 11111. You'll usually want to monitor the wlan0 interface. If you need another interface, list the available options with the command `$ ip addr`.
 
@@ -78,7 +78,7 @@ You can display the captured traffic in a human-readable format with Wireshark. 
 
 <img src="Images/Chapters/0x05b/tcpdump_and_wireshard_on_android.png" width="400px" />
 
-This neat little trick allows you to identify what kind of protocols are used and to which endpoints the app is talking. The question is now, how can I test the endpoints if Burp is not capable of showing the traffic? There is no easy answer for this, but a few Burp plugins can get you started.
+This neat little trick allows you to identify what kind of protocols are used and to which endpoints the app is talking. The question is now, how can I test the endpoints if Burp isn't capable of showing the traffic? There is no easy answer for this, but a few Burp plugins can get you started.
 
 ## Firebase/Google Cloud Messaging (FCM/GCM)
 

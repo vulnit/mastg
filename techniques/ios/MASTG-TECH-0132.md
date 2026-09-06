@@ -3,7 +3,7 @@ title: Software Composition Analysis (SCA) of iOS Dependencies by Creating a SBO
 platform: ios
 ---
 
-You can use @MASTG-TOOL-0134 to generate a Software Bill of Materials (SBOM) in the CycloneDX format when using SwiftPM. Currently, Carthage and CocoaPods are not supported. You can either ask the development team to provide the SBOM file or create it yourself. To do so, navigate to the root directory of the Xcode project you wish to scan, then execute the following command:
+You can use @MASTG-TOOL-0134 to generate a Software Bill of Materials (SBOM) in the CycloneDX format when using SwiftPM. Currently, Carthage and CocoaPods aren't supported. You can either ask the development team to provide the SBOM file or create it yourself. To do so, navigate to the root directory of the Xcode project you wish to scan, then execute the following command:
 
 ```bash
 $ cdxgen -o sbom.json
@@ -24,7 +24,7 @@ $ curl -X "PUT" "http://localhost:8081/api/v1/bom" \
 
 Also, check the [alternatives for uploading](https://docs.dependencytrack.org/usage/cicd/) the SBOM file if the generated JSON file is too large.
 
-If you are using the default settings of the @MASTG-TOOL-0133 Docker container, go to the frontend of @MASTG-TOOL-0132, which is <http://localhost:8080>. Open the project you uploaded the SBOM to verify whether there are any vulnerable dependencies.
+If you're using the default settings of the @MASTG-TOOL-0133 Docker container, go to the frontend of @MASTG-TOOL-0132, which is <http://localhost:8080>. Open the project you uploaded the SBOM to verify whether there are any vulnerable dependencies.
 
 !!! note
-    Transitive dependencies are not supported by @MASTG-TOOL-0134 for [SwiftPM](https://cdxgen.github.io/cdxgen/#/PROJECT_TYPES).
+    Transitive dependencies aren't supported by @MASTG-TOOL-0134 for [SwiftPM](https://cdxgen.github.io/cdxgen/#/PROJECT_TYPES).

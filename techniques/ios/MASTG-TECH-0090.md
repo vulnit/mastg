@@ -51,7 +51,7 @@ Sideloadly can automatically inject libraries during app repackaging and signing
 
 <img src="Images/Techniques/0091-SideloadlyFrida.png" width="400px" />
 
-After installation, you will not be able to launch the application from SpringBoard. However, you can launch the application in debug mode and attach Frida as explained in @MASTG-TECH-0055.
+After installation, you won't be able to launch the application from SpringBoard. However, you can launch the application in debug mode and attach Frida as explained in @MASTG-TECH-0055.
 
 ## Objection
 

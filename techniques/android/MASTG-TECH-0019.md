@@ -23,7 +23,7 @@ dextra -S classes.dex
 
 The output from Dextra can be manipulated using standard Linux commands, for example, using `grep` to search for certain keywords.
 
-It is important to know that the list of strings obtained using the above tools can be very big, as it also includes the various class and package names used in the application. Going through the complete list, especially for big binaries, can be very cumbersome. Thus, it is recommended to start with keyword-based searching and go through the list only when the keyword search does not help. Some generic keywords that can be a good starting point are - password, key, and secret. Other useful keywords specific to the context of the app can be obtained while you are using the app itself. For instance, imagine that the app has a login form, you can take note of the displayed placeholder or title text of the input fields and use that as an entry point for your static analysis.
+It is important to know that the list of strings obtained using the above tools can be very big, as it also includes the various class and package names used in the application. Going through the complete list, especially for big binaries, can be very cumbersome. Thus, it is recommended to start with keyword-based searching and go through the list only when the keyword search doesn't help. Some generic keywords that can be a good starting point are - password, key, and secret. Other useful keywords specific to the context of the app can be obtained while you're using the app itself. For instance, imagine that the app has a login form, you can take note of the displayed placeholder or title text of the input fields and use that as an entry point for your static analysis.
 
 ## Native Code
 

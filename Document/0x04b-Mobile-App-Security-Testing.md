@@ -4,7 +4,7 @@ platform: generic
 
 # Mobile Application Security Testing
 
-In the following sections we'll provide a brief overview of general security testing principles and key terminology. The concepts introduced are largely identical to those found in other types of penetration testing, so if you are an experienced tester you may be familiar with some of the content.
+In the following sections we'll provide a brief overview of general security testing principles and key terminology. The concepts introduced are largely identical to those found in other types of penetration testing, so if you're an experienced tester you may be familiar with some of the content.
 
 Throughout the guide, we use "mobile app security testing" as a catchall phrase to refer to the evaluation of mobile app security via static and dynamic analysis. Terms such as "mobile app penetration testing" and "mobile app security review" are used somewhat inconsistently in the security industry, but these terms refer to roughly the same thing. A mobile app security test is usually part of a larger security assessment or penetration test that encompasses the client-server architecture and server-side APIs used by the mobile app.
 
@@ -39,7 +39,7 @@ Now that we have defined static and dynamic analysis, let's dive deeper.
 
 ### Static Analysis
 
-During static analysis, the mobile app's source code is reviewed to ensure appropriate implementation of security controls. In most cases, a hybrid automatic/manual approach is used. Automatic scans catch the low-hanging fruit, and the human tester can explore the code base with specific usage contexts in mind.
+During static analysis, the mobile app's source code is reviewed to ensure appropriate implementation of security controls. In most cases, a hybrid automatic/manual approach is used. Automatic scans catch the low-hanging fruit, and the human tester can explore the codebase with specific usage contexts in mind.
 
 #### Manual Code Review
 
@@ -55,7 +55,7 @@ A manual code review requires an expert code reviewer who is proficient in both 
 
 Automated analysis tools can be used to speed up the review process of Static Application Security Testing (SAST). They check the source code for compliance with a predefined set of rules or industry best practices, then typically display a list of findings or warnings and flags for all detected violations. Some static analysis tools run against the compiled app only, some must be fed the original source code, and some run as live-analysis plugins in the Integrated Development Environment (IDE).
 
-Although some static code analysis tools incorporate a lot of information about the rules and semantics required to analyze mobile apps, they may produce many false positives, particularly if they are not configured for the target environment. A security professional must therefore always review the results.
+Although some static code analysis tools incorporate a lot of information about the rules and semantics required to analyze mobile apps, they may produce many false positives, particularly if they aren't configured for the target environment. A security professional must therefore always review the results.
 
 ### Dynamic Analysis
 
@@ -147,7 +147,7 @@ Properly distinguishing security-relevant contexts helps in minimizing false pos
 
 - **Hashing**: Hashing is often used in security for storing passwords or ensuring data integrity. However, hashing a non-sensitive value, like a device's screen resolution for analytics, isn't a security concern.
 
-- **Encryption vs Encoding**: A common misunderstanding is conflating encoding (like Base64) with encryption. Base64 encoding is not a secure method for protecting sensitive data as it's easily reversible. It's crucial to recognize when data requires actual encryption (for confidentiality) versus when it's being encoded for compatibility or formatting reasons (like encoding binary data into a text format for transmission). Misinterpreting encoding as a security measure can lead to overlooking actual encryption needs for sensitive data.
+- **Encryption vs Encoding**: A common misunderstanding is conflating encoding (like Base64) with encryption. Base64 encoding isn't a secure method for protecting sensitive data as it's easily reversible. It's crucial to recognize when data requires actual encryption (for confidentiality) versus when it's being encoded for compatibility or formatting reasons (like encoding binary data into a text format for transmission). Misinterpreting encoding as a security measure can lead to overlooking actual encryption needs for sensitive data.
 
 - **API Token Storage**: Storing API tokens or keys in plain text within the app's code or in insecure locations (like SharedPreferences on Android or UserDefaults on iOS) is a common security mistake. However, if the token is for a non-sensitive, read-only public API, this might not be a security risk. Contrast this with storing a token for a sensitive or write-access API, where improper storage would be a significant security concern.
 
@@ -218,7 +218,7 @@ The following section is focused on this evolution and describes contemporary se
 
 ### Security Testing during the Software Development Life Cycle
 
-Software development is not very old, after all, so the end of developing without a framework is easy to observe. We have all experienced the need for a minimal set of rules to control work as the source code grows.
+Software development isn't very old, after all, so the end of developing without a framework is easy to observe. We have all experienced the need for a minimal set of rules to control work as the source code grows.
 
 In the past, "Waterfall" methodologies were the most widely adopted: development proceeded by steps that had a predefined sequence. Limited to a single step, backtracking capability was a serious drawback of Waterfall methodologies. Although they have important positive features (providing structure, helping testers clarify where effort is needed, being clear and easy to understand, etc.), they also have negative ones (creating silos, being slow, specialized teams, etc.).
 
@@ -286,7 +286,7 @@ The testing activities of this model occur in sequence and are performed as a wh
 
 ### Security Testing for Agile/DevOps and DevSecOps
 
-DevOps refers to practices that focus on a close collaboration between all stakeholders involved in software development (generally called Devs) and operations (generally called Ops). DevOps is not about merging Devs and Ops.
+DevOps refers to practices that focus on a close collaboration between all stakeholders involved in software development (generally called Devs) and operations (generally called Ops). DevOps isn't about merging Devs and Ops.
 Development and operations teams originally worked in silos, when pushing developed software to production could take a significant amount of time. When development teams made moving more deliveries to production necessary by working with Agile, operation teams had to speed up to match the pace. DevOps is the necessary evolution of the solution to that challenge in that it allows software to be released to users more quickly. This is largely accomplished via extensive build automation, the process of testing and releasing software, and infrastructure changes (in addition to the collaboration aspect of DevOps). This automation is embodied in the deployment pipeline with the concepts of Continuous Integration and Continuous Delivery (CI/CD).
 
 People may assume that the term "DevOps" represents collaboration between development and operations teams only, however, as DevOps thought leader Gene Kim puts it: "At first blush, it seems as though the problems are just between Devs and Ops, but test is in there, and you have information security objectives, and the need to protect systems and data. These are top-level concerns of management, and they have become part of the DevOps picture."
@@ -295,7 +295,7 @@ In other words, DevOps collaboration includes quality teams, security teams, and
 
 Security is just as critical to business success as the overall quality, performance, and usability of an app. As development cycles are shortened and delivery frequencies increased, making sure that quality and security are built in from the very beginning becomes essential. **DevSecOps** is all about adding security to DevOps processes. Most defects are identified during production. DevOps specifies best practices for identifying as many defects as possible early in the life cycle and for minimizing the number of defects in the released app.
 
-However, DevSecOps is not just a linear process oriented towards delivering the best possible software to operations; it is also a mandate that operations closely monitor software that's in production to identify issues and fix them by forming a quick and efficient feedback loop with development. DevSecOps is a process through which Continuous Improvement is heavily emphasized.
+However, DevSecOps isn't just a linear process oriented towards delivering the best possible software to operations; it is also a mandate that operations closely monitor software that's in production to identify issues and fix them by forming a quick and efficient feedback loop with development. DevSecOps is a process through which Continuous Improvement is heavily emphasized.
 
 <img src="Images/Chapters/0x04b/DevSecOpsProcess.JPG" width="100%" />
 

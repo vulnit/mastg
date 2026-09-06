@@ -32,7 +32,7 @@ The output reveals the exported activities and their associated permissions:
 
 The test case fails because `SecretActivity` exposes sensitive functionality and is exported (`android:exported="true"`) without any permission protection, so external callers can start it directly by using an explicit intent.
 
-`PinEntryActivity` does not protect the underlying exported activity; access control must be enforced at the `SecretActivity` boundary.
+`PinEntryActivity` doesn't protect the underlying exported activity; access control must be enforced at the `SecretActivity` boundary.
 
 The activity displays account data in `onCreate` without checking whether the user completed the PIN challenge:
 
@@ -51,4 +51,4 @@ The output also lists other exported activities. These are triaged but not repor
 
 `androidx.activity.ComponentActivity` is commonly added by the Compose UI test manifest as a generic host activity for Compose tests. This is expected in debug or test builds, but should be reviewed if it appears in a production build.
 
-`androidx.compose.ui.tooling.PreviewActivity` is a Compose tooling activity used by Android Studio to run composable previews. It is not part of the app's authentication flow and should normally be treated as development tooling unless the tested build is intended for production.
+`androidx.compose.ui.tooling.PreviewActivity` is a Compose tooling activity used by Android Studio to run composable previews. It isn't part of the app's authentication flow and should normally be treated as development tooling unless the tested build is intended for production.

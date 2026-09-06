@@ -59,7 +59,7 @@ A typical misuse are hard-coded cryptographic keys. Hard-coded and world-readabl
 this.db = localUserSecretStore.getWritableDatabase("SuperPassword123");
 ```
 
-Obtaining the key is trivial because it is contained in the source code and identical for all installations of the app. Encrypting data this way is not beneficial. Look for hard-coded API keys/private keys and other valuable data; they pose a similar risk. Encoded/encrypted keys represent another attempt to make it harder but not impossible to get the crown jewels.
+Obtaining the key is trivial because it is contained in the source code and identical for all installations of the app. Encrypting data this way isn't beneficial. Look for hard-coded API keys/private keys and other valuable data; they pose a similar risk. Encoded/encrypted keys represent another attempt to make it harder but not impossible to get the crown jewels.
 
 Consider the following code:
 

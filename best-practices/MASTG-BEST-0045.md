@@ -38,7 +38,7 @@ When using [Keychain access groups](https://developer.apple.com/documentation/se
 
 Review all apps and extensions that declare the same access group, because each one becomes part of the trust boundary for the shared keychain items.
 
-Avoid storing overly sensitive data such as hashed passwords in the keychain, even in non-shared access groups. On jailbroken devices, the keychain of any process can be read directly, so items stored there are not protected in that threat model.
+Avoid storing overly sensitive data such as hashed passwords in the keychain, even in non-shared access groups. On jailbroken devices, the keychain of any process can be read directly, so items stored there aren't protected in that threat model.
 
 ## Coordinate and Audit Shared File Access
 
@@ -60,12 +60,12 @@ Require confirmation or authentication for sensitive, destructive, financial, pr
 
 ## Secure Network-Based IPC
 
-For Bonjour, local sockets, HTTP, and backend-mediated communication, do not rely on local network presence as a trust signal. Authenticate peers, encrypt traffic where appropriate, and validate all messages.
+For Bonjour, local sockets, HTTP, and backend-mediated communication, don't rely on local network presence as a trust signal. Authenticate peers, encrypt traffic where appropriate, and validate all messages.
 
 Bonjour provides service discovery, not transport security. The connection established after discovery still requires normal authentication, authorization, transport protection, and input validation.
 
 ## Avoid Unsupported Low-Level IPC
 
-XPC, Mach ports, and CFMessagePort are not designed for general-purpose communication between unrelated third-party iOS apps. The iOS sandbox prevents direct use of these mechanisms between apps from different developers. Prefer Apple-supported system-mediated APIs, App Groups, Keychain access groups, document exchange, App Intents, Siri Shortcuts, Handoff, or network protocols where appropriate.
+XPC, Mach ports, and CFMessagePort aren't designed for general-purpose communication between unrelated third-party iOS apps. The iOS sandbox prevents direct use of these mechanisms between apps from different developers. Prefer Apple-supported system-mediated APIs, App Groups, Keychain access groups, document exchange, App Intents, Siri Shortcuts, Handoff, or network protocols where appropriate.
 
 If low-level IPC appears in app extensions, platform-specific extension mechanisms, enterprise builds, or security research contexts, review the exposed interface, accepted messages, entitlements, sandbox profile, input validation, and authorization checks.

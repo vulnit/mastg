@@ -29,6 +29,6 @@ Compare the list of declared permissions with the list of [dangerous permissions
 
 **Context Consideration**:
 
-Context is essential when evaluating permissions. For example, an app that uses the camera to scan QR codes should have the `CAMERA` permission. However, if the app does not have a camera feature, the permission is unnecessary and should be removed.
+Context is essential when evaluating permissions. For example, an app that uses the camera to scan QR codes should have the `CAMERA` permission. However, if the app doesn't have a camera feature, the permission is unnecessary and should be removed.
 
 Also, consider if there are any privacy-preserving alternatives to the permissions used by the app. For example, instead of using the `CAMERA` permission, the app could [use the device's built-in camera app](https://developer.android.com/privacy-and-security/minimize-permission-requests#take-photo) to capture photos or videos by invoking the `ACTION_IMAGE_CAPTURE` or `ACTION_VIDEO_CAPTURE` intent actions. This approach allows the app to access the camera functionality without directly requesting the `CAMERA` permission, thereby enhancing user privacy.

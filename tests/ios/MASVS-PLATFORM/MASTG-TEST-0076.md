@@ -71,7 +71,7 @@ $ xcrun swift-demangle __T0So9WKWebViewCABSC6CGRectV5frame_So0aB13ConfigurationC
 
 ### Testing if JavaScript is Enabled
 
-First of all, remember that JavaScript cannot be disabled for `UIWebView`s.
+First of all, remember that JavaScript can't be disabled for `UIWebView`s.
 
 For `WKWebView`s, as a best practice, JavaScript should be disabled unless it is explicitly required. To verify that JavaScript was properly disabled search the project for usages of `WKPreferences` and ensure that the [`javaScriptEnabled`](https://developer.apple.com/documentation/webkit/wkpreferences/1536203-javascriptenabled "WKPreferences javaScriptEnabled") property is set to `false`:
 
@@ -102,13 +102,13 @@ $ rabin2 -zz ./WheresMyBrowser | grep -i "hasonlysecurecontent"
 # nothing found
 ```
 
-In this case, the app does not make use of this.
+In this case, the app doesn't make use of this.
 
-In addition, if you have the original source code or the IPA, you can inspect the embedded HTML files and verify that they do not include mixed content. Search for `http://` in the source and inside tag attributes, but remember that this might give false positives as, for example, finding an anchor tag `<a>` that includes a `http://` inside its `href` attribute does not always present a mixed content issue. Learn more about mixed content in the [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content "Mixed Content").
+In addition, if you have the original source code or the IPA, you can inspect the embedded HTML files and verify that they don't include mixed content. Search for `http://` in the source and inside tag attributes, but remember that this might give false positives as, for example, finding an anchor tag `<a>` that includes a `http://` inside its `href` attribute doesn't always present a mixed content issue. Learn more about mixed content in the [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content "Mixed Content").
 
 ### Testing for WebView URI Manipulation
 
-Make sure that the WebView's URI cannot be manipulated by the user in order to load other types of resources than necessary for the functioning of the WebView. This can be specifically dangerous when the WebView's content is loaded from the local file system, allowing the user to navigate to other resources within the application.
+Make sure that the WebView's URI can't be manipulated by the user in order to load other types of resources than necessary for the functioning of the WebView. This can be specifically dangerous when the WebView's content is loaded from the local file system, allowing the user to navigate to other resources within the application.
 
 ## Dynamic Analysis
 
@@ -161,7 +161,7 @@ ObjC.choose(ObjC.classes['SFSafariViewController'], {
 
 For the `UIWebView` and `WKWebView` WebViews we also print the associated URL for the sake of completion.
 
-In order to ensure that you will be able to find the instances of the WebViews in the heap, be sure to first navigate to the WebView you've found. Once there, run the code above, e.g. by copying into the Frida REPL:
+In order to ensure that you'll be able to find the instances of the WebViews in the heap, be sure to first navigate to the WebView you've found. Once there, run the code above, e.g. by copying into the Frida REPL:
 
 ```javascript
 $ frida -U com.authenticationfailure.WheresMyBrowser
@@ -237,7 +237,7 @@ javaScriptEnabled:  true
 
 ### Testing for Mixed Content
 
-The `UIWebView` class does not provide a method for verifying that only secure content is allowed. However, [starting on iOS 10](https://developer.apple.com/documentation/safari-technology-preview-release-notes/stp-release-7), the [`Upgrade-Insecure-Requests`](https://w3c.github.io/webappsec-upgrade-insecure-requests/#upgrade-insecure-requests) CSP (Content Security Policy) directive was introduced to WebKit, the browser engine powering the iOS WebViews. This directive can be used to instruct the browser to upgrade insecure requests to secure requests. This is a good practice to prevent mixed content issues.
+The `UIWebView` class doesn't provide a method for verifying that only secure content is allowed. However, [starting on iOS 10](https://developer.apple.com/documentation/safari-technology-preview-release-notes/stp-release-7), the [`Upgrade-Insecure-Requests`](https://w3c.github.io/webappsec-upgrade-insecure-requests/#upgrade-insecure-requests) CSP (Content Security Policy) directive was introduced to WebKit, the browser engine powering the iOS WebViews. This directive can be used to instruct the browser to upgrade insecure requests to secure requests. This is a good practice to prevent mixed content issues.
 
 For `WKWebView`'s, you may call the method [`hasOnlySecureContent`](https://developer.apple.com/documentation/webkit/wkwebview/1415002-hasonlysecurecontent "WKWebView hasOnlySecureContent") for each of the `WKWebView`s found in the heap. Remember to do so once the WebView has loaded.
 

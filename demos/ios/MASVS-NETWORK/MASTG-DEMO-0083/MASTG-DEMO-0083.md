@@ -46,9 +46,9 @@ Note that even though `NSAllowsArbitraryLoads = true` is present, it is ignored 
 
 **Context Considerations:**
 
-If you reverse the app binary, you will find that its code make a HTTP request to `http://httpbin.org/get` using `URLSession`, which is affected by the ATS exceptions.
+If you reverse the app binary, you'll find that its code make a HTTP request to `http://httpbin.org/get` using `URLSession`, which is affected by the ATS exceptions.
 
 - The connection to `httpbin.org` is only allowed due to the domain-specific exception and not because of the global `NSAllowsArbitraryLoads` setting.
-- There are no connections to `api.example.com`, so the domain-specific exceptions for it does not have an effect in this case. Regardless, having such exceptions is still a misconfiguration and should be avoided.
-- The app does not use WebViews or media resources, so the corresponding ATS exceptions (`NSAllowsArbitraryLoadsInWebContent` and `NSAllowsArbitraryLoadsForMedia`) do not have an effect in this case. Regardless, having such exceptions is still a misconfiguration and should be avoided.
-- The app does not connect to local network resources, so the corresponding ATS exception (`NSAllowsArbitraryLoadsForLocalNetworking`) does not have an effect in this case. Regardless, having such an exception is still a misconfiguration and should be avoided.
+- There are no connections to `api.example.com`, so the domain-specific exceptions for it doesn't have an effect in this case. Regardless, having such exceptions is still a misconfiguration and should be avoided.
+- The app doesn't use WebViews or media resources, so the corresponding ATS exceptions (`NSAllowsArbitraryLoadsInWebContent` and `NSAllowsArbitraryLoadsForMedia`) don't have an effect in this case. Regardless, having such exceptions is still a misconfiguration and should be avoided.
+- The app doesn't connect to local network resources, so the corresponding ATS exception (`NSAllowsArbitraryLoadsForLocalNetworking`) doesn't have an effect in this case. Regardless, having such an exception is still a misconfiguration and should be avoided.

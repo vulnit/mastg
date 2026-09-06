@@ -11,7 +11,7 @@ knowledge: [MASTG-KNOW-0132, MASTG-KNOW-0017, MASTG-KNOW-0020]
 
 ## Overview
 
-If an exported activity does not define [`android:permission`](https://developer.android.com/guide/topics/manifest/activity-element#prmsn) with a proper protection level and performs or grants access to sensitive functionality, another third-party app outside the intended trust boundary can start it with an `Intent` and reach that functionality without going through the app's intended flow. See @MASTG-KNOW-0132 for details on activities, @MASTG-KNOW-0017 for permissions and protection levels, and @MASTG-KNOW-0020 for the IPC model of Android.
+If an exported activity doesn't define [`android:permission`](https://developer.android.com/guide/topics/manifest/activity-element#prmsn) with a proper protection level and performs or grants access to sensitive functionality, another third-party app outside the intended trust boundary can start it with an `Intent` and reach that functionality without going through the app's intended flow. See @MASTG-KNOW-0132 for details on activities, @MASTG-KNOW-0017 for permissions and protection levels, and @MASTG-KNOW-0020 for the IPC model of Android.
 
 This test checks whether the app exposes sensitive functionality through exported and unprotected activities.
 
@@ -28,7 +28,7 @@ The output should contain a list of exported activities and the relevant parts o
 
 ## Evaluation
 
-The test case fails if any exported activity is not protected by an appropriate `android:permission` that restricts which apps can start it and exposes or performs sensitive functionality, for example by displaying sensitive data, performing a security-relevant action, or allowing a caller to bypass authentication.
+The test case fails if any exported activity isn't protected by an appropriate `android:permission` that restricts which apps can start it and exposes or performs sensitive functionality, for example by displaying sensitive data, performing a security-relevant action, or allowing a caller to bypass authentication.
 
 **Further Validation Required:**
 
@@ -42,4 +42,4 @@ Then determine whether external access to the activity is appropriately restrict
 
 - Determine whether the activity has a legitimate reason to be started by third-party apps. If it doesn't, it shouldn't be exported.
 - If external access is required, determine whether the activity is protected by an appropriate `android:permission` or an equivalent access control. Appropriate means the control matches the sensitivity of the activity and the set of apps that should be allowed to start it.
-- Verify that the permission is effective for that trust boundary, for example by using a `signature` protection level or another control that is not broadly grantable to untrusted apps.
+- Verify that the permission is effective for that trust boundary, for example by using a `signature` protection level or another control that isn't broadly grantable to untrusted apps.

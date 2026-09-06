@@ -16,7 +16,7 @@ Android provides two types of intents, as described in the [Android documentatio
   startActivityForResult(downloadIntent);
   ```
 
-- **Implicit intents** do not name a specific component. They declare an action, and optionally data and categories, that another app component can handle. For example, a caller can use an implicit intent to show a location on a map without selecting a specific map app.
+- **Implicit intents** don't name a specific component. They declare an action, and optionally data and categories, that another app component can handle. For example, a caller can use an implicit intent to show a location on a map without selecting a specific map app.
 
   ```java
   Intent downloadIntent = new Intent();
@@ -38,7 +38,7 @@ If resolution yields more than one matching component, Android can present a cho
 
 !!! note
 
-  If the application targets Android 14 (API level 34) or higher, implicit intents will never be sent to internal components. This feature forces developers to implement explicit intents for internal communication, as otherwise the application would not function correctly while testing.
+  If the application targets Android 14 (API level 34) or higher, implicit intents will never be sent to internal components. This feature forces developers to implement explicit intents for internal communication, as otherwise the application wouldn't function correctly while testing.
 
   See [Android 14 behavior changes](https://developer.android.com/about/versions/14/behavior-changes-14#safer-intents) for more info.
 

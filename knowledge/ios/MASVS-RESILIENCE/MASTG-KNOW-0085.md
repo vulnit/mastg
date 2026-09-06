@@ -16,9 +16,9 @@ Anti-debugging techniques on iOS can be grouped into two broad categories:
 
 The iOS XNU kernel implements the [`ptrace`](https://developer.apple.com/library/archive/documentation/System/Conceptual/ManPages_iPhoneOS/man2/ptrace.2.html "PTRACE(2)") system call. As described in @MASTG-TECH-0084, iOS debuggers use `ptrace` for operations such as attaching, stepping, and continuing execution, while memory and register access rely on Mach APIs and task ports.
 
-The `ptrace` implementation includes `PT_DENY_ATTACH`, a request made by the traced process itself. Apple's `ptrace(2)` manual describes this request as a way for a process that is not currently traced to deny future tracing attempts. If a process is already traced when it makes the request, the process exits. If the request succeeds, later tracing attempts fail.
+The `ptrace` implementation includes `PT_DENY_ATTACH`, a request made by the traced process itself. Apple's `ptrace(2)` manual describes this request as a way for a process that isn't currently traced to deny future tracing attempts. If a process is already traced when it makes the request, the process exits. If the request succeeds, later tracing attempts fail.
 
-Because `ptrace` is not part of the public iOS SDK, implementations may resolve it dynamically with `dlsym` instead of importing it directly. Static analysis can therefore surface either direct `ptrace` references, `PT_DENY_ATTACH` constants, or string artifacts such as `ptrace`.
+Because `ptrace` isn't part of the public iOS SDK, implementations may resolve it dynamically with `dlsym` instead of importing it directly. Static analysis can therefore surface either direct `ptrace` references, `PT_DENY_ATTACH` constants, or string artifacts such as `ptrace`.
 
 ```c
 #define PT_DENY_ATTACH 31
@@ -37,7 +37,7 @@ ptrace_ptr(PT_DENY_ATTACH, 0, 0, 0);
 
 The `sysctl` interface can retrieve kernel and process information. Apple's archived technical Q&A ["Detecting the Debugger"](https://developer.apple.com/library/archive/qa/qa1361/_index.html "Detecting the Debugger") shows a debug-build-oriented example that queries the current process with `sysctl` and checks the `P_TRACED` flag in `info.kp_proc.p_flag`.
 
-The presence of a `sysctl` call alone does not prove anti-debugging behavior because apps can use it for other runtime information, such as device properties. Anti-debugging implementations usually combine `sysctl` with process-related Management Information Base values, `KERN_PROC_PID`, or checks for `P_TRACED`.
+The presence of a `sysctl` call alone doesn't prove anti-debugging behavior because apps can use it for other runtime information, such as device properties. Anti-debugging implementations usually combine `sysctl` with process-related Management Information Base values, `KERN_PROC_PID`, or checks for `P_TRACED`.
 
 ```c
 int mib[] = {CTL_KERN, KERN_PROC, KERN_PROC_PID, getpid()};

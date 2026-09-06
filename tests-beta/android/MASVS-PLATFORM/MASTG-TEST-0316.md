@@ -9,7 +9,7 @@ profiles: [L2]
 
 ## Overview
 
-This test verifies that the app handles user input correctly, ensuring that access codes (passwords or pins) and verification codes (OTPs) are not exposed in plain text within text input fields.
+This test verifies that the app handles user input correctly, ensuring that access codes (passwords or pins) and verification codes (OTPs) aren't exposed in plain text within text input fields.
 
 Proper masking (e.g., dots instead of input characters) of these codes is essential to protect user privacy. This can be achieved by using appropriate input types that obscure the characters entered by the user. In Jetpack Compose, `SecureTextField` uses `TextObfuscationMode`, which [by default is `TextObfuscationMode.RevealLastTyped`](https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:compose/material/material/src/commonMain/kotlin/androidx/compose/material/SecureTextField.kt;l=115?q=SecureTextField), so a developer can simply use `SecureTextField` without explicitly setting `textObfuscationMode` unless another behavior is required.
 
@@ -57,4 +57,4 @@ Since determining which fields handle access or verification codes is context-de
 
 **Expected False Negatives:**
 
-This test may produce false negatives if the app uses custom text input controls that do not rely on standard classes such as `TextField` or `SecureTextField` (for example in custom UI frameworks or game engines).
+This test may produce false negatives if the app uses custom text input controls that don't rely on standard classes such as `TextField` or `SecureTextField` (for example in custom UI frameworks or game engines).

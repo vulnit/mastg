@@ -17,9 +17,9 @@ The app's NDK native libraries (see "Native Libraries" in @MASTG-TECH-0007) also
     - With Android 5.0 (API level 21), support for non-PIE enabled native libraries was [dropped](https://source.android.com/security/enhancements/enhancements50) and since then, PIE is [enforced by the linker](https://cs.android.com/android/platform/superproject/+/master:bionic/linker/linker_main.cpp;l=430).
 - [**Memory management**](../../../Document/0x04h-Testing-Code-Quality.md#memory-management):
     - Garbage Collection will simply run for the main binaries and there's nothing to be checked on the binaries themselves.
-    - Garbage Collection does not apply to Android native libraries. The developer is responsible for doing proper [manual memory management](../../../Document/0x04h-Testing-Code-Quality.md#manual-memory-management). See ["Memory Corruption Bugs"](../../../Document/0x04h-Testing-Code-Quality.md#memory-corruption-bugs).
+    - Garbage Collection doesn't apply to Android native libraries. The developer is responsible for doing proper [manual memory management](../../../Document/0x04h-Testing-Code-Quality.md#manual-memory-management). See ["Memory Corruption Bugs"](../../../Document/0x04h-Testing-Code-Quality.md#memory-corruption-bugs).
 - [**Stack Smashing Protection**](../../../Document/0x04h-Testing-Code-Quality.md#stack-smashing-protection):
-    - Android apps get compiled to Dalvik bytecode which is considered memory safe (at least for mitigating buffer overflows). Other frameworks such as Flutter will not compile using stack canaries because of the way their language, in this case Dart, mitigates buffer overflows.
+    - Android apps get compiled to Dalvik bytecode which is considered memory safe (at least for mitigating buffer overflows). Other frameworks such as Flutter won't compile using stack canaries because of the way their language, in this case Dart, mitigates buffer overflows.
     - It must be enabled for Android native libraries but it might be difficult to fully determine it.
         - NDK libraries should have it enabled since the compiler does it by default.
         - Other custom C/C++ libraries might not have it enabled.

@@ -12,9 +12,9 @@ knowledge: [MASTG-KNOW-0022]
 
 ## Overview
 
-Overlay attacks (also known as tapjacking) allow malicious apps to place deceptive UI elements over a legitimate app's interface, potentially tricking users into performing unintended actions such as granting permissions, revealing credentials, or authorizing payments. If the app does not implement appropriate protections, users can interact with overlaid malicious content while believing they are interacting with the legitimate app.
+Overlay attacks (also known as tapjacking) allow malicious apps to place deceptive UI elements over a legitimate app's interface, potentially tricking users into performing unintended actions such as granting permissions, revealing credentials, or authorizing payments. If the app doesn't implement appropriate protections, users can interact with overlaid malicious content while believing they are interacting with the legitimate app.
 
-Android provides several mechanisms to protect against overlay attacks through touch filtering. These mechanisms can detect when a view is obscured and filter touch events accordingly. However, if the app does not use these protections on sensitive UI elements, it remains vulnerable to overlay attacks.
+Android provides several mechanisms to protect against overlay attacks through touch filtering. These mechanisms can detect when a view is obscured and filter touch events accordingly. However, if the app doesn't use these protections on sensitive UI elements, it remains vulnerable to overlay attacks.
 
 This test checks whether the app implements overlay attack protections by looking for references to touch filtering APIs and attributes that prevent interaction when views are obscured.
 
@@ -44,11 +44,11 @@ The output should contain:
 
 ## Evaluation
 
-The test fails if the app handles sensitive user interactions (such as login, payment confirmation, permission requests, or security settings) and does not implement any overlay attack protections on those sensitive UI elements.
+The test fails if the app handles sensitive user interactions (such as login, payment confirmation, permission requests, or security settings) and doesn't implement any overlay attack protections on those sensitive UI elements.
 
 For example:
 
 - The app doesn't implement `setFilterTouchesWhenObscured(true)` or `android:filterTouchesWhenObscured="true"` on sensitive UI elements.
 - The app doesn't override `onFilterTouchEventForSecurity` to implement custom security policies.
 - The app doesn't check for `FLAG_WINDOW_IS_OBSCURED` or `FLAG_WINDOW_IS_PARTIALLY_OBSCURED` in touch event handlers for sensitive interactions.
-- The app targets API level 31 or higher but does not use `setHideOverlayWindows(true)` and declare the `HIDE_OVERLAY_WINDOWS` permission.
+- The app targets API level 31 or higher but doesn't use `setHideOverlayWindows(true)` and declare the `HIDE_OVERLAY_WINDOWS` permission.

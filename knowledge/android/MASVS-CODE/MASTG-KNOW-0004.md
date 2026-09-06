@@ -6,7 +6,7 @@ title: Third-Party Libraries
 
 Android apps often make use of third party libraries. These third party libraries accelerate development as the developer has to write less code in order to solve a problem. There are two categories of libraries:
 
-- Libraries that are not (or should not) be packed within the actual production application, such as `Mockito` used for testing and libraries like `JavaAssist` used to compile certain other libraries.
+- Libraries that aren't (or should not) be packed within the actual production application, such as `Mockito` used for testing and libraries like `JavaAssist` used to compile certain other libraries.
 - Libraries that are packed within the actual production application, such as `Okhttp3`.
 
 These libraries can lead to unwanted side-effects:

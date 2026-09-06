@@ -17,7 +17,7 @@ $ scp -P 2222 root@localhost:/tmp/data.tgz .
 
 ## Grapefruit
 
-After starting @MASTG-TOOL-0061, you can select the app in scope for testing. There are various functions available, including one called "Finder". When you select it, you will see a list of the app sandbox directories.
+After starting @MASTG-TOOL-0061, you can select the app in scope for testing. There are various functions available, including one called "Finder". When you select it, you'll see a list of the app sandbox directories.
 
 <img src="Images/Chapters/0x06b/grapefruit_data_dir.png" width="100%" />
 
@@ -31,7 +31,7 @@ When navigating directories and selecting a file, a pop-up will appear and displ
 
 ## Objection
 
-When you start @MASTG-TOOL-0074, you will find the prompt in the Bundle directory.
+When you start @MASTG-TOOL-0074, you'll find the prompt in the Bundle directory.
 
 ```bash
 org.owasp.MSTG on (iPhone: 10.3.3) [usb] # pwd print
@@ -55,7 +55,7 @@ Writing bytes to destination...
 Successfully downloaded /var/mobile/Containers/Data/Application/72C7AAFB-1D75-4FBA-9D83-D8B4A2D44133/.com.apple.mobile_container_manager.metadata.plist to .com.apple.mobile_container_manager.metadata.plist
 ```
 
-As per objection v1.12.0, objection supports downloading folders using the strict syntax `filesystem download <remote folder> <local destination> --folder`. However, this applies only to folders and does not allow specifying multiple files directly.
+As per objection v1.12.0, objection supports downloading folders using the strict syntax `filesystem download <remote folder> <local destination> --folder`. However, this applies only to folders and doesn't allow specifying multiple files directly.
 
 ```bash
 ...[usb] # filesystem download Documents tmp/Downloads --folder

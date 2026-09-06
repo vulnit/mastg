@@ -12,7 +12,7 @@ kind: fail
 The sample below shows an app that makes HTTPS connections to three domains via `URLSession`.
 
 - `sha256.badssl.com` and `rsa2048.badssl.com`, which are pinned through ATS `NSPinnedDomains`.
-- `example.com`, which is not pinned.
+- `example.com`, which isn't pinned.
 
 In this demo, `example.com` represents the app's own backend. In a real app, this would be the actual first-party domain used for core functionality, such as `api.myapp.com`.
 
@@ -43,4 +43,4 @@ The output from @MASTG-TOOL-0129 shows that the app contains hardcoded URLs for 
 
 The test case fails because the app connects to its own backend, represented in this demo by `example.com`, but that domain has no entry under `NSPinnedDomains`.
 
-Only `sha256.badssl.com` and `rsa2048.badssl.com` are pinned. As a result, connections to the app-controlled backend rely only on the system CA trust store and are not protected by ATS certificate pinning against a MITM attacker who can cause the device to trust a forged or misissued certificate.
+Only `sha256.badssl.com` and `rsa2048.badssl.com` are pinned. As a result, connections to the app-controlled backend rely only on the system CA trust store and aren't protected by ATS certificate pinning against a MITM attacker who can cause the device to trust a forged or misissued certificate.

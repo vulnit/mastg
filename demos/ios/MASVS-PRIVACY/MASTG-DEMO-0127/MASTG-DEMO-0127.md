@@ -8,7 +8,7 @@ test: MASTG-TEST-0363
 
 ## Sample
 
-This sample uses the same app as @MASTG-DEMO-0126. The app binary is signed with the `com.apple.developer.healthkit` entitlement, which allows the app to request user authorization for HealthKit access. This dummy app does not need the information provided by such entitlement for its functionality. Indeed, the Swift code does not import HealthKit, instantiate `HKHealthStore`, or request access to HealthKit data types.
+This sample uses the same app as @MASTG-DEMO-0126. The app binary is signed with the `com.apple.developer.healthkit` entitlement, which allows the app to request user authorization for HealthKit access. This dummy app doesn't need the information provided by such entitlement for its functionality. Indeed, the Swift code doesn't import HealthKit, instantiate `HKHealthStore`, or request access to HealthKit data types.
 
 This runtime demo traces representative HealthKit APIs associated with the `com.apple.developer.healthkit` entitlement while exercising the app and verifies if the related APIs are called.
 
@@ -37,4 +37,4 @@ The Frida script output shows the HealthKit runtime hooks or class lookup result
 
 ## Evaluation
 
-The test case fails because the app is signed with the `com.apple.developer.healthkit` entitlement, but the exercised runtime flow does not show any HealthKit API use such as `HKHealthStore`. The sample app does not present any health, fitness, or wellness feature that would justify enabling HealthKit.
+The test case fails because the app is signed with the `com.apple.developer.healthkit` entitlement, but the exercised runtime flow doesn't show any HealthKit API use such as `HKHealthStore`. The sample app doesn't present any health, fitness, or wellness feature that would justify enabling HealthKit.

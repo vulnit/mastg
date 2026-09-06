@@ -3,7 +3,7 @@ title: Intercepting Flutter HTTPS Traffic
 platform: android
 ---
 
-Flutter is an open-source UI software development kit (SDK) created by Google. It is used to build natively compiled applications for mobile, web, and desktop from a single codebase. Flutter uses Dart, which is not proxy-aware and uses its own certificate store. A Flutter mobile app doesn't use the system's proxy configuration and sends the data directly to the server. Connections are verified against built-in certificates, so any certificates installed on the system are simply ignored. This makes it impossible to intercept HTTPS requests through a standard MiTM setup, as the proxy's certificate is never trusted.
+Flutter is an open-source UI software development kit (SDK) created by Google. It is used to build natively compiled applications for mobile, web, and desktop from a single codebase. Flutter uses Dart, which isn't proxy-aware and uses its own certificate store. A Flutter mobile app doesn't use the system's proxy configuration and sends the data directly to the server. Connections are verified against built-in certificates, so any certificates installed on the system are simply ignored. This makes it impossible to intercept HTTPS requests through a standard MiTM setup, as the proxy's certificate is never trusted.
 
 To intercept HTTPS traffic from a Flutter app, we have to deal with two challenges:
 
@@ -60,7 +60,7 @@ There are generally two approaches to this: **@MASTG-TOOL-0100** and **@MASTG-TO
 
 You can either configure @MASTG-TOOL-0120 or create `iptables` rules to redirect HTTP requests to Burp.
 
-- If you are not using proxyDroid, execute the following commands on the rooted Android device to configure `iptables` to redirect the incoming requests from the application to @MASTG-TOOL-0077:
+- If you aren't using proxyDroid, execute the following commands on the rooted Android device to configure `iptables` to redirect the incoming requests from the application to @MASTG-TOOL-0077:
 
     ```bash
     $ iptables -t nat -A OUTPUT -p tcp --dport 80 -j DNAT --to-destination <Your-Proxy-IP>:8080 

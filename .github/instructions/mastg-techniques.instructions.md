@@ -14,8 +14,8 @@ Locations:
 
 File naming and IDs:
 
-- The filename defines the technique ID: `MASTG-TECH-\d{4}.md`.
-- Do not add an `id:` field to the YAML front matter for techniques.
+- The file name defines the technique ID: `MASTG-TECH-\d{4}.md`.
+- Don't add an `id:` field to the YAML front matter for techniques.
 
 When creating a new technique (whether during porting or writing from scratch), use a **fake ID** starting at `MASTG-TECH-0x01` and incrementing within the PR (e.g., `MASTG-TECH-0x01`, `MASTG-TECH-0x02`, `MASTG-TECH-0x03`). This prevents conflicts between parallel pull requests.
 
@@ -23,7 +23,7 @@ Once your pull request is reviewed and ready to merge, the team will assign real
 
 Follow the global Markdown rules (see `.github/instructions/markdown.instructions.md`). Use `##` for top-level sections inside the page.
 
-Note: YAML front matter uses `---` delimiters. Do not use `---` as a horizontal rule in the body.
+Note: YAML front matter uses `---` delimiters. Don't use `---` as a horizontal rule in the body.
 
 ## Markdown: Metadata
 
@@ -62,7 +62,7 @@ Keep techniques practical and focused. Many existing technique pages start with 
 
 Prefer tool-agnostic wording where possible. Where tool specifics are necessary, link to the tool pages and keep commands minimal.
 
-Do not force a fixed section template. Techniques in this repo commonly use whatever headings best describe the workflow, for example:
+Don't force a fixed section template. Techniques in this repo commonly use whatever headings best describe the workflow, for example:
 
 - Task-oriented headings such as "Remote Shell", "Installing the Proxy Certificate", "Simulator Shell".
 - Tool- or format-oriented headings such as "Using jq", "Using plistlib".

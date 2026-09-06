@@ -12,7 +12,7 @@ Several approaches to certificate pinning exist, depending on the app's API leve
 
 **Important Considerations:**
 
-Certificate pinning is a **hardening practice**, but it is not foolproof. There are multiple ways an attacker can bypass it, such as:
+Certificate pinning is a **hardening practice**, but it isn't foolproof. There are multiple ways an attacker can bypass it, such as:
 
 - **Modifying the certificate validation logic** in the app's `TrustManager`.
 - **Replacing pinned certificates** stored in resource directories (`res/raw/`, `assets/`).
@@ -22,7 +22,7 @@ Any such modification **invalidates the APK signature**, requiring the attacker 
 
 ## Pinning via Network Security Configuration (API 24+)
 
-The **Network Security Configuration (NSC)** is the preferred and recommended way to implement certificate pinning in Android, as it provides a declarative, maintainable, and secure approach without requiring code changes. It applies to all network traffic managed by the Android framework within the app, including `HttpsURLConnection`-based connections and `WebView` requests (unless a custom `TrustManager` is used). For communication from native code, NSC does not apply, and other mechanisms need to be considered.
+The **Network Security Configuration (NSC)** is the preferred and recommended way to implement certificate pinning in Android, as it provides a declarative, maintainable, and secure approach without requiring code changes. It applies to all network traffic managed by the Android framework within the app, including `HttpsURLConnection`-based connections and `WebView` requests (unless a custom `TrustManager` is used). For communication from native code, NSC doesn't apply, and other mechanisms need to be considered.
 
 When attempting to establish a connection to a remote endpoint, the system will:
 
@@ -70,7 +70,7 @@ This approach involves:
 
 **Important Note:** This is a **low-level approach and is prone to errors** if not done carefully. Some key considerations include:
 
-- [`SSLSocket` does not automatically verify hostnames](https://developer.android.com/privacy-and-security/security-ssl#WarningsSslSocket), so you must handle this manually using a `HostnameVerifier` with a safe implementation (this includes explicitly checking the return value of `HostnameVerifier.verify()`). More information can be found in the [Android documentation](https://developer.android.com/privacy-and-security/risks/unsafe-hostname).
+- [`SSLSocket` doesn't automatically verify hostnames](https://developer.android.com/privacy-and-security/security-ssl#WarningsSslSocket), so you must handle this manually using a `HostnameVerifier` with a safe implementation (this includes explicitly checking the return value of `HostnameVerifier.verify()`). More information can be found in the [Android documentation](https://developer.android.com/privacy-and-security/risks/unsafe-hostname).
 - [Do **not** include a "trust-all" `TrustManager`](https://developer.android.com/privacy-and-security/security-ssl#UnknownCa) that silently accepts all certificates. This opens the door for attackers to intercept and modify user data with minimal effort.
 
 ## Pinning using Third-party Libraries

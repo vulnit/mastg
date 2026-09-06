@@ -10,7 +10,7 @@ knowledge: [MASTG-KNOW-0023]
 
 ## Overview
 
-At runtime, Android apps implementing enforced updating typically either invoke the [Google Play In-App Updates API](https://developer.android.com/guide/playcore/in-app-updates) (for example, `AppUpdateManager`) or perform a custom version check, for example by retrieving `BuildConfig.VERSION_NAME`, `BuildConfig.VERSION_CODE`, or `PackageManager.getPackageInfo` values and sending them to a backend that returns a minimum version policy. If the app does not perform this check before access to protected functionality or backend services, or if the enforcement can be bypassed, for example by dismissing an update dialog, cancelling an immediate update flow, backgrounding the app before the update completes, or manipulating the reported version, the app fails to properly enforce the update.
+At runtime, Android apps implementing enforced updating typically either invoke the [Google Play In-App Updates API](https://developer.android.com/guide/playcore/in-app-updates) (for example, `AppUpdateManager`) or perform a custom version check, for example by retrieving `BuildConfig.VERSION_NAME`, `BuildConfig.VERSION_CODE`, or `PackageManager.getPackageInfo` values and sending them to a backend that returns a minimum version policy. If the app doesn't perform this check before access to protected functionality or backend services, or if the enforcement can be bypassed, for example by dismissing an update dialog, cancelling an immediate update flow, backgrounding the app before the update completes, or manipulating the reported version, the app fails to properly enforce the update.
 
 This test checks whether the app triggers the expected update enforcement behavior at runtime by capturing version-related network traffic where applicable and hooking update-related API calls (@MASTG-KNOW-0023).
 
@@ -30,13 +30,13 @@ The output should contain:
 
 ## Evaluation
 
-The test case fails if the app does not perform a runtime update check, or if the update is not enforced at runtime.
+The test case fails if the app doesn't perform a runtime update check, or if the update isn't enforced at runtime.
 
 **Further Validation Required:**
 
 Using the backtraces from the hook output, inspect the code locations using @MASTG-TECH-0023:
 
-- Determine whether the update check executes before access to protected functionality or backend services and cannot be bypassed.
+- Determine whether the update check executes before access to protected functionality or backend services and can't be bypassed.
 - For Google Play In-App Updates, determine whether the app handles cancellation or denial of an immediate update flow, checks update state when returning to the foreground, and restarts the immediate update flow when `UpdateAvailability.DEVELOPER_TRIGGERED_UPDATE_IN_PROGRESS` is reported.
 - For mandatory updates, determine whether the app continues blocking access after the update flow is cancelled, interrupted, backgrounded, or left incomplete.
 - For backend-gated flows, determine whether lowering the reported version value in network requests, for example `version`, `versionCode`, or `build` using an interception proxy, results in an update-required response that the app properly enforces.

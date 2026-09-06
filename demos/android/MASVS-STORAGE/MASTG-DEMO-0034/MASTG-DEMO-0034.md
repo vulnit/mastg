@@ -31,7 +31,7 @@ The test fails because the sensitive file `secret.txt` ends up in the backup. Th
 
 - The `android:allowBackup="true"` attribute in the AndroidManifest.xml file.
 - The `android:fullBackupContent="@xml/backup_rules"` attribute is present in the AndroidManifest.xml file.
-- The `backup_rules.xml` file is present in the APK and does not exclude **all** sensitive files.
+- The `backup_rules.xml` file is present in the APK and doesn't exclude **all** sensitive files.
 
 {{ ../MASTG-DEMO-0020/backup_rules.xml }}
 

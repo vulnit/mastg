@@ -11,7 +11,7 @@ knowledge: [MASTG-KNOW-0089]
 
 ## Overview
 
-If native Mach-O code that implements security-relevant logic is not obfuscated, reverse engineering of packaged iOS binaries can expose business logic, device attestation and environment checks, integrity checks, and other implementation details that help an attacker understand the app and model attacks.
+If native Mach-O code that implements security-relevant logic isn't obfuscated, reverse engineering of packaged iOS binaries can expose business logic, device attestation and environment checks, integrity checks, and other implementation details that help an attacker understand the app and model attacks.
 
 This test checks whether the obfuscation techniques applied to the main executable and bundled Mach-O binaries prevent straightforward identification, correlation, and reverse engineering of security-relevant logic through strings, constants, symbols, runtime metadata, call structure, or control flow.
 
@@ -19,7 +19,7 @@ Refer to @MASTG-KNOW-0089 for common iOS obfuscation mechanisms and indicators t
 
 **Example Attack Scenario:**
 
-Suppose a banking app moves its integrity and jailbreak checks into Swift, Objective-C, or C/C++ code compiled into Mach-O binaries, assuming native code is inherently harder to analyze, but does not apply any obfuscation.
+Suppose a banking app moves its integrity and jailbreak checks into Swift, Objective-C, or C/C++ code compiled into Mach-O binaries, assuming native code is inherently harder to analyze, but doesn't apply any obfuscation.
 
 1. An attacker extracts the app package and identifies the main executable and bundled frameworks.
 2. Plaintext strings, Objective-C selectors, or Swift symbols immediately reveal every file path, URL, and runtime artifact the app checks, requiring little further analysis to identify the protection's scope.

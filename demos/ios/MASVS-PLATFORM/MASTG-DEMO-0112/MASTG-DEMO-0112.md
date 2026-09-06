@@ -18,12 +18,12 @@ The app exposes a login form with the following text input fields:
 
 {{ MastgTest.swift }}
 
-The "Password" field is not masked, and is therefore visible to bystanders (shoulder surfing) or potentially captured in screenshots and screen recordings.
+The "Password" field isn't masked, and is therefore visible to bystanders (shoulder surfing) or potentially captured in screenshots and screen recordings.
 
 The "OTP 1" and "OTP 2" fields use text input fields that are configured to mask the inputted data.
 
 !!! note
-    Secure fields (`isSecureTextEntry = true` or SwiftUI `SecureField`) also keep input on the system keyboard, since iOS does not offer installed third-party (custom) keyboards for them (see @MASTG-KNOW-0141). The unmasked "Password" field therefore also allows a third-party keyboard to receive the typed password.
+    Secure fields (`isSecureTextEntry = true` or SwiftUI `SecureField`) also keep input on the system keyboard, since iOS doesn't offer installed third-party (custom) keyboards for them (see @MASTG-KNOW-0141). The unmasked "Password" field therefore also allows a third-party keyboard to receive the typed password.
 
 ## Steps
 

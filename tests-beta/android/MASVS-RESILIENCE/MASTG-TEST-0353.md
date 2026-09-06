@@ -22,7 +22,7 @@ This test is best combined with @MASTG-TEST-0352, which checks for the presence 
 It is recommended to run this test while actively attempting to attach a debugger (or on a debuggable build), to ensure that debugging detection mechanisms are triggered during testing. However, even without attaching a debugger, this test can still surface debugging detection logic if the app runs those checks unconditionally.
 
 !!! note "Out of Scope"
-    This test does not cover robustness or effectiveness of debugging detection mechanisms, which can be very difficult to assess through automated testing alone and may require manual reverse engineering and custom instrumentation. See @MASTG-BEST-0047 for best practices on implementing debugging detection effectively.
+    This test doesn't cover robustness or effectiveness of debugging detection mechanisms, which can be very difficult to assess through automated testing alone and may require manual reverse engineering and custom instrumentation. See @MASTG-BEST-0047 for best practices on implementing debugging detection effectively.
 
 In this test we focus on identifying the presence of debugging detection mechanisms at runtime by hooking into common debugging detection APIs and tracing relevant system calls.
 
@@ -50,4 +50,4 @@ Using the backtraces from the hook output, inspect the code locations using @MAS
 
 **Expected False Negatives:**
 
-This test may produce false negatives if the app uses debugging detection techniques that are not covered by the hooks or traces used in this test, or if the debugging detection logic is implemented in a way that evades detection (for example, through obfuscation, dynamic code loading, or anti-instrumentation techniques). In such cases, the absence of findings does not guarantee the absence of debugging detection, and additional manual reverse engineering or custom instrumentation may be required to identify and analyze debugging detection mechanisms.
+This test may produce false negatives if the app uses debugging detection techniques that aren't covered by the hooks or traces used in this test, or if the debugging detection logic is implemented in a way that evades detection (for example, through obfuscation, dynamic code loading, or anti-instrumentation techniques). In such cases, the absence of findings doesn't guarantee the absence of debugging detection, and additional manual reverse engineering or custom instrumentation may be required to identify and analyze debugging detection mechanisms.

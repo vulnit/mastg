@@ -17,7 +17,7 @@ Inspecting the merged manifest file can help you understand the final configurat
 ## Using Command-Line Tools
 
 !!! warning Limitation
-    With this method, you cannot track the source of each element in the merged manifest file. For this, you will need to use Android Studio, as described [above](#using-mastg-tool-0007).
+    With this method, you can't track the source of each element in the merged manifest file. For this, you'll need to use Android Studio, as described [above](#using-mastg-tool-0007).
 
 1. You can manually generate the merged manifest file of the desired build variant using a command like `./gradlew app:processDebugManifest`. Replace `Debug` with the desired build variant if necessary.
 2. After running the command, you can find the merged manifest file in the `app/build/intermediates/merged_manifests/debug/AndroidManifest.xml` directory. Again, replace `debug` with the appropriate build variant if needed.

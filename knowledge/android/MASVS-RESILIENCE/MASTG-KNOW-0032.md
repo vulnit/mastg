@@ -32,7 +32,7 @@ Installing such hooks requires the target memory region to be writable. The kern
 
 The Procedure Linkage Table / Global Offset Table (PLT/GOT) stores relocation-resolved function addresses used by dynamically linked calls. At runtime, the dynamic linker patches these entries with the absolute addresses of imported functions. _PLT/GOT hooks_ overwrite the stored function addresses, redirecting legitimate function calls to adversary-controlled code (e.g., using libraries such as [xHook](https://github.com/iqiyi/xHook)). This type of hook can be detected by enumerating the process memory map and verifying that each relevant PLT/GOT entry points to the expected symbol implementation or to an allowed executable mapping.
 
-Android's bionic linker performs relocation while loading shared libraries, and [historically did not use lazy binding for PLT entries](https://android.googlesource.com/platform/bionic/%2B/android-4.2_r1/linker/linker.cpp). As a result, you can generally expect imported function entries to point to valid executable locations at runtime, rather than unresolved lazy-binding stubs. PLT/GOT hook detection methods typically walk these entries and verify this.
+Android's bionic linker performs relocation while loading shared libraries, and [historically didn't use lazy binding for PLT entries](https://android.googlesource.com/platform/bionic/%2B/android-4.2_r1/linker/linker.cpp). As a result, you can generally expect imported function entries to point to valid executable locations at runtime, rather than unresolved lazy-binding stubs. PLT/GOT hook detection methods typically walk these entries and verify this.
 
 For PLT/GOT hook detection, the app can parse its own ELF structure, locate function relocation entries, and verify each one points to an address within the expected library's memory range or another trusted executable mapping, as reported by `/proc/self/maps`.
 
@@ -51,7 +51,7 @@ Some Java method hooking defensive controls modify the `ArtMethod` structure in 
 - `access_flags_`: Method modifiers (public, native, etc.)
 
 !!! note
-    There is no public API to obtain a reference to the `ArtMethod` structure that backs a Java method. JNI's `FromReflectedMethod` returns a `jmethodID` which could be reinterpreted as an `ArtMethod*`, but this depends on ART configuration and it is not a guarantee. On runtimes using opaque/index JNI IDs, it is not a raw pointer. The `ArtMethod` layout itself also varies across Android versions, requiring version-specific offset handling that is brittle and error-prone.
+    There is no public API to obtain a reference to the `ArtMethod` structure that backs a Java method. JNI's `FromReflectedMethod` returns a `jmethodID` which could be reinterpreted as an `ArtMethod*`, but this depends on ART configuration and it isn't a guarantee. On runtimes using opaque/index JNI IDs, it isn't a raw pointer. The `ArtMethod` layout itself also varies across Android versions, requiring version-specific offset handling that is brittle and error-prone.
 
 When a framework hooks a method, it may replace the original entry points with a pointer to hook or bridge code. Detection approaches include:
 
@@ -102,7 +102,7 @@ Artifact-based checks, such as searching for Frida strings, Frida thread names, 
 
 ## Framework Runtime Modification Detection
 
-Framework runtime modification detection checks whether the app's live runtime environment has been modified by a hooking framework. This category focuses on runtime state changes inside the app process, such as classes injected into the app's class loader. It does not cover installed packages, framework files, daemon processes, ports, or other tool presence artifacts, which are covered in @MASTG-KNOW-0030.
+Framework runtime modification detection checks whether the app's live runtime environment has been modified by a hooking framework. This category focuses on runtime state changes inside the app process, such as classes injected into the app's class loader. It doesn't cover installed packages, framework files, daemon processes, ports, or other tool presence artifacts, which are covered in @MASTG-KNOW-0030.
 
 ### Xposed Detection
 

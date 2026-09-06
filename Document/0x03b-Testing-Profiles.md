@@ -34,8 +34,8 @@ This profile emphasizes adhering to secure defaults provided by the OS and frame
 
 It assumes that:
 
-- the **security controls of the mobile operating system** can be trusted (e.g. the device is not rooted/jailbroken).
-- the **primary user of the device** is not viewed as an adversary.
+- the **security controls of the mobile operating system** can be trusted (e.g. the device isn't rooted/jailbroken).
+- the **primary user of the device** isn't viewed as an adversary.
 - **other applications** installed on the device are viewed as an adversary.
 
 MAS-L1 is recommended for
@@ -49,8 +49,8 @@ MAS-L2 extends MAS-L1, introducing additional security measures and best practic
 
 It assumes that:
 
-- the **security controls of the mobile operating system** cannot be trusted (e.g. the device is rooted/jailbroken).
-- the **primary user of the device** is not viewed as an adversary.
+- the **security controls of the mobile operating system** can't be trusted (e.g. the device is rooted/jailbroken).
+- the **primary user of the device** isn't viewed as an adversary.
 - **other applications** installed on the device are viewed as an adversary.
 - a **third party with or without physical access** is viewed as an adversary.
 
@@ -64,7 +64,7 @@ MAS-R tries to prevent an attacker from extracting intellectual property, bypass
 
 It assumes that:
 
-- the **security controls of the mobile operating system** cannot be trusted (e.g. the device is rooted/jailbroken).
+- the **security controls of the mobile operating system** can't be trusted (e.g. the device is rooted/jailbroken).
 - the **primary user of the device** is viewed as an adversary (e.g. a reverse engineer or cheater).
 - **other applications** installed on the device are viewed as an adversary.
 - a **third party with or without physical access** is viewed as an adversary.
@@ -73,9 +73,9 @@ MAS-R is recommended for
 
 - apps that have a strong need to safeguard their own **business assets and logic**.
 
-Note that the absence of any MAS-R measures does not inherently introduce vulnerabilities. Rather, these measures offer additional, threat-specific protection to applications. However, this is provided that these apps also meet the rest of the OWASP MASVS security controls appropriate to their specific threat models. Crucially, **MAS-R is meant to augment and not replace MAS-L1 and MAS-L2.** It should not be used standalone but as an extra layer of defense, supplementing the base security controls in a defense-in-depth strategy.
+Note that the absence of any MAS-R measures doesn't inherently introduce vulnerabilities. Rather, these measures offer additional, threat-specific protection to applications. However, this is provided that these apps also meet the rest of the OWASP MASVS security controls appropriate to their specific threat models. Crucially, **MAS-R is meant to augment and not replace MAS-L1 and MAS-L2.** It should not be used standalone but as an extra layer of defense, supplementing the base security controls in a defense-in-depth strategy.
 
-Note that these measures cannot assure a 100% effectiveness, as the reverse engineer will always have full access to the device and will therefore end up succeeding given enough time and resources.
+Note that these measures can't assure a 100% effectiveness, as the reverse engineer will always have full access to the device and will therefore end up succeeding given enough time and resources.
 
 ### Privacy
 
@@ -154,7 +154,7 @@ MAS-P is recommended for
 
 ## Selecting and Tailoring MAS Testing Profiles
 
-When it comes to selecting and tailoring MAS Testing Profiles, it is crucial to follow a defense-in-depth approach, understanding that **the goal is not to comply with every profile or every test within a profile**. Instead, you should take into account the app's specific [threat model](https://owasp.org/www-community/Threat_Modeling), functionality, and [data sensitivity](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-122.pdf) to determine the most suitable testing profiles and specific tests to apply. This allows for a focused and efficient security verification process, tailored to the unique characteristics and needs of your application.
+When it comes to selecting and tailoring MAS Testing Profiles, it is crucial to follow a defense-in-depth approach, understanding that **the goal isn't to comply with every profile or every test within a profile**. Instead, you should take into account the app's specific [threat model](https://owasp.org/www-community/Threat_Modeling), functionality, and [data sensitivity](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-122.pdf) to determine the most suitable testing profiles and specific tests to apply. This allows for a focused and efficient security verification process, tailored to the unique characteristics and needs of your application.
 
 For example, some apps might not incorporate certain features, such as server communication, Multi-Factor Authentication (MFA), or biometrics. In such cases, it is unnecessary to apply tests that aren't relevant to the app's functionality. Similarly, if an app's interfaces don't handle sensitive data, they become less critical to secure.
 

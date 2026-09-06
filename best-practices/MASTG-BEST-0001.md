@@ -6,7 +6,7 @@ platform: android
 knowledge: [MASTG-KNOW-0013]
 ---
 
-Use a cryptographically secure pseudorandom number generator as provided by the platform or programming language you are using.
+Use a cryptographically secure pseudorandom number generator as provided by the platform or programming language you're using.
 
 ## Java/Kotlin
 

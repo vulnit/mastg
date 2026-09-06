@@ -30,7 +30,7 @@ The [ELF](https://refspecs.linuxfoundation.org/elf/elf.pdf) format defines which
 - **`.debug_str`**: Stores strings used by DWARF entries.
 - **`.debug_loc`, `.debug_ranges`, `.debug_abbrev`, etc.**: Support detailed debug metadata.
 
-Additionally, some toolchains use zlib [compression](https://www.linker-aliens.org/blogs/ali/entry/elf_section_compression/) for DWARF data to reduce binary size (for example [clang](https://clang.llvm.org/docs/ClangCommandLineReference.html#cmdoption-clang-gz) and [gcc](https://gcc.gnu.org/onlinedocs/gcc/Debugging-Options.html#index-gz) support this using the `-gz` option). These sections are typically named using a `.z` prefix (e.g.,`.zdebug_info`, `.zdebug_line`, `.zdebug_str`, etc.) and contain the same information as their uncompressed counterparts. Some analysis tools that do not support these may incorrectly report the binary as stripped.
+Additionally, some toolchains use zlib [compression](https://www.linker-aliens.org/blogs/ali/entry/elf_section_compression/) for DWARF data to reduce binary size (for example [clang](https://clang.llvm.org/docs/ClangCommandLineReference.html#cmdoption-clang-gz) and [gcc](https://gcc.gnu.org/onlinedocs/gcc/Debugging-Options.html#index-gz) support this using the `-gz` option). These sections are typically named using a `.z` prefix (e.g.,`.zdebug_info`, `.zdebug_line`, `.zdebug_str`, etc.) and contain the same information as their uncompressed counterparts. Some analysis tools that don't support these may incorrectly report the binary as stripped.
 
 To check for the presence of these sections in a binary, you can use @MASTG-TOOL-0121 (with the option `-x`) or @MASTG-TOOL-0028 (`iS` command) and other tools like `readelf`.
 
@@ -53,7 +53,7 @@ For example, using radare2:
 
 ## External Debug Symbol Files
 
-The [Android Developers documentation](https://developer.android.com/build/include-native-symbols) explains that native libraries in release builds are stripped by default. To enable symbolicated native crash reports, you must generate a separate debug symbols file—typically located at `<variant>/native-debug-symbols.zip`—and upload it to the Google Play Console. This ZIP archive contains full **unstripped `.so` files** with embedded DWARF debug information. The DWARF data is not split into separate files (such as `.dwo`) but remains inside each `.so`.
+The [Android Developers documentation](https://developer.android.com/build/include-native-symbols) explains that native libraries in release builds are stripped by default. To enable symbolicated native crash reports, you must generate a separate debug symbols file—typically located at `<variant>/native-debug-symbols.zip`—and upload it to the Google Play Console. This ZIP archive contains full **unstripped `.so` files** with embedded DWARF debug information. The DWARF data isn't split into separate files (such as `.dwo`) but remains inside each `.so`.
 
 > This symbolication process is analogous to uploading a `mapping.txt` file to [deobfuscate stack traces](https://support.google.com/googleplay/android-developer/answer/9848633) for ProGuard or R8 obfuscated Java/Kotlin code.
 

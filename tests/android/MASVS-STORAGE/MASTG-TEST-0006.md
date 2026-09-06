@@ -18,7 +18,7 @@ deprecation_note: New version available in MASTG V2
 
 ## Static Analysis
 
-In the layout definition of an activity, you can define `TextViews` that have XML attributes. If the XML attribute `android:inputType` is given the value `textNoSuggestions`, the keyboard cache will not be shown when the input field is selected. The user will have to type everything manually.
+In the layout definition of an activity, you can define `TextViews` that have XML attributes. If the XML attribute `android:inputType` is given the value `textNoSuggestions`, the keyboard cache won't be shown when the input field is selected. The user will have to type everything manually.
 
 ```xml
    <EditText
@@ -39,8 +39,8 @@ Alternatively, the developer can use the following constants:
 
 Check the application code to verify that none of the input types are being overwritten. For example, by doing `findViewById(R.id.KeyBoardCache).setInputType(InputType.TYPE_CLASS_TEXT)` the input type of the input field `KeyBoardCache` is set to `text` reenabling the keyboard cache.
 
-Finally, check the minimum required SDK version in the Android Manifest (`android:minSdkVersion`) since it must support the used constants (for example, Android SDK version 11 is required for `textWebPassword`). Otherwise, the compiled app would not honor the used input type constants allowing keyboard caching.
+Finally, check the minimum required SDK version in the Android Manifest (`android:minSdkVersion`) since it must support the used constants (for example, Android SDK version 11 is required for `textWebPassword`). Otherwise, the compiled app wouldn't honor the used input type constants allowing keyboard caching.
 
 ### Dynamic Analysis
 
-Start the app and click in the input fields that take sensitive data. If strings are suggested, the keyboard cache has not been disabled for these fields.
+Start the app and click in the input fields that take sensitive data. If strings are suggested, the keyboard cache hasn't been disabled for these fields.

@@ -35,7 +35,7 @@ Install: Complete
 
 ## ipainstaller
 
-The IPA can also be installed directly on an iOS device via the command line using @MASTG-TOOL-0138. Naturally, this requires a jailbroken device; otherwise, you cannot SSH into it. After copying the file over to the device, for example, via `scp` (@MASTG-TECH-0053) or [AirDrop](https://support.apple.com/en-us/119857), you can execute `ipainstaller` with the IPA's filename:
+The IPA can also be installed directly on an iOS device via the command line using @MASTG-TOOL-0138. Naturally, this requires a jailbroken device; otherwise, you can't SSH into it. After copying the file over to the device, for example, via `scp` (@MASTG-TECH-0053) or [AirDrop](https://support.apple.com/en-us/119857), you can execute `ipainstaller` with the IPA's file name:
 
 ```bash
 ipainstaller Uncrackable.ipa
@@ -103,7 +103,7 @@ Sometimes an application must be used on an iPad. If you only have iPhone or iPo
 </plist>
 ```
 
-Note that changing this value will break the original signature, so you must re-sign the IPA (@MASTG-TECH-0092) to install it on a device that does not have signature validation disabled.
+Note that changing this value will break the original signature, so you must re-sign the IPA (@MASTG-TECH-0092) to install it on a device that doesn't have signature validation disabled.
 
 This workaround might not work if the application requires capabilities specific to modern iPads, while your iPhone or iPod is a bit older.
 

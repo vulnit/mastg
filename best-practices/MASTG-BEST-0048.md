@@ -8,7 +8,7 @@ knowledge: [MASTG-KNOW-0087]
 
 Defending against reverse engineering tools on iOS requires a layered approach that combines several types of security controls:
 
-- **Detective controls**: Scan for known reverse engineering tool artifacts (@MASTG-KNOW-0087), such as checking loaded dynamic libraries via `_dyld_image_count`/`_dyld_get_image_name` for names containing "frida", "gadget", "cynject", or other tool-specific strings. This technique is effective against Frida Gadget (embedded mode) and tools loaded through dyld, but on official builds frida-server injects its agent using a [custom Mach-O loader](https://github.com/frida/frida-gum/blob/main/gum/backend-darwin/gumdarwinmapper.c) that bypasses dyld, so it does not detect frida-server in injected mode. Additionally, probe TCP port 27042 for a D-Bus authentication response to reveal a running frida-server.
+- **Detective controls**: Scan for known reverse engineering tool artifacts (@MASTG-KNOW-0087), such as checking loaded dynamic libraries via `_dyld_image_count`/`_dyld_get_image_name` for names containing "frida", "gadget", "cynject", or other tool-specific strings. This technique is effective against Frida Gadget (embedded mode) and tools loaded through dyld, but on official builds frida-server injects its agent using a [custom Mach-O loader](https://github.com/frida/frida-gum/blob/main/gum/backend-darwin/gumdarwinmapper.c) that bypasses dyld, so it doesn't detect frida-server in injected mode. Additionally, probe TCP port 27042 for a D-Bus authentication response to reveal a running frida-server.
 - **Deterrent controls**: Obfuscate detection logic (@MASTG-KNOW-0089), scatter checks throughout the app, and vary their timing to increase the cost and effort required to bypass these checks. Avoid centralizing detection in a single function, as a fixed entry point can be patched or hooked.
 - **Responsive controls**: Terminate the app immediately, clear sensitive data from memory, or alert the backend server when a tool is detected.
 
@@ -52,4 +52,4 @@ When a reverse engineering tool is detected:
 - Clear sensitive data from memory.
 - Alert the backend server to flag the compromised session.
 
-Do not allow the app to continue running in a compromised state. Protect the response mechanism itself by implementing it in native code and obfuscating its control flow.
+Don't allow the app to continue running in a compromised state. Protect the response mechanism itself by implementing it in native code and obfuscating its control flow.

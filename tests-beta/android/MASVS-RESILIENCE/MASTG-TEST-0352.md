@@ -20,7 +20,7 @@ This test checks whether the app references JDWP and/or native debugging detecti
 This test is best combined with @MASTG-TEST-0353, which performs dynamic testing to confirm whether the identified debugging detection mechanisms are active at runtime. Use the findings from this test to focus dynamic analysis in @MASTG-TEST-0353 on specific checks.
 
 !!! note "Out of Scope"
-    This test does not cover robustness or effectiveness of debugging detection mechanisms, which can be very difficult to assess through static analysis alone and may require manual reverse engineering and custom instrumentation. See @MASTG-BEST-0047 for best practices on implementing debugging detection effectively.
+    This test doesn't cover robustness or effectiveness of debugging detection mechanisms, which can be very difficult to assess through static analysis alone and may require manual reverse engineering and custom instrumentation. See @MASTG-BEST-0047 for best practices on implementing debugging detection effectively.
 
 ## Steps
 
@@ -48,4 +48,4 @@ Inspect each reported code location using @MASTG-TECH-0023 to determine whether 
 
 **Expected False Negatives:**
 
-This test may produce false negatives if the app uses debugging detection techniques that are obfuscated, dynamically loaded, or implemented in native code using inline syscalls or other patterns not covered by the analysis. In such cases, the absence of findings does not guarantee the absence of debugging detection, and additional manual reverse engineering or custom instrumentation may be required.
+This test may produce false negatives if the app uses debugging detection techniques that are obfuscated, dynamically loaded, or implemented in native code using inline syscalls or other patterns not covered by the analysis. In such cases, the absence of findings doesn't guarantee the absence of debugging detection, and additional manual reverse engineering or custom instrumentation may be required.

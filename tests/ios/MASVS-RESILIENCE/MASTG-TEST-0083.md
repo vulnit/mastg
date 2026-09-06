@@ -34,8 +34,8 @@ $ objdump --syms TargetApp
 ...
 ```
 
-To prevent the inclusion of debug symbols, set `Strip Debug Symbols During Copy` to `YES` via the XCode project's build settings. Stripping debugging symbols will not only reduce the size of the binary but also increase the difficulty of reverse engineering.
+To prevent the inclusion of debug symbols, set `Strip Debug Symbols During Copy` to `YES` via the XCode project's build settings. Stripping debugging symbols won't only reduce the size of the binary but also increase the difficulty of reverse engineering.
 
 ## Dynamic Analysis
 
-Dynamic analysis is not applicable for finding debugging symbols.
+Dynamic analysis isn't applicable for finding debugging symbols.

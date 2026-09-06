@@ -4,7 +4,7 @@ platform: android
 title: Google Play Integrity API
 ---
 
-Google has launched the [Google Play Integrity API](https://developer.android.com/google/play/integrity/overview "Google Play Integrity API") to improve the security and integrity of apps and games on Android starting with Android 4.4 (level 19). The previous official API, [SafetyNet](https://developer.android.com/training/safetynet), did not cover all the security needs that Google wanted for the platform, so Play Integrity was developed with the basic functions of the previous API and integrated additional features. This change aims to protect users from dangerous and fraudulent interactions.
+Google has launched the [Google Play Integrity API](https://developer.android.com/google/play/integrity/overview "Google Play Integrity API") to improve the security and integrity of apps and games on Android starting with Android 4.4 (level 19). The previous official API, [SafetyNet](https://developer.android.com/training/safetynet), didn't cover all the security needs that Google wanted for the platform, so Play Integrity was developed with the basic functions of the previous API and integrated additional features. This change aims to protect users from dangerous and fraudulent interactions.
 
 **Google Play Integrity offers the following safeguards:**
 
@@ -14,11 +14,11 @@ Google has launched the [Google Play Integrity API](https://developer.android.co
 
 The API provides four macro categories of information to help the security team make a decision. These categories include:
 
-1. **Request Details**: In this section, details are obtained about the app package that requested the integrity check, including its format (e.g., com.example.myapp), a base64-encoded ID provided by the developer to link the request with the integrity certificate, and the execution time of the request in milliseconds.
+1. **Request Details**: In this section, details are obtained about the app package that requested the integrity check, including its format (e.g., com.example.myapp), a Base64-encoded ID provided by the developer to link the request with the integrity certificate, and the execution time of the request in milliseconds.
 
 2. **App Integrity**: This section provides information about the integrity of the app, including the result of the verification (denominated verdict), which indicates whether the app's installation source is trusted (via Play Store) or unknown/suspicious. If the installation source is considered secure, the app version will also be displayed.
 
-3. **Account Details**: This category provides information about the app licensing status. The result can be `LICENSED`, indicating that the user purchased or installed the app on the Google Play Store; `UNLICENSED`, meaning that the user does not own the app or did not acquire it through the Google Play Store; or `UNEVALUATED`, which means that the licensing details could not be evaluated because a necessary requirement is missing, that is, the device may not be trustworthy enough or the installed app version is not recognized by the Google Play Store.
+3. **Account Details**: This category provides information about the app licensing status. The result can be `LICENSED`, indicating that the user purchased or installed the app on the Google Play Store; `UNLICENSED`, meaning that the user doesn't own the app or didn't acquire it through the Google Play Store; or `UNEVALUATED`, which means that the licensing details couldn't be evaluated because a necessary requirement is missing, that is, the device may not be trustworthy enough or the installed app version isn't recognized by the Google Play Store.
 
 4. **Device Integrity**: This section presents information that verifies the authenticity of the Android environment in which the app is running.
 
@@ -29,7 +29,7 @@ The API provides four macro categories of information to help the security team 
 
 **API Errors:**
 
-The API can return local errors such as `APP_NOT_INSTALLED` and `APP_UID_MISMATCH`, which can indicate a fraud attempt or attack. In addition, outdated Google Play Services or Play Store can also cause errors, and it is important to check these situations to ensure proper integrity verification functionality and to ensure the environment is not intentionally set up for an attack. You can find more details on the [official page](https://developer.android.com/google/play/integrity/error-codes).
+The API can return local errors such as `APP_NOT_INSTALLED` and `APP_UID_MISMATCH`, which can indicate a fraud attempt or attack. In addition, outdated Google Play Services or Play Store can also cause errors, and it is important to check these situations to ensure proper integrity verification functionality and to ensure the environment isn't intentionally set up for an attack. You can find more details on the [official page](https://developer.android.com/google/play/integrity/error-codes).
 
 **Best practices:**
 

@@ -21,7 +21,7 @@ Perform the following steps when testing authentication and authorization:
 - Locate all endpoints that provide critical functionality.
 - Verify that the additional factors are strictly enforced on all server-side endpoints.
 
-Authentication bypass vulnerabilities exist when authentication state is not consistently enforced on the server and when the client can tamper with the state. While the backend service is processing requests from the mobile client, it must consistently enforce authorization checks: verifying that the user is logged in and authorized every time a resource is requested.
+Authentication bypass vulnerabilities exist when authentication state isn't consistently enforced on the server and when the client can tamper with the state. While the backend service is processing requests from the mobile client, it must consistently enforce authorization checks: verifying that the user is logged in and authorized every time a resource is requested.
 
 Consider the following example from the [OWASP Web Testing Guide](https://owasp.org/www-project-web-security-testing-guide/stable/4-Web_Application_Security_Testing/04-Authentication_Testing/04-Testing_for_Bypassing_Authentication_Schema "Testing for Bypassing Authentication Schema (WSTG-ATHN-04)"). In the example, a web resource is accessed through a URL, and the authentication state is passed through a GET parameter:
 
@@ -142,7 +142,7 @@ The signature is created by applying the algorithm specified in the JWT header t
 HMACSHA256(base64UrlEncode(header) + "." + base64UrlEncode(payload), secret)
 ```
 
-Note that the secret is shared between the authentication server and the backend service - the client does not know it. This proves that the token was obtained from a legitimate authentication service. It also prevents the client from tampering with the claims contained in the token.
+Note that the secret is shared between the authentication server and the backend service - the client doesn't know it. This proves that the token was obtained from a legitimate authentication service. It also prevents the client from tampering with the claims contained in the token.
 
 **Best Practices:**
 
@@ -150,7 +150,7 @@ Verify that the implementation adheres to JWT [best practices](https://cheatshee
 
 - Verify that the HMAC is checked for all incoming requests containing a token.
 - Verify that the private signing key or HMAC secret key is never shared with the client. It should be available for the issuer and verifier only.
-- Verify that no sensitive data, such as personal identifiable information, is embedded in the JWT. For example, by decoding the base64-encoded JWT and find out what kind of data it transmits and whether that data is encrypted. If, for some reason, the architecture requires transmission of such information in the token, make sure that payload encryption is being applied.
+- Verify that no sensitive data, such as personal identifiable information, is embedded in the JWT. For example, by decoding the Base64-encoded JWT and find out what kind of data it transmits and whether that data is encrypted. If, for some reason, the architecture requires transmission of such information in the token, make sure that payload encryption is being applied.
 - Make sure that replay attacks are addressed with the `jti` (JWT ID) claim, which gives the JWT a unique identifier.
 - Make sure that cross service relay attacks are addressed with the `aud` (audience) claim, which defines for which application the token is entitled.
 - Verify that tokens are stored securely on the mobile phone, with, for example, KeyChain (iOS) or KeyStore (Android).
@@ -202,12 +202,12 @@ In OAuth2, the _user agent_ is the entity that performs the authentication. OAut
 
 **External User Agent:** Using an _external user agent_ is the method of choice for apps that need to interact with social media accounts (Facebook, Twitter, etc.). Advantages of this method include:
 
-- The user's credentials are never directly exposed to the app. This guarantees that the app cannot obtain the credentials during the login process ("credential phishing").
+- The user's credentials are never directly exposed to the app. This guarantees that the app can't obtain the credentials during the login process ("credential phishing").
 - Almost no authentication logic must be added to the app itself, preventing coding errors.
 
 On the negative side, there is no way to control the behavior of the browser (e.g. to activate certificate pinning).
 
-**Embedded User Agent:** Using an _embedded user agent_ is the method of choice for apps that need to operate within a closed ecosystem, for example to interact with corporate accounts. For example, consider a banking app that uses OAuth2 to retrieve an access token from the bank's authentication server, which is then used to access a number of micro services. In that case, credential phishing is not a viable scenario. It is likely preferable to keep the authentication process in the (hopefully) carefully secured banking app, instead of placing trust on external components.
+**Embedded User Agent:** Using an _embedded user agent_ is the method of choice for apps that need to operate within a closed ecosystem, for example to interact with corporate accounts. For example, consider a banking app that uses OAuth2 to retrieve an access token from the bank's authentication server, which is then used to access a number of micro services. In that case, credential phishing isn't a viable scenario. It is likely preferable to keep the authentication process in the (hopefully) carefully secured banking app, instead of placing trust on external components.
 
 ### Best Practices
 
@@ -217,7 +217,7 @@ For additional best practices and detailed information please refer to the follo
 - [RFC8252 - OAuth 2.0 for Native Apps (October 2017)](https://tools.ietf.org/html/rfc8252)
 - [RFC6819 - OAuth 2.0 Threat Model and Security Considerations (January 2013)](https://tools.ietf.org/html/rfc6819)
 
-Some of the best practices include but are not limited to:
+Some of the best practices include but aren't limited to:
 
 - **User agent:**
     - The user should have a way to visually verify trust (e.g., Transport Layer Security (TLS) confirmation, website mechanisms).
@@ -244,7 +244,7 @@ Failing to destroy the server-side session is one of the most common logout func
 Many mobile apps don't automatically log users out. There can be various reasons, such as: because it is inconvenient for customers, or because of decisions made when implementing stateless authentication. The application should still have a logout function, and it should be implemented according to best practices, destroying all locally stored tokens or session identifiers.
 
 If session information is stored on the server, it should be destroyed by sending a logout request to that server. In case of a high-risk application, tokens should be invalidated. Not removing tokens or session identifiers can result in unauthorized access to the application in case the tokens are leaked.
-Note that other sensitive types of information should be removed as well, as any information that is not properly cleared may be leaked later, for example during a device backup.
+Note that other sensitive types of information should be removed as well, as any information that isn't properly cleared may be leaked later, for example during a device backup.
 
 Here are different examples of session termination for proper server-side logout:
 
@@ -291,7 +291,7 @@ The 2FA can be performed at login or later in the user's session.
 
 ### SMS-OTP
 
-Although one-time passwords (OTP) sent via SMS are a common second factor for two-factor authentication, this method has its shortcomings. In 2016, NIST suggested: "Due to the risk that SMS messages may be intercepted or redirected, implementers of new systems SHOULD carefully consider alternative authenticators.". Below you will find a list of some related threats and suggestions to avoid successful attacks on SMS-OTP.
+Although one-time passwords (OTP) sent via SMS are a common second factor for two-factor authentication, this method has its shortcomings. In 2016, NIST suggested: "Due to the risk that SMS messages may be intercepted or redirected, implementers of new systems SHOULD carefully consider alternative authenticators.". Below you'll find a list of some related threats and suggestions to avoid successful attacks on SMS-OTP.
 
 Threats:
 
@@ -303,10 +303,10 @@ Threats:
 
 You can find below several suggestions to reduce the likelihood of exploitation when using SMS for OTP:
 
-- **Messaging**: When sending an OTP via SMS, be sure to include a message that lets the user know 1) what to do if they did not request the code 2) your company will never call or text them requesting that they relay their password or code.
+- **Messaging**: When sending an OTP via SMS, be sure to include a message that lets the user know 1) what to do if they didn't request the code 2) your company will never call or text them requesting that they relay their password or code.
 - **Dedicated Channel**: When using the OS push notification feature (APN on iOS and FCM on Android), OTPs can be sent securely to a registered application. This information is, compared to SMS, not accessible by other applications. Alternatively of a OTP the push notification could trigger a pop-up to approve the requested access.
 - **Entropy**: Use authenticators with high entropy to make OTPs harder to crack or guess and use at least 6 digits. Make sure that digits are separates in smaller groups in case people have to remember them to copy them to your app.
-- **Avoid Voicemail**: If a user prefers to receive a phone call, do not leave the OTP information as a voicemail.
+- **Avoid Voicemail**: If a user prefers to receive a phone call, don't leave the OTP information as a voicemail.
 
 **SMS-OTP Research:**
 

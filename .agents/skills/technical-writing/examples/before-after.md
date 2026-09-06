@@ -22,7 +22,7 @@ The rewrite removes filler and keeps the original behavior.
 
 > The request may have failed. The client may have sent an unsupported data format.
 
-The rewrite keeps both uncertain claims. It does not report a confirmed failure or cause.
+The rewrite keeps both uncertain claims. It doesn't report a confirmed failure or cause.
 
 ## Agent instruction
 

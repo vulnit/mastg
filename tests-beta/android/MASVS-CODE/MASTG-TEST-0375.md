@@ -11,7 +11,7 @@ profiles: [L1, L2]
 
 ## Overview
 
-An [implicit intent](https://developer.android.com/guide/components/intents-filters) is an `Intent` that does not name a concrete target component. Instead, it declares an action, and optionally data or categories, and Android resolves it to an installed component with a matching `<intent-filter>`. See @MASTG-KNOW-0025 for background on explicit and implicit intents and intent resolution.
+An [implicit intent](https://developer.android.com/guide/components/intents-filters) is an `Intent` that doesn't name a concrete target component. Instead, it declares an action, and optionally data or categories, and Android resolves it to an installed component with a matching `<intent-filter>`. See @MASTG-KNOW-0025 for background on explicit and implicit intents and intent resolution.
 
 Apps commonly use implicit intents and activity result APIs to request data from another app, such as selecting a file, opening a document, or importing content. The selected responder controls the result returned to the caller, including values such as `Intent.getData()`, `ClipData`, extras, and provider metadata returned through `ContentResolver` queries, such as `OpenableColumns.DISPLAY_NAME`.
 

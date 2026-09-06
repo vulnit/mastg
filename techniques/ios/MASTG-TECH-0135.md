@@ -21,4 +21,4 @@ See the sample output below for using this technique against the @MASTG-DEMO-004
 
 ## Method for Non-jailbroken Devices
 
-@MASTG-TOOL-0038 cannot attach to apps on non-jailbroken devices unless the app has been repackaged with the `get-task-allow` flag. @MASTG-TECH-0084 describes how to re-sign an app with this flag. After re-signing, you can use the same method as with jailbroken devices.
+@MASTG-TOOL-0038 can't attach to apps on non-jailbroken devices unless the app has been repackaged with the `get-task-allow` flag. @MASTG-TECH-0084 describes how to re-sign an app with this flag. After re-signing, you can use the same method as with jailbroken devices.

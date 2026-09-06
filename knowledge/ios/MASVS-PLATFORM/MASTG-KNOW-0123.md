@@ -19,7 +19,7 @@ Apps adopt Handoff by:
 2. Populating `userInfo` with the data needed to restore the activity.
 3. Ensuring the activity is eligible for Handoff through [`isEligibleForHandoff`](https://developer.apple.com/documentation/foundation/nsuseractivity/iseligibleforhandoff).
 4. Calling [`becomeCurrent()`](https://developer.apple.com/documentation/foundation/nsuseractivity/becomecurrent()) to make the activity current.
-5. Implementing [`scene(_:continue:)`](https://developer.apple.com/documentation/uikit/uiscenedelegate/scene(_:continue:)) to receive and restore the activity in scene-based apps. Apps that do not use scenes may handle continuation through the deprecated [`application(_:continue:restorationHandler:)`](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/application(_:continue:restorationhandler:)).
+5. Implementing [`scene(_:continue:)`](https://developer.apple.com/documentation/uikit/uiscenedelegate/scene(_:continue:)) to receive and restore the activity in scene-based apps. Apps that don't use scenes may handle continuation through the deprecated [`application(_:continue:restorationHandler:)`](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/application(_:continue:restorationhandler:)).
 
 ## Scope and Constraints
 

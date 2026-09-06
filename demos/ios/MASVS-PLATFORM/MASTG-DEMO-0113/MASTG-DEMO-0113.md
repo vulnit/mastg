@@ -35,12 +35,12 @@ The output contains all text that was entered in every text input, along with it
 The test case fails because the output shows the password field with `isSecureTextEntry` set to `false`, meaning it is exposed — and this field contains sensitive data.
 
 - The password input (`password_field`) has `isSecureTextEntry=false` and contains sensitive data.
-- The username input (`username_field`) has `isSecureTextEntry=false` but is not considered sensitive.
+- The username input (`username_field`) has `isSecureTextEntry=false` but isn't considered sensitive.
 - The OTP 1 input (`otp_1_field`) has `isSecureTextEntry=true`, masking the sensitive data.
-- The OTP 2 input (`OTP 2`) is a SwiftUI `SecureField` which always masks input. Notice that its `aid` is `null` because SwiftUI's `SecureField` does not propagate the `accessibilityIdentifier` to the underlying `UITextField`. However, `placeholder` correctly shows `OTP 2` and `isSecureTextEntry=true` confirms masking of the data.
+- The OTP 2 input (`OTP 2`) is a SwiftUI `SecureField` which always masks input. Notice that its `aid` is `null` because SwiftUI's `SecureField` doesn't propagate the `accessibilityIdentifier` to the underlying `UITextField`. However, `placeholder` correctly shows `OTP 2` and `isSecureTextEntry=true` confirms masking of the data.
 
 !!! note
     Exposed fields display typed characters in plain text, while masked fields show bullet characters, so the test can also be verified visually by observing the on-screen behavior.
 
 !!! note
-    Besides masking, secure fields (`isSecureTextEntry=true` or SwiftUI `SecureField`) also keep input on the system keyboard: iOS does not offer installed third-party (custom) keyboards for them (see @MASTG-KNOW-0141). The unmasked `password_field` therefore also allows a third-party keyboard to receive the typed password.
+    Besides masking, secure fields (`isSecureTextEntry=true` or SwiftUI `SecureField`) also keep input on the system keyboard: iOS doesn't offer installed third-party (custom) keyboards for them (see @MASTG-KNOW-0141). The unmasked `password_field` therefore also allows a third-party keyboard to receive the typed password.

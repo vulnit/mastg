@@ -25,7 +25,7 @@ Semgrep rules must follow valid syntax: [https://semgrep.dev/docs/writing-rules/
 
 Required fields per rule:
 
-- **id**: unique, stable identifier. For single-rule files, prefer matching the filename without extension. For multi-rule files, use a common prefix based on the filename and a descriptive suffix (for example, `mastg-android-data-unencrypted-shared-storage-no-user-interaction-mediastore`).
+- **id**: unique, stable identifier. For single-rule files, prefer matching the file name without extension. For multi-rule files, use a common prefix based on the file name and a descriptive suffix (for example, `mastg-android-data-unencrypted-shared-storage-no-user-interaction-mediastore`).
 - **severity**:
     - INFO
     - WARNING
@@ -44,7 +44,7 @@ Multiple rules per file
 
 General guidance
 
-- Do not include authors in the semgrep rules. If it was copied from another source, **include the link to the source**. Since many people will contribute, authorship is tracked via git history.
+- Don't include authors in the semgrep rules. If it was copied from another source, **include the link to the source**. Since many people will contribute, authorship is tracked via git history.
 - Keep messages concise and actionable; they should be understandable without reading the pattern body.
 - Test rules in the Semgrep Playground and against reversed code from the demos.
 

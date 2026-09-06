@@ -6,7 +6,7 @@ title: Reverse Engineering Tool Detection
 
 Reverse engineering and instrumentation tools often leave observable artifacts on the device or inside the app process. These artifacts can include installed packages, binaries, running services, open ports, loaded libraries, memory mappings, thread names, Unix sockets, named pipes, or tool specific strings.
 
-Android apps can inspect some of these indicators to detect whether the app is running in an analysis environment or has been instrumented with common tools. This type of detection is artifact based. It does not prove that the app's code or memory has been modified, but it can provide useful signals that the runtime environment is suspicious.
+Android apps can inspect some of these indicators to detect whether the app is running in an analysis environment or has been instrumented with common tools. This type of detection is artifact based. It doesn't prove that the app's code or memory has been modified, but it can provide useful signals that the runtime environment is suspicious.
 
 These checks are usually fragile when used in isolation. Tool names, ports, file paths, strings, and process artifacts can often be changed by an attacker. They are most useful as part of a layered resilience strategy, combined with runtime integrity verification, app integrity checks, anti debugging, and obfuscation.
 
@@ -56,7 +56,7 @@ These checks can detect default or lightly modified Frida deployments, especiall
 
 Tool artifacts can include package files, binaries, libraries, processes, services, temporary files, and loaded modules. For Frida, this can include a `frida-server` binary on a rooted system or a Frida daemon exposing a TCP endpoint. Apps may inspect running services with [`getRunningServices`](https://developer.android.com/reference/android/app/ActivityManager.html#getRunningServices%28int%29 "getRunningServices"), execute commands such as `ps`, or inspect known filesystem locations for suspicious binaries and files.
 
-On modern Android versions, apps have limited visibility into other apps, services, and processes. Since Android 7.0, API level 24, process and service visibility is restricted, and app level APIs will not reliably expose unrelated daemons such as `frida-server`. Even when artifacts are visible, simple name based checks can often be bypassed by renaming Frida binaries, libraries, or paths.
+On modern Android versions, apps have limited visibility into other apps, services, and processes. Since Android 7.0, API level 24, process and service visibility is restricted, and app level APIs won't reliably expose unrelated daemons such as `frida-server`. Even when artifacts are visible, simple name based checks can often be bypassed by renaming Frida binaries, libraries, or paths.
 
 ## Open TCP Port Checks
 
@@ -92,4 +92,4 @@ However, these techniques should not be treated as strong proof of compromise. M
 
 For this reason, apps should avoid relying on a single artifact or terminating immediately based on one weak signal. A more robust strategy combines several independent indicators, weighs them according to risk, and pairs them with runtime integrity verification as described in @MASTG-KNOW-0032.
 
-In the end, detecting reverse engineering tools is part of the broader cat-and-mouse problem of protecting code and data processed on a user controlled device. These techniques can increase attacker effort, but they cannot guarantee prevention against a determined attacker with sufficient time, tooling, and control over the runtime environment.
+In the end, detecting reverse engineering tools is part of the broader cat-and-mouse problem of protecting code and data processed on a user controlled device. These techniques can increase attacker effort, but they can't guarantee prevention against a determined attacker with sufficient time, tooling, and control over the runtime environment.

@@ -35,4 +35,4 @@ apkid ./r2pay-v1.0.apk
 
 For each match, it indicates the type of protection (e.g., `compiler`, `obfuscator`, `packer`, `anti_vm`, `anti_root`), the name of the identified tool or technique, and any relevant details (e.g., version, specific features detected).
 
-When no obfuscator or packer is identified, only compiler entries appear. The absence of `obfuscator` or `packer` entries indicates the code is not protected by a recognized tool.
+When no obfuscator or packer is identified, only compiler entries appear. The absence of `obfuscator` or `packer` entries indicates the code isn't protected by a recognized tool.

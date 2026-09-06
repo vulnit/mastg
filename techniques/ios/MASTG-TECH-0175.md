@@ -12,7 +12,7 @@ iOS fetches the AASA file over HTTPS, without redirects, from one of these locat
 - `https://<domain>/.well-known/apple-app-site-association`
 - `https://<domain>/apple-app-site-association`
 
-On modern iOS, the device does not fetch the file directly from the domain. Instead, it retrieves it through Apple's content delivery network, which you can also query:
+On modern iOS, the device doesn't fetch the file directly from the domain. Instead, it retrieves it through Apple's content delivery network, which you can also query:
 
 ```bash
 curl -v "https://app-site-association.cdn-apple.com/a/v1/<domain>"
@@ -28,21 +28,21 @@ You can extract the app identifier and the declared `applinks:` domains from the
 
 ## Checking the On-Device Verification Status
 
-The presence of a valid AASA file does not by itself prove that the device verified the association. To inspect the verification state recorded on the device, use the `swcutil` command (the Shared Web Credentials / associated domains utility) from a device shell (see @MASTG-TECH-0052) or from a connected Mac:
+The presence of a valid AASA file doesn't by itself prove that the device verified the association. To inspect the verification state recorded on the device, use the `swcutil` command (the Shared Web Credentials / associated domains utility) from a device shell (see @MASTG-TECH-0052) or from a connected Mac:
 
 ```bash
 swcutil dl
 ```
 
-The output lists each app's associated domains together with the service (`applinks`) and a status such as `Verified` or an error. A non-verified domain means iOS will not open its links in the app; instead, it falls back to Safari. The `swcd` daemon also logs verification activity, which you can review with the unified logging system (see @MASTG-TECH-0060) while reinstalling the app.
+The output lists each app's associated domains together with the service (`applinks`) and a status such as `Verified` or an error. A non-verified domain means iOS won't open its links in the app; instead, it falls back to Safari. The `swcd` daemon also logs verification activity, which you can review with the unified logging system (see @MASTG-TECH-0060) while reinstalling the app.
 
 ## Common Reasons Verification Fails
 
-When a domain is not verified, inspect the AASA file and the hosting setup for these common causes (see [Supporting associated domains](https://developer.apple.com/documentation/xcode/supporting-associated-domains "Supporting associated domains")):
+When a domain isn't verified, inspect the AASA file and the hosting setup for these common causes (see [Supporting associated domains](https://developer.apple.com/documentation/xcode/supporting-associated-domains "Supporting associated domains")):
 
 - **Missing file**: there is no AASA file at the `.well-known` path or the root path.
 - **Served over HTTP** instead of HTTPS, or behind an authentication wall.
-- **Redirects**: the server redirects the request (for example, `example.com` to `www.example.com`), which iOS does not follow for the AASA file.
-- **Invalid file**: the JSON is malformed, is served with the wrong `Content-Type`, or does not list the app's `appIDs`.
-- **Identifier mismatch**: the `appIDs` value does not match the app's Team ID and bundle ID.
-- **Subdomains**: each declared host needs an AASA file that covers it; a file on `example.com` does not automatically cover `sub.example.com`.
+- **Redirects**: the server redirects the request (for example, `example.com` to `www.example.com`), which iOS doesn't follow for the AASA file.
+- **Invalid file**: the JSON is malformed, is served with the wrong `Content-Type`, or doesn't list the app's `appIDs`.
+- **Identifier mismatch**: the `appIDs` value doesn't match the app's Team ID and bundle ID.
+- **Subdomains**: each declared host needs an AASA file that covers it; a file on `example.com` doesn't automatically cover `sub.example.com`.

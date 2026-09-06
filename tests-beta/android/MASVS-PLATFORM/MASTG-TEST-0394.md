@@ -20,7 +20,7 @@ Apps must validate and sanitize these URL parameters before using them in securi
 - `myapp://open?path=../../data/sensitive.txt` for path traversal if the value is used in file operations.
 - `myapp://search?q=<script>alert(1)</script>` for script injection if the value is rendered in a WebView.
 
-Unlike iOS, Android provides no mechanism to identify which app sent the Intent. There is no equivalent to iOS's `sourceApplication` property, so the handler cannot verify the caller's identity, and every custom URL scheme handler is effectively reachable by any app on the device.
+Unlike iOS, Android provides no mechanism to identify which app sent the Intent. There is no equivalent to iOS's `sourceApplication` property, so the handler can't verify the caller's identity, and every custom URL scheme handler is effectively reachable by any app on the device.
 
 This test checks whether the app's custom URL scheme handler validates URL parameters before acting on them.
 
@@ -45,8 +45,8 @@ Inspect each reported handler using @MASTG-TECH-0023, looking for cases such as:
 
 - **Missing type conversion:** a numeric parameter is used as a raw string without converting it (e.g., not calling `toLong()` or `toInt()`).
 - **Missing bounds or range checks:** the value is used without verifying it falls within an expected range.
-- **Missing sanitization:** special characters are not sanitized before the value is used in a sink such as a file path, SQL query, or WebView.
-- **Missing allowlist checks:** a parameter that selects a resource or action is not validated against an allowlist.
+- **Missing sanitization:** special characters aren't sanitized before the value is used in a sink such as a file path, SQL query, or WebView.
+- **Missing allowlist checks:** a parameter that selects a resource or action isn't validated against an allowlist.
 
 !!! note
     If the app intentionally accepts arbitrary parameter values (for example, a search scheme that passes user-typed text to a search UI), input validation may not be required and this test may not apply.

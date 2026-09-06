@@ -14,9 +14,9 @@ This test focuses on broken symmetric encryption modes such as [ECB (Electronic 
 
 > For more information, please refer to [use of broken encryption modes](../../../Document/0x04g-Testing-Cryptography.md#broken-block-cipher-modes).
 
-In iOS development, the more recent `CryptoKit` does not support ECB mode and is therefore not vulnerable to this issue, as it only supports secure encryption modes like AES-GCM and ChaCha20-Poly1305. However, applications may use the older `CommonCrypto` library or other third-party libraries that may support ECB mode. In this case, it is essential to verify that ECB mode is not being used.
+In iOS development, the more recent `CryptoKit` doesn't support ECB mode and is therefore not vulnerable to this issue, as it only supports secure encryption modes like AES-GCM and ChaCha20-Poly1305. However, applications may use the older `CommonCrypto` library or other third-party libraries that may support ECB mode. In this case, it is essential to verify that ECB mode isn't being used.
 
-In [`CommonCrypto`](https://web.archive.org/web/20240606000307/https://opensource.apple.com/source/CommonCrypto/CommonCrypto-36064/CommonCrypto/CommonCryptor.h), ECB mode can be enabled by setting the `kCCOptionECBMode` (value `0x0002` or `2`) in the `options` parameter of the `CCCrypt` function. When `kCCOptionECBMode` is set in the options parameter, the encryption uses ECB mode, which is considered vulnerable. The default behavior (when `kCCOptionECBMode` is not set) is to use CBC mode, which is more secure when used with a proper initialization vector (IV).
+In [`CommonCrypto`](https://web.archive.org/web/20240606000307/https://opensource.apple.com/source/CommonCrypto/CommonCrypto-36064/CommonCrypto/CommonCryptor.h), ECB mode can be enabled by setting the `kCCOptionECBMode` (value `0x0002` or `2`) in the `options` parameter of the `CCCrypt` function. When `kCCOptionECBMode` is set in the options parameter, the encryption uses ECB mode, which is considered vulnerable. The default behavior (when `kCCOptionECBMode` isn't set) is to use CBC mode, which is more secure when used with a proper initialization vector (IV).
 
 ## Steps
 

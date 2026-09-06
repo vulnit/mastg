@@ -3,7 +3,7 @@ title: Obtaining Debugging Information and Symbols
 platform: android
 ---
 
-If a binary is not stripped, you can extract debugging symbols using standard ELF inspection tools. These symbols can provide insights into the functions and variables used in the binary, which is useful for reverse engineering and vulnerability analysis.
+If a binary isn't stripped, you can extract debugging symbols using standard ELF inspection tools. These symbols can provide insights into the functions and variables used in the binary, which is useful for reverse engineering and vulnerability analysis.
 
 ## radare2
 

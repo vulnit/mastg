@@ -19,7 +19,7 @@ We will analyze the native function identified in the `viewDidLoad` method from 
 
 <img src="Images/Chapters/0x06c/manual_reversing_ghidra_native_disassembly.png" width="100%" />
 
-The first thing we observe in the function's disassembly is that it has no input parameters. The registers X0-X7 are not read throughout the function. Also, there are multiple calls to other functions, such as at 0x100008158 and 0x10000dbf0.
+The first thing we observe in the function's disassembly is that it has no input parameters. The registers X0-X7 aren't read throughout the function. Also, there are multiple calls to other functions, such as at 0x100008158 and 0x10000dbf0.
 
 The instructions for one such function call are shown below. The branch instruction `bl` is used to call the function at 0x100008158.
 

@@ -36,4 +36,4 @@ The test case fails if the app configures keys used for sensitive operations wit
 - `setUserAuthenticationValidityDurationSeconds(duration)` where duration > 0
 
 !!! note
-    A non-zero authentication validity duration is not inherently a vulnerability. Short durations in the range of seconds may be acceptable for certain use cases where multiple related operations need to be performed in quick succession. However, for high-security applications and sensitive operations, requiring authentication per use (duration = 0) provides the strongest protection against unauthorized key usage and runtime attacks.
+    A non-zero authentication validity duration isn't inherently a vulnerability. Short durations in the range of seconds may be acceptable for certain use cases where multiple related operations need to be performed in quick succession. However, for high-security applications and sensitive operations, requiring authentication per use (duration = 0) provides the strongest protection against unauthorized key usage and runtime attacks.

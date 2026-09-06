@@ -8,7 +8,7 @@ title: Obfuscation
 
 iOS applications are distributed as signed app bundles containing a main Mach-O executable and, often, embedded frameworks, app extensions, and resource files.
 
-Unlike Android Java/Kotlin code, which is compiled to DEX bytecode and can often be decompiled back into Java-like code, iOS apps are compiled into native Mach-O binaries. Static analysis usually works from ARM64 machine code, Objective-C runtime metadata, Swift metadata, symbols, and strings. This means the original source structure, high-level control flow, local variable names, and many type details are not preserved in the same way, making iOS decompilation less direct than Android bytecode decompilation.
+Unlike Android Java/Kotlin code, which is compiled to DEX bytecode and can often be decompiled back into Java-like code, iOS apps are compiled into native Mach-O binaries. Static analysis usually works from ARM64 machine code, Objective-C runtime metadata, Swift metadata, symbols, and strings. This means the original source structure, high-level control flow, local variable names, and many type details aren't preserved in the same way, making iOS decompilation less direct than Android bytecode decompilation.
 
 This page describes common iOS obfuscation techniques and the binary artifacts they affect.
 
@@ -27,13 +27,13 @@ Mach-O binaries can expose several categories of metadata during static analysis
 - C and C++ symbols, including mangled C++ names.
 - String literals and constants stored in Mach-O sections such as `__TEXT.__cstring`.
 
-Release builds often strip debugging information and local symbols, but normal symbol stripping does not remove all runtime metadata. Objective-C and Swift features such as dynamic dispatch, reflection, Interface Builder references, and interoperability through `@objc` can require some names or descriptors to remain present in the binary.
+Release builds often strip debugging information and local symbols, but normal symbol stripping doesn't remove all runtime metadata. Objective-C and Swift features such as dynamic dispatch, reflection, Interface Builder references, and interoperability through `@objc` can require some names or descriptors to remain present in the binary.
 
 Swift and C++ name mangling is different from deliberate obfuscation. Name mangling encodes type and namespace information into a compiler-specific symbol format; demangling tools can recover readable names in many cases (see @MASTG-TECH-0114).
 
 ### Symbol Stripping
 
-Symbol stripping removes symbol information from Mach-O binaries, including function names and other metadata that can make reverse engineering easier. It is a basic form of native code obfuscation, but it does not transform control flow, encode strings, or remove all runtime metadata required by Objective-C and Swift. This topic overlaps with debug-symbol handling, which is covered in more detail in @MASTG-KNOW-0063.
+Symbol stripping removes symbol information from Mach-O binaries, including function names and other metadata that can make reverse engineering easier. It is a basic form of native code obfuscation, but it doesn't transform control flow, encode strings, or remove all runtime metadata required by Objective-C and Swift. This topic overlaps with debug-symbol handling, which is covered in more detail in @MASTG-KNOW-0063.
 
 ### Identifier Renaming
 
@@ -69,7 +69,7 @@ String encryption replaces plaintext literals with encoded or encrypted represen
 
 When this technique is applied, the original string values may no longer appear directly in extracted strings or static Mach-O data; the clear strings are only present at runtime.
 
-Some strings cannot be transformed without additional handling because platform frameworks or app resources reference them by name. Examples include Objective-C selectors, class names used by the runtime, storyboard identifiers, localization keys, and values consumed by external services.
+Some strings can't be transformed without additional handling because platform frameworks or app resources reference them by name. Examples include Objective-C selectors, class names used by the runtime, storyboard identifiers, localization keys, and values consumed by external services.
 
 O-MVLL provides several [string encoding options](https://obfuscator.re/omvll/passes/strings-encoding/) for native code.
 
@@ -139,7 +139,7 @@ class Config(omvll.ObfuscationConfig):
 
 ### Dead Code and Junk Code
 
-Dead code injection makes the program's control flow more complex by adding code that does not affect the original program behavior. These extra blocks increase the amount of code that must be inspected during reverse engineering.
+Dead code injection makes the program's control flow more complex by adding code that doesn't affect the original program behavior. These extra blocks increase the amount of code that must be inspected during reverse engineering.
 
 Junk code has a similar goal: add noisy or annoying code paths without changing the intended behavior of the original function. O-MVLL's [Basic Block Duplicate](https://obfuscator.re/omvll/passes/basic-block-duplicate/) pass is an example of this type of transformation.
 
@@ -179,7 +179,7 @@ Packing stores code or data in a compressed or encrypted representation and rest
 
 ### Resource and Asset Encryption
 
-Obfuscation in iOS apps is not limited to executable code. Apps can also encode or encrypt files stored in the app bundle, such as configuration files, scripts, web assets, model files, or other auxiliary data. The app then includes logic to decode or decrypt the resource before using it.
+Obfuscation in iOS apps isn't limited to executable code. Apps can also encode or encrypt files stored in the app bundle, such as configuration files, scripts, web assets, model files, or other auxiliary data. The app then includes logic to decode or decrypt the resource before using it.
 
 For example, an app can store `security-rules.json.enc`, `model.bin.enc`, or `index.html.enc` in the app bundle and decrypt the file with CryptoKit or CommonCrypto before parsing or rendering it. See @MASTG-KNOW-0066 and @MASTG-KNOW-0067 for iOS cryptographic API context.
 
@@ -193,4 +193,4 @@ let cleartext = try decrypt(encrypted, with: runtimeKey)
 let rules = try JSONDecoder().decode(SecurityRules.self, from: cleartext)
 ```
 
-This protects against direct resource extraction from the IPA, but it does not prevent recovery of the decrypted data or decryption material during runtime analysis.
+This protects against direct resource extraction from the IPA, but it doesn't prevent recovery of the decrypted data or decryption material during runtime analysis.

@@ -131,7 +131,7 @@ Moving forward, at offset `0x000017dc`, the XOR decoded value obtained from abov
 
 <img src="Images/Chapters/0x05c/values_compare_17dc.png" width="100%" />
 
-Clearly, this function is not complex and can be analyzed manually, but it still remains a cumbersome task. Especially while working on a big code base, time can be a major constraint, and it is desirable to automate such analysis. Dynamic symbolic execution is helpful in exactly those situations. In the above crackme, the symbolic execution engine can determine the constraints on each byte of the input string by mapping a path between the first instruction of the license check (at `0x00001760`) and the code that prints the "Product activation passed" message (at `0x00001840`).
+Clearly, this function isn't complex and can be analyzed manually, but it still remains a cumbersome task. Especially while working on a big codebase, time can be a major constraint, and it is desirable to automate such analysis. Dynamic symbolic execution is helpful in exactly those situations. In the above crackme, the symbolic execution engine can determine the constraints on each byte of the input string by mapping a path between the first instruction of the license check (at `0x00001760`) and the code that prints the "Product activation passed" message (at `0x00001840`).
 
 <img src="Images/Chapters/0x05c/graph_ifelse_1760.png" width="100%" />
 
@@ -145,7 +145,7 @@ You need to perform several steps to initialize Angr's symbolic execution engine
 
 - Pass the address of the code block that the analysis should reach. In this case, that's the offset `0x00001840`, where the code responsible for printing the "Product activation passed" message is located.
 
-- Also, specify the addresses that the analysis should not reach. In this case, the code block that prints the "Incorrect serial" message at `0x00001854` is not interesting.
+- Also, specify the addresses that the analysis should not reach. In this case, the code block that prints the "Incorrect serial" message at `0x00001854` isn't interesting.
 
 !!! note
     The Angr loader will load the PIE executable with a base address of `0x400000`, which needs to be added to the offsets from iaito before passing it to Angr.

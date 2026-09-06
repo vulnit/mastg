@@ -4,7 +4,7 @@ platform: android
 title: Cryptographic Key Storage
 ---
 
-To mitigate unauthorized use of keys on the Android device, Android KeyStore lets apps specify authorized uses of their keys when generating or importing the keys. Once made, authorizations cannot be changed.
+To mitigate unauthorized use of keys on the Android device, Android KeyStore lets apps specify authorized uses of their keys when generating or importing the keys. Once made, authorizations can't be changed.
 
 Storing a Key - from most secure to least secure:
 
@@ -21,7 +21,7 @@ Storing a Key - from most secure to least secure:
 
 ## Storing Keys Using Hardware-backed Android KeyStore
 
-You can use the hardware-backed Android KeyStore (@MASTG-KNOW-0043) if the device is running Android 7.0 (API level 24) and above with available hardware component (Trusted Execution Environment (TEE) or a Secure Element (SE)). You can even verify that the keys are hardware-backed by using the guidelines provided for the secure implementation of Key Attestation (@MASTG-KNOW-0044). If a hardware component is not available and/or support for Android 6.0 (API level 23) and below is required, then you might want to store your keys on a remote server and make them available after authentication.
+You can use the hardware-backed Android KeyStore (@MASTG-KNOW-0043) if the device is running Android 7.0 (API level 24) and above with available hardware component (Trusted Execution Environment (TEE) or a Secure Element (SE)). You can even verify that the keys are hardware-backed by using the guidelines provided for the secure implementation of Key Attestation (@MASTG-KNOW-0044). If a hardware component isn't available and/or support for Android 6.0 (API level 23) and below is required, then you might want to store your keys on a remote server and make them available after authentication.
 
 ## Storing Keys on the Server
 
@@ -31,15 +31,15 @@ It is possible to securely store keys on a key management server, however the ap
 
 Deriving a key from a user provided passphrase is a common solution (depending on which Android API level you use), but it also impacts usability, might affect the attack surface and could introduce additional weaknesses.
 
-Each time the application needs to perform a cryptographic operation, the user's passphrase is needed. Either the user is prompted for it every time, which isn't an ideal user experience, or the passphrase is kept in memory as long as the user is authenticated. Keeping the passphrase in memory is not a best-practice, as any cryptographic material must only be kept in memory while it is being used. Zeroing out a key is often a very challenging task as explained in ["Cleaning out Key Material"](#cleaning-out-key-material).
+Each time the application needs to perform a cryptographic operation, the user's passphrase is needed. Either the user is prompted for it every time, which isn't an ideal user experience, or the passphrase is kept in memory as long as the user is authenticated. Keeping the passphrase in memory isn't a best-practice, as any cryptographic material must only be kept in memory while it is being used. Zeroing out a key is often a very challenging task as explained in ["Cleaning out Key Material"](#cleaning-out-key-material).
 
 Additionally, consider that keys derived from a passphrase have their own weaknesses. For instance, the passwords or passphrases might be reused by the user or easy to guess. Please refer to the chapter ["Testing Cryptography"](../../../Document/0x04g-Testing-Cryptography.md#improper-key-derivation-functions) for more information.
 
 ## Cleaning out Key Material
 
-The key material should be cleared out from memory as soon as it is not need anymore. There are certain limitations of reliably cleaning up secret data in languages with garbage collector (Java) and immutable strings (Swift, Objective-C, Kotlin). [Java Cryptography Architecture Reference Guide](https://docs.oracle.com/en/java/javase/16/security/java-cryptography-architecture-jca-reference-guide.html#GUID-C9F76AFB-6B20-45A7-B84F-96756C8A94B4 "Java Cryptography Architecture (JCA) Reference Guide") suggests using `char[]` instead of `String` for storing sensitive data, and nullify array after usage.
+The key material should be cleared out from memory as soon as it isn't need anymore. There are certain limitations of reliably cleaning up secret data in languages with garbage collector (Java) and immutable strings (Swift, Objective-C, Kotlin). [Java Cryptography Architecture Reference Guide](https://docs.oracle.com/en/java/javase/16/security/java-cryptography-architecture-jca-reference-guide.html#GUID-C9F76AFB-6B20-45A7-B84F-96756C8A94B4 "Java Cryptography Architecture (JCA) Reference Guide") suggests using `char[]` instead of `String` for storing sensitive data, and nullify array after usage.
 
-Note that some ciphers do not properly clean up their byte-arrays. For instance, the AES Cipher in BouncyCastle does not always clean up its latest working key, leaving some copies of the byte-array in memory. Next, BigInteger based keys (e.g. private keys) cannot be removed from the heap, nor zeroed out without additional effort. Clearing byte array can be achieved by writing a wrapper which implements [Destroyable](https://docs.oracle.com/javase/8/docs/api/javax/security/auth/Destroyable.html#destroy--).
+Note that some ciphers don't properly clean up their byte-arrays. For instance, the AES Cipher in BouncyCastle doesn't always clean up its latest working key, leaving some copies of the byte-array in memory. Next, BigInteger based keys (e.g. private keys) can't be removed from the heap, nor zeroed out without additional effort. Clearing byte array can be achieved by writing a wrapper which implements [Destroyable](https://docs.oracle.com/javase/8/docs/api/javax/security/auth/Destroyable.html#destroy--).
 
 ## Storing Keys using Android KeyStore API
 
@@ -47,7 +47,7 @@ A more user-friendly and recommended way is to use the [Android KeyStore API](ht
 
 ## Storing keys by encrypting them with other keys
 
-In order to securely store symmetric keys on devices running on Android 5.1 (API level 22) or lower, we need to generate a public/private key pair. We encrypt the symmetric key using the public key and store the private key in the `AndroidKeyStore`. The encrypted symmetric key can be encoded using base64 and stored in the `SharedPreferences`. Whenever we need the symmetric key, the application retrieves the private key from the `AndroidKeyStore` and decrypts the symmetric key.
+In order to securely store symmetric keys on devices running on Android 5.1 (API level 22) or lower, we need to generate a public/private key pair. We encrypt the symmetric key using the public key and store the private key in the `AndroidKeyStore`. The encrypted symmetric key can be encoded using Base64 and stored in the `SharedPreferences`. Whenever we need the symmetric key, the application retrieves the private key from the `AndroidKeyStore` and decrypts the symmetric key.
 
 Envelope encryption, or key wrapping, is a similar approach that uses symmetric encryption to encapsulate key material. Data encryption keys (DEKs) can be encrypted with key encryption keys (KEKs) which are securely stored. Encrypted DEKs can be stored in `SharedPreferences` or written to files. When required, the application reads the KEK, then decrypts the DEK. Refer to [OWASP Cryptographic Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html#encrypting-stored-keys "OWASP Cryptographic Storage Cheat Sheet: Encrypting Stored Keys") to learn more about encrypting cryptographic keys.
 
@@ -59,7 +59,7 @@ Also, as the illustration of this approach, refer to the [`EncryptedSharedPrefer
 
 ## Insecure options to store keys
 
-A less secure way of storing encryption keys, is in the SharedPreferences of Android. When [SharedPreferences](https://developer.android.com/reference/android/content/SharedPreferences.html "Android SharedPreference API") are used, the file is only readable by the application that created it. However, on rooted devices, any other application with root access can read the SharedPreferences file of other apps. This is not the case for the AndroidKeyStore, since AndroidKeyStore access is managed on the kernel level, which needs considerably more work and skill to bypass without the AndroidKeyStore clearing or destroying the keys.
+A less secure way of storing encryption keys, is in the SharedPreferences of Android. When [SharedPreferences](https://developer.android.com/reference/android/content/SharedPreferences.html "Android SharedPreference API") are used, the file is only readable by the application that created it. However, on rooted devices, any other application with root access can read the SharedPreferences file of other apps. This isn't the case for the AndroidKeyStore, since AndroidKeyStore access is managed on the kernel level, which needs considerably more work and skill to bypass without the AndroidKeyStore clearing or destroying the keys.
 
 The last three options are to use hardcoded encryption keys in the source code, having a predictable obfuscation function or key derivation function based on stable attributes, and storing generated keys in public places like `/sdcard/`. Hardcoded encryption keys are an issue, since this means every instance of the application uses the same encryption key. An attacker can reverse-engineer a local copy of the application to extract the cryptographic key, and use that key to decrypt any data which was encrypted by the application on any device.
 
@@ -74,4 +74,4 @@ There are several different open-source libraries that offer encryption capabili
 - **[Themis](https://github.com/cossacklabs/themis "Themis cryptographic library")** - A cross-platform high-level cryptographic library that provides the same API across many platforms, for securing data during authentication, storage, messaging, etc.
 
 !!! note
-    Please keep in mind that, as long as the key is not stored in the KeyStore, it is always possible to easily retrieve it on a rooted device and then decrypt the values you are trying to protect.
+    Please keep in mind that, as long as the key isn't stored in the KeyStore, it is always possible to easily retrieve it on a rooted device and then decrypt the values you're trying to protect.

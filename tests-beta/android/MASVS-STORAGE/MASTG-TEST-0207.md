@@ -30,4 +30,4 @@ The output should contain a list of files that were created in the app's private
 
 The test case fails if you find any sensitive data (keys, passwords, or any data inputted into the app) in the extracted files.
 
-When evaluating the data, attempt to identify and decode data that has been encoded using methods such as base64 encoding, hexadecimal representation, URL encoding, escape sequences, wide characters and common data obfuscation methods such as xoring. Also consider identifying and decompressing compressed files such as tar or zip. These methods obscure but do not protect sensitive data.
+When evaluating the data, attempt to identify and decode data that has been encoded using methods such as Base64 encoding, hexadecimal representation, URL encoding, escape sequences, wide characters and common data obfuscation methods such as xoring. Also consider identifying and decompressing compressed files such as tar or zip. These methods obscure but don't protect sensitive data.

@@ -48,7 +48,7 @@ For each observed call, record:
 
 ## Evaluation
 
-The test case fails if there is evidence that the app has a runtime code path that requests or accesses a protected resource and the purpose string does not meaningfully, accurately, and specifically explain why the app needs that protected resource.
+The test case fails if there is evidence that the app has a runtime code path that requests or accesses a protected resource and the purpose string doesn't meaningfully, accurately, and specifically explain why the app needs that protected resource.
 
 The test case also fails if a runtime code path requests or accesses a protected resource without a matching required purpose string.
 
@@ -61,6 +61,6 @@ Consider the following when evaluating:
 - Is the observed protected resource access connected to the user action, screen, or user-visible feature that triggered it?
 - Does the purpose string accurately and specifically explain the observed protected resource access, without being vague, generic, deceptive, or inconsistent with the runtime behavior?
 
-Runtime analysis may miss protected resource access in flows that were not triggered, code paths that depend on account state, device state, location, granted permissions, remote configuration, feature flags, backend responses, unavailable hardware, or app extensions. Treat missing runtime calls as absence of evidence, not proof that the app never requests or accesses the protected resource.
+Runtime analysis may miss protected resource access in flows that weren't triggered, code paths that depend on account state, device state, location, granted permissions, remote configuration, feature flags, backend responses, unavailable hardware, or app extensions. Treat missing runtime calls as absence of evidence, not proof that the app never requests or accesses the protected resource.
 
-Use static analysis to complement runtime analysis and identify APIs that are present in the app's code but were not observed at runtime. See @MASTG-TEST-0360.
+Use static analysis to complement runtime analysis and identify APIs that are present in the app's code but weren't observed at runtime. See @MASTG-TEST-0360.

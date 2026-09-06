@@ -41,7 +41,7 @@ Using the output, ensure that each key pair is restricted to exactly **one** of 
 - Signing/Verification (`PURPOSE_SIGN` / `PURPOSE_VERIFY`)
 - Key Wrapping (`PURPOSE_WRAP_KEY`)
 
-When reverse engineering the app, you will find the previously mentioned purpose constants combined into a single integer value. For example, a purpose value of `15` combines all four purposes, which is not acceptable:
+When reverse engineering the app, you'll find the previously mentioned purpose constants combined into a single integer value. For example, a purpose value of `15` combines all four purposes, which isn't acceptable:
 
 (`PURPOSE_ENCRYPT` = 1) | (`PURPOSE_DECRYPT` = 2) | (`PURPOSE_SIGN` = 4) | (`PURPOSE_VERIFY` = 8) = 15
 

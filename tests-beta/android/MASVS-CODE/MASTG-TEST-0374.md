@@ -11,7 +11,7 @@ profiles: [L1, L2]
 
 ## Overview
 
-An [implicit intent](https://developer.android.com/guide/components/intents-filters) is an `Intent` that does not name a concrete target component. Instead, it declares an action, and optionally data or categories, and Android resolves it to an installed component with a matching `<intent-filter>`. See @MASTG-KNOW-0025 for background on explicit and implicit intents and intent resolution.
+An [implicit intent](https://developer.android.com/guide/components/intents-filters) is an `Intent` that doesn't name a concrete target component. Instead, it declares an action, and optionally data or categories, and Android resolves it to an installed component with a matching `<intent-filter>`. See @MASTG-KNOW-0025 for background on explicit and implicit intents and intent resolution.
 
 Android apps commonly use implicit intents with extras when they intentionally delegate data to another app selected by the system or the user. Typical legitimate uses include sharing user-selected content with `ACTION_SEND`, attaching metadata for an external viewer, or launching a chooser when the user decides which app receives the data.
 
@@ -31,7 +31,7 @@ The output should contain `Intent` creation and dispatch sites where extras are 
 - The code location or caller.
 - The `Intent` creation pattern.
 - The action, data, type, and categories.
-- The extra keys and values, or the source of the extras when values are not statically visible.
+- The extra keys and values, or the source of the extras when values aren't statically visible.
 - The dispatch API, such as `startActivity`, `startActivityForResult`, `ActivityResultLauncher.launch`, `startService`, `bindService`, or `sendBroadcast`.
 - Any target-defining calls or dispatch restrictions visible before dispatch, such as `setPackage`, `setClass`, `setClassName`, `setComponent`, an explicit `Intent(context, Class)` constructor, or a broadcast receiver permission.
 

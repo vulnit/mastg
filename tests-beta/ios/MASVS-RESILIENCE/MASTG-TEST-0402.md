@@ -12,7 +12,7 @@ knowledge: [MASTG-KNOW-0085]
 
 ## Overview
 
-Even if an iOS app references debugging detection APIs, those checks may not execute in security-relevant code paths at runtime. For example, they may only run in debug builds, fire only once at startup, or be dead code that is never reached. If the app does not invoke its debugging detection logic at the right moments, an attacker who controls the device or app package can attach a debugger without triggering a defensive response.
+Even if an iOS app references debugging detection APIs, those checks may not execute in security-relevant code paths at runtime. For example, they may only run in debug builds, fire only once at startup, or be dead code that is never reached. If the app doesn't invoke its debugging detection logic at the right moments, an attacker who controls the device or app package can attach a debugger without triggering a defensive response.
 
 See @MASTG-KNOW-0085 for more information on iOS debugging detection techniques and specific APIs and artifacts to look for.
 
@@ -23,7 +23,7 @@ This test is best combined with @MASTG-TEST-0401, which checks for the presence 
 It is recommended to run this test while actively attempting to attach a debugger, where feasible, to ensure that debugging detection mechanisms are triggered during testing. On iOS, this may require a jailbroken device, a development or re-signed build with the required debugging entitlement, or another controlled test setup. Even without attaching a debugger, this test can still surface debugging detection logic if the app runs those checks unconditionally.
 
 !!! note "Out of Scope"
-    This test does not cover robustness or effectiveness of debugging detection mechanisms, which can be difficult to assess through automated testing alone and may require manual reverse engineering and custom instrumentation. See @MASTG-BEST-0074 for best practices on implementing debugging detection effectively.
+    This test doesn't cover robustness or effectiveness of debugging detection mechanisms, which can be difficult to assess through automated testing alone and may require manual reverse engineering and custom instrumentation. See @MASTG-BEST-0074 for best practices on implementing debugging detection effectively.
 
 In this test, focus on identifying the presence of debugging detection mechanisms at runtime by hooking common debugging detection APIs and tracing relevant low-level calls.
 
@@ -51,4 +51,4 @@ Using the backtraces from the hook output, inspect the code locations using @MAS
 
 **Expected False Negatives:**
 
-This test may produce false negatives if the app uses debugging detection techniques that are not covered by the hooks or traces used in this test, if the exercised flows do not trigger the relevant code paths, or if the debugging detection logic evades the instrumentation used in this test through obfuscation, dynamic loading, native code, anti-instrumentation techniques, or checks that run before the hooks are installed. In such cases, the absence of findings does not guarantee the absence of debugging detection, and additional manual reverse engineering or custom instrumentation may be required.
+This test may produce false negatives if the app uses debugging detection techniques that aren't covered by the hooks or traces used in this test, if the exercised flows don't trigger the relevant code paths, or if the debugging detection logic evades the instrumentation used in this test through obfuscation, dynamic loading, native code, anti-instrumentation techniques, or checks that run before the hooks are installed. In such cases, the absence of findings doesn't guarantee the absence of debugging detection, and additional manual reverse engineering or custom instrumentation may be required.

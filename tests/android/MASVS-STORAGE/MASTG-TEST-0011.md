@@ -21,7 +21,7 @@ First identify sensitive information that is stored in memory. Sensitive assets 
 
 To investigate an application's memory, you must first create a memory dump. You can also analyze the memory in real-time, e.g., via a debugger. Regardless of your approach, memory dumping is a very error-prone process in terms of verification because each dump contains the output of executed functions. You may miss executing critical scenarios. In addition, overlooking data during analysis is probable unless you know the data's footprint (either the exact value or the data format). For example, if the app encrypts with a randomly generated symmetric key, you likely won't be able to spot it in memory unless you can recognize the key's value in another context.
 
-Therefore, you are better off starting with static analysis.
+Therefore, you're better off starting with static analysis.
 
 ## Static Analysis
 
@@ -40,7 +40,7 @@ When performing static analysis to identify sensitive data that is exposed in me
 
 **The following section describes pitfalls of data leakage in memory and best practices for avoiding them.**
 
-Don't use immutable structures (e.g., `String` and `BigInteger`) to represent secrets. Nullifying these structures will be ineffective: the garbage collector may collect them, but they may remain on the heap after garbage collection. Nevertheless, you should ask for garbage collection after every critical operation (e.g., encryption, parsing server responses that contain sensitive information). When copies of the information have not been properly cleaned (as explained below), your request will help reduce the length of time for which these copies are available in memory.
+Don't use immutable structures (e.g., `String` and `BigInteger`) to represent secrets. Nullifying these structures will be ineffective: the garbage collector may collect them, but they may remain on the heap after garbage collection. Nevertheless, you should ask for garbage collection after every critical operation (e.g., encryption, parsing server responses that contain sensitive information). When copies of the information haven't been properly cleaned (as explained below), your request will help reduce the length of time for which these copies are available in memory.
 
 To properly clean sensitive information from memory, store it in primitive data types, such as byte-arrays (`byte[]`) and char-arrays (`char[]`). You should avoid storing the information in mutable non-primitive data types.
 
@@ -72,7 +72,7 @@ try {
 }
 ```
 
-This doesn't, however, guarantee that the content will be overwritten at runtime. To optimize the bytecode, the compiler will analyze and decide not to overwrite data because it will not be used afterwards (i.e., it is an unnecessary operation). Even if the code is in the compiled DEX, the optimization may occur during the just-in-time or ahead-of-time compilation in the VM.
+This doesn't, however, guarantee that the content will be overwritten at runtime. To optimize the bytecode, the compiler will analyze and decide not to overwrite data because it won't be used afterwards (i.e., it is an unnecessary operation). Even if the code is in the compiled DEX, the optimization may occur during the just-in-time or ahead-of-time compilation in the VM.
 
 There is no silver bullet for this problem because different solutions have different consequences. For example, you may perform additional calculations (e.g., XOR the data into a dummy buffer), but you'll have no way to know the extent of the compiler's optimization analysis. On the other hand, using the overwritten data outside the compiler's scope (e.g., serializing it in a temp file) guarantees that it will be overwritten but obviously impacts performance and maintenance.
 
@@ -126,7 +126,7 @@ try {
 
 For more information, take a look at [Securely Storing Sensitive Data in RAM](https://github.com/nowsecure/secure-mobile-development/blob/master/en/coding-practices/securely-store-sensitive-data-in-ram.md).
 
-In the "Static Analysis" section, we mentioned the proper way to handle cryptographic keys when you are using `AndroidKeyStore` or `SecretKey`.
+In the "Static Analysis" section, we mentioned the proper way to handle cryptographic keys when you're using `AndroidKeyStore` or `SecretKey`.
 
 For a better implementation of `SecretKey`, look at the `SecureSecretKey` class below. Although the implementation is probably missing some boilerplate code that would make the class compatible with `SecretKey`, it addresses the main security concerns:
 
@@ -261,7 +261,7 @@ EditText.setEditableFactory(new Editable.Factory() {
 });
 ```
 
-Refer to the `SecureSecretKey` example above for an example `Editable` implementation. Note that you will be able to securely handle all copies made by `editText.getText` if you provide your factory. You can also try to overwrite the internal `EditText` buffer by calling `editText.setText`, but there is no guarantee that the buffer will not have been copied already. If you choose to rely on the default input method and `EditText`, you will have no control over the keyboard or other components that are used. Therefore, you should use this approach for semi-confidential information only.
+Refer to the `SecureSecretKey` example above for an example `Editable` implementation. Note that you'll be able to securely handle all copies made by `editText.getText` if you provide your factory. You can also try to overwrite the internal `EditText` buffer by calling `editText.setText`, but there is no guarantee that the buffer won't have been copied already. If you choose to rely on the default input method and `EditText`, you'll have no control over the keyboard or other components that are used. Therefore, you should use this approach for semi-confidential information only.
 
 In all cases, make sure that sensitive data in memory is cleared when a user signs out of the application. Finally, make sure that highly sensitive information is cleared out the moment an Activity or Fragment's `onPause` event is triggered.
 
@@ -276,7 +276,7 @@ There are various ways to analyze the memory of a process, e.g. live analysis vi
 
 ### Retrieving and Analyzing a Memory Dump
 
-Whether you are using a rooted or a non-rooted device, you can dump the app's process memory with @MASTG-TOOL-0038 and @MASTG-TOOL-0106. You can find a detailed explanation of this process in @MASTG-TECH-0044, in the chapter "Tampering and Reverse Engineering on Android".
+Whether you're using a rooted or a non-rooted device, you can dump the app's process memory with @MASTG-TOOL-0038 and @MASTG-TOOL-0106. You can find a detailed explanation of this process in @MASTG-TECH-0044, in the chapter "Tampering and Reverse Engineering on Android".
 
 After the memory has been dumped (e.g. to a file called "memory"), depending on the nature of the data you're looking for, you'll need a set of different tools to process and analyze that memory dump. For instance, if you're focusing on strings, it might be sufficient for you to execute the command `strings` or `rabin2 -zz` from @MASTG-TOOL-0129 to extract those strings.
 

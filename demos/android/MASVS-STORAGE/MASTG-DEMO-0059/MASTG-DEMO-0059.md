@@ -11,7 +11,7 @@ kind: fail
 
 The sample app stores sensitive data in `SharedPreferences`, which writes XML files inside the app's private sandbox storage.
 
-Under normal Android sandboxing, other apps cannot directly read these files. However, if the app data directory becomes accessible, for example on a rooted or compromised device or through backup extraction, any unencrypted values stored in these XML files can be read directly.
+Under normal Android sandboxing, other apps can't directly read these files. However, if the app data directory becomes accessible, for example on a rooted or compromised device or through backup extraction, any unencrypted values stored in these XML files can be read directly.
 
 The app stores the following sensitive data using the `SharedPreferences` API, both with and without encryption:
 
@@ -77,7 +77,7 @@ After slightly processing the output using `jq`, we can get a high level view of
 
 Here we can see that:
 
-- the value `ghp_1234567890a...` is not preceded by any Cipher calls when written via `putString`.
+- the value `ghp_1234567890a...` isn't preceded by any Cipher calls when written via `putString`.
 - the value `V1QyXhGV88RQLmMjoTLLl...` has several calls to Cipher and then a `putString`.
 - the set of values `MIIEvAIBADAN...` and `gJXS9EwpuzK8...` are also not preceded by any Cipher calls when written via `putStringSet`.
 
@@ -122,7 +122,7 @@ The provided `output.json` in this case allows you to trace the written values b
 - `V1QyXhGV88RQLmMjoTLLl...` is the return value of `Base64.encodeToString` for the input `0x5754325e1195f3c45...`.
 - `0xa132cb95022985be` is the return value of `Cipher.doFinal` for the input `AKIAABCDEFGHIJKLMNOP`.
 
-However, we cannot find any calls to `Base64.encodeToString` or `Cipher.*` for the `preSharedKeys` values written by `putStringSet` (`MIIEvAIBADAN...` and `gJXS9EwpuzK8...`).
+However, we can't find any calls to `Base64.encodeToString` or `Cipher.*` for the `preSharedKeys` values written by `putStringSet` (`MIIEvAIBADAN...` and `gJXS9EwpuzK8...`).
 
 #### Option 4: Manual reverse engineering
 

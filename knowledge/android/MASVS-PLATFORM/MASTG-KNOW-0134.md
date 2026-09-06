@@ -22,7 +22,7 @@ A broadcast receiver can be made known to the system in two ways.
 </receiver>
 ```
 
-Manifest-declared receivers can restrict which apps may send broadcasts to them with the [`android:permission`](https://developer.android.com/guide/topics/manifest/receiver-element#prmsn) attribute. The sender must hold the named permission, otherwise the broadcast is not delivered to the receiver.
+Manifest-declared receivers can restrict which apps may send broadcasts to them with the [`android:permission`](https://developer.android.com/guide/topics/manifest/receiver-element#prmsn) attribute. The sender must hold the named permission, otherwise the broadcast isn't delivered to the receiver.
 
 **Context-registered receivers** are registered at runtime by calling `registerReceiver()` with an [`IntentFilter`](https://developer.android.com/reference/android/content/IntentFilter), and unregistered with `unregisterReceiver()`. They receive broadcasts only while their registering context is valid.
 
@@ -40,7 +40,7 @@ Manifest-declared receivers can restrict which apps may send broadcasts to them 
 
 For context-registered receivers, security controls are set through the following arguments of the relevant `registerReceiver()` overloads:
 
-- `flags`: controls whether the receiver can receive broadcasts from other apps. Use `RECEIVER_EXPORTED` when the receiver needs to receive broadcasts from other apps, and use `RECEIVER_NOT_EXPORTED` when it should receive broadcasts only from the same app or from the system UID. Since Android 14 (API level 34), [apps targeting Android 14 or higher must explicitly specify the runtime export flags](https://developer.android.com/about/versions/14/behavior-changes-14#runtime-receivers-exported) when registering a receiver that is not exclusively for system broadcasts.
+- `flags`: controls whether the receiver can receive broadcasts from other apps. Use `RECEIVER_EXPORTED` when the receiver needs to receive broadcasts from other apps, and use `RECEIVER_NOT_EXPORTED` when it should receive broadcasts only from the same app or from the system UID. Since Android 14 (API level 34), [apps targeting Android 14 or higher must explicitly specify the runtime export flags](https://developer.android.com/about/versions/14/behavior-changes-14#runtime-receivers-exported) when registering a receiver that isn't exclusively for system broadcasts.
 - `broadcastPermission`: requires the sender to hold the named permission before the broadcast is delivered to the receiver. If `broadcastPermission` is `null`, no sender permission is required.
 
 ## Sending Broadcasts
@@ -57,7 +57,7 @@ A broadcast is **implicit** when it doesn't target a specific app. After receivi
 
 Background execution limits constrain implicit broadcasts:
 
-- Apps targeting Android 8.0 (API level 26) or higher can't register most implicit broadcasts in the manifest, with limited [exceptions](https://developer.android.com/guide/components/broadcast-exceptions). Context-registered receivers are not affected.
+- Apps targeting Android 8.0 (API level 26) or higher can't register most implicit broadcasts in the manifest, with limited [exceptions](https://developer.android.com/guide/components/broadcast-exceptions). Context-registered receivers aren't affected.
 - [Sticky broadcasts](https://developer.android.com/privacy-and-security/risks/sticky-broadcast), sent with the deprecated `sendStickyBroadcast` family of methods, persist after delivery and offer no access control.
 
 ## Priority
@@ -69,7 +69,7 @@ A receiver's priority for ordered broadcasts can be set with the [`android:prior
 Whether other apps can deliver broadcasts to a receiver, or receive broadcasts the app sends, is governed by:
 
 - [`android:exported`](https://developer.android.com/guide/topics/manifest/receiver-element#exported): for manifest-declared receivers, when `true`, components of other apps can send broadcasts to the receiver unless another control, such as `android:permission`, blocks the sender. When `false`, access is limited to the same app, apps with the same user ID, or privileged system components. When a manifest receiver declares an intent filter, the default historically became `true`; in its absence the default is `false`. Since Android 12 (API level 31), the attribute must be set explicitly when an intent filter is present.
-- [`android:permission`](https://developer.android.com/guide/topics/manifest/receiver-element#prmsn): for manifest-declared receivers, requires the sender to hold a specific permission to deliver broadcasts to the receiver. If the sender is not granted the permission, the intent is not delivered to the receiver. Combined with a custom permission and an appropriate [`android:protectionLevel`](https://developer.android.com/guide/topics/manifest/permission-element#plevel) (for example, `signature`), this restricts which apps can interact with the component. See @MASTG-KNOW-0017 for permission protection levels, component permission enforcement, and custom permissions, and see [Permission-based access control to exported components](https://developer.android.com/privacy-and-security/risks/access-control-to-exported-components).
+- [`android:permission`](https://developer.android.com/guide/topics/manifest/receiver-element#prmsn): for manifest-declared receivers, requires the sender to hold a specific permission to deliver broadcasts to the receiver. If the sender isn't granted the permission, the intent isn't delivered to the receiver. Combined with a custom permission and an appropriate [`android:protectionLevel`](https://developer.android.com/guide/topics/manifest/permission-element#plevel) (for example, `signature`), this restricts which apps can interact with the component. See @MASTG-KNOW-0017 for permission protection levels, component permission enforcement, and custom permissions, and see [Permission-based access control to exported components](https://developer.android.com/privacy-and-security/risks/access-control-to-exported-components).
 - `flags` argument in `registerReceiver()` overloads: for context-registered receivers, these flags control whether the receiver can receive broadcasts from other apps. `RECEIVER_EXPORTED` makes the receiver visible to other apps. `RECEIVER_NOT_EXPORTED` prevents the receiver from receiving broadcasts from other apps.
 - `broadcastPermission` argument in `registerReceiver()` overloads: for context-registered receivers, setting this argument requires the sender to hold the named permission before the broadcast is delivered to the receiver. If it is `null`, no sender permission is required.
 - Setting an explicit target package or component on the `Intent` limits delivery to that app. See [Security considerations and best practices](https://developer.android.com/guide/components/broadcasts#security-and-best-practices) and [Insecure broadcast receivers](https://developer.android.com/privacy-and-security/risks/insecure-broadcast-receiver).

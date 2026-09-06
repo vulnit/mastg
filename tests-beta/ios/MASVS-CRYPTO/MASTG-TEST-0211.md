@@ -50,6 +50,6 @@ The test case fails if you can find the use of broken hashing algorithms within 
 
 Inspect each reported code location using @MASTG-TECH-0076 to determine whether the algorithm is used in a security-relevant context to protect sensitive data:
 
-- Determine whether the hashing algorithm is used for cryptographic security purposes rather than for non-security tasks such as checksums. For example, using MD5 for hashing passwords is disallowed by NIST, but using MD5 for checksums where security is not a concern is generally acceptable.
+- Determine whether the hashing algorithm is used for cryptographic security purposes rather than for non-security tasks such as checksums. For example, using MD5 for hashing passwords is disallowed by NIST, but using MD5 for checksums where security isn't a concern is generally acceptable.
 
 **Stay up-to-date**: This is a non-exhaustive list of broken algorithms. Make sure to check the latest standards and recommendations from organizations such as the National Institute of Standards and Technology (NIST), the German Federal Office for Information Security (BSI) or any other relevant authority in your region. This is important when building an app that uses data that will be stored for a long time. Make sure you follow the NIST recommendations from [NIST IR 8547 "Transition to Post-Quantum Cryptography Standards", 2024](https://csrc.nist.gov/pubs/ir/8547/ipd).

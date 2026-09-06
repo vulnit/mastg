@@ -32,4 +32,4 @@ The output should contain the disassembly of any `scene(_:openURLContexts:)` imp
 
 ## Evaluation
 
-The test case fails if any URL scheme handler is found that does not read `UIOpenURLContext.options.sourceApplication` before performing security-sensitive or irreversible operations.
+The test case fails if any URL scheme handler is found that doesn't read `UIOpenURLContext.options.sourceApplication` before performing security-sensitive or irreversible operations.

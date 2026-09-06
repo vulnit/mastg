@@ -32,4 +32,4 @@ If it implements jailbreak detection, you might be able to see indicators of tha
 
 **Reverse Engineer the app:**
 
-The app might be using techniques that are not implemented in the automated tools that you've used. If that's the case you must reverse engineer the app to find proofs. See @MASTG-KNOW-0084.
+The app might be using techniques that aren't implemented in the automated tools that you've used. If that's the case you must reverse engineer the app to find proofs. See @MASTG-KNOW-0084.

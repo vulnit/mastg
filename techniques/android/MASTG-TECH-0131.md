@@ -52,7 +52,7 @@ The report was generated in 3 different formats (HTML, JSON, and XML) and can be
 
 **Suppressing False Positives:**
 
-If there are dependencies that you want to suppress because they are false positives or are not included in the APK but might be necessary for building the APK, you can use a suppression file. The following `suppression.xml` would exclude all vulnerabilities from the package URLs `pkg:maven/io.grpc/grpc.*` and `pkg:maven/io.netty/netty.*`:
+If there are dependencies that you want to suppress because they are false positives or aren't included in the APK but might be necessary for building the APK, you can use a suppression file. The following `suppression.xml` would exclude all vulnerabilities from the package URLs `pkg:maven/io.grpc/grpc.*` and `pkg:maven/io.netty/netty.*`:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

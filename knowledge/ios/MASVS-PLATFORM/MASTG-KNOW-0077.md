@@ -6,7 +6,7 @@ title: App Permissions
 
 iOS permissions work differently from Android. On Android, permissions are declared in a manifest and granted at install time or via runtime prompts. On iOS, access control is a layered model that is worth understanding before diving into individual checks.
 
-All third-party iOS apps run under the non-privileged `mobile` user and are sandboxed via policies enforced by the [Trusted BSD (MAC) Mandatory Access Control Framework](http://www.trustedbsd.org/mac.html "TrustedBSD Mandatory Access Control (MAC) Framework"). This baseline sandboxing is not the same as "permissions": it applies to every app automatically, without any developer configuration or user interaction. Access to resources beyond the sandbox is controlled through three distinct mechanisms (entitlements, purpose strings, and runtime authorization), each of which is described in the sections below.
+All third-party iOS apps run under the non-privileged `mobile` user and are sandboxed via policies enforced by the [Trusted BSD (MAC) Mandatory Access Control Framework](http://www.trustedbsd.org/mac.html "TrustedBSD Mandatory Access Control (MAC) Framework"). This baseline sandboxing isn't the same as "permissions": it applies to every app automatically, without any developer configuration or user interaction. Access to resources beyond the sandbox is controlled through three distinct mechanisms (entitlements, purpose strings, and runtime authorization), each of which is described in the sections below.
 
 A practical consequence of this model is that not all "permissions" are visible to or granted by the user. Some are purely developer-side configuration that takes effect at install time (e.g. enabling Data Protection or Keychain Sharing via entitlements), while others require an explicit user prompt at runtime. Resources that require a [runtime authorization prompt](https://developer.apple.com/documentation/uikit/requesting-access-to-protected-resources "Requesting access to protected resources") include camera, microphone, location, contacts, calendar, photos, health, Bluetooth, motion, and speech recognition, among others.
 
@@ -29,7 +29,7 @@ There is a _visual_ way to inspect the status of some app permissions when using
 
 <img src="Images/Chapters/0x06h/settings_allow_screen.png" width="100%" />
 
-For example, when an app requests "Location" access, the entry was not being listed until we triggered the permission dialogue for the first time. Once we did it, no matter if we allowed the access or not, the "Location" entry will be displayed.
+For example, when an app requests "Location" access, the entry wasn't being listed until we triggered the permission dialogue for the first time. Once we did it, no matter if we allowed the access or not, the "Location" entry will be displayed.
 
 ## Permission Model Overview
 
@@ -80,19 +80,19 @@ The following examples map common protected resources to their `Info.plist` keys
 
 Runtime traces can include authorization request APIs, authorization status APIs, and resource-specific access APIs. Observing an authorization status API shows that the app reaches the permission layer for that protected resource; observing resource access APIs adds context about how the protected resource is used.
 
-A declared usage description key alone does not prove that the app accesses the protected resource, and a referenced API alone does not prove that the code path is reachable. Review purpose strings, static API references, runtime traces, app features, and user-triggered flows together to determine whether protected resource access is justified.
+A declared usage description key alone doesn't prove that the app accesses the protected resource, and a referenced API alone doesn't prove that the code path is reachable. Review purpose strings, static API references, runtime traces, app features, and user-triggered flows together to determine whether protected resource access is justified.
 
 ## Entitlements
 
-[Entitlements](https://developer.apple.com/documentation/bundleresources/entitlements) are key-value pairs that grant an executable permission to use a service or technology, such as access to iCloud, HealthKit, push notifications, or the ability to share data with other apps. Because they are embedded in the code signature, they cannot be modified after signing.
+[Entitlements](https://developer.apple.com/documentation/bundleresources/entitlements) are key-value pairs that grant an executable permission to use a service or technology, such as access to iCloud, HealthKit, push notifications, or the ability to share data with other apps. Because they are embedded in the code signature, they can't be modified after signing.
 
-Some entitlements take effect silently at install time (e.g. Data Protection, Keychain Sharing), while others additionally require a runtime authorization prompt before the user's data can be accessed. HealthKit is a clear example of this layered model: [setting up HealthKit](https://developer.apple.com/documentation/HealthKit/setting-up-healthkit) requires enabling the HealthKit capability in Xcode (which adds the `com.apple.developer.healthkit` entitlement), adding `NSHealthShareUsageDescription` and/or `NSHealthUpdateUsageDescription` purpose strings to `Info.plist`, and then requesting authorization at runtime via `HKHealthStore`. Adding the entitlement alone is not sufficient.
+Some entitlements take effect silently at install time (e.g. Data Protection, Keychain Sharing), while others additionally require a runtime authorization prompt before the user's data can be accessed. HealthKit is a clear example of this layered model: [setting up HealthKit](https://developer.apple.com/documentation/HealthKit/setting-up-healthkit) requires enabling the HealthKit capability in Xcode (which adds the `com.apple.developer.healthkit` entitlement), adding `NSHealthShareUsageDescription` and/or `NSHealthUpdateUsageDescription` purpose strings to `Info.plist`, and then requesting authorization at runtime via `HKHealthStore`. Adding the entitlement alone isn't sufficient.
 
 ### Mapping Capabilities and Entitlements to Runtime APIs
 
-Xcode capabilities and signed entitlements are related, but they are not the same artifact. A capability is the project-level configuration in Xcode's **Signing & Capabilities** tab. When you [add a capability to an app](https://developer.apple.com/documentation/xcode/adding-capabilities-to-your-app/), Xcode may update the app's `Entitlements` file, `Info.plist`, linked frameworks, and signing assets. The entitlement is the key-value entry that is signed into the app binary.
+Xcode capabilities and signed entitlements are related, but they aren't the same artifact. A capability is the project-level configuration in Xcode's **Signing & Capabilities** tab. When you [add a capability to an app](https://developer.apple.com/documentation/xcode/adding-capabilities-to-your-app/), Xcode may update the app's `Entitlements` file, `Info.plist`, linked frameworks, and signing assets. The entitlement is the key-value entry that is signed into the app binary.
 
-An entitlement is not a runtime method call. It enables a platform service, relaxes a sandbox restriction for that service, or declares participation in a system integration. App code then interacts with that service through framework APIs, shared containers, or system-delivered entry points. Some services add a user authorization layer on top of the entitlement; others are entirely developer-side configuration.
+An entitlement isn't a runtime method call. It enables a platform service, relaxes a sandbox restriction for that service, or declares participation in a system integration. App code then interacts with that service through framework APIs, shared containers, or system-delivered entry points. Some services add a user authorization layer on top of the entitlement; others are entirely developer-side configuration.
 
 Common privacy-relevant examples include:
 
@@ -112,9 +112,9 @@ In practice, entitlements end up in the app from two places: the Xcode "Signing 
 <string>NSFileProtectionComplete</string>
 ```
 
-The `embedded.mobileprovision` file is another place where entitlements can appear (nested under a top-level `<key>Entitlements</key>` dictionary) when the packaged app includes a provisioning profile, such as development, ad-hoc, enterprise, or App Store submission builds before App Store processing. App Store-distributed apps are re-signed during App Store processing and do not include an embedded provisioning profile. It is absent in several common situations:
+The `embedded.mobileprovision` file is another place where entitlements can appear (nested under a top-level `<key>Entitlements</key>` dictionary) when the packaged app includes a provisioning profile, such as development, ad-hoc, enterprise, or App Store submission builds before App Store processing. App Store-distributed apps are re-signed during App Store processing and don't include an embedded provisioning profile. It is absent in several common situations:
 
-- **Simulator builds**, which are not signed with a provisioning profile.
+- **Simulator builds**, which aren't signed with a provisioning profile.
 - **Pseudo-signed or ad-hoc-signed builds** produced by tooling such as @MASTG-TOOL-0111, where entitlements are written directly into the binary's code signature without a profile.
 
 For this reason, extracting entitlements from the app binary (@MASTG-TECH-0111) works in more cases than relying on `embedded.mobileprovision`. When the profile is present, you can additionally inspect it (it is [Cryptographic Message Syntax](https://en.wikipedia.org/wiki/Cryptographic_Message_Syntax)-encoded, not a plain plist) to confirm the entitlements that were granted at signing time.
@@ -142,7 +142,7 @@ Here is an example of entitlements file of the [open source app Telegram](https:
 </plist>
 ```
 
-The entitlement outlined above does not require any additional permissions from the user. However, it is always good practice to review all entitlements, because unnecessary entitlements can increase the app's cross-app data sharing surface or enable access to platform services the app does not need.
+The entitlement outlined above doesn't require any additional permissions from the user. However, it is always good practice to review all entitlements, because unnecessary entitlements can increase the app's cross-app data sharing surface or enable access to platform services the app doesn't need.
 
 The App Groups entitlement is required to share information between different apps through IPC or a shared file container, which means that data can be shared on the device directly between the apps. This entitlement is also required if an app extension requires to [share information with its containing app](https://developer.apple.com/library/archive/documentation/General/Conceptual/ExtensibilityPG/ExtensionScenarios.html "Sharing Data with Your Containing App").
 
@@ -153,13 +153,13 @@ Depending on the to-be-shared data, it might be more appropriate to share it usi
 [Xcode Capabilities](https://developer.apple.com/documentation/Xcode/adding-capabilities-to-your-app) are features/services you enable for your app that require entitlements and provisioning profile configuration, such as Push Notifications, iCloud, In-App Purchase, Apple Pay, Sign in with Apple, Game Center, etc. They are configured in Xcode's "Signing & Capabilities" tab and generate entitlements in the app's `.entitlements` file. When reviewing an IPA, the resulting entitlements are visible in the app binary's code signature. They may also appear in `embedded.mobileprovision` when the IPA includes a provisioning profile, such as development, ad-hoc, enterprise, or pre-App Store processing builds.
 
 !!! "note"
-    The terms "capabilities" and "entitlements" are often used interchangeably but refer to different things: _Capabilities_ is the Xcode UI concept (the toggle you enable); _entitlements_ are the resulting key-value pairs in the signed artifact. When reviewing an IPA, you are always looking at entitlements, as the Xcode capabilities that produced them are not visible in the build output.
+    The terms "capabilities" and "entitlements" are often used interchangeably but refer to different things: _Capabilities_ is the Xcode UI concept (the toggle you enable); _entitlements_ are the resulting key-value pairs in the signed artifact. When reviewing an IPA, you're always looking at entitlements, as the Xcode capabilities that produced them aren't visible in the build output.
 
 ## Required Device Capabilities
 
 [`UIRequiredDeviceCapabilities`](https://developer.apple.com/documentation/bundleresources/information-property-list/uirequireddevicecapabilities) (in `Info.plist`) tells the App Store what hardware or software features the device must have to run your app at all. Examples: `arkit`, `camera-flash`, `gps`, `nfc`, `gyroscope`, `metal`, etc. It is used to filter out incompatible devices on the App Store, so users on devices lacking those capabilities simply won't see or be able to install your app. See Apple's [Required Device Capabilities](https://developer.apple.com/support/required-device-capabilities/) page for the full list of supported values.
 
-Unlike entitlements, required device capabilities do not confer any right or access to protected resources. Additional configuration steps might be required depending on each capability.
+Unlike entitlements, required device capabilities don't confer any right or access to protected resources. Additional configuration steps might be required depending on each capability.
 
 For example, an app such as [NFC TagInfo by NXP](https://itunes.apple.com/us/app/nfc-taginfo-by-nxp/id1246143596 "NFC TagInfo by NXP") is completely dependent on NFC to work, so it includes `nfc` in its `UIRequiredDeviceCapabilities`. This means that users on devices without NFC (e.g. iPhone 6) won't even see the app on the App Store, while users on compatible devices (e.g. iPhone 7 and later) can install it and use its features.
 

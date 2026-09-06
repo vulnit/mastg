@@ -10,7 +10,7 @@ Custom keyboards are app extensions that replace the system keyboard across all 
 
 ## Mark Sensitive Fields as Secure (Preferred)
 
-Set [`isSecureTextEntry`](https://developer.apple.com/documentation/uikit/uitextinputtraits/issecuretextentry) to `true` on the `UITextField`/`UITextView`, or use a SwiftUI [`SecureField`](https://developer.apple.com/documentation/swiftui/securefield). iOS does not display third-party keyboards for secure fields, so the typed characters stay on the system keyboard. This is field-scoped, so it does not disrupt the user's keyboard choice elsewhere in the app, and it also masks the input and prevents keyboard caching.
+Set [`isSecureTextEntry`](https://developer.apple.com/documentation/uikit/uitextinputtraits/issecuretextentry) to `true` on the `UITextField`/`UITextView`, or use a SwiftUI [`SecureField`](https://developer.apple.com/documentation/swiftui/securefield). iOS doesn't display third-party keyboards for secure fields, so the typed characters stay on the system keyboard. This is field-scoped, so it doesn't disrupt the user's keyboard choice elsewhere in the app, and it also masks the input and prevents keyboard caching.
 
 ```swift
 let pinField = UITextField()

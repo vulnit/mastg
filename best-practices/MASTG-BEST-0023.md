@@ -6,7 +6,7 @@ platform: ios
 knowledge: [MASTG-KNOW-0102]
 ---
 
-iOS does not provide a guaranteed mechanism to exclude files from backups. Setting [`NSURLIsExcludedFromBackupKey`](https://developer.apple.com/documentation/foundation/urlresourcekey/isexcludedfrombackupkey) instructs the system not to include a file in backups, but it does not ensure exclusion. To reduce data exposure, apply the following techniques:
+iOS doesn't provide a guaranteed mechanism to exclude files from backups. Setting [`NSURLIsExcludedFromBackupKey`](https://developer.apple.com/documentation/foundation/urlresourcekey/isexcludedfrombackupkey) instructs the system not to include a file in backups, but it doesn't ensure exclusion. To reduce data exposure, apply the following techniques:
 
 ## Bind Data to the Current Device
 
@@ -18,4 +18,4 @@ For larger files, store them encrypted within the app container and keep the dec
 
 ## Bind Data to the User via a Server-Managed Key
 
-If binding to the device is insufficient, you can instead bind data to a user by storing the decryption key on your server and releasing it only after successful authentication. Do not persist this key on the device; keep it only in RAM and decrypt files as described above.
+If binding to the device is insufficient, you can instead bind data to a user by storing the decryption key on your server and releasing it only after successful authentication. Don't persist this key on the device; keep it only in RAM and decrypt files as described above.

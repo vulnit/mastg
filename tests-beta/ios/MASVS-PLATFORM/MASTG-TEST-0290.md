@@ -12,7 +12,7 @@ knowledge: [MASTG-KNOW-0099]
 
 ## Overview
 
-This test verifies that the app hides sensitive content from the screen when it moves to the background. This is important because iOS captures a snapshot of the app UI when it transitions to the background. This snapshot is used for the [App Switcher](https://support.apple.com/guide/iphone/switch-between-open-apps-iph1a1f981ad/ios) and transitions, and can expose sensitive content if the app does not protect it.
+This test verifies that the app hides sensitive content from the screen when it moves to the background. This is important because iOS captures a snapshot of the app UI when it transitions to the background. This snapshot is used for the [App Switcher](https://support.apple.com/guide/iphone/switch-between-open-apps-iph1a1f981ad/ios) and transitions, and can expose sensitive content if the app doesn't protect it.
 
 ## Steps
 

@@ -14,7 +14,7 @@ The sample contains two storage flows, so the difference is visible in the disas
 - An **insecure** flow writes a sensitive value to `user_profile.json` in the Documents directory and later reads it back, trusting it without computing or verifying any HMAC or signature.
 - A **secure** flow (`storeWithIntegrity`) writes the same data to `user_profile_protected.json` with an appended HMAC-SHA256 and verifies the HMAC when reading it back.
 
-Because the insecure flow stores data the app trusts without any integrity check, the app cannot detect whether that data was modified on disk.
+Because the insecure flow stores data the app trusts without any integrity check, the app can't detect whether that data was modified on disk.
 
 {{ MastgTest.swift }}
 
@@ -40,6 +40,6 @@ Cross-referencing `Data.write(to:)` reveals two distinct storage flows, and the 
 
 ## Evaluation
 
-The test case fails because the app stores data it later trusts without verifying its integrity. Although the binary references HMAC APIs, those references alone do not prove that all stored data is protected: the disassembly shows that flow A writes `user_profile.json` and reads it back with no HMAC computation or verification on that path, so the app cannot detect if that file is tampered with.
+The test case fails because the app stores data it later trusts without verifying its integrity. Although the binary references HMAC APIs, those references alone don't prove that all stored data is protected: the disassembly shows that flow A writes `user_profile.json` and reads it back with no HMAC computation or verification on that path, so the app can't detect if that file is tampered with.
 
 For contrast, flow B (`storeWithIntegrity`) is a passing path: it computes an HMAC over the data before writing it and verifies the HMAC after reading it back, so tampering with `user_profile_protected.json` would be detected. The presence of this protected flow is exactly why the references found in step 2 require manual validation: only by inspecting how each storage path uses the integrity APIs can you tell which stored data is actually protected.

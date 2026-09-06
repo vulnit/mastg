@@ -32,4 +32,4 @@ Since determining whether the usage is security-relevant is context-dependent, i
 
 - Determine whether the generated random values are used for security-relevant purposes, such as generating cryptographic keys, initialization vectors (IVs), nonces, authentication tokens, session identifiers, passwords, or PINs.
 
-Other uses of insecure random APIs unrelated to security (e.g., generating random delays, non-security-related identifiers, game mechanics) do not cause the test case to fail.
+Other uses of insecure random APIs unrelated to security (e.g., generating random delays, non-security-related identifiers, game mechanics) don't cause the test case to fail.

@@ -12,7 +12,7 @@ A misconfigured Firebase instance can be identified by making the following netw
 
 The _firebaseProjectName_ can be retrieved from the property list(.plist) file. For example, `PROJECT_ID` key stores the corresponding Firebase project name in _GoogleService-Info.plist_ file.
 
-Alternatively, the analysts can use [Firebase Scanner](https://github.com/shivsahni/FireBaseScanner "Firebase Scanner"), a python script that automates the task above as shown below:
+Alternatively, the analysts can use [Firebase Scanner](https://github.com/shivsahni/FireBaseScanner "Firebase Scanner"), a Python script that automates the task above as shown below:
 
 ```bash
 python FirebaseScanner.py -f <commaSeparatedFirebaseProjectNames>

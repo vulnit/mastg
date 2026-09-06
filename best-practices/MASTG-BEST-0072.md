@@ -6,9 +6,9 @@ platform: ios
 knowledge: [MASTG-KNOW-0080]
 ---
 
-Validate and sanitize the path and query parameters of every incoming universal link before using them in security-sensitive operations. Universal link verification only proves that the request targets a domain your app is associated with (@MASTG-KNOW-0080); it does not validate the rest of the URL. Anyone can craft a link to your verified domain with arbitrary path and query values and get the user to open it, so treat the `webpageURL` and its parameters as untrusted input.
+Validate and sanitize the path and query parameters of every incoming universal link before using them in security-sensitive operations. Universal link verification only proves that the request targets a domain your app is associated with (@MASTG-KNOW-0080); it doesn't validate the rest of the URL. Anyone can craft a link to your verified domain with arbitrary path and query values and get the user to open it, so treat the `webpageURL` and its parameters as untrusted input.
 
-Apple makes this explicit in ["Supporting universal links in your app"](https://developer.apple.com/documentation/xcode/supporting-universal-links-in-your-app "Supporting universal links in your app"): universal links are an entry point into your app, so validate all URL parameters, discard malformed URLs, and limit the actions a link can trigger to those that do not put the user's data at risk.
+Apple makes this explicit in ["Supporting universal links in your app"](https://developer.apple.com/documentation/xcode/supporting-universal-links-in-your-app "Supporting universal links in your app"): universal links are an entry point into your app, so validate all URL parameters, discard malformed URLs, and limit the actions a link can trigger to those that don't put the user's data at risk.
 
 ## Confirm the Activity and Read the Verified URL
 
@@ -51,6 +51,6 @@ Without sanitization, a crafted universal link can target different parts of the
 - **Script injection**: a value like `q=<script>alert(1)</script>` can execute arbitrary JavaScript if rendered in a [`WKWebView`](https://developer.apple.com/documentation/webkit/wkwebview). See @MASTG-BEST-0034 for WebView input validation guidance.
 - **Command or query injection**: values interpolated into shell commands, SQL queries, or predicate strings can alter their logic. Use parameterized queries and avoid string interpolation for constructing commands.
 
-Use allowlists for the path or for parameters that select a resource or action when the set of valid inputs is known. Reject any value that does not match rather than attempting to strip or escape individual characters.
+Use allowlists for the path or for parameters that select a resource or action when the set of valid inputs is known. Reject any value that doesn't match rather than attempting to strip or escape individual characters.
 
 The same validation applies regardless of how the link is delivered, that is, through [`application(_:continue:restorationHandler:)`](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623072-application), [`scene(_:continue:)`](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238056-scene), or SwiftUI's [`onContinueUserActivity(_:perform:)`](https://developer.apple.com/documentation/swiftui/view/oncontinueuseractivity(_:perform:)).

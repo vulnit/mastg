@@ -16,12 +16,12 @@ iOS apps can implement debugging detection using mechanisms such as `ptrace` wit
 
 See @MASTG-KNOW-0085 for more information on iOS debugging detection techniques and specific APIs and artifacts to look for.
 
-This test checks whether the app references debugging detection mechanisms in its Mach-O binaries. It does not test whether the app is configured as debuggable, which is covered by @MASTG-TEST-0261.
+This test checks whether the app references debugging detection mechanisms in its Mach-O binaries. It doesn't test whether the app is configured as debuggable, which is covered by @MASTG-TEST-0261.
 
 This test is best combined with @MASTG-TEST-0402, which performs dynamic testing to confirm whether the identified debugging detection mechanisms are active at runtime. Use the findings from this test to focus dynamic analysis in @MASTG-TEST-0402 on specific checks.
 
 !!! note "Out of Scope"
-    This test does not cover robustness or effectiveness of debugging detection mechanisms, which can be difficult to assess through static analysis alone and may require manual reverse engineering and custom instrumentation. See @MASTG-BEST-0074 for best practices on implementing debugging detection effectively.
+    This test doesn't cover robustness or effectiveness of debugging detection mechanisms, which can be difficult to assess through static analysis alone and may require manual reverse engineering and custom instrumentation. See @MASTG-BEST-0074 for best practices on implementing debugging detection effectively.
 
 ## Steps
 
@@ -48,4 +48,4 @@ Inspect each reported code location using @MASTG-TECH-0076 to determine whether 
 
 **Expected False Negatives:**
 
-This test may produce false negatives if the app uses debugging detection techniques that are obfuscated, dynamically loaded, implemented with inline system calls, resolved through indirect control flow, or hidden behind a third-party protection library. In such cases, the absence of findings does not guarantee the absence of debugging detection, and additional manual reverse engineering or custom instrumentation may be required.
+This test may produce false negatives if the app uses debugging detection techniques that are obfuscated, dynamically loaded, implemented with inline system calls, resolved through indirect control flow, or hidden behind a third-party protection library. In such cases, the absence of findings doesn't guarantee the absence of debugging detection, and additional manual reverse engineering or custom instrumentation may be required.

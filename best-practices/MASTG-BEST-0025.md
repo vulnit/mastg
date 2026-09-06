@@ -6,7 +6,7 @@ platform: ios
 knowledge: [MASTG-KNOW-0070]
 ---
 
-Use secure random number generator APIs that are backed by the operating system _cryptographically secure pseudorandom number generator (CSPRNG)_. Do not build your own _pseudorandom number generator (PRNG)_.
+Use secure random number generator APIs that are backed by the operating system _cryptographically secure pseudorandom number generator (CSPRNG)_. Don't build your own _pseudorandom number generator (PRNG)_.
 
 ## Swift / Objective-C
 

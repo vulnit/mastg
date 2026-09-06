@@ -46,4 +46,4 @@ Using the backtraces from the hook output, inspect the code locations using @MAS
 - The app validates the URL's host or scheme before allowing navigation or returning resource data.
 - The validation logic reliably restricts navigation to trusted domains (for example, validating the full host rather than relying on a substring match).
 
-Note that intercepting URL loading is not inherently insecure. The test fails only when the implementation does not properly restrict navigation to trusted content.
+Note that intercepting URL loading isn't inherently insecure. The test fails only when the implementation doesn't properly restrict navigation to trusted content.

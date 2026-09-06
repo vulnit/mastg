@@ -13,9 +13,9 @@ profiles: [P]
 
 ## Overview
 
-Attackers may capture network traffic from Android devices using an intercepting proxy, such as @MASTG-TOOL-0079, @MASTG-TOOL-0077, or @MASTG-TOOL-0097, to analyze the data being transmitted by the app. This works even if the app uses HTTPS, as the attacker can install a custom root certificate on the Android device to decrypt the traffic. Inspecting traffic that is not encrypted with HTTPS is even easier and can be done without installing a custom root certificate for example by using @MASTG-TOOL-0081.
+Attackers may capture network traffic from Android devices using an intercepting proxy, such as @MASTG-TOOL-0079, @MASTG-TOOL-0077, or @MASTG-TOOL-0097, to analyze the data being transmitted by the app. This works even if the app uses HTTPS, as the attacker can install a custom root certificate on the Android device to decrypt the traffic. Inspecting traffic that isn't encrypted with HTTPS is even easier and can be done without installing a custom root certificate for example by using @MASTG-TOOL-0081.
 
-The goal of this test is to verify that sensitive data, specifically PII, is not being sent over the network, even if the traffic is encrypted. This test is especially important for apps that handle sensitive data, such as financial or health data, and should be performed in conjunction with a review of the app's privacy policy and the app's marketplace privacy declarations (e.g., Data Safety section in Google Play).
+The goal of this test is to verify that sensitive data, specifically PII, isn't being sent over the network, even if the traffic is encrypted. This test is especially important for apps that handle sensitive data, such as financial or health data, and should be performed in conjunction with a review of the app's privacy policy and the app's marketplace privacy declarations (e.g., Data Safety section in Google Play).
 
 ## Steps
 
@@ -29,6 +29,6 @@ The output should contain a network traffic log that includes the decrypted HTTP
 
 ## Evaluation
 
-The test case fails if you can find the PII you entered in the app that is not declared in the app's marketplace privacy declarations (e.g., Data Safety section in Google Play) and/or in its privacy policy.
+The test case fails if you can find the PII you entered in the app that isn't declared in the app's marketplace privacy declarations (e.g., Data Safety section in Google Play) and/or in its privacy policy.
 
-Note that this test does not provide any code locations where the sensitive data is being sent over the network. In order to identify the code locations you can use @MASTG-TECH-0014 or @MASTG-TECH-0015. Consult @MASTG-TEST-0318 and @MASTG-TEST-0319, respectively, for more details.
+Note that this test doesn't provide any code locations where the sensitive data is being sent over the network. In order to identify the code locations you can use @MASTG-TECH-0014 or @MASTG-TECH-0015. Consult @MASTG-TEST-0318 and @MASTG-TEST-0319, respectively, for more details.

@@ -34,9 +34,9 @@ ATS will block connections that further fail to meet a set of [minimum security 
 
 ## When does ATS not apply?
 
-- **When using lower-level APIs:** ATS only applies to the [URL Loading System](https://developer.apple.com/documentation/foundation/url_loading_system) including [URLSession](https://developer.apple.com/reference/foundation/urlsession) and APIs layered on top of them. It does not apply to apps that use lower-level APIs (like BSD Sockets), including those that implement TLS on top of those lower-level APIs (see section ["Using ATS in Apple Frameworks"](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW55) from the Archived Apple Developer Documentation).
+- **When using lower-level APIs:** ATS only applies to the [URL Loading System](https://developer.apple.com/documentation/foundation/url_loading_system) including [URLSession](https://developer.apple.com/reference/foundation/urlsession) and APIs layered on top of them. It doesn't apply to apps that use lower-level APIs (like BSD Sockets), including those that implement TLS on top of those lower-level APIs (see section ["Using ATS in Apple Frameworks"](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW55) from the Archived Apple Developer Documentation).
 
-- **When connecting to IP addresses, unqualified domain names or local hosts:** ATS applies only to connections made to public host names (see section ["Availability of ATS for Remote and Local Connections"](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW54) from the Archived Apple Developer Documentation). The system does not provide ATS protection to connections made to:
+- **When connecting to IP addresses, unqualified domain names or local hosts:** ATS applies only to connections made to public host names (see section ["Availability of ATS for Remote and Local Connections"](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CocoaKeys.html#//apple_ref/doc/uid/TP40009251-SW54) from the Archived Apple Developer Documentation). The system doesn't provide ATS protection to connections made to:
     - Internet protocol (IP) addresses
     - Unqualified host names
     - Local hosts employing the .local top-level domain (TLD)
@@ -95,7 +95,7 @@ The following table summarizes the per-domain ATS exceptions. For more informati
 | Key | Description |
 | --- | --- |
 | `NSIncludesSubdomains` | Indicates whether ATS exceptions should apply to subdomains of the named domain |
-| `NSExceptionAllowsInsecureHTTPLoads` | Allows HTTP connections to the named domain, but does not affect TLS requirements |
+| `NSExceptionAllowsInsecureHTTPLoads` | Allows HTTP connections to the named domain, but doesn't affect TLS requirements |
 | `NSExceptionMinimumTLSVersion` | Allows connections to servers with TLS versions less than 1.2 |
 | `NSExceptionRequiresForwardSecrecy` | Disable perfect forward secrecy (PFS) |
 
@@ -103,7 +103,7 @@ You may encounter exception keys prefixed with `NSTemporaryException...` in old 
 
 **TLS Configuration in Code:**
 
-Beyond `Info.plist` exceptions, apps can also configure TLS behavior in code via `URLSessionConfiguration` properties such as [`tlsMinimumSupportedProtocolVersion`](https://developer.apple.com/documentation/foundation/urlsessionconfiguration/tlsminimumsupportedprotocolversion). These properties are evaluated separately from ATS. ATS applies its own minimum TLS requirements in addition to values configured in code, so a lower value set in code does not by itself override ATS behavior. If no matching `Info.plist` exception is present, ATS can still block the connection. See @MASTG-KNOW-0073 for details on TLS configuration per API layer.
+Beyond `Info.plist` exceptions, apps can also configure TLS behavior in code via `URLSessionConfiguration` properties such as [`tlsMinimumSupportedProtocolVersion`](https://developer.apple.com/documentation/foundation/urlsessionconfiguration/tlsminimumsupportedprotocolversion). These properties are evaluated separately from ATS. ATS applies its own minimum TLS requirements in addition to values configured in code, so a lower value set in code doesn't by itself override ATS behavior. If no matching `Info.plist` exception is present, ATS can still block the connection. See @MASTG-KNOW-0073 for details on TLS configuration per API layer.
 
 **Justifying Exceptions:**
 

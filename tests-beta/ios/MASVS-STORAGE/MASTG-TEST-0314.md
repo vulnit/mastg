@@ -33,10 +33,10 @@ The output should allow the tester to associate each text entry with the corresp
 
 The test case fails if any UI inputs that may handle sensitive values (for example, usernames, passwords, email addresses, credit card numbers, recovery codes) are eligible for keyboard caching. This occurs when:
 
-- `isSecureTextEntry` is not enabled, or
+- `isSecureTextEntry` isn't enabled, or
 - `autocorrectionType` is set to `default` or `yes`, or
 - `spellCheckingType` is set to `default` or `yes`.
 
 **Expected False Negatives:**
 
-This test may produce false negatives if the app uses custom text input controls that do not rely on standard UIKit classes such as `UITextField` or `UITextView` (for example in custom UI frameworks or game engines), or if text entry is handled through nonstandard abstractions that prevent reliable observation of input traits at runtime.
+This test may produce false negatives if the app uses custom text input controls that don't rely on standard UIKit classes such as `UITextField` or `UITextView` (for example in custom UI frameworks or game engines), or if text entry is handled through nonstandard abstractions that prevent reliable observation of input traits at runtime.

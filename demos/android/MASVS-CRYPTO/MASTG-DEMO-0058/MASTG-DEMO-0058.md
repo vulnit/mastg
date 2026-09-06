@@ -18,11 +18,11 @@ Current versions of Android prohibit the use of keys with ECB in some cases. For
 
 {{ MastgTest.kt }}
 
-When executing the code, you will see the following results for each of the three scenarios:
+When executing the code, you'll see the following results for each of the three scenarios:
 
 1. Decryption succeeds because that's always allowed.
 2. Encryption succeeds. The import succeeds in this case because we explicitly disable randomized encryption (bad practice). Otherwise, `KeyStore.setEntry` would fail with an error similar to the one for scenario 3.
-3. Encryption cannot even happen because the generation fails (`KeyGenerator.init` specifically) due to randomized encryption not being disabled. The error says `"Randomized encryption (IND-CPA) required but may be violated by block mode: ECB. See android.security.keystore.KeyGenParameterSpec documentation"`.
+3. Encryption can't even happen because the generation fails (`KeyGenerator.init` specifically) due to randomized encryption not being disabled. The error says `"Randomized encryption (IND-CPA) required but may be violated by block mode: ECB. See android.security.keystore.KeyGenParameterSpec documentation"`.
 
 ## Steps
 

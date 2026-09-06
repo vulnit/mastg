@@ -16,7 +16,7 @@ This test verifies whether an app is running on a device with a passcode set. An
 
 Additionally, apps can use the [BiometricManager#canAuthenticate(int)](https://developer.android.com/reference/android/hardware/biometrics/BiometricManager#canAuthenticate(int)) API to check whether biometric authentication is available and can be used. Since biometric authentication on Android requires a secure screen lock as a fallback, this method can serve as an alternative check when [KeyguardManager](https://developer.android.com/reference/android/app/KeyguardManager) is unavailable or restricted by device manufacturers.
 
-If an app relies on biometrics for authentication, it should ensure that biometric authentication is enforced using the [BiometricPrompt](https://developer.android.com/reference/android/hardware/biometrics/BiometricPrompt) API or by requiring authentication for cryptographic key access via the **Android KeyStore System**. However, apps **cannot force** users to enable biometrics at the system level, only enforce their use within the app for accessing sensitive functionality.
+If an app relies on biometrics for authentication, it should ensure that biometric authentication is enforced using the [BiometricPrompt](https://developer.android.com/reference/android/hardware/biometrics/BiometricPrompt) API or by requiring authentication for cryptographic key access via the **Android KeyStore System**. However, apps **can't force** users to enable biometrics at the system level, only enforce their use within the app for accessing sensitive functionality.
 
 ## Steps
 

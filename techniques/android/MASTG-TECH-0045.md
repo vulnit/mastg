@@ -108,7 +108,7 @@ java.lang.BootClassLoader@b1f1189dalvik.system.PathClassLoader[
  ]
 ```
 
-Next, imagine that you are interested in the method exported by libnative-lib.so `0x7d1c49954c f Java_sg_vantagepoint_helloworldjni_MainActivity_stringFromJNI`. You can seek to that address with `s 0x7d1c49954c`, analyze that function `af` and print 10 lines of its disassembly `pd 10`:
+Next, imagine that you're interested in the method exported by libnative-lib.so `0x7d1c49954c f Java_sg_vantagepoint_helloworldjni_MainActivity_stringFromJNI`. You can seek to that address with `s 0x7d1c49954c`, analyze that function `af` and print 10 lines of its disassembly `pd 10`:
 
 ```bash
 [0x7d1c49954c]> pdf

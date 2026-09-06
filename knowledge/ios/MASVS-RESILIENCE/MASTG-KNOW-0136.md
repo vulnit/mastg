@@ -15,7 +15,7 @@ This is an official distribution path and should not be treated as evidence that
 From a resilience perspective, an app might still want to identify this environment because a Mac gives the user access to desktop tooling, a different input model, and a different set of hardware capabilities than an iPhone or iPad. Public research has shown attempts to use [Frida against iOS apps running on M1 Macs](https://github.com/frida/frida/issues/1734), and [another writeup shows that Frida could list such an app process but failed to attach](https://forensicmike1.com/post/taking-a-look-at-ios-apps-on-an-m1-mac/) until macOS-specific restrictions were addressed, including [System Integrity Protection](https://developer.apple.com/documentation/security/disabling-and-enabling-system-integrity-protection). [Frida's macOS documentation](https://frida.re/docs/examples/macos/) also states that Frida needs authorization to use [`task_for_pid`](https://developer.apple.com/documentation/bundleresources/entitlements/com.apple.security.cs.debugger) to access a target process, and that SIP may need to be disabled.
 
 !!! note
-    Do not confuse iPhone and iPad apps running on macOS with:
+    Don't confuse iPhone and iPad apps running on macOS with:
 
     - The iOS Simulator, which runs simulator builds, while iPhone and iPad apps on Apple silicon Macs run through an official Mac App Store distribution path. See @MASTG-KNOW-0088.
     - Virtual devices, which attempt to reproduce an iOS device environment for iOS device binaries. See @MASTG-KNOW-0135.
@@ -65,7 +65,7 @@ private static func isRunningOnMac() -> Bool {
 
 ### Compiler Directives
 
-Compiler directives for Mac Catalyst do not detect iPhone and iPad apps running directly on Apple silicon Macs.
+Compiler directives for Mac Catalyst don't detect iPhone and iPad apps running directly on Apple silicon Macs.
 
 ```swift
 #if targetEnvironment(macCatalyst)
@@ -79,4 +79,4 @@ An iPhone or iPad app running on macOS through the Mac App Store should be detec
 
 If an app should not be made available to users on Macs with Apple silicon, the preferred control is to [disable this availability in App Store Connect](https://developer.apple.com/help/app-store-connect/manage-your-apps-availability/manage-availability-of-iphone-and-ipad-apps-on-macs-with-apple-silicon/) rather than relying only on a runtime check.
 
-App Store Connect allows developers to opt out of offering an iPhone or iPad app on the Mac App Store for Apple silicon Macs. This prevents official distribution through that channel, but it does not replace tamper detection or other resilience controls for repackaged or sideloaded app instances.
+App Store Connect allows developers to opt out of offering an iPhone or iPad app on the Mac App Store for Apple silicon Macs. This prevents official distribution through that channel, but it doesn't replace tamper detection or other resilience controls for repackaged or sideloaded app instances.

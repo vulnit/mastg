@@ -110,7 +110,7 @@ In order to determine how a URL path is built and validated, if you have the ori
 - `application:didFinishLaunchingWithOptions:` method or `application:will-FinishLaunchingWithOptions:`: verify how the decision is made and how the information about the URL is retrieved.
 - [`application:openURL:options:`](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623112-application?language=objc "UIApplicationDelegate application:openURL:options:"): verify how the resource is being opened, i.e. how the data is being parsed, verify the [options](https://developer.apple.com/documentation/uikit/uiapplication/openurloptionskey "UIApplicationOpenURLOptionsKey"), especially if access by the calling app ([`sourceApplication`](https://developer.apple.com/documentation/uikit/uiapplication/openurloptionskey/1623128-sourceapplication "UIApplicationOpenURLOptionsSourceApplicationKey")) should be allowed or denied. The app might also need user permission when using the custom URL scheme.
 
-In Telegram you will [find four different methods being used](https://github.com/peter-iakovlev/Telegram-iOS/blob/87e0a33ac438c1d702f2a0b75bf21f26866e346f/Telegram-iOS/AppDelegate.swift#L1250 "Telegram\'s AppDelegate.swift Line 1250"):
+In Telegram you'll [find four different methods being used](https://github.com/peter-iakovlev/Telegram-iOS/blob/87e0a33ac438c1d702f2a0b75bf21f26866e346f/Telegram-iOS/AppDelegate.swift#L1250 "Telegram\'s AppDelegate.swift Line 1250"):
 
 ```default
 func application(_ application: UIApplication, open url: URL, sourceApplication: String?) -> Bool {
@@ -139,14 +139,14 @@ func application(_ application: UIApplication, handleOpen url: URL) -> Bool {
 We can observe some things here:
 
 - The app implements also deprecated methods like [`application:handleOpenURL:`](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622964-application?language=objc "UIApplicationDelegate application:handleOpenURL:") and [`application:openURL:sourceApplication:annotation:`](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623073-application "UIApplicationDelegate application:openURL:sourceApplication:annotation:").
-- The source application is not being verified in any of those methods.
+- The source application isn't being verified in any of those methods.
 - All of them call a private `openUrl` method. You can [inspect it](https://github.com/peter-iakovlev/Telegram-iOS/blob/87e0a33ac438c1d702f2a0b75bf21f26866e346f/Telegram-iOS/AppDelegate.swift#L1270 "Telegram\'s AppDelegate.swift Line 1270") to learn more about how the URL request is handled.
 
 ### Testing URL Requests to Other Apps
 
 The method [`openURL:options:completionHandler:`](https://developer.apple.com/documentation/uikit/uiapplication/1648685-openurl?language=objc "UIApplication openURL:options:completionHandler:") and the [deprecated `openURL:` method of `UIApplication`](https://developer.apple.com/documentation/uikit/uiapplication/1622961-openurl?language=objc "UIApplication openURL:") are responsible for opening URLs (i.e. to send requests / make queries to other apps) that may be local to the current app or it may be one that must be provided by a different app. If you have the original source code you can search directly for usages of those methods.
 
-Additionally, if you are interested into knowing if the app is querying specific services or apps, and if the app is well-known, you can also search for common URL schemes online and include them in your greps. For example, a [quick Google search reveals](https://web.archive.org/web/20200903221322/https://ios.gadgethacks.com/news/always-updated-list-ios-app-url-scheme-names-0184033/ "Always-Updated List of iOS App URL Scheme Names"):
+Additionally, if you're interested into knowing if the app is querying specific services or apps, and if the app is well-known, you can also search for common URL schemes online and include them in your greps. For example, a [quick Google search reveals](https://web.archive.org/web/20200903221322/https://ios.gadgethacks.com/news/always-updated-list-ios-app-url-scheme-names-0184033/ "Always-Updated List of iOS App URL Scheme Names"):
 
 ```default
 Apple Music - music:// or musics:// or audio-player-event://
@@ -313,11 +313,11 @@ function openURL(url) {
 ```
 
 !!! note
-    The use of non-public APIs is not permitted on the App Store. That's why we don't even test these, but we are allowed to use them for our dynamic analysis.
+    The use of non-public APIs isn't permitted on the App Store. That's why we don't even test these, but we are allowed to use them for our dynamic analysis.
 
 ### Identifying and Hooking the URL Handler Method
 
-If you can't look into the original source code you will have to find out yourself which method does the app use to handle the URL scheme requests that it receives. You cannot know if it is an Objective-C method or a Swift one, or even if the app is using a deprecated one.
+If you can't look into the original source code you'll have to find out yourself which method does the app use to handle the URL scheme requests that it receives. You can't know if it is an Objective-C method or a Swift one, or even if the app is using a deprecated one.
 
 #### Crafting the Link Yourself and Letting Safari Open It
 
@@ -371,7 +371,7 @@ RET: 0x1
 
 Now we know that:
 
-- The method `-[iGoat_Swift.AppDelegate application:openURL:options:]` gets called. As we have seen before, it is the recommended way and it is not deprecated.
+- The method `-[iGoat_Swift.AppDelegate application:openURL:options:]` gets called. As we have seen before, it is the recommended way and it isn't deprecated.
 - It receives our URL as a parameter: `igoat://`.
 - We also can verify the source application: `com.apple.mobilesafari`.
 - We can also know from where it was called, as expected from `-[UIApplication _applicationOpenURLAction:payload:origin:]`.
@@ -430,7 +430,7 @@ options: {
 RET: 0x1
 ```
 
-The output is truncated for better readability. This time you see that `UIApplicationOpenURLOptionsSourceApplicationKey` has changed to `OWASP.iGoat-Swift`, which makes sense. In addition, a long list of `openURL`-like methods were called. Considering this information can be very useful for some scenarios as it will help you to decide what you next steps will be, e.g. which method you will hook or tamper with next.
+The output is truncated for better readability. This time you see that `UIApplicationOpenURLOptionsSourceApplicationKey` has changed to `OWASP.iGoat-Swift`, which makes sense. In addition, a long list of `openURL`-like methods were called. Considering this information can be very useful for some scenarios as it will help you to decide what you next steps will be, e.g. which method you'll hook or tamper with next.
 
 #### Opening a Link by Navigating to a Page and Letting Safari Open It
 
@@ -513,7 +513,7 @@ There you can observe the following:
 
 - It calls `application:openURL:options:` from the app delegate as expected.
 - The source application is Safari ("com.apple.mobilesafari").
-- `application:openURL:options:` handles the URL but does not open it, it calls `TelegramUI.openExternalUrl` for that.
+- `application:openURL:options:` handles the URL but doesn't open it, it calls `TelegramUI.openExternalUrl` for that.
 - The URL being opened is `tg://resolve?domain=fridadotre`.
 - It uses the `tg://` custom URL scheme from Telegram.
 
@@ -595,7 +595,7 @@ true
 nil
 ```
 
-Nothing happens. This tells us already that this method is not being used for that as we cannot find any _app-package-looking_ string like `OWASP.iGoat-Swift` or `com.apple.mobilesafari` between the hook and the text of the tweet. However, consider that we are just probing one method, the app might be using other approach for the comparison.
+Nothing happens. This tells us already that this method isn't being used for that as we can't find any _app-package-looking_ string like `OWASP.iGoat-Swift` or `com.apple.mobilesafari` between the hook and the text of the tweet. However, consider that we are just probing one method, the app might be using other approach for the comparison.
 
 ### Fuzzing URL Schemes
 
@@ -667,4 +667,4 @@ Opened URL: iGoat://?contactNumber=%20s&message=%20s
 OK!
 ```
 
-The script will detect if a crash occurred. On this run it did not detect any crashed but for other apps this could be the case. We would be able to inspect the crash reports in `/private/var/mobile/Library/Logs/CrashReporter` or in `/tmp` if it was moved by the script.
+The script will detect if a crash occurred. On this run it didn't detect any crashed but for other apps this could be the case. We would be able to inspect the crash reports in `/private/var/mobile/Library/Logs/CrashReporter` or in `/tmp` if it was moved by the script.

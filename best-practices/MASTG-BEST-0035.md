@@ -6,11 +6,11 @@ platform: android
 knowledge: [MASTG-KNOW-0018]
 ---
 
-JavaScript bridges are not inherently unsafe, but they are a high-impact `WebView` feature and should only be exposed to content you fully trust. The main risk is not the bridge alone, but the combination of a bridge with untrusted or weakly validated content.
+JavaScript bridges aren't inherently unsafe, but they are a high-impact `WebView` feature and should only be exposed to content you fully trust. The main risk isn't the bridge alone, but the combination of a bridge with untrusted or weakly validated content.
 
 ## Avoid the Legacy `addJavascriptInterface` Model
 
-The [legacy `addJavascriptInterface`](https://developer.android.com/develop/ui/views/layout/webapps/native-api-access-jsbridge#addjavascriptinterface) mechanism is exposed to every frame in the `WebView`, including iframes, and does not provide origin-based access control. This makes it unsuitable as a security boundary when the `WebView` may render untrusted or weakly validated content.
+The [legacy `addJavascriptInterface`](https://developer.android.com/develop/ui/views/layout/webapps/native-api-access-jsbridge#addjavascriptinterface) mechanism is exposed to every frame in the `WebView`, including iframes, and doesn't provide origin-based access control. This makes it unsuitable as a security boundary when the `WebView` may render untrusted or weakly validated content.
 
 Android also [notes that one safer way to use `addJavascriptInterface()`](https://developer.android.com/privacy-and-security/risks/insecure-webview-native-bridges#addjavascriptinterface-risks-target-api-level-21-or-higher) is to [target API level 21 or higher](https://developer.android.com/reference/android/webkit/WebView#addJavascriptInterface(java.lang.Object,%20java.lang.String)), because then JavaScript can only access methods explicitly annotated with `@JavascriptInterface`, whereas older target levels also exposed public fields of the injected object. Even with that improvement, the mechanism still lacks origin-based access control, so Android recommends newer origin-aware alternatives for modern bridge designs.
 
@@ -32,10 +32,10 @@ Regardless of the bridge mechanism, minimize the native functionality exposed to
 
 - expose only the specific operations the page needs
 - avoid broad utility objects or generic command dispatchers
-- do not expose sensitive capabilities unless they are essential
+- don't expose sensitive capabilities unless they are essential
 - require simple, well-defined message formats
 - reject unexpected inputs and unsupported actions
 
 ## Scope and Limitations
 
-This best practice is about bridge design and origin scoping. It should be combined with related controls for JavaScript enablement, trusted origin restrictions, and file access hardening. It does not by itself prevent attacker-controlled JavaScript from executing in a trusted page.
+This best practice is about bridge design and origin scoping. It should be combined with related controls for JavaScript enablement, trusted origin restrictions, and file access hardening. It doesn't by itself prevent attacker-controlled JavaScript from executing in a trusted page.

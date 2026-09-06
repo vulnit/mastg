@@ -30,7 +30,7 @@ Any app that has the same access group in its entitlement can access items store
 
 ## Scope and Constraints
 
-- Keychain access groups are scoped to the app's App ID prefix, which is usually tied to the developer team. Apps from different teams normally cannot share a keychain access group.
+- Keychain access groups are scoped to the app's App ID prefix, which is usually tied to the developer team. Apps from different teams normally can't share a keychain access group.
 - Items stored in a shared access group are accessible to all apps declaring that group, subject to the item's accessibility and access control settings.
 - The access group is set when the keychain item is created by passing `kSecAttrAccessGroup` to `SecItemAdd`.
 - Keychain items are protected by the iOS Keychain's Data Protection classes (`kSecAttrAccessible*`), independent of the access group.

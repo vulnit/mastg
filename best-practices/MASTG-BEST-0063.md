@@ -24,7 +24,7 @@ val pendingIntent = PendingIntent.getActivity(
 
 `FLAG_IMMUTABLE` [must be always specified](https://developer.android.com/guide/components/intents-filters#DeclareMutabilityPendingIntent "must be always specified") on apps targeting Android 12 or higher for each `PendingIntent` object that the app creates.
 
-Only use `FLAG_MUTABLE` when the receiving component explicitly needs to fill in intent fields that cannot be known in advance (for example, [inline reply actions](https://developer.android.com/develop/ui/views/notifications/build-notification#reply-action) or [app widget](https://developer.android.com/develop/ui/views/appwidgets) [Pending Intents](../Document/0x05h-Testing-Platform-Interaction.md#pending-intents) that require a call back into the app). Even then, set only the fields you expect the receiver to modify.
+Only use `FLAG_MUTABLE` when the receiving component explicitly needs to fill in intent fields that can't be known in advance (for example, [inline reply actions](https://developer.android.com/develop/ui/views/notifications/build-notification#reply-action) or [app widget](https://developer.android.com/develop/ui/views/appwidgets) [Pending Intents](../Document/0x05h-Testing-Platform-Interaction.md#pending-intents) that require a call back into the app). Even then, set only the fields you expect the receiver to modify.
 
 ## Use Explicit Intents
 

@@ -17,9 +17,9 @@ deprecation_note: New version available in MASTG V2
 
 ## Static Analysis
 
-First see whether there is an update mechanism at all: if it is not yet present, it might mean that users cannot be forced to update.
+First see whether there is an update mechanism at all: if it isn't yet present, it might mean that users can't be forced to update.
 If the mechanism is present, see whether it enforces "always latest" and whether that is indeed in line with the business strategy. Otherwise check if the mechanism is supporting to update to a given version.
-Make sure that every entry of the application goes through the updating mechanism in order to make sure that the update-mechanism cannot be bypassed.
+Make sure that every entry of the application goes through the updating mechanism in order to make sure that the update-mechanism can't be bypassed.
 
 ## Dynamic analysis
 

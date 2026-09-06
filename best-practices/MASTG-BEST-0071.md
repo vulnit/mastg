@@ -33,8 +33,8 @@ Without sanitization, a crafted URI can target different parts of the app:
 - **Script injection**: a value like `q=<script>alert(1)</script>` can execute JavaScript if rendered in a [`WebView`](https://developer.android.com/reference/android/webkit/WebView). See @MASTG-TEST-0031.
 - **Query or command injection**: values interpolated into SQL queries or shell commands can alter their logic. Use parameterized queries and avoid string concatenation.
 
-Prefer allowlists for parameters that select a resource or an action when the set of valid inputs is known. Reject any value that does not match rather than attempting to strip individual characters.
+Prefer allowlists for parameters that select a resource or an action when the set of valid inputs is known. Reject any value that doesn't match rather than attempting to strip individual characters.
 
 ## Restrict the Handler Surface
 
-If a deep link handler does not need to be reachable by other apps, set [`android:exported="false"`](https://developer.android.com/guide/topics/manifest/activity-element#exported) on its activity. For links that trigger sensitive actions, prefer verified App Links (see @MASTG-BEST-0070) over custom URL schemes.
+If a deep link handler doesn't need to be reachable by other apps, set [`android:exported="false"`](https://developer.android.com/guide/topics/manifest/activity-element#exported) on its activity. For links that trigger sensitive actions, prefer verified App Links (see @MASTG-BEST-0070) over custom URL schemes.

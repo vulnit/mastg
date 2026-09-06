@@ -14,7 +14,7 @@ Extract and decode the `AndroidManifest.xml` as described in @MASTG-TECH-0117, t
 A content provider is exported, and therefore reachable by other apps, when either of the following is true:
 
 - It sets [`android:exported="true"`](https://developer.android.com/guide/topics/manifest/provider-element#exported).
-- On apps targeting API level 16 or lower, `android:exported` is not set (the historical default was `true`).
+- On apps targeting API level 16 or lower, `android:exported` isn't set (the historical default was `true`).
 
 Note the access-control attributes: [`android:permission`](https://developer.android.com/guide/topics/manifest/provider-element#prmsn), [`android:readPermission`](https://developer.android.com/guide/topics/manifest/provider-element#rprmsn), [`android:writePermission`](https://developer.android.com/guide/topics/manifest/provider-element#wprmsn), and [`android:grantUriPermissions`](https://developer.android.com/guide/topics/manifest/provider-element#gprmsn).
 

@@ -11,5 +11,5 @@ By default [a custom keyboard runs without "Full Access"](https://developer.appl
 
 iOS gives apps two relevant controls over which keyboard processes their text fields:
 
-- A `UITextField` or `UITextView` whose [`isSecureTextEntry`](https://developer.apple.com/documentation/uikit/uitextinputtraits/issecuretextentry) trait is `true` (or a SwiftUI `SecureField`) always uses the system keyboard. Third-party keyboards are not shown for secure fields, so they never receive the typed characters.
+- A `UITextField` or `UITextView` whose [`isSecureTextEntry`](https://developer.apple.com/documentation/uikit/uitextinputtraits/issecuretextentry) trait is `true` (or a SwiftUI `SecureField`) always uses the system keyboard. Third-party keyboards aren't shown for secure fields, so they never receive the typed characters.
 - An app can reject custom keyboard extensions across the whole app by implementing [`application(_:shouldAllowExtensionPointIdentifier:)`](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/application(_:shouldallowextensionpointidentifier:)) in its `UIApplicationDelegate` and returning `false` for `UIApplicationKeyboardExtensionPointIdentifier` (`com.apple.keyboard-service`). The system then uses the built-in keyboard throughout the app, regardless of the keyboards the user has installed.

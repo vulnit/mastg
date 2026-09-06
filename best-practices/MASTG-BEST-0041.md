@@ -13,13 +13,13 @@ Defending against runtime hooking requires a layered approach that combines seve
 - **Deterrent controls**: Obfuscate detection logic, scatter checks throughout the app, and vary their timing to increase the cost and effort required to bypass protections.
 - **Responsive controls**: Terminate the session, clear sensitive data from memory, or even alert the backend server when a threat is detected.
 
-Because hooking can also occur on non-rooted devices (e.g., by repackaging the app with an embedded frida-gadget, see @MASTG-TECH-0026), do not rely solely on preventive controls. Apply the detective, deterrent, and responsive controls described below to protect against hooking regardless of the device's root status.
+Because hooking can also occur on non-rooted devices (e.g., by repackaging the app with an embedded frida-gadget, see @MASTG-TECH-0026), don't rely solely on preventive controls. Apply the detective, deterrent, and responsive controls described below to protect against hooking regardless of the device's root status.
 
 ## Detective Controls
 
 ### Combine Artifact-Based and Integrity-Based Detection
 
-Implement both artifact-based detection (@MASTG-KNOW-0030) and runtime integrity verification (@MASTG-KNOW-0032). Use artifact-based detection to scan for known tool signatures (e.g., Frida server processes, libraries, open ports) and runtime integrity verification to detect the _modifications_ these tools make to the app's code and memory (e.g., GOT hooks, inline trampolines, ART method entry point changes). Do not rely on only one approach, as each has blind spots the other covers.
+Implement both artifact-based detection (@MASTG-KNOW-0030) and runtime integrity verification (@MASTG-KNOW-0032). Use artifact-based detection to scan for known tool signatures (e.g., Frida server processes, libraries, open ports) and runtime integrity verification to detect the _modifications_ these tools make to the app's code and memory (e.g., GOT hooks, inline trampolines, ART method entry point changes). Don't rely on only one approach, as each has blind spots the other covers.
 
 ### Apply Multiple Detection Techniques
 
@@ -69,4 +69,4 @@ Trigger the following response actions when hooks are detected:
 - Clear sensitive data from memory and/or disk.
 - Alert the backend server to flag the compromised session.
 
-Do not allow the app to continue running in a compromised state. Protect the response mechanism itself against hooking by implementing it in native code and obfuscating its control flow.
+Don't allow the app to continue running in a compromised state. Protect the response mechanism itself against hooking by implementing it in native code and obfuscating its control flow.

@@ -41,7 +41,7 @@ Both Android and iOS offer means to extend trust, i.e. include additional CAs so
 
 However, remember that the device users are always able to include additional CAs. Therefore, depending on the threat model of the app it might be necessary to avoid trusting any certificates added to the user trust store or even go further and only trust a pre-defined specific certificate or set of certificates.
 
-For many apps, the "default behavior" provided by the mobile platform will be secure enough for their use case (in the rare case that a system-trusted CA is compromised the data handled by the app is not considered sensitive or other security measures are taken which are resilient even to such a CA breach). However, for other apps such as financial or health apps, the risk of a CA breach, even if rare, must be considered.
+For many apps, the "default behavior" provided by the mobile platform will be secure enough for their use case (in the rare case that a system-trusted CA is compromised the data handled by the app isn't considered sensitive or other security measures are taken which are resilient even to such a CA breach). However, for other apps such as financial or health apps, the risk of a CA breach, even if rare, must be considered.
 
 ### Restricting Trust: Identity Pinning
 
@@ -68,10 +68,10 @@ Both Android and iOS recommendations match the "best case" which is:
 Pinning has gained a bad reputation since its introduction several years ago. We'd like to clarify a couple of points that are valid at least for mobile application security:
 
 - The bad reputation is due to operational reasons (e.g. implementation/pin management complexity) not lack of security.
-- If an app does not implement pinning, this shouldn't be reported as a vulnerability. However, if the app must verify against MAS-L2 it must be implemented.
+- If an app doesn't implement pinning, this shouldn't be reported as a vulnerability. However, if the app must verify against MAS-L2 it must be implemented.
 - Both Android and iOS make implementing pinning very easy and follow the best practices.
-- Pinning protects against a compromised CA or a malicious CA that is installed on the device. In those cases, pinning will prevent the OS from establishing a secure connection with a malicious server. However, if an attacker is in control of the device, they can easily disable any pinning logic and thus still allow the connection to happen. As a result, this will not prevent an attacker from accessing your backend and abusing server-side vulnerabilities.
-- Pinning in mobile apps is not the same as HTTP Public Key Pinning (HPKP). The HPKP header is no longer recommended on websites as it can lead to users being locked out of the website without any way to revert the lockout. For mobile apps, this is not an issue, as the app can always be updated via an out-of-band channel (i.e. the app store) in case there are any issues.
+- Pinning protects against a compromised CA or a malicious CA that is installed on the device. In those cases, pinning will prevent the OS from establishing a secure connection with a malicious server. However, if an attacker is in control of the device, they can easily disable any pinning logic and thus still allow the connection to happen. As a result, this won't prevent an attacker from accessing your backend and abusing server-side vulnerabilities.
+- Pinning in mobile apps isn't the same as HTTP Public Key Pinning (HPKP). The HPKP header is no longer recommended on websites as it can lead to users being locked out of the website without any way to revert the lockout. For mobile apps, this isn't an issue, as the app can always be updated via an out-of-band channel (i.e. the app store) in case there are any issues.
 
 #### About Pinning Recommendations in Android Developers
 
@@ -82,9 +82,9 @@ The [Android Developers](https://developer.android.com/training/articles/securit
 They also include this [note](https://developer.android.com/training/articles/security-config#CertificatePinning):
 
 !!! note
-    When using certificate pinning, you should always include a backup key so that if you are forced to switch to new keys or change CAs (when pinning to a CA certificate or an intermediate of that CA), your app's connectivity is unaffected. Otherwise, you must push out an update to the app to restore connectivity.
+    When using certificate pinning, you should always include a backup key so that if you're forced to switch to new keys or change CAs (when pinning to a CA certificate or an intermediate of that CA), your app's connectivity is unaffected. Otherwise, you must push out an update to the app to restore connectivity.
 
-The first statement can be mistakenly interpreted as saying that they "do not recommend certificate pinning". The second statement clarifies this: the actual recommendation is that if developers want to implement pinning they have to take the necessary precautions.
+The first statement can be mistakenly interpreted as saying that they "don't recommend certificate pinning". The second statement clarifies this: the actual recommendation is that if developers want to implement pinning they have to take the necessary precautions.
 
 #### About Pinning Recommendations in Apple Developers
 
@@ -101,7 +101,7 @@ Pinning is a recommended practice, especially for MAS-L2 apps. However, develope
 
 ## Verifying the TLS Settings
 
-One of the core mobile app functions is sending/receiving data over untrusted networks like the Internet. If the data is not properly protected in transit, an attacker with access to any part of the network infrastructure (e.g., a Wi-Fi access point) may intercept, read, or modify it. This is why plaintext network protocols are rarely advisable.
+One of the core mobile app functions is sending/receiving data over untrusted networks like the Internet. If the data isn't properly protected in transit, an attacker with access to any part of the network infrastructure (e.g., a Wi-Fi access point) may intercept, read, or modify it. This is why plaintext network protocols are rarely advisable.
 
 The vast majority of apps rely on HTTP for communication with the backend. HTTPS wraps HTTP in an encrypted connection (the acronym HTTPS originally referred to HTTP over Secure Socket Layer (SSL); SSL is the deprecated predecessor of TLS). TLS allows authentication of the backend service and ensures confidentiality and integrity of the network data.
 
@@ -139,7 +139,7 @@ In the example above the cipher suites uses:
 - 3DES for Symmetric encryption with EDE_CBC mode
 - SHA Hash algorithm for integrity
 
-Note that in TLSv1.3 the Key Exchange Algorithm is not part of the cipher suite, instead it is determined during the TLS handshake.
+Note that in TLSv1.3 the Key Exchange Algorithm isn't part of the cipher suite, instead it is determined during the TLS handshake.
 
 In the following listing, we'll present the different algorithms of each part of the cipher suite.
 
@@ -197,7 +197,7 @@ The following resources contain the latest recommended cipher suites to use with
 - IANA recommended cipher suites can be found in [TLS Cipher Suites](https://www.iana.org/assignments/tls-parameters/tls-parameters.xhtml#tls-parameters-4 "TLS Cipher Suites").
 - OWASP recommended cipher suites can be found in the [TLS Cipher String Cheat Sheet](https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/TLS_Cipher_String_Cheat_Sheet.md "OWASP TLS Cipher String Cheat Sheet").
 
-Some Android and iOS versions do not support some of the recommended cipher suites, so for compatibility purposes you can check the supported cipher suites for [Android](https://developer.android.com/reference/javax/net/ssl/SSLSocket#cipher-suites "Cipher suites") and [iOS](https://developer.apple.com/documentation/security/1550981-ssl_cipher_suite_values?language=objc "SSL Cipher Suite Values") versions and choose the top supported cipher suites.
+Some Android and iOS versions don't support some of the recommended cipher suites, so for compatibility purposes you can check the supported cipher suites for [Android](https://developer.android.com/reference/javax/net/ssl/SSLSocket#cipher-suites "Cipher suites") and [iOS](https://developer.apple.com/documentation/security/1550981-ssl_cipher_suite_values?language=objc "SSL Cipher Suite Values") versions and choose the top supported cipher suites.
 
 If you want to verify whether your server supports the right cipher suites, there are various tools you can use:
 

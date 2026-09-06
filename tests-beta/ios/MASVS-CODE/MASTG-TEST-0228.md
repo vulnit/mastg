@@ -15,7 +15,7 @@ knowledge: [MASTG-KNOW-0061]
 In the context Mach-O file format of iOS applications:
 
 - PIE is applicable to executables with the `MH_EXECUTE` file type, which essentially means the main app binary (e.g. `YourApp.app/YourApp`).
-- Shared libraries with the `MH_DYLIB` file type (dylibs and frameworks) are inherently position-independent and do not utilize the `MH_PIE` flag.
+- Shared libraries with the `MH_DYLIB` file type (dylibs and frameworks) are inherently position-independent and don't utilize the `MH_PIE` flag.
 
 This test case checks if the main executable is compiled with PIE.
 

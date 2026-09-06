@@ -9,7 +9,7 @@ hosts: [ios]
 
     This tool may or may not work depending on your macOS / iOS combination.
 
-GlobalWebInspect can be installed on a jailbroken iOS device to enable Safari Web Inspector attachment to `WKWebView` and JavaScriptCore web content in apps that would not normally expose it. You can install the tweak by copying the package to your device and running `sudo dpkg -i <file>.deb`, or by installing it through a jailbreak package manager. It requires a MobileSubstrate compatible hooking environment, such as @MASTG-TOOL-0139.
+GlobalWebInspect can be installed on a jailbroken iOS device to enable Safari Web Inspector attachment to `WKWebView` and JavaScriptCore web content in apps that wouldn't normally expose it. You can install the tweak by copying the package to your device and running `sudo dpkg -i <file>.deb`, or by installing it through a jailbreak package manager. It requires a MobileSubstrate compatible hooking environment, such as @MASTG-TOOL-0139.
 
 ## How it works
 

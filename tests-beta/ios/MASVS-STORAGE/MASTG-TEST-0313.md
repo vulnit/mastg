@@ -19,7 +19,7 @@ The test checks whether UI elements such as `UITextField`, `UITextView`, and `UI
 - Enabling [`isSecureTextEntry`](https://developer.apple.com/documentation/uikit/uitextinputtraits/issecuretextentry)
 - Setting [`spellCheckingType`](https://developer.apple.com/documentation/uikit/uitextinputtraits/spellcheckingtype)
 
-**Note:** By default, text input is eligible for keyboard caching, and an app does not need to explicitly set `UITextAutocorrectionType` when creating a text field. Additionally, the UI may be configured in a Storyboard. As a result, this test may miss many true positives. For complete coverage, using @MASTG-TEST-0314 is recommended.
+**Note:** By default, text input is eligible for keyboard caching, and an app doesn't need to explicitly set `UITextAutocorrectionType` when creating a text field. Additionally, the UI may be configured in a Storyboard. As a result, this test may miss many true positives. For complete coverage, using @MASTG-TEST-0314 is recommended.
 
 ## Steps
 
@@ -37,7 +37,7 @@ The output should contain a list of locations where the app:
 
 The test case fails if any UI inputs that may handle sensitive values, for example usernames, passwords, email addresses, credit card numbers, or recovery codes, are eligible for keyboard caching. This occurs when:
 
-- `isSecureTextEntry` is not enabled, or
+- `isSecureTextEntry` isn't enabled, or
 - `autocorrectionType` is set to `default` or `yes`, or
 - `spellCheckingType` is set to `default` or `yes`.
 
@@ -50,4 +50,4 @@ Inspect each reported code location using @MASTG-TECH-0076 to determine the valu
 
 **Expected False Negatives:**
 
-This test may produce false negatives if the app uses custom text input controls that do not rely on standard UIKit classes such as `UITextField` or `UITextView`, for example in custom UI frameworks or game engines, or if text entry is handled through nonstandard abstractions that prevent reliable observation of input traits at rest.
+This test may produce false negatives if the app uses custom text input controls that don't rely on standard UIKit classes such as `UITextField` or `UITextView`, for example in custom UI frameworks or game engines, or if text entry is handled through nonstandard abstractions that prevent reliable observation of input traits at rest.

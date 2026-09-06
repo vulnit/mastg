@@ -48,7 +48,7 @@ CCCryptorStatus CCCrypt(
     size_t *dataOutMoved);
 ```
 
-There you will also find the `alg` and the `op`:
+There you'll also find the `alg` and the `op`:
 
 ```c
 /*!

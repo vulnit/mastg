@@ -13,7 +13,7 @@ knowledge: [MASTG-KNOW-0101]
 
 ## Overview
 
-On the iOS platform, logging APIs like `NSLog`, `NSAssert`, `NSCAssert`, `print`, and `printf` can inadvertently lead to the leakage of sensitive information. Log messages are recorded in the console, and you can access them by using @MASTG-TECH-0060. Although other apps on the device cannot read these logs, direct logging is generally discouraged due to its potential for data leakage.
+On the iOS platform, logging APIs like `NSLog`, `NSAssert`, `NSCAssert`, `print`, and `printf` can inadvertently lead to the leakage of sensitive information. Log messages are recorded in the console, and you can access them by using @MASTG-TECH-0060. Although other apps on the device can't read these logs, direct logging is generally discouraged due to its potential for data leakage.
 
 This test uses static analysis to verify whether an app contains logging APIs that take sensitive data as input.
 

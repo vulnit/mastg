@@ -12,7 +12,7 @@ knowledge: [MASTG-KNOW-0073]
 
 App Transport Security (ATS) only applies to connections made via the [URL Loading System](https://developer.apple.com/documentation/foundation/url_loading_system) (typically `URLSession`). Lower-level networking APIs bypass ATS entirely, meaning they can establish cleartext HTTP connections regardless of the app's ATS configuration.
 
-The following low-level APIs are not affected by ATS:
+The following low-level APIs aren't affected by ATS:
 
 - **[`Network` framework](https://developer.apple.com/documentation/network)**: A modern low-level networking API for socket-level communication using TCP and UDP.
 - **[`CFNetwork`](https://developer.apple.com/documentation/cfnetwork)**: Core Foundation-based networking APIs including `CFSocketStream`, `CFHTTPStream`, and related functions.

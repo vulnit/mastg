@@ -61,7 +61,7 @@ Treat external Frida code, including CodeShare scripts, as untrusted code.
 
 - Inspect the complete source before you reuse it.
 - Confirm that its license permits reuse, and preserve all required license notices.
-- Copy only the parts that the demo requires. Do not load code from an external source at runtime.
+- Copy only the parts that the demo requires. Don't load code from an external source at runtime.
 - Add the source URL and author attribution in a comment at the start of the script.
 - Test the copied code with the supported Frida version and the target app.
 

@@ -9,7 +9,7 @@ iOS has several dependency managers, where the most popular are:
 - [CocoaPods](https://github.com/CocoaPods/CocoaPods) and
 - [SwiftPM (Swift Package Manager)](https://github.com/swiftlang/swift-package-manager)
 
-Dependencies are integrated into the project during the build process and then compiled into the IPA file. However, the version information in the dependencies may be stripped during compilation, so we cannot scan the IPA file. Fortunately, we can scan the artifacts produced by the dependency managers.
+Dependencies are integrated into the project during the build process and then compiled into the IPA file. However, the version information in the dependencies may be stripped during compilation, so we can't scan the IPA file. Fortunately, we can scan the artifacts produced by the dependency managers.
 
 Tools such as @MASTG-TOOL-0131 can scan files created by all three dependency managers. These files list dependencies as [Common Platform Enumeration (CPE)](https://nvd.nist.gov/products/cpe "CPE") and their versions. The CPE will be included in the iOS app. These tools then search for known vulnerabilities, or [CVEs (Common Vulnerability and Exposure)](https://cve.mitre.org/ "CVE"), in dependencies by checking them against vulnerability databases such as the National Vulnerability Database (NVD).
 

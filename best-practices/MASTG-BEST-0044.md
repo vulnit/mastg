@@ -26,4 +26,4 @@ SecureField("Password", text: $password)
 ```
 
 !!! note
-    Do not use a plain `TextField` for sensitive input, even if you intend to style it to look like a masked field at the application layer, because this does not provide the same level of protection as the system-provided secure text entry mechanisms.
+    Don't use a plain `TextField` for sensitive input, even if you intend to style it to look like a masked field at the application layer, because this doesn't provide the same level of protection as the system-provided secure text entry mechanisms.

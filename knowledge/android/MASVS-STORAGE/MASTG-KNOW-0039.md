@@ -10,7 +10,7 @@ A misconfigured Firebase instance can be identified by making the following netw
 
 `https://_firebaseProjectName_.firebaseio.com/.json`
 
-The _firebaseProjectName_ can be retrieved from the mobile application by reverse engineering the application. Alternatively, the analysts can use [Firebase Scanner](https://github.com/shivsahni/FireBaseScanner "Firebase Scanner"), a python script that automates the task above as shown below:
+The _firebaseProjectName_ can be retrieved from the mobile application by reverse engineering the application. Alternatively, the analysts can use [Firebase Scanner](https://github.com/shivsahni/FireBaseScanner "Firebase Scanner"), a Python script that automates the task above as shown below:
 
 ```bash
 python FirebaseScanner.py -p <pathOfAPKFile>

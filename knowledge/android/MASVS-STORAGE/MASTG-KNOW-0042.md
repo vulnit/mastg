@@ -14,7 +14,7 @@ External storage must be used carefully as there are many risks associated with 
 
 ## Scoped Storage
 
-To give users more control over their files and to limit file clutter, apps that target Android 10 (API level 29) and higher are given scoped access into external storage, or [scoped storage](https://developer.android.com/training/data-storage#scoped-storage), by default. When scoped storage is enabled, apps cannot access the app-specific directories that belong to other apps.
+To give users more control over their files and to limit file clutter, apps that target Android 10 (API level 29) and higher are given scoped access into external storage, or [scoped storage](https://developer.android.com/training/data-storage#scoped-storage), by default. When scoped storage is enabled, apps can't access the app-specific directories that belong to other apps.
 
 The Android developers documentation provides a detailed guide highlighting common [storage use cases and best practices](https://developer.android.com/training/data-storage/use-cases) differentiating between handling media and non-media files and considering scoped storage.
 
@@ -25,7 +25,7 @@ The Android developers documentation provides a detailed guide highlighting comm
 >
 > If the user uninstalls and reinstalls your app, however, you must request [READ_EXTERNAL_STORAGE](https://developer.android.com/reference/android/Manifest.permission#READ_EXTERNAL_STORAGE) to access the files that your app originally created. This permission request is required because the system considers the file to be attributed to the previously installed version of the app, rather than the newly installed one.
 
-For example, trying to access a file stored using the `MediaStore` API with a `content://` URI like `content://media/external_primary` would only work as long as the image _belongs_ to the invoking app (due to `owner_package_name` attribute in the `MediaStore`). If the app calls a `content://` URI that does not belong to the app, it will fail with a `SecurityException`:
+For example, trying to access a file stored using the `MediaStore` API with a `content://` URI like `content://media/external_primary` would only work as long as the image _belongs_ to the invoking app (due to `owner_package_name` attribute in the `MediaStore`). If the app calls a `content://` URI that doesn't belong to the app, it will fail with a `SecurityException`:
 
 ```sh
 Cannot open content uri: content://media/external_primary/images/media/1000000041
@@ -103,17 +103,17 @@ Android defines the following [permissions for accessing external storage](https
 An app must declare in the Android Manifest file an intention to write to shared locations. Below you can find a list of such manifest permissions:
 
 - [`READ_EXTERNAL_STORAGE`](https://developer.android.com/reference/android/Manifest.permission#READ_EXTERNAL_STORAGE): allows an app to read from external storage.
-    - **Before Android 4.4 (API level 19)**, this permission is not enforced and all apps have access to read the entire external storage (including files from other apps).
+    - **Before Android 4.4 (API level 19)**, this permission isn't enforced and all apps have access to read the entire external storage (including files from other apps).
     - **Starting on Android 4.4 (API level 19)**, apps don't need to request this permission to access their own app-specific directories within external storage.
     - **Starting on Android 10 (API level 29)**, [scoped storage](https://developer.android.com/training/data-storage#scoped-storage) applies by default:
-        - Apps **cannot read the app-specific directories that belong to other apps** (which was possible before when having `READ_EXTERNAL_STORAGE` granted).
+        - Apps **can't read the app-specific directories that belong to other apps** (which was possible before when having `READ_EXTERNAL_STORAGE` granted).
         - Apps don't need to have this permission to read files from their own app-specific directories within external storage (scoped storage), or their own files in the MediaStore.
     - **Starting on Android 13 (API level 33)**, this permission **has no effect**. If needing to access media files from other apps, apps must request one or more of these permissions: `READ_MEDIA_IMAGES`, `READ_MEDIA_VIDEO`, or `READ_MEDIA_AUDIO`.
 
 - [`WRITE_EXTERNAL_STORAGE`](https://developer.android.com/reference/android/Manifest.permission#WRITE_EXTERNAL_STORAGE): allows an app to write a file to the "external storage", regardless of the actual storage origin (external disk or internally emulated by the system).
     - **Starting on Android 4.4 (API level 19)**, apps don't need to request this permission to access their own app-specific directories within external storage.
     - **Starting on Android 10 (API level 29)**, [scoped storage](https://developer.android.com/training/data-storage#scoped-storage) applies by default:
-        - Apps **cannot write to the app-specific directories that belong to other apps** (which was possible before when having `WRITE_EXTERNAL_STORAGE` granted).
+        - Apps **can't write to the app-specific directories that belong to other apps** (which was possible before when having `WRITE_EXTERNAL_STORAGE` granted).
         - Apps don't need this permission to write files in their own app-specific directories within external storage.
     - **Starting on Android 11 (API level 30)**, this permission is **deprecated and has no effect**, but can be preserved with [requestLegacyExternalStorage](https://developer.android.com/reference/android/R.attr#requestLegacyExternalStorage) and [preserveLegacyExternalStorage](https://developer.android.com/reference/android/R.attr#preserveLegacyExternalStorage).
 

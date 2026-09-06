@@ -14,13 +14,13 @@ Objection offers several features specific to Android. You can find the [full li
 - Start Activities
 - Detect implicit intents
 
-If you have a rooted device with frida-server installed, Objection can connect directly to the running Frida server to provide all its functionality without needing to repackage the application. However, it is not always possible to root an Android device, or the app may contain advanced RASP controls for root detection, so injecting a frida-gadget may be the easiest way to bypass those controls.
+If you have a rooted device with frida-server installed, Objection can connect directly to the running Frida server to provide all its functionality without needing to repackage the application. However, it isn't always possible to root an Android device, or the app may contain advanced RASP controls for root detection, so injecting a frida-gadget may be the easiest way to bypass those controls.
 
-The ability to **perform advanced dynamic analysis on non-rooted devices** is one of the features that makes Objection incredibly useful. After following the repackaging process (@MASTG-TECH-0039), you will be able to run all the aforementioned commands, which make it very easy to quickly analyze an application or bypass basic security controls.
+The ability to **perform advanced dynamic analysis on non-rooted devices** is one of the features that makes Objection incredibly useful. After following the repackaging process (@MASTG-TECH-0039), you'll be able to run all the aforementioned commands, which make it very easy to quickly analyze an application or bypass basic security controls.
 
 ## Using Objection on Android
 
-Starting up Objection depends on whether you've patched the APK or whether you are using a rooted device running Frida-server. For running a patched APK, either the foreground process `-f` or Gadget should be specified `-n Gadget`. Whereas when using frida-server, you need to specify which application you want to attach to or spawn.
+Starting up Objection depends on whether you've patched the APK or whether you're using a rooted device running Frida-server. For running a patched APK, either the foreground process `-f` or Gadget should be specified `-n Gadget`. Whereas when using frida-server, you need to specify which application you want to attach to or spawn.
 
 ```bash
 # Connecting to a patched APK
@@ -44,7 +44,7 @@ $ objection -s -n "org.telegram.messenger"
 $ objection -s -p -n "org.telegram.messenger"
 ```
 
-Once you are in the Objection REPL, you can execute any of the available commands. Below is an overview of some of the most useful ones:
+Once you're in the Objection REPL, you can execute any of the available commands. Below is an overview of some of the most useful ones:
 
 ```bash
 # Show the different storage locations belonging to the app

@@ -21,7 +21,7 @@ Android provides several APIs to extract components from a content URI inside a 
 
 - `Uri.getPathSegments()` returns a decoded list of path segments after the authority. Index 0 is typically the resource path and index 1, when present, is an ID.
 - `Uri.getLastPathSegment()` returns the final path segment.
-- `ContentUris.parseId(Uri)` parses and returns a `long` ID from the end of the URI path. It throws `NumberFormatException` if the segment is not a valid integer.
+- `ContentUris.parseId(Uri)` parses and returns a `long` ID from the end of the URI path. It throws `NumberFormatException` if the segment isn't a valid integer.
 
 These values are often user-controlled when the provider is exported.
 
@@ -45,7 +45,7 @@ The `#` wildcard matches a single numeric segment. The `*` wildcard matches any 
 Key methods:
 
 - `setTables(String)` sets the FROM clause.
-- `appendWhere(CharSequence)` appends a condition to the WHERE clause. The provided string is inserted verbatim into the SQL query and is not parameterized.
+- `appendWhere(CharSequence)` appends a condition to the WHERE clause. The provided string is inserted verbatim into the SQL query and isn't parameterized.
 - `appendWhereEscapeString(String)` appends a condition with escaping applied via `DatabaseUtils.sqlEscapeString()`.
 - `query(SQLiteDatabase, String[], String, String[], String, String, String)` builds and executes the query. The `selection` argument is ANDed with any clause added via `appendWhere`.
 

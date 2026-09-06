@@ -132,7 +132,7 @@ Regular           420  None                ...  libswiftCoreFoundation.dylib
 ...
 ```
 
-Please note that this may not be a complete list of native code elements used by the app, as some may be part of the source code and therefore compiled into the app binary and hence cannot be found as standalone libraries or Frameworks in the `Frameworks` folder.
+Please note that this may not be a complete list of native code elements used by the app, as some may be part of the source code and therefore compiled into the app binary and hence can't be found as standalone libraries or Frameworks in the `Frameworks` folder.
 
 For now, this is all the information you can get about the Frameworks unless you start reverse engineering them. Refer to this for more information on how to reverse-engineer Frameworks.
 

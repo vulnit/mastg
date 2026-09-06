@@ -13,7 +13,7 @@ knowledge: [MASTG-KNOW-0053]
 
 ## Overview
 
-This test verifies that the app hides sensitive content from the screen when it moves to the background. This is important because Android captures a task screenshot of the app UI when it moves to the background. This screenshot is used for the [Recents screen](https://developer.android.com/guide/components/activities/recents) and transitions, and can expose sensitive content if the app does not protect it.
+This test verifies that the app hides sensitive content from the screen when it moves to the background. This is important because Android captures a task screenshot of the app UI when it moves to the background. This screenshot is used for the [Recents screen](https://developer.android.com/guide/components/activities/recents) and transitions, and can expose sensitive content if the app doesn't protect it.
 
 ## Steps
 

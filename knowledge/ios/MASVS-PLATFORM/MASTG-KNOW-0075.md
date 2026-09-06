@@ -54,9 +54,9 @@ when `init(coder:)` is part of the class. Next, when decoding the object, a chec
 let obj = decoder.decodeObject(of:MyClass.self, forKey: "myKey")
 ```
 
-The conformance to `NSSecureCoding` ensures that objects being instantiated are indeed the ones that were expected. However, there are no additional integrity checks done over the data and the data is not encrypted. Therefore, any secret data needs additional encryption and data of which the integrity must be protected, should get an additional HMAC.
+The conformance to `NSSecureCoding` ensures that objects being instantiated are indeed the ones that were expected. However, there are no additional integrity checks done over the data and the data isn't encrypted. Therefore, any secret data needs additional encryption and data of which the integrity must be protected, should get an additional HMAC.
 
-Note, when `NSData` (Objective-C) or the keyword `let` (Swift) is used: then the data is immutable in memory and cannot be easily removed.
+Note, when `NSData` (Objective-C) or the keyword `let` (Swift) is used: then the data is immutable in memory and can't be easily removed.
 
 ## Object Archiving with NSKeyedArchiver
 
@@ -73,9 +73,9 @@ guard let customPoint = NSKeyedUnarchiver.unarchiveObjectWithFile("/path/to/arch
 
 ```
 
-When decoding a keyed archive, because values are requested by name, values can be decoded out of sequence or not at all. Keyed archives, therefore, provide better support for forward and backward compatibility. This means that an archive on disk could actually contain additional data which is not detected by the program, unless the key for that given data is provided at a later stage.
+When decoding a keyed archive, because values are requested by name, values can be decoded out of sequence or not at all. Keyed archives, therefore, provide better support for forward and backward compatibility. This means that an archive on disk could actually contain additional data which isn't detected by the program, unless the key for that given data is provided at a later stage.
 
-Note that additional protection needs to be in place to secure the file in case of confidential data, as the data is not encrypted within the file. See the chapter ["Data Storage on iOS"](../../../Document/0x06d-Testing-Data-Storage.md) for more details.
+Note that additional protection needs to be in place to secure the file in case of confidential data, as the data isn't encrypted within the file. See the chapter ["Data Storage on iOS"](../../../Document/0x06d-Testing-Data-Storage.md) for more details.
 
 ## Codable
 
@@ -110,7 +110,7 @@ There are various ways to encode and decode JSON within iOS by using different t
 - [Arrow](https://github.com/freshOS/Arrow "Arrow")
 
 The libraries differ in their support for certain versions of Swift and Objective-C, whether they return (im)mutable results, speed, memory consumption and actual library size.
-Again, note in case of immutability: confidential information cannot be removed from memory easily.
+Again, note in case of immutability: confidential information can't be removed from memory easily.
 
 Next, Apple provides support for JSON encoding/decoding directly by combining `Codable` together with a `JSONEncoder` and a `JSONDecoder`:
 
@@ -173,7 +173,7 @@ struct CustomPointStruct: Codable {
     }
 ```
 
-Note that **`plist` files are not meant to store secret information**. They are designed to hold user preferences for an app.
+Note that **`plist` files aren't meant to store secret information**. They are designed to hold user preferences for an app.
 
 ## XML
 
@@ -201,4 +201,4 @@ Apple itself supplies `CoreData`, which is well explained in the [Apple Develope
 
 [Protocol Buffers](https://developers.google.com/protocol-buffers/ "Google Documentation") by Google, are a platform- and language-neutral mechanism for serializing structured data by means of the [Binary Data Format](https://developers.google.com/protocol-buffers/docs/encoding "Protocol Buffers Encoding"). They are available for iOS by means of the [Protobuf](https://github.com/apple/swift-protobuf "Apple\'s swift-protobuf Plugin and Runtime library") library.
 There have been a few vulnerabilities with Protocol Buffers, such as [CVE-2015-5237](https://www.cvedetails.com/cve/CVE-2015-5237/ "CVE-2015-5237").
-Note that **Protocol Buffers do not provide any protection for confidentiality** as no built-in encryption is available.
+Note that **Protocol Buffers don't provide any protection for confidentiality** as no built-in encryption is available.

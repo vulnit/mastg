@@ -13,7 +13,7 @@ The following attacker app registers an `<intent-filter>` for the custom action 
 
 {{ MastgTest.kt # AndroidManifest.xml }}
 
-Note that this app is not inherently malicious. It illustrates that any app can register for a custom action and be presented to the user as a valid handler. The actual vulnerability lies in the victim app using an implicit intent for internal component communication.
+Note that this app isn't inherently malicious. It illustrates that any app can register for a custom action and be presented to the user as a valid handler. The actual vulnerability lies in the victim app using an implicit intent for internal component communication.
 
 ## Steps
 

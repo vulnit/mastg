@@ -11,7 +11,7 @@ knowledge: [MASTG-KNOW-0033]
 
 ## Overview
 
-If security-relevant Java or Kotlin code is not sufficiently obfuscated, decompilation of the app's DEX bytecode can expose business logic, device attestation and environment checks, integrity checks, and other implementation details that help an attacker understand the app and model attacks.
+If security-relevant Java or Kotlin code isn't sufficiently obfuscated, decompilation of the app's DEX bytecode can expose business logic, device attestation and environment checks, integrity checks, and other implementation details that help an attacker understand the app and model attacks.
 
 This test checks whether the obfuscation techniques applied to the Java or Kotlin layer prevent straightforward identification, correlation, and reverse engineering of security-relevant logic in the decompiled output.
 

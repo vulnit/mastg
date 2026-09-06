@@ -9,7 +9,7 @@ profiles: [L1, L2]
 
 ## Overview
 
-The Android Network Security Configuration does not provide direct control over specific TLS versions (unlike [iOS](https://developer.apple.com/documentation/bundleresources/information_property_list/nsexceptionminimumtlsversion)), and starting with Android 10, [TLS v1.3 is enabled by default](https://developer.android.com/privacy-and-security/security-ssl#Updates%20to%20SSL) for all TLS connections.
+The Android Network Security Configuration doesn't provide direct control over specific TLS versions (unlike [iOS](https://developer.apple.com/documentation/bundleresources/information_property_list/nsexceptionminimumtlsversion)), and starting with Android 10, [TLS v1.3 is enabled by default](https://developer.android.com/privacy-and-security/security-ssl#Updates%20to%20SSL) for all TLS connections.
 
 There are still several ways to enable insecure versions of TLS, including:
 

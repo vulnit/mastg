@@ -24,7 +24,7 @@ Windows:
 C:\Users\<username>\AppData\Local\Android\sdk
 ```
 
-MacOS:
+macOS:
 
 ```bash
 /Users/<username>/Library/Android/sdk

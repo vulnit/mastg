@@ -7,7 +7,7 @@ available_since: 24
 
 For applications that rely heavily on @MASTG-KNOW-0043 for business-critical operations, such as multi-factor authentication using cryptographic primitives and secure client-side storage of sensitive data, Android provides the [Key Attestation](https://developer.android.com/training/articles/security-key-attestation "Key Attestation") feature, which helps analyze and verify the security of cryptographic material managed through the Android KeyStore. Starting with Android 8.0 (API level 26), key attestation became mandatory for all new devices (Android 7.0 or higher) that require device certification for Google apps. These devices use attestation keys signed by the [Google Hardware Attestation Root Certificate](https://developer.android.com/training/articles/security-key-attestation#root_certificate "Google Hardware Attestation Root Certificate"), and these keys can be verified through the key attestation process.
 
-During key attestation, we can specify the alias of a key pair and, in return, receive a certificate chain that we can use to verify the properties of that key pair. If the chain's root certificate is the [Google Hardware Attestation Root certificate](https://developer.android.com/training/articles/security-key-attestation#root_certificate "Google Hardware Attestation Root certificate") and the hardware-backed key pair storage checks are satisfied, this provides assurance that the device supports hardware-level key attestation and that the key is stored in the hardware-backed keystore that Google believes to be secure. Alternatively, if the attestation chain has any other root certificate, Google does not make any claims about the security of the hardware.
+During key attestation, we can specify the alias of a key pair and, in return, receive a certificate chain that we can use to verify the properties of that key pair. If the chain's root certificate is the [Google Hardware Attestation Root certificate](https://developer.android.com/training/articles/security-key-attestation#root_certificate "Google Hardware Attestation Root certificate") and the hardware-backed key pair storage checks are satisfied, this provides assurance that the device supports hardware-level key attestation and that the key is stored in the hardware-backed keystore that Google believes to be secure. Alternatively, if the attestation chain has any other root certificate, Google doesn't make any claims about the security of the hardware.
 
 Although the key attestation process can be implemented directly in the application, it is recommended that it be implemented on the server side for security reasons. The following are the high-level guidelines for the secure implementation of Key Attestation:
 
@@ -24,7 +24,7 @@ Although the key attestation process can be implemented directly in the applicat
         - Additionally, you can verify the key pair's attributes, such as purpose, access time, authentication requirement, etc.
 
 !!! note
-    If that process fails for any reason, the key is not stored in the security hardware. That does not mean the key is compromised.
+    If that process fails for any reason, the key isn't stored in the security hardware. That doesn't mean the key is compromised.
 
 The typical Android Keystore attestation response is as follows:
 

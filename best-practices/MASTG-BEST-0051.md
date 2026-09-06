@@ -23,4 +23,4 @@ Treat entitlements such as [App Groups](https://developer.apple.com/documentatio
 Before enabling one of these capabilities, document the exact data flow it unlocks, the minimum set of targets that need it, and the security controls that protect the data afterward. If the same feature can be implemented without broad shared containers or external associations, prefer the narrower design.
 
 !!! note
-    Newer Apple privacy mechanisms such as [privacy manifests](https://developer.apple.com/documentation/bundleresources/privacy-manifest-files) and required-reason APIs complement these checks but do not replace purpose strings or entitlements. You still need to minimize and review both.
+    Newer Apple privacy mechanisms such as [privacy manifests](https://developer.apple.com/documentation/bundleresources/privacy-manifest-files) and required-reason APIs complement these checks but don't replace purpose strings or entitlements. You still need to minimize and review both.

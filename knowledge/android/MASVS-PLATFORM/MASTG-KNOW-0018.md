@@ -14,7 +14,7 @@ One of the most important things to do when testing WebViews is to make sure tha
 
 ## WebViewClient
 
-By default, any navigation request inside a WebView will be handled by the system's default web browser. This way, any navigation to a malicious page cannot impact the original application, as the WebView does not share cookies or JavaScript bindings with the browser.
+By default, any navigation request inside a WebView will be handled by the system's default web browser. This way, any navigation to a malicious page can't impact the original application, as the WebView doesn't share cookies or JavaScript bindings with the browser.
 
 By assigning a WebViewClient to a WebView using `setWebViewClient`, all navigation will automatically be handled by the WebView itself. This is the worst-case configuration since any resource can now be loaded inside of the WebView, including malicious content. When a WebViewClient is assigned, the app must implement proper URL validation to ensure that only trusted content is loaded. This can be done by overriding `shouldOverrideUrlLoading` and/or `shouldInterceptRequest` and implementing allowlist or denylist patterns to restrict navigation to trusted content.
 
@@ -58,7 +58,7 @@ Android documents this mechanism as allowlist-based. The injected object is expo
 
 [`addJavascriptInterface`](https://developer.android.com/develop/ui/views/layout/webapps/native-api-access-jsbridge#addjavascriptinterface) is the oldest bridge mechanism. Android describes it as a synchronous legacy model. The app creates a Java or Kotlin object, annotates exposed methods with [`@JavascriptInterface`](https://developer.android.com/reference/kotlin/android/webkit/JavascriptInterface), and injects the object into the `WebView` with `addJavascriptInterface(Object, String)`. JavaScript can then call the exposed methods through the injected object name.
 
-Android also notes several implementation details that are specific to this mechanism. The injected object is available to every frame in the `WebView`, including iframes, and the mechanism does not provide origin based access control. The bridge documentation also states that methods such as `WebView.getUrl()` are not suitable for determining which frame invoked the interface. Android's security guidance also notes that before API level 21, JavaScript could use reflection to access the public fields of an injected object. This means that [reflection based RCE payloads](https://labs.withsecure.com/publications/webview-addjavascriptinterface-remote-code-execution) such as `window.jsinterface.getClass().forName('java.lang.Runtime').getMethod('getRuntime',null).invoke(...).exec(...)` were possible on older Android versions.
+Android also notes several implementation details that are specific to this mechanism. The injected object is available to every frame in the `WebView`, including iframes, and the mechanism doesn't provide origin based access control. The bridge documentation also states that methods such as `WebView.getUrl()` aren't suitable for determining which frame invoked the interface. Android's security guidance also notes that before API level 21, JavaScript could use reflection to access the public fields of an injected object. This means that [reflection based RCE payloads](https://labs.withsecure.com/publications/webview-addjavascriptinterface-remote-code-execution) such as `window.jsinterface.getClass().forName('java.lang.Runtime').getMethod('getRuntime',null).invoke(...).exec(...)` were possible on older Android versions.
 
 ## WebView Local File Access Settings
 
@@ -174,14 +174,14 @@ Contents of local_page.html (in the assets folder):
 
 **Note about accessing cookies:**
 
-Setting `setAllowUniversalAccessFromFileURLs(true)` allows JavaScript inside a local `file://` to make cross-origin requests (XHR, Fetch, etc.). This bypasses the Same-Origin Policy (SOP) for network requests, but it does not grant access to cookies from remote websites.
+Setting `setAllowUniversalAccessFromFileURLs(true)` allows JavaScript inside a local `file://` to make cross-origin requests (XHR, Fetch, etc.). This bypasses the Same-Origin Policy (SOP) for network requests, but it doesn't grant access to cookies from remote websites.
 
-- Cookies are managed by the WebView's CookieManager and cannot be accessed by a `file://` origin unless explicitly allowed via document.cookie (which most modern sites prevent using `HttpOnly` and `Secure` flags).
-- Cross-origin requests also do not include cookies unless explicitly allowed by the server via CORS headers such as `Access-Control-Allow-Origin: *` and `Access-Control-Allow-Credentials: true`.
+- Cookies are managed by the WebView's CookieManager and can't be accessed by a `file://` origin unless explicitly allowed via document.cookie (which most modern sites prevent using `HttpOnly` and `Secure` flags).
+- Cross-origin requests also don't include cookies unless explicitly allowed by the server via CORS headers such as `Access-Control-Allow-Origin: *` and `Access-Control-Allow-Credentials: true`.
 
 ## WebView Content Provider Access
 
-WebViews can access [content providers](https://developer.android.com/guide/topics/providers/content-providers), which are used to share data between applications. Content providers can be accessed by other apps only if they are exported (`android:exported` attribute set to `true`), but even if the content provider is not exported, it can be accessed by a WebView in the application itself.
+WebViews can access [content providers](https://developer.android.com/guide/topics/providers/content-providers), which are used to share data between applications. Content providers can be accessed by other apps only if they are exported (`android:exported` attribute set to `true`), but even if the content provider isn't exported, it can be accessed by a WebView in the application itself.
 
 The setting `setAllowContentAccess` controls whether the WebView can access content providers using `content://` URLs. This setting is enabled by default for Android 4.1 (API level 16) and above.
 
@@ -231,7 +231,7 @@ Android WebView can persist several categories of data for each origin.
 - [**Cookies**](https://developer.chrome.com/docs/devtools/application/cookies) including session and persistent cookies
 - **Files backed by the Origin Private File System (OPFS)** including the [**SQLite Wasm**](https://developer.chrome.com/blog/sqlite-wasm-in-the-browser-backed-by-the-origin-private-file-system) database
 
-OPFS and SQLite Wasm are internal to the Chromium storage layer. Their contents do not appear as ordinary files in the app sandbox.
+OPFS and SQLite Wasm are internal to the Chromium storage layer. Their contents don't appear as ordinary files in the app sandbox.
 
 ### Configuration and Defaults
 
@@ -246,15 +246,15 @@ Network cache is enabled by default and obeys the HTTP cache headers sent by the
 
 ### Clearing Stored Data
 
-Android does not provide a dedicated API to delete the Chromium profile under `app_webview`. Apps must not attempt to delete this directory directly. The only supported way to remove it is to clear the app's data, either through system settings or by calling `ActivityManager.clearApplicationUserData()`. However, this might not be desirable if the app wants to retain other user data.
+Android doesn't provide a dedicated API to delete the Chromium profile under `app_webview`. Apps must not attempt to delete this directory directly. The only supported way to remove it is to clear the app's data, either through system settings or by calling `ActivityManager.clearApplicationUserData()`. However, this might not be desirable if the app wants to retain other user data.
 
 A more adequate approach is to clear individual storage subsystems used by WebView. These include:
 
-- **Cached Resources**: [`WebView.clearCache`](https://developer.android.com/reference/android/webkit/WebView#clearCache(boolean))(true) clears the memory and disk HTTP cache. It does not remove cookies, DOM storage, IndexedDB, OPFS, or other persistent data.
-- **WebStorage APIs**: [`WebStorage.deleteAllData`](https://developer.android.com/reference/android/webkit/WebStorage#deleteAllData()) clears DOM storage and legacy WebSQL. It does not clear IndexedDB or OPFS.
+- **Cached Resources**: [`WebView.clearCache`](https://developer.android.com/reference/android/webkit/WebView#clearCache(boolean))(true) clears the memory and disk HTTP cache. It doesn't remove cookies, DOM storage, IndexedDB, OPFS, or other persistent data.
+- **WebStorage APIs**: [`WebStorage.deleteAllData`](https://developer.android.com/reference/android/webkit/WebStorage#deleteAllData()) clears DOM storage and legacy WebSQL. It doesn't clear IndexedDB or OPFS.
 - **Cookies**: [`CookieManager.removeAllCookies`](https://developer.android.com/reference/android/webkit/CookieManager#removeAllCookies(android.webkit.ValueCallback%3Cjava.lang.Boolean%3E)) removes all cookies for the app.
-- **IndexedDB and OPFS**: IndexedDB and OPFS are managed internally by Chromium and are not covered by the WebStorage API. They cannot be deleted with Java file APIs such as [`java.io.File.deleteRecursively`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.io/java.io.-file/delete-recursively.html). Clearing requires deleting the entire WebView profile.
-- **SQLite Wasm**: SQLite Wasm databases live inside OPFS. They are not Android SQLite databases and cannot be controlled using Android APIs such as [`SQLiteDatabase.delete`](https://developer.android.com/reference/android/database/sqlite/SQLiteDatabase#delete(java.lang.String,%20java.lang.String,%20java.lang.String[])) or [`SQLiteDatabase.deleteDatabase`](https://developer.android.com/reference/android/database/sqlite/SQLiteDatabase#deleteDatabase(java.io.File)). Clearing requires deleting the entire WebView profile.
+- **IndexedDB and OPFS**: IndexedDB and OPFS are managed internally by Chromium and aren't covered by the WebStorage API. They can't be deleted with Java file APIs such as [`java.io.File.deleteRecursively`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.io/java.io.-file/delete-recursively.html). Clearing requires deleting the entire WebView profile.
+- **SQLite Wasm**: SQLite Wasm databases live inside OPFS. They aren't Android SQLite databases and can't be controlled using Android APIs such as [`SQLiteDatabase.delete`](https://developer.android.com/reference/android/database/sqlite/SQLiteDatabase#delete(java.lang.String,%20java.lang.String,%20java.lang.String[])) or [`SQLiteDatabase.deleteDatabase`](https://developer.android.com/reference/android/database/sqlite/SQLiteDatabase#deleteDatabase(java.io.File)). Clearing requires deleting the entire WebView profile.
 
 **Example:**
 

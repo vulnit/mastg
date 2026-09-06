@@ -39,11 +39,11 @@ window.setFlags(WindowManager.LayoutParams.FLAG_SECURE,
 setContentView(R.layout.activity_main)
 ```
 
-If the option has not been set, the application is vulnerable to screen capturing.
+If the option hasn't been set, the application is vulnerable to screen capturing.
 
 ## Dynamic Analysis
 
-While black-box testing the app, navigate to any screen that contains sensitive information and click the home button to send the app to the background, then press the app switcher button to see the snapshot. As shown below, if `FLAG_SECURE` is set (left image), the snapshot will be empty; if the flag has not been set (right image), activity information will be shown:
+While black-box testing the app, navigate to any screen that contains sensitive information and click the home button to send the app to the background, then press the app switcher button to see the snapshot. As shown below, if `FLAG_SECURE` is set (left image), the snapshot will be empty; if the flag hasn't been set (right image), activity information will be shown:
 
 <img src="Images/Chapters/0x05d/2.png" width="200px" />
 <img src="Images/Chapters/0x05d/1.png" width="200px" />

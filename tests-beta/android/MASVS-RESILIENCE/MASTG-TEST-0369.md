@@ -11,7 +11,7 @@ knowledge: [MASTG-KNOW-0033]
 
 ## Overview
 
-If native libraries that implement security-relevant logic are not obfuscated, reverse engineering of packaged native code can expose business logic, device attestation and environment checks, integrity checks, and other implementation details that help an attacker understand the app and model attacks.
+If native libraries that implement security-relevant logic aren't obfuscated, reverse engineering of packaged native code can expose business logic, device attestation and environment checks, integrity checks, and other implementation details that help an attacker understand the app and model attacks.
 
 This test checks whether the obfuscation techniques applied to native libraries prevent straightforward identification, correlation, and reverse engineering of security-relevant logic through strings, constants, call structure, or control flow.
 
@@ -19,7 +19,7 @@ Refer to @MASTG-KNOW-0033 for common native obfuscation mechanisms and indicator
 
 **Example Attack Scenario:**
 
-Suppose a banking app moves its integrity and root checks into a native library, assuming native code is inherently harder to analyze, but does not apply any obfuscation.
+Suppose a banking app moves its integrity and root checks into a native library, assuming native code is inherently harder to analyze, but doesn't apply any obfuscation.
 
 1. An attacker extracts the native library from the APK and disassembles it.
 2. Plaintext strings in the `.rodata` section immediately reveal every file path and system property the library checks, requiring no further analysis to identify the protection's scope.

@@ -30,7 +30,7 @@ The output shows that the binary has stack canaries and PIE enabled.
 - `swift_release`
 - `swift_retain`
 
-An iOS binary does not need to have all of these symbols to be considered ARC-enabled, but the presence of some of them indicates that ARC is used.
+An iOS binary doesn't need to have all of these symbols to be considered ARC-enabled, but the presence of some of them indicates that ARC is used.
 
 ```sh
 [0x100007408]> is~release,retain

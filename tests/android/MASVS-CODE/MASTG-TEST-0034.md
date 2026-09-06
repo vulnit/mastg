@@ -40,7 +40,7 @@ Search the source code for the following keywords:
 
 ### JSON
 
-If you need to counter memory-dumping, make sure that very sensitive information is not stored in the JSON format because you can't guarantee prevention of anti-memory dumping techniques with the standard libraries. You can check for the following keywords in the corresponding libraries:
+If you need to counter memory-dumping, make sure that very sensitive information isn't stored in the JSON format because you can't guarantee prevention of anti-memory dumping techniques with the standard libraries. You can check for the following keywords in the corresponding libraries:
 
 **`JSONObject`** Search the source code for the following keywords:
 

@@ -47,4 +47,4 @@ Which returns:
 
 {{ MasSharedPref_Sensitive_Data.xml }}
 
-The actual values are not visible in plain text, confirming that encryption is applied.
+The actual values aren't visible in plain text, confirming that encryption is applied.

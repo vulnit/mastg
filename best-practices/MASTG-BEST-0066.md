@@ -10,7 +10,7 @@ Implement storage integrity checks in Android apps to detect unauthorized modifi
 
 ## Storage Integrity
 
-Compute an HMAC over any data you store on the device before writing it, and verify the HMAC before reading it back. Use a key that is generated and stored in the [Android Keystore](https://developer.android.com/privacy-and-security/keystore) so that it cannot be extracted from the app package or a backup.
+Compute an HMAC over any data you store on the device before writing it, and verify the HMAC before reading it back. Use a key that is generated and stored in the [Android Keystore](https://developer.android.com/privacy-and-security/keystore) so that it can't be extracted from the app package or a backup.
 
 ```kotlin
 import javax.crypto.Mac

@@ -3,7 +3,7 @@ title: Working with XAPK Files
 platform: android
 ---
 
-When downloading apps from alternative stores such as APKPure or APKMirror, you may receive XAPK files instead of a single APK. XAPK is not an Android standard format. It is simply a ZIP archive used by third-party stores to bundle one or more APKs together with optional additional data.
+When downloading apps from alternative stores such as APKPure or APKMirror, you may receive XAPK files instead of a single APK. XAPK isn't an Android standard format. It is simply a ZIP archive used by third-party stores to bundle one or more APKs together with optional additional data.
 
 ## What an XAPK Contains
 

@@ -3,7 +3,7 @@ title: Bypassing Certificate Pinning
 platform: ios
 ---
 
-Some applications will implement SSL Pinning, which prevents the application from accepting an intercepted certificate as valid. This means that you will not be able to monitor the traffic between the application and the server.
+Some applications will implement SSL Pinning, which prevents the application from accepting an intercepted certificate as valid. This means that you won't be able to monitor the traffic between the application and the server.
 
 For most applications, certificate pinning can be bypassed within seconds, but only if the app uses API functions covered by these tools. If the app is implementing SSL Pinning with a custom framework or library, the SSL Pinning must be manually patched and deactivated, which can be time-consuming.
 

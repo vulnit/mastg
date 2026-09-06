@@ -34,9 +34,9 @@ A JavaScript Bridge can be enabled when using `WKWebView` and `UIWebView`. See S
 
 There are a couple of things to consider:
 
-- JavaScript cannot be disabled in `SFSafariViewController` and this is one of the reasons why the usage of `WKWebView` is recommended when the goal is extending the app's user interface.
+- JavaScript can't be disabled in `SFSafariViewController` and this is one of the reasons why the usage of `WKWebView` is recommended when the goal is extending the app's user interface.
 - `SFSafariViewController` also shares cookies and other website data with Safari.
-- The user's activity and interaction with a `SFSafariViewController` are not visible to the app, which cannot access AutoFill data, browsing history, or website data.
+- The user's activity and interaction with a `SFSafariViewController` aren't visible to the app, which can't access AutoFill data, browsing history, or website data.
 - According to the App Store Review Guidelines, `SFSafariViewController`s may not be hidden or obscured by other views or layers.
 
 This should be sufficient for an app analysis and therefore, `SFSafariViewController`s are out of scope for the Static and Dynamic Analysis sections.
@@ -57,13 +57,13 @@ iOS WebViews are subject to the same App Transport Security (ATS) policies as th
 
 WebViews can load both HTTP and HTTPS content, which may lead to [mixed content](https://web.dev/articles/fixing-mixed-content) situations. Mixed content occurs when an HTTPS page attempts to load resources such as scripts, images, or iframes over HTTP. This weakens the security guarantees of the HTTPS page because the insecure resource could be modified by an attacker. You can learn more about mixed content in the ["Mozilla Docs for Mixed Content"](https://developer.mozilla.org/en-US/docs/Web/Security/Defenses/Mixed_content) and in the ["web.dev article for Fixing mixed content"](https://web.dev/articles/fixing-mixed-content).
 
-Mixed content is typically divided into **active** and **passive** types. Active mixed content includes resources that can execute or modify the page, such as scripts, stylesheets, or iframes. Passive mixed content includes resources such as images, audio, or video that are displayed but do not directly execute code. In modern browsers and WebKit, **active mixed content is blocked**, while **passive mixed content is often automatically upgraded to HTTPS if possible**, or otherwise blocked and reported with a warning.
+Mixed content is typically divided into **active** and **passive** types. Active mixed content includes resources that can execute or modify the page, such as scripts, stylesheets, or iframes. Passive mixed content includes resources such as images, audio, or video that are displayed but don't directly execute code. In modern browsers and WebKit, **active mixed content is blocked**, while **passive mixed content is often automatically upgraded to HTTPS if possible**, or otherwise blocked and reported with a warning.
 
-In `WKWebView`, active mixed content such as HTTP scripts loaded by an HTTPS page is generally **blocked by WebKit itself**, even if the application relaxes App Transport Security. For example, setting `NSAllowsArbitraryLoadsInWebContent` allows insecure network requests from WebViews from the ATS perspective, but it **does not disable WebKit's mixed content protections**. As a result, an HTTPS page that tries to load an HTTP script will typically have that resource blocked. See ["WebKit Features in Safari 18.0" (September 2024)](https://webkit.org/blog/15865/webkit-features-in-safari-18-0/#https).
+In `WKWebView`, active mixed content such as HTTP scripts loaded by an HTTPS page is generally **blocked by WebKit itself**, even if the application relaxes App Transport Security. For example, setting `NSAllowsArbitraryLoadsInWebContent` allows insecure network requests from WebViews from the ATS perspective, but it **doesn't disable WebKit's mixed content protections**. As a result, an HTTPS page that tries to load an HTTP script will typically have that resource blocked. See ["WebKit Features in Safari 18.0" (September 2024)](https://webkit.org/blog/15865/webkit-features-in-safari-18-0/#https).
 
 The API [`hasOnlySecureContent`](https://developer.apple.com/documentation/webkit/wkwebview/hasonlysecurecontent) can be used after a page finishes loading to determine whether the WebView ultimately loaded only secure resources. However, it is **informational rather than preventive**. It reflects the final security state of the page, not whether the page attempted to load insecure resources that were blocked.
 
-Because WebKit enforces these protections and they cannot be disabled through public `WKWebView` APIs, active mixed content can only be loaded when the page itself is requested over HTTP, regardless of ATS settings such as `NSAllowsArbitraryLoadsInWebContent`.
+Because WebKit enforces these protections and they can't be disabled through public `WKWebView` APIs, active mixed content can only be loaded when the page itself is requested over HTTP, regardless of ATS settings such as `NSAllowsArbitraryLoadsInWebContent`.
 
 ## Loading Content
 
@@ -84,8 +84,8 @@ When loading local files, developers typically use one of the following methods:
 
 The `baseURL` parameter in the first two methods determines the effective origin of the loaded content:
 
-- For `WKWebView`: setting `baseURL` to `nil` sets the effective origin to `"null"`, which is treated as an opaque origin and is not considered the same as other origins under the same-origin policy.
-- For `UIWebView` (DEPRECATED since iOS 12, don't use): setting `baseURL` to `nil` results in an effective origin with the `applewebdata://` scheme, which does not apply the same-origin policy in the same way and may allow the loaded content to access local files.
+- For `WKWebView`: setting `baseURL` to `nil` sets the effective origin to `"null"`, which is treated as an opaque origin and isn't considered the same as other origins under the same-origin policy.
+- For `UIWebView` (DEPRECATED since iOS 12, don't use): setting `baseURL` to `nil` results in an effective origin with the `applewebdata://` scheme, which doesn't apply the same-origin policy in the same way and may allow the loaded content to access local files.
 
 In contrast to Android, iOS enforces a per-load directory boundary through `allowingReadAccessTo`. When using `loadFileURL:allowingReadAccessToURL:` or `loadFileRequest:allowingReadAccessToURL:`, file access is primarily constrained by the `allowingReadAccessToURL` boundary combined with the app sandbox. In contrast, on Android, file access behavior is primarily controlled by WebView settings that modify how `file://` origins interact with other files and network resources, and there is no direct per load directory restriction equivalent to `allowingReadAccessToURL`.
 
@@ -111,7 +111,7 @@ WebViews in iOS can be configured to allow access to local files using the `file
 
 ### WKWebView File Access from File URLs
 
-On iOS these are internal WebKit preferences and are not public `WKWebView` APIs. Attempting to set them through key value coding is unsupported and may stop working across system versions.
+On iOS these are internal WebKit preferences and aren't public `WKWebView` APIs. Attempting to set them through key value coding is unsupported and may stop working across system versions.
 
 Conceptually they influence how the web security model treats `file://` origins.
 
@@ -120,15 +120,15 @@ The following properties can be used to configure file access (both are undocume
 - `allowFileAccessFromFileURLs` ([`WKPreferences`](https://developer.apple.com/documentation/webkit/wkpreferences), `false` by default): enables JavaScript running in the context of a `file://` scheme URL to access content from other `file://` scheme URLs.
 - `allowUniversalAccessFromFileURLs` ([`WKWebViewConfiguration`](https://developer.apple.com/documentation/webkit/wkwebviewconfiguration), `false` by default): enables JavaScript running in the context of a `file://` scheme URL to access content from any origin.
 
-`allowingReadAccessTo` and the undocumented `allowFileAccessFromFileURLs` and `allowUniversalAccessFromFileURLs` do not govern the same scope. `allowingReadAccessTo` affects direct local document loading by the WebView, whereas the undocumented preferences affect whether JavaScript running in a `file://` origin can access additional local or cross-origin resources. That's why, even if `loadFileURL(_:allowingReadAccessTo:)` is restricted to a single file or directory, enabling these unsupported preferences can allow `fetch` and `XMLHttpRequest` to reach local files that would not be reachable through direct HTML embedding or `iframe` navigation alone.
+`allowingReadAccessTo` and the undocumented `allowFileAccessFromFileURLs` and `allowUniversalAccessFromFileURLs` don't govern the same scope. `allowingReadAccessTo` affects direct local document loading by the WebView, whereas the undocumented preferences affect whether JavaScript running in a `file://` origin can access additional local or cross-origin resources. That's why, even if `loadFileURL(_:allowingReadAccessTo:)` is restricted to a single file or directory, enabling these unsupported preferences can allow `fetch` and `XMLHttpRequest` to reach local files that wouldn't be reachable through direct HTML embedding or `iframe` navigation alone.
 
 ### UIWebView File Access (DEPRECATED since iOS 12, don't use)
 
-`UIWebView` has both `allowFileAccessFromFileURLs` and `allowUniversalAccessFromFileURLs` enabled by default and doesn't offer an option to disable them. This makes `UIWebView` inherently insecure for loading local content, especially if JavaScript is enabled (which cannot be disabled in `UIWebView`).
+`UIWebView` has both `allowFileAccessFromFileURLs` and `allowUniversalAccessFromFileURLs` enabled by default and doesn't offer an option to disable them. This makes `UIWebView` inherently insecure for loading local content, especially if JavaScript is enabled (which can't be disabled in `UIWebView`).
 
 ## Notes on Exploitation
 
-Broad file read access alone does not expose data. Exploitation generally requires several factors. The attacker must be able to execute JavaScript in the `WKWebView`, for example through injected HTML, attacker-controlled pages loaded by the app, deep links that open untrusted content in a WebView, or exposed JavaScript bridges.
+Broad file read access alone doesn't expose data. Exploitation generally requires several factors. The attacker must be able to execute JavaScript in the `WKWebView`, for example through injected HTML, attacker-controlled pages loaded by the app, deep links that open untrusted content in a WebView, or exposed JavaScript bridges.
 
 If these conditions are met, enabling the undocumented `allowFileAccessFromFileURLs` preference can allow JavaScript running in a `file://` context to read additional local files using mechanisms such as `fetch` or `XMLHttpRequest`. This scope is distinct from the direct document loading scope controlled by `loadFileURL(_:allowingReadAccessTo:)` where access remains limited to locations the app can read, such as its sandboxed files.
 

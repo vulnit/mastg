@@ -26,7 +26,7 @@ Created                    Accessible                      ACL    Type      Acco
 OWASP.iGoat-Swift on (iPhone: 12.0) [usb] # quit
 ```
 
-Note that currently, the latest versions of frida-server and objection do not correctly decode all keychain data. Different combinations can be tried to increase compatibility. For example, the previous printout was created with `frida-tools==1.3.0`, `frida==12.4.8`, and `objection==1.5.0`.
+Note that currently, the latest versions of frida-server and objection don't correctly decode all keychain data. Different combinations can be tried to increase compatibility. For example, the previous printout was created with `frida-tools==1.3.0`, `frida==12.4.8`, and `objection==1.5.0`.
 
 Finally, since the keychain dumper runs within the application context, it will only print keychain items accessible to the application and **not** the entire keychain of the iOS device.
 
@@ -65,4 +65,4 @@ Keychain Data: WOg1DfuH
 ```
 
 In newer versions of iOS (iOS 11 and up), additional steps are necessary. See the README.md for more details.
-Note that this binary is signed with a self-signed certificate that has a "wildcard" entitlement. The entitlement grants access to _all_ items in the Keychain. If you are paranoid or have highly sensitive private data on your test device, you may want to build the tool from source and manually sign the appropriate entitlements into your build; instructions are available in the GitHub repository.
+Note that this binary is signed with a self-signed certificate that has a "wildcard" entitlement. The entitlement grants access to _all_ items in the Keychain. If you're paranoid or have highly sensitive private data on your test device, you may want to build the tool from source and manually sign the appropriate entitlements into your build; instructions are available in the GitHub repository.

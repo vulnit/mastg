@@ -13,7 +13,7 @@ knowledge: [MASTG-KNOW-0007]
 
 This test case checks if the app has the `debuggable` flag ([`android:debuggable`](https://developer.android.com/guide/topics/manifest/application-element#debug)) set to `true` in the `AndroidManifest.xml`. When this flag is enabled, it allows the app to be debugged enabling attackers to inspect the app's internals, bypass security controls, or manipulate runtime behavior.
 
-Although having the `debuggable` flag set to `true` [is not considered a direct vulnerability](https://developer.android.com/privacy-and-security/risks/android-debuggable), it significantly increases the attack surface by providing unauthorized access to app data and resources, particularly in production environments.
+Although having the `debuggable` flag set to `true` [isn't considered a direct vulnerability](https://developer.android.com/privacy-and-security/risks/android-debuggable), it significantly increases the attack surface by providing unauthorized access to app data and resources, particularly in production environments.
 
 ## Steps
 
@@ -22,7 +22,7 @@ Although having the `debuggable` flag set to `true` [is not considered a direct 
 
 ## Observation
 
-The output should explicitly show whether the `debuggable` flag is set (`true` or `false`). If the flag is not specified, it is treated as `false` by default for release builds.
+The output should explicitly show whether the `debuggable` flag is set (`true` or `false`). If the flag isn't specified, it is treated as `false` by default for release builds.
 
 ## Evaluation
 

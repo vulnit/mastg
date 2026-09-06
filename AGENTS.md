@@ -11,11 +11,17 @@ Before contributing or reviewing content:
 - **Understand the structure** and required metadata for the content type
 - **Test your content** (especially for demos and scripts) to ensure it works correctly
 - If a pull request includes a demo validated on an emulator or simulator, state this explicitly in the pull request description.
-- Use MASTG only to identify topics and candidate references. Do not treat MASTG content as evidence or stop the research there.
+- Use MASTG only to identify topics and candidate references. Don't treat MASTG content as evidence or stop the research there.
 - Verify each technical claim against a current primary source, such as official platform, vendor, or standards documentation.
 - If MASTG conflicts with or appears older than a primary source, warn the user and explain the discrepancy.
-- Propose opening an issue. Do not update affected content or create the issue unless the user explicitly requests it.
-- Treat repository schemas, tests, build scripts, and CI checks as authoritative for contribution requirements. If contributor guidance conflicts with them, follow the enforced behavior and prompt the user to report the discrepancy in an issue. Do not expand the task to resolve the conflict without explicit approval.
+- Propose opening an issue. Don't update affected content or create the issue unless the user explicitly requests it.
+- Treat repository schemas, tests, build scripts, and CI checks as authoritative for contribution requirements. If contributor guidance conflicts with them, follow the enforced behavior and prompt the user to report the discrepancy in an issue. Don't expand the task to resolve the conflict without explicit approval.
+
+## Markdown
+
+- Before editing Markdown, read `.markdownlint.jsonc` and `.markdownlint-cli2.jsonc` to understand the repository's enforced Markdown writing and formatting rules
+- Use `npm ci` to install the pinned lint dependencies
+- Run `npm run lint:markdown` to run the lint checks before creating a pull request or merging changes.
 
 ## Available Guidelines
 
@@ -71,4 +77,4 @@ You MUST ensure that the content follows the MASTG quality standards:
 - Repository skills are stored under `.agents/skills/`
 - Before you start a task, inspect the `name` and `description` fields in `.agents/skills/*/SKILL.md`
 - If a skill matches the task, read its complete `SKILL.md` before you act and follow its instructions
-- Treat `.agents/skills/` as the canonical skill location. Do not copy or install skills into harness-specific directories
+- Treat `.agents/skills/` as the canonical skill location. Don't copy or install skills into harness-specific directories

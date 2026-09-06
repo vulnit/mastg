@@ -49,4 +49,4 @@ Using the backtraces from the hook output, inspect the code locations using @MAS
 For the identified WebViews, determine whether attacker-controlled JavaScript could execute in a context where it can access content providers that handle sensitive data. Also use the list of content providers obtained in @MASTG-TEST-0250 to verify if they handle sensitive data.
 
 !!! note
-    `AllowContentAccess` being `true` does not represent a security vulnerability by itself, but it can be used in combination with other vulnerabilities to escalate the impact of an attack.
+    `AllowContentAccess` being `true` doesn't represent a security vulnerability by itself, but it can be used in combination with other vulnerabilities to escalate the impact of an attack.

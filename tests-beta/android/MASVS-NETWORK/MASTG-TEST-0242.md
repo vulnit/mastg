@@ -12,7 +12,7 @@ knowledge: [MASTG-KNOW-0014, MASTG-KNOW-0015]
 
 Apps can configure [certificate pinning using the Network Security Configuration](../../../knowledge/android/MASVS-NETWORK/MASTG-KNOW-0015.md#pinning-via-network-security-configuration-api-24). For each domain, one or multiple digests can be pinned.
 
-The goal of this test is to check if the app does not implement certificate pinning using the NSC. However, note that the app may be using other pinning methods covered in other tests.
+The goal of this test is to check if the app doesn't implement certificate pinning using the NSC. However, note that the app may be using other pinning methods covered in other tests.
 
 ## Steps
 
@@ -27,4 +27,4 @@ The output should contain a list of domains which enable certificate pinning.
 
 ## Evaluation
 
-The test case fails if no `networkSecurityConfig` is set, or any relevant domain does not enable certificate pinning.
+The test case fails if no `networkSecurityConfig` is set, or any relevant domain doesn't enable certificate pinning.

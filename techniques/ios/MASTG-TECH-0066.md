@@ -56,7 +56,7 @@ afl~canEvaluatePolicy
 < no results >
 ```
 
-Instead, use [flags](https://book.rada.re/commandline/flags.html) (`f`), string searches with `/`, `/z`, `iz~` and then use [cross-references](#analyzing-cross-references) (`axt`) to locate its usage in the binary. This approach ensures that dynamically resolved or obfuscated functions are not overlooked.
+Instead, use [flags](https://book.rada.re/commandline/flags.html) (`f`), string searches with `/`, `/z`, `iz~` and then use [cross-references](#analyzing-cross-references) (`axt`) to locate its usage in the binary. This approach ensures that dynamically resolved or obfuscated functions aren't overlooked.
 
 > In visual mode you can use `V_` which is the visual hud that interactively filters all the flags, classes, methods, comments, symbols, strings in a single view. So you can simply type `V_`, press enter, and then type `canEvaluatePolicy` to find the references to the string.
 

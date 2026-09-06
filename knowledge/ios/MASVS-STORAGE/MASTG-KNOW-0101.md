@@ -21,7 +21,7 @@ Depending on what you log, these APIs can record:
 - Error details, such as `NSError.userInfo`, internal error codes, stack traces, and module names.
 - Cached or persisted application data loaded from storage.
 
-Apple's [Unified Logging system](https://developer.apple.com/documentation/os/logging) is the preferred logging mechanism on modern Apple platforms because it supports structured logging, log levels, and privacy controls. However, using Unified Logging does not automatically make logging safe. Sensitive values can still be exposed if developers log them directly or mark them as public.
+Apple's [Unified Logging system](https://developer.apple.com/documentation/os/logging) is the preferred logging mechanism on modern Apple platforms because it supports structured logging, log levels, and privacy controls. However, using Unified Logging doesn't automatically make logging safe. Sensitive values can still be exposed if developers log them directly or mark them as public.
 
 Key concepts:
 
@@ -41,7 +41,7 @@ Logs can be retained in different stores and collected by development tools or t
 
 ## Additional Logging Sources
 
-Logging exposure on iOS is not limited to the standard Apple logging APIs. Sensitive information may also be emitted or persisted through other components integrated into the application.
+Logging exposure on iOS isn't limited to the standard Apple logging APIs. Sensitive information may also be emitted or persisted through other components integrated into the application.
 
 - **Native libraries**: Bundled C, C++, or mixed language components may write directly to standard output or standard error using functions such as `printf`, `fprintf`, or related I/O APIs. These messages can become visible during development, debugging, or runtime monitoring.
 - **Crash reporting and error monitoring tools**: Third party SDKs may collect logs, breadcrumbs, exception context, request metadata, or user actions and persist them locally before transmission. This can create an additional exposure surface beyond the app's immediate console output.

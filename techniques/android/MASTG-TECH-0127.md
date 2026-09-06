@@ -3,7 +3,7 @@ title: Inspecting an App's Backup Data
 platform: android
 ---
 
-You can inspect an Android app's backup data to verify that sensitive data is not included in the backup. This technique is useful for verifying that the app correctly excludes sensitive data from backups.
+You can inspect an Android app's backup data to verify that sensitive data isn't included in the backup. This technique is useful for verifying that the app correctly excludes sensitive data from backups.
 
 ## Backup Made via @MASTG-TOOL-0004 Backup
 

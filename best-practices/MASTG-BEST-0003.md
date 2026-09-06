@@ -19,7 +19,7 @@ Carefully evaluate how secure design may interfere with privacy, and vice versa.
 - From a security perspective, all important operations should be recorded so that any anomalous activity can later be identified.
 - However, when private data is involved, this practice can in fact create risk. Although there are many ways in which private data can be handled unsafely, a common risk stems from misplaced trust.
 
-Programmers often trust the operating environment in which a program runs, and therefore believe that it is acceptable store private information on the file system, in the registry, or in other locally-controlled resources. However, even if access to certain resources is restricted, this does not guarantee that the individuals who do have access can be trusted.
+Programmers often trust the operating environment in which a program runs, and therefore believe that it is acceptable store private information on the file system, in the registry, or in other locally-controlled resources. However, even if access to certain resources is restricted, this doesn't guarantee that the individuals who do have access can be trusted.
 
 ## References
 

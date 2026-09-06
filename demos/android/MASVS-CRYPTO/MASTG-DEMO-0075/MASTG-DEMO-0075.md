@@ -33,4 +33,4 @@ Review each of the reported instances:
 - Line 71 uses the deprecated "BC" (BouncyCastle) provider with `Cipher.getInstance`. This is deprecated since Android 9 and removed in Android 12.
 - Line 85 uses a custom provider "CustomProvider" which may not be regularly updated or patched.
 
-All other cases are correctly handled and do not trigger the rule.
+All other cases are correctly handled and don't trigger the rule.

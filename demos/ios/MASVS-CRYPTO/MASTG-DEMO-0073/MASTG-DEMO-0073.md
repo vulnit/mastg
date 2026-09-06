@@ -15,7 +15,7 @@ The following sample demonstrates various methods of generating random tokens, a
 - A preferred secure method using `SecRandomCopyBytes`.
 
 !!! note
-    `rand` and `srand` are not part of the Swift standard library. In this demo, we call the libc `rand` and `srand` symbols via our own bindings.
+    `rand` and `srand` aren't part of the Swift standard library. In this demo, we call the libc `rand` and `srand` symbols via our own bindings.
 
 {{ MastgTest.swift }}
 
@@ -39,7 +39,7 @@ The output of the script shows cross references to calls to functions whose name
 
 {{ output.json }}
 
-**Note:** the output also shows calls to secure sources such as `SecRandomCopyBytes`, `CCRandomGenerateBytes`, `SystemRandomNumberGenerator`, and the Swift `FixedWidthInteger.random` implementation. These are present in the sample for contrast, but they are not the reason the test fails. The evaluation only treats uses of insecure libc PRNGs as findings.
+**Note:** the output also shows calls to secure sources such as `SecRandomCopyBytes`, `CCRandomGenerateBytes`, `SystemRandomNumberGenerator`, and the Swift `FixedWidthInteger.random` implementation. These are present in the sample for contrast, but they aren't the reason the test fails. The evaluation only treats uses of insecure libc PRNGs as findings.
 
 ## Evaluation
 

@@ -11,7 +11,7 @@ knowledge: [MASTG-KNOW-0030, MASTG-KNOW-0032, MASTG-KNOW-0118]
 
 ## Overview
 
-This test verifies whether the app detects and responds to instrumentation and hooking attempts at runtime. For example, if the app does not terminate immediately when the following methods are called:
+This test verifies whether the app detects and responds to instrumentation and hooking attempts at runtime. For example, if the app doesn't terminate immediately when the following methods are called:
 
 - Authentication tokens, OAuth tokens, session credentials, and stored account passwords could be extracted if [`AccountManager.getPassword()`](https://developer.android.com/reference/kotlin/android/accounts/AccountManager#getpassword), [`AccountManager.getAuthToken()`](https://developer.android.com/reference/kotlin/android/accounts/AccountManager#getauthtoken) are hooked.
 - Cryptographic keys and certificates could be extracted if [`KeyStore.getKey()`](https://developer.android.com/reference/kotlin/java/security/KeyStore#getkey), [`KeyStore.getCertificate()`](https://developer.android.com/reference/kotlin/java/security/KeyStore#getcertificate) are hooked.

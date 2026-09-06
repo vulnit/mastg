@@ -38,4 +38,4 @@ The file was created in `/data/user/0/org.owasp.mastestapp/files/` which is equi
 
 ## Evaluation
 
-This test fails because the file is not encrypted and contains sensitive data (a password). You can further confirm this by reverse engineering the app and inspecting the code.
+This test fails because the file isn't encrypted and contains sensitive data (a password). You can further confirm this by reverse engineering the app and inspecting the code.

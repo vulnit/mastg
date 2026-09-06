@@ -13,7 +13,7 @@ A common approach is to:
 2. Parse the 64-bit Mach-O header (`mach_header_64`) and iterate through its load commands to locate the `__TEXT/__text` section.
 3. Compute a cryptographic hash over the `__text` section bytes and compare it against a stored reference value.
 
-Older examples of this technique parse the 32-bit Mach-O structures (`mach_header`, `segment_command`, `section`, and `LC_SEGMENT`), which are not used by modern 64-bit iOS apps. The following Swift example uses the 64-bit structures (`mach_header_64`, `segment_command_64`, `section_64`, and `LC_SEGMENT_64`) and computes the hash with `CC_SHA256` from CommonCrypto:
+Older examples of this technique parse the 32-bit Mach-O structures (`mach_header`, `segment_command`, `section`, and `LC_SEGMENT`), which aren't used by modern 64-bit iOS apps. The following Swift example uses the 64-bit structures (`mach_header_64`, `segment_command_64`, `section_64`, and `LC_SEGMENT_64`) and computes the hash with `CC_SHA256` from CommonCrypto:
 
 ```swift
 import Foundation

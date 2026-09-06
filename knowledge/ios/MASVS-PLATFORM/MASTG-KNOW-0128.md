@@ -40,6 +40,6 @@ Without the required local network privacy declarations, Bonjour browsing or loc
 
 ## Scope and Constraints
 
-- Bonjour is intended for local network service discovery. It does not provide internet-scale discovery or traversal by itself.
-- Bonjour discovery does not encrypt or authenticate the subsequent connection. Apps are responsible for applying transport security, such as TLS, and authenticating the peer.
+- Bonjour is intended for local network service discovery. It doesn't provide internet-scale discovery or traversal by itself.
+- Bonjour discovery doesn't encrypt or authenticate the subsequent connection. Apps are responsible for applying transport security, such as TLS, and authenticating the peer.
 - The local network permission grants local network access to the app, not to a single Bonjour service type. Apps should still declare the Bonjour service types they browse and minimize local network use.

@@ -45,7 +45,7 @@ This confirms that the handler reads the caller application identifier on both U
 
 ### Exploitation
 
-You can use @MASTG-TOOL-0072 to launch the app on a connected iOS device with an arbitrary custom URL scheme payload and confirm that the handler rejects the request when `sourceApplication` is not populated with an allowlisted bundle ID.
+You can use @MASTG-TOOL-0072 to launch the app on a connected iOS device with an arbitrary custom URL scheme payload and confirm that the handler rejects the request when `sourceApplication` isn't populated with an allowlisted bundle ID.
 
 First, list the connected devices and copy the device identifier:
 
@@ -62,7 +62,7 @@ xcrun devicectl device process launch \
   org.owasp.mastestapp.MASTestApp-iOS
 ```
 
-After the app opens, tap **Start** in the demo app to process the stored event. Because the URL was not opened by an allowlisted same team app, the result is observable in the app output:
+After the app opens, tap **Start** in the demo app to process the stored event. Because the URL wasn't opened by an allowlisted same team app, the result is observable in the app output:
 
 ```text
 Incoming URL: mastgtest://transfer?amount=9999999

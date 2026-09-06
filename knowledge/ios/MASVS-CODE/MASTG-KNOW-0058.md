@@ -18,7 +18,7 @@ Before loading any binary — whether it is the app executable or a dynamic libr
 
 > "At runtime, code signature checks of all executable memory pages are checked as they're loaded to help ensure that an app hasn't been modified since it was installed or last updated." — [Apple Platform Security](https://support.apple.com/guide/security/intro-app-security-ios-ipados-visionos-secf49cad4db/web)
 
-These checks prevent an app from loading arbitrary native code at runtime. A dynamic library copied into the app container after installation is not treated as embedded code that was signed and installed as part of the app bundle, even if it is signed with the developer's own Team ID. Attempting to load it can fail with an error such as:
+These checks prevent an app from loading arbitrary native code at runtime. A dynamic library copied into the app container after installation isn't treated as embedded code that was signed and installed as part of the app bundle, even if it is signed with the developer's own Team ID. Attempting to load it can fail with an error such as:
 
 ```txt
 dlopen failed: ... no suitable image found. Did find:
@@ -27,6 +27,6 @@ dlopen failed: ... no suitable image found. Did find:
 
 For App Store apps, this means **every native library that can ever load at runtime must have been present in the app bundle at installation time** and signed as part of the app. There is no supported mechanism for an App Store app to introduce new native code onto a device at runtime.
 
-Static libraries are different from dynamic libraries. A static library is linked into the final app executable at build time, so its code is covered by the signature of the final Mach-O binary. It is not loaded as a separate signed binary at runtime.
+Static libraries are different from dynamic libraries. A static library is linked into the final app executable at build time, so its code is covered by the signature of the final Mach-O binary. It isn't loaded as a separate signed binary at runtime.
 
 For details on how to inspect code signature metadata, including the CodeDirectory format version, see @MASTG-TECH-0112.

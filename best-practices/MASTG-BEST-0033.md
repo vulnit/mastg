@@ -8,13 +8,13 @@ knowledge: [MASTG-KNOW-0076]
 
 ## Avoid Enabling `allowFileAccessFromFileURLs` and `allowUniversalAccessFromFileURLs`
 
-For `WKWebView`, `allowFileAccessFromFileURLs` and `allowUniversalAccessFromFileURLs` are not part of the public iOS `WKWebView` API. They are commonly accessed through Key-Value Coding (KVC), but should remain disabled unless there is a specific, well justified need.
+For `WKWebView`, `allowFileAccessFromFileURLs` and `allowUniversalAccessFromFileURLs` aren't part of the public iOS `WKWebView` API. They are commonly accessed through Key-Value Coding (KVC), but should remain disabled unless there is a specific, well justified need.
 
 If you must enable these properties, ensure that:
 
 - The WebView only loads trusted content from controlled sources.
 - Proper input validation and sanitization are implemented.
-- The app does not store sensitive data in locations accessible to the WebView.
+- The app doesn't store sensitive data in locations accessible to the WebView.
 
 These settings apply only to `WKWebView`. `UIWebView` historically allowed broader local file access and lacked the modern isolation and control model provided by `WKWebView`, which is one reason `UIWebView` was deprecated and replaced. See @MASTG-BEST-0032.
 

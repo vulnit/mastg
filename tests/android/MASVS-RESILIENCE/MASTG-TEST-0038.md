@@ -75,7 +75,7 @@ android {
 }
 ```
 
-Note that APK v4 signing is optional and the lack of it does not represent a vulnerability. It is meant to allow developers to quickly deploy large APKs using the [ADB Incremental APK installation](https://developer.android.com/about/versions/11/features#incremental) in Android 11 and above.
+Note that APK v4 signing is optional and the lack of it doesn't represent a vulnerability. It is meant to allow developers to quickly deploy large APKs using the [ADB Incremental APK installation](https://developer.android.com/about/versions/11/features#incremental) in Android 11 and above.
 
 ## Dynamic Analysis
 

@@ -20,7 +20,7 @@ deprecation_note: New version available in MASTG V2
 
 ### Detecting vulnerabilities of third party libraries
 
-In order to ensure that the libraries used by the apps are not carrying vulnerabilities, one can best check the dependencies installed by CocoaPods or Carthage.
+In order to ensure that the libraries used by the apps aren't carrying vulnerabilities, one can best check the dependencies installed by CocoaPods or Carthage.
 
 #### Swift Package Manager
 
@@ -93,7 +93,7 @@ Next, check the Cartfile.resolved for actual versions used and inspect the given
 When a library is found to contain vulnerabilities, then the following reasoning applies:
 
 - Is the library packaged with the application? Then check whether the library has a version in which the vulnerability is patched. If not, check whether the vulnerability actually affects the application. If that is the case or might be the case in the future, then look for an alternative which provides similar functionality, but without the vulnerabilities.
-- Is the library not packaged with the application? See if there is a patched version in which the vulnerability is fixed. If this is not the case, check if the implications of the vulnerability for the build process. Could the vulnerability impede a build or weaken the security of the build-pipeline? Then try looking for an alternative in which the vulnerability is fixed.
+- Is the library not packaged with the application? See if there is a patched version in which the vulnerability is fixed. If this isn't the case, check if the implications of the vulnerability for the build process. Could the vulnerability impede a build or weaken the security of the build-pipeline? Then try looking for an alternative in which the vulnerability is fixed.
 
 In case frameworks are added manually as linked libraries:
 
@@ -102,9 +102,9 @@ In case frameworks are added manually as linked libraries:
 
 In the case of copy-pasted sources: search the header files (in case of using Objective-C) and otherwise the Swift files for known method names for known libraries.
 
-Lastly, please note that for hybrid applications, you will have to check the JavaScript dependencies with RetireJS. Similarly for mobile cross platform frameworks, you will have to check their dependencies.
+Lastly, please note that for hybrid applications, you'll have to check the JavaScript dependencies with RetireJS. Similarly for mobile cross platform frameworks, you'll have to check their dependencies.
 
-Last, if the application is a high-risk application, you will end up vetting the library manually. In that case there are specific requirements for native code, which are similar to the requirements established by the MASVS for the application as a whole. Next to that, it is good to vet whether all best practices for software engineering are applied.
+Last, if the application is a high-risk application, you'll end up vetting the library manually. In that case there are specific requirements for native code, which are similar to the requirements established by the MASVS for the application as a whole. Next to that, it is good to vet whether all best practices for software engineering are applied.
 
 ## Dynamic Analysis
 
@@ -116,7 +116,7 @@ It need to be validated whether the copyrights of the licenses have been adhered
 
 When performing app analysis, it is important to also analyze the app dependencies (usually in form of libraries or so-called iOS Frameworks) and ensure that they don't contain any vulnerabilities. Even when you don't have the source code, you can still identify some of the app dependencies using tools like @MASTG-TOOL-0038, @MASTG-TOOL-0035 or the `otool -L` command. Objection is the recommended tool, since it provides the most accurate results and it is easy to use. It contains a module to work with iOS Bundles, which offers two commands: `list_bundles` and `list_frameworks`.
 
-The `list_bundles` command lists all of the application's bundles that are not related to Frameworks. The output contains executable name, bundle id, version of the library and path to the library.
+The `list_bundles` command lists all of the application's bundles that aren't related to Frameworks. The output contains executable name, Bundle ID, version of the library and path to the library.
 
 ```bash
 ...itudehacks.DVIAswiftv2.develop on (iPhone: 13.2.3) [usb] # ios bundles list_bundles

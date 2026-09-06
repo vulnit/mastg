@@ -13,7 +13,7 @@ knowledge: [MASTG-KNOW-0102]
 
 This test logs every file system API use, such as `open`, `fopen`, `NSFileManager`, or `FileHandle` that creates or writes files to the app's data container at `/var/mobile/Containers/Data/Application/$APP_ID` to identify which files are eligible for backup.
 
-Files stored in the `tmp` or `Library/Caches` subdirectories should not be logged, as they are not backed up.
+Files stored in the `tmp` or `Library/Caches` subdirectories should not be logged, as they aren't backed up.
 
 ## Steps
 

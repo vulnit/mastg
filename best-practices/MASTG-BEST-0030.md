@@ -15,7 +15,7 @@ Apply the relevant root detection techniques described in @MASTG-KNOW-0027 based
 1. **Layer defenses:** Pair root signals with integrity checks, anti debugging signals, and backend enforcement.
 2. **Distribute checks:** Place checks near sensitive operations and session establishment, avoid a single centralized gate.
 3. **Use multiple methods:** Combine filesystem artifacts, property checks, process checks, and native level checks.
-4. **Avoid well-known patterns only:** Do not rely only on public signature lists or a single library default configuration.
+4. **Avoid well-known patterns only:** Don't rely only on public signature lists or a single library default configuration.
 5. **Use proportional responses:** Limit high risk operations first, add step up authentication, avoid full lockout when confidence is low.
 6. **Validate server-side:** Use server policy to decide whether to allow transactions, based on risk and user context.
 7. **Rotate and randomize:** Vary which checks run per session and per release, rotate indicators to reduce reusable bypass patches.

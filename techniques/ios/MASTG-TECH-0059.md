@@ -90,7 +90,7 @@ Go to **Finder** -> **Home** to see the application data directory:
 
 ## Using a Terminal in macOS (iOS Simulator Only)
 
-To test local storage and verify what data is stored in it, an iOS device is not required. With access to the source code and Xcode, the app can be built and deployed in the iOS simulator. The file system of the current iOS simulator device is located at `~/Library/Developer/CoreSimulator/Devices`.
+To test local storage and verify what data is stored in it, an iOS device isn't required. With access to the source code and Xcode, the app can be built and deployed in the iOS simulator. The file system of the current iOS simulator device is located at `~/Library/Developer/CoreSimulator/Devices`.
 
 Once the app is running in the iOS simulator, you can navigate to the directory of the latest simulator started with the following command:
 

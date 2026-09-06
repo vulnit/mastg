@@ -26,7 +26,7 @@ Example tests for reference:
 Notes:
 
 - Tests with `platform: network` are still organized under the OS folder that the MASVS category belongs to (for example, Android network tests live under `tests-beta/android/MASVS-NETWORK/`).
-- Old tests under `tests/` do not follow these new guidelines. We are currently working to deprecate all of them in favor of these new approach.
+- Old tests under `tests/` don't follow these new guidelines. We are currently working to deprecate all of them in favor of these new approach.
 
 ## Keeping Android and iOS Tests Aligned
 
@@ -34,7 +34,7 @@ When a weakness has tests on both platforms, the Android and iOS tests **must be
 
 What must match across platforms:
 
-- **`title`**: identical on both platforms (do not include "Android" or "iOS" in the title; see [title](#title)).
+- **`title`**: identical on both platforms (don't include "Android" or "iOS" in the title; see [title](#title)).
 - **`weakness`**: the same `MASWE-XXXX` id.
 - **MASVS category and folder**: the same category (for example, both under `MASVS-RESILIENCE/`). A single weakness must not be split across different categories on different platforms.
 - **`profiles`**: the same profile set.
@@ -102,14 +102,14 @@ One or more test types.
 
 Supported:
 
-- `static`: base type for analysis that does not require app execution. Always combined with `code`, `config`, or `package` to indicate the specific kind of static analysis performed.
+- `static`: base type for analysis that doesn't require app execution. Always combined with `code`, `config`, or `package` to indicate the specific kind of static analysis performed.
 - `code`: code-level analysis via decompilation or disassembly of the app binary, reverse-engineered source code, or developer artifacts. Always combined with `static` (e.g., `type: [static, code]`).
 - `config`: static analysis of configuration files within the app package (e.g., AndroidManifest, Network Security Configuration, Info.plist, App Transport Security settings). Always combined with `static` (e.g., `type: [static, config]`).
 - `package`: static inspection of specific binary files or resources within the app package (e.g., native libraries, XML resource files). Always combined with `static` (e.g., `type: [static, package]`).
 - `dynamic`: base type for analysis that requires the app to be running. Always combined with `hooks`, `logs`, `filesystem`, or `network` to indicate the specific kind of runtime analysis performed.
 - `hooks`: runtime method interception or instrumentation at the API level (for example, via Frida). Always combined with `dynamic` (e.g., `type: [dynamic, hooks]`).
 - `logs`: observation of platform-level log output produced by the app or the system (for example, via adb logcat or `os_log`). Always combined with `dynamic` (e.g., `type: [dynamic, logs]`).
-- `manual`: manual steps that require human judgment, such as inspecting app behavior, UI, or configuration. This may include reverse engineering or runtime analysis that cannot be fully automated. Any test that includes a `**Further Validation Required:**` block MUST include `manual` in its `type` array (e.g., `[static, manual]`, `[dynamic, manual]`).
+- `manual`: manual steps that require human judgment, such as inspecting app behavior, UI, or configuration. This may include reverse engineering or runtime analysis that can't be fully automated. Any test that includes a `**Further Validation Required:**` block MUST include `manual` in its `type` array (e.g., `[static, manual]`, `[dynamic, manual]`).
 - `network`: analysis of network traffic captured from the running app, for example via a proxy or network capture tool. Always combined with `dynamic` (e.g., `type: [dynamic, network]`).
 - `filesystem`: analysis of the app's file system, including local storage or backups. Always combined with `dynamic` (e.g., `type: [dynamic, filesystem]`).
 - `developer`: tests only the developer can perform because they require access to the source code, build process, or other internal resources.
@@ -209,7 +209,7 @@ Very important: the overview must be phrased like an issue.
 - Describe the relevant platform feature/API from the perspective of "what can go wrong" (risk, failure mode, exposure).
 - Make it clear why the test exists: what the tester is trying to detect and why that matters.
 
-Do not repeat the weakness description here. Focus on the specific issue the test is checking for on the given platform.
+Don't repeat the weakness description here. Focus on the specific issue the test is checking for on the given platform.
 
 Good patterns for issue framing:
 
@@ -217,7 +217,7 @@ Good patterns for issue framing:
 - "This can lead to … (exposure, bypass, integrity failure, privacy leak) …"
 - "This test checks/verifies whether the app …"
 
-Do not write the overview like a neutral platform description. Neutral/descriptive explanations belong in `knowledge/`.
+Don't write the overview like a neutral platform description. Neutral/descriptive explanations belong in `knowledge/`.
 
 Example:
 
@@ -234,7 +234,7 @@ A test must include at least one step. Steps can be static, dynamic, manual, or,
 - Don't reference MASTG tools directly. Always link to existing MASTG-TECH by ID (for example, @MASTG-TECH-0014)
 - When a MASTG-TECH exists, always start step instructions with `Use @MASTG-TECH-XXXX to ...`. Avoid `Run`, `Execute`, or parenthetical-only references such as `(@MASTG-TECH-XXXX)` as the primary action.
 - Use "reverse engineer" (non-hyphenated) when referring to the process (e.g. "to reverse engineer an app") and "reverse-engineered" (hyphenated) when referring to the code (e.g. "reverse-engineered code").
-- Be consistent by preferring to use canonical steps from the sections below. Do not create new phrasing or wording when it's not necessary.
+- Be consistent by preferring to use canonical steps from the sections below. Don't create new phrasing or wording when it's not necessary.
 
 Example:
 
@@ -255,7 +255,7 @@ Always use the **most specific** technique available. Avoid broad techniques unl
 | Install the app | @MASTG-TECH-0005 | Installing Apps | Step 1 for all tests with `dynamic` in their type on Android |
 | Reverse engineer the app | @MASTG-TECH-0013 | Reverse Engineering Android Apps | Points to @MASTG-TECH-0016, @MASTG-TECH-0017, @MASTG-TECH-0018 |
 | Static code analysis | @MASTG-TECH-0014 | Static Analysis on Android | Step 2 in the standard Android `[static, code]` template |
-| Manual code inspection | @MASTG-TECH-0023 | Reviewing Decompiled Java Code | Use in `**Further Validation Required:**` blocks only; do not use for test steps |
+| Manual code inspection | @MASTG-TECH-0023 | Reviewing Decompiled Java Code | Use in `**Further Validation Required:**` blocks only; don't use for test steps |
 | Decompile Java code | @MASTG-TECH-0017 | Decompiling Java Code | Use when specifically decompiling; prefer @MASTG-TECH-0014 for general static analysis |
 | **Avoid** | @MASTG-TECH-0016 | Disassembling Code to Smali | Use only when Smali output is explicitly needed |
 | Disassemble native code | @MASTG-TECH-0018 | Disassembling Native Code | Use for native libraries |
@@ -278,7 +278,7 @@ Always use the **most specific** technique available. Avoid broad techniques unl
 | Extract the app | @MASTG-TECH-0054 | Obtaining and Extracting Apps | Too broad; don't use for tests |
 | Reverse engineer the app | @MASTG-TECH-0065 | Reverse Engineering iOS Apps | Points to @MASTG-TECH-0068, @MASTG-TECH-0069 |
 | Static code analysis | @MASTG-TECH-0066 | Static Analysis on iOS | Step 2 in the standard iOS `[static, code]` template |
-| Manual code inspection | @MASTG-TECH-0076 | Reviewing Disassembled Objective-C and Swift Code | Use in `**Further Validation Required:**` blocks only; do not use for test steps |
+| Manual code inspection | @MASTG-TECH-0076 | Reviewing Disassembled Objective-C and Swift Code | Use in `**Further Validation Required:**` blocks only; don't use for test steps |
 | Method hooking | @MASTG-TECH-0095 | Method Hooking | Preferred over @MASTG-TECH-0067 for hooking and instrumentation |
 | Monitor network traffic | @MASTG-TECH-0062 | Basic Network Monitoring/Sniffing | Step 1 for all `[dynamic, network]` tests on iOS |
 | Monitor device logs | @MASTG-TECH-0060 | Monitoring System Logs | Use instead of @MASTG-TECH-0095 when observing platform-level log output |
@@ -573,7 +573,7 @@ A pass explanation can only be added for rare edge cases where it is unavoidable
 
 In that case, it MUST start with "The test case passes if ..." and must be added after the fail explanation.
 
-IMPORTANT: Do not include remediation advice or best practices in the evaluation section. Remediation belongs in `best-practices/` and must be linked in the test metadata `best-practices`. If it does not exist yet, create it.
+IMPORTANT: Don't include remediation advice or best practices in the evaluation section. Remediation belongs in `best-practices/` and must be linked in the test metadata `best-practices`. If it doesn't exist yet, create it.
 
 #### Further Validation Required
 

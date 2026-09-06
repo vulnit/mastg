@@ -15,7 +15,7 @@ This test checks if the app uses authentication mechanisms that rely on the user
 
 The `kSecAccessControlUserPresence` flag is described in the Apple docs as the option that's typically used as it "lets the system choose a mechanism, depending on the current situation". However, this allows fallback to passcode in some cases (e.g. when biometrics aren't configured yet), which is considered weaker than requiring biometrics alone because passcodes are more susceptible to compromise (e.g., through shoulder surfing).
 
-**Note:** This test does not consider [`LAPolicy.deviceOwnerAuthentication`](https://developer.apple.com/documentation/localauthentication/lapolicy/deviceownerauthentication) for LocalAuthentication flows because that shouldn't be used on its own. See @MASTG-TEST-0266.
+**Note:** This test doesn't consider [`LAPolicy.deviceOwnerAuthentication`](https://developer.apple.com/documentation/localauthentication/lapolicy/deviceownerauthentication) for LocalAuthentication flows because that shouldn't be used on its own. See @MASTG-TEST-0266.
 
 ## Steps
 
@@ -31,4 +31,4 @@ The output should contain a list of locations where relevant APIs are used.
 The test case fails if the app uses `SecAccessControlCreateWithFlags` with the `kSecAccessControlUserPresence` or `kSecAccessControlDevicePasscode` flags for any sensitive data resource that needs protection.
 
 !!! note
-    Using `kSecAccessControlUserPresence` or `kSecAccessControlDevicePasscode` is not inherently a vulnerability, but in high-security applications (e.g., finance, government, health), their use can represent a weakness or misconfiguration that reduces the intended security posture. This issue is therefore better categorized as a security weakness or hardening issue, not a critical vulnerability.
+    Using `kSecAccessControlUserPresence` or `kSecAccessControlDevicePasscode` isn't inherently a vulnerability, but in high-security applications (e.g., finance, government, health), their use can represent a weakness or misconfiguration that reduces the intended security posture. This issue is therefore better categorized as a security weakness or hardening issue, not a critical vulnerability.

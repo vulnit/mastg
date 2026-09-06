@@ -3,16 +3,16 @@ title: Obtaining and Extracting Apps
 platform: android
 ---
 
-There are several ways of extracting APK files from a device. You will need to decide which one is the easiest method, depending on whether the app is public or private.
+There are several ways of extracting APK files from a device. You'll need to decide which one is the easiest method, depending on whether the app is public or private.
 
 ## Alternative App Stores
 
-One of the easiest options is to download the APK from websites that mirror public applications from the Google Play Store. However, keep in mind that these sites are not official and there is no guarantee that the application hasn't been repackaged or contains malware. A few reputable websites that host APKs and are not known for modifying apps, and even list SHA-1 and SHA-256 checksums of the apps are:
+One of the easiest options is to download the APK from websites that mirror public applications from the Google Play Store. However, keep in mind that these sites aren't official and there is no guarantee that the application hasn't been repackaged or contains malware. A few reputable websites that host APKs and aren't known for modifying apps, and even list SHA-1 and SHA-256 checksums of the apps are:
 
 - [APKMirror](https://apkmirror.com "APKMirror")
 - [APKPure](https://apkpure.com "APKPure")
 
-Beware that you do not have control over these sites, and you cannot guarantee what they will do in the future. Only use them if it's your only option left.
+Beware that you don't have control over these sites, and you can't guarantee what they will do in the future. Only use them if it's your only option left.
 
 !!! note
     Some alternative app stores may provide apps in XAPK format instead of standard APK files. XAPK files are ZIP archives that bundle the APK with additional data files. See @MASTG-TECH-0145 for instructions on how to extract and work with XAPK files.
@@ -83,11 +83,11 @@ adb pull <apk path>
 
 The APK will be downloaded to your working directory.
 
-Alternatively, there are also apps like [APK Extractor](https://github.com/Domilopment/apk-extractor "APK Extractor") that do not require root and can even share the extracted APK via your preferred method. This can be useful if you don't feel like connecting the device or setting up @MASTG-TOOL-0004 over the network to transfer the file.
+Alternatively, there are also apps like [APK Extractor](https://github.com/Domilopment/apk-extractor "APK Extractor") that don't require root and can even share the extracted APK via your preferred method. This can be useful if you don't feel like connecting the device or setting up @MASTG-TOOL-0004 over the network to transfer the file.
 
 ## Testing Instant Apps
 
-With [Google Play Instant](https://developer.android.com/topic/google-play-instant/overview "Google Play Instant"), you can create Instant apps which can be instantly launched from a browser or the "try now" button from the app store from Android 5.0 (API level 21) onward. They do not require any form of installation. There are a few challenges with an instant app:
+With [Google Play Instant](https://developer.android.com/topic/google-play-instant/overview "Google Play Instant"), you can create Instant apps which can be instantly launched from a browser or the "try now" button from the app store from Android 5.0 (API level 21) onward. They don't require any form of installation. There are a few challenges with an instant app:
 
 - There is a limited amount of size you can have with an instant app.
 - Only a reduced number of permissions can be used, which are documented at [Android Instant app documentation](https://developer.android.com/topic/google-play-instant/getting-started/instant-enabled-app-bundle?tenant=irina#request-supported-permissions "Permission documentation for Android Instant Apps").
@@ -108,7 +108,7 @@ Now follow the entry points, like you would do for any Activity, and check:
 
 **Dynamic Analysis Considerations:**
 
-There are multiple ways to start the dynamic analysis of your instant app. In all cases, you will first have to install the support for instant apps and add the `ia` executable to your `$PATH`.
+There are multiple ways to start the dynamic analysis of your instant app. In all cases, you'll first have to install the support for instant apps and add the `ia` executable to your `$PATH`.
 
 The installation of instant app support is taken care of through the following command:
 

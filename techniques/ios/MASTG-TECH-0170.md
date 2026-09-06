@@ -59,7 +59,7 @@ Share and action extensions declare the data types they accept via the `NSExtens
 </dict>
 ```
 
-Only the data types present here and not set to `0` as `MaxCount` are supported. More complex matching is possible with a predicate string evaluated against the offered UTIs. As described in @MASTG-KNOW-0082, this rule controls when the extension is _offered_ to the user (for example, in the share sheet); it is not an access-control boundary on the data.
+Only the data types present here and not set to `0` as `MaxCount` are supported. More complex matching is possible with a predicate string evaluated against the offered UTIs. As described in @MASTG-KNOW-0082, this rule controls when the extension is _offered_ to the user (for example, in the share sheet); it isn't an access-control boundary on the data.
 
 ## Detecting Shared Containers and Keychain Access Groups
 

@@ -11,11 +11,11 @@ kind: fail
 
 The sample code demonstrates an Android app that performs a root detection routine implemented in a native library.
 
-The Java/Kotlin layer loads `librootcheck.so` and calls `findRootArtifactPath()`, a native function that checks common `su` binary paths. Regardless of whether this protection mechanism is sufficient to detect root in a real-world scenario, the purpose of this demo is to show that the obfuscation applied to the native layer is not enough to prevent an attacker from reverse engineering the root detection logic with reasonable effort.
+The Java/Kotlin layer loads `librootcheck.so` and calls `findRootArtifactPath()`, a native function that checks common `su` binary paths. Regardless of whether this protection mechanism is sufficient to detect root in a real-world scenario, the purpose of this demo is to show that the obfuscation applied to the native layer isn't enough to prevent an attacker from reverse engineering the root detection logic with reasonable effort.
 
 {{ MastgTest.kt # native-root-check.cpp # CMakeLists.txt }}
 
-The app is not obfuscated at the Java/Kotlin layer, and the native library is included in the APK as-is without any protection. See @MASTG-KNOW-0033 for reference on common obfuscation techniques.
+The app isn't obfuscated at the Java/Kotlin layer, and the native library is included in the APK as-is without any protection. See @MASTG-KNOW-0033 for reference on common obfuscation techniques.
 
 ## Steps
 
@@ -37,7 +37,7 @@ The output contains all the strings containing `su` paths found in `.rodata`.
 
 The test case fails because the native library can be reverse engineered with little effort and the security-relevant root detection logic remains easy to identify.
 
-The output reveals the paths `/system/bin/su`, `/sbin/su`, and `/system/xbin/su` stored as plaintext in `.rodata`, showing that the root detection indicators are not encoded or encrypted. Finding these strings alone is sufficient to demonstrate the test failure: they tell an attacker exactly what artifacts the library is looking for.
+The output reveals the paths `/system/bin/su`, `/sbin/su`, and `/system/xbin/su` stored as plaintext in `.rodata`, showing that the root detection indicators aren't encoded or encrypted. Finding these strings alone is sufficient to demonstrate the test failure: they tell an attacker exactly what artifacts the library is looking for.
 
 > **Note:** For the purpose of this demo we stop here. In a real assessment you would go further and trace where these strings are used — for example by following cross-references or pivoting through file-access imports like `access()` — to fully map the detection logic and understand how the result is returned to the Java/Kotlin layer.
 

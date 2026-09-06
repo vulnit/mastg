@@ -25,7 +25,7 @@ Common APIs in this layer include:
 
 The predecessors [`tlsMinimumSupportedProtocol`](https://developer.apple.com/documentation/foundation/urlsessionconfiguration/tlsminimumsupportedprotocol) and [`tlsMaximumSupportedProtocol`](https://developer.apple.com/documentation/foundation/urlsessionconfiguration/tlsmaximumsupportedprotocol) are deprecated. They accept `SSLProtocol` enum values, for example `kSSLProtocol3` and `kTLSProtocol1`.
 
-These properties are **independent from ATS**: ATS enforces its own TLS minimum requirements in addition to whatever value is set here. Setting `tlsMinimumSupportedProtocolVersion` to TLS 1.0 in code does not bypass ATS; if no matching `Info.plist` exception is present, ATS still blocks the connection. When an ATS exception is present, a lower minimum TLS version configured in code can weaken the effective policy for that connection. See @MASTG-KNOW-0071 for ATS behavior.
+These properties are **independent from ATS**: ATS enforces its own TLS minimum requirements in addition to whatever value is set here. Setting `tlsMinimumSupportedProtocolVersion` to TLS 1.0 in code doesn't bypass ATS; if no matching `Info.plist` exception is present, ATS still blocks the connection. When an ATS exception is present, a lower minimum TLS version configured in code can weaken the effective policy for that connection. See @MASTG-KNOW-0071 for ATS behavior.
 
 ## Network Framework (Low-Level)
 

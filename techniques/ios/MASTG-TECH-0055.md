@@ -3,7 +3,7 @@ title: Launching a Repackaged App in Debug Mode
 platform: ios
 ---
 
-If you've repackaged an application with a Frida Gadget, or if you want to attach @MASTG-TOOL-0057 to the application, you have to launch the application in debug mode. When you launch the application via SpringBoard, it will not start in debug mode and will crash.
+If you've repackaged an application with a Frida Gadget, or if you want to attach @MASTG-TOOL-0057 to the application, you have to launch the application in debug mode. When you launch the application via SpringBoard, it won't start in debug mode and will crash.
 
 After installing the application with @MASTG-TECH-0056, you can launch it in debug mode with the following commands.
 

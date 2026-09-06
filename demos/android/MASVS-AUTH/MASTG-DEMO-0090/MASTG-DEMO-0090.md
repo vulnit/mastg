@@ -34,7 +34,7 @@ However, the Keystore key is explicitly configured **not** to require user authe
 - [`setUserAuthenticationRequired(false)`](https://developer.android.com/reference/android/security/keystore/KeyGenParameterSpec.Builder#setUserAuthenticationRequired(boolean))
 - [`setInvalidatedByBiometricEnrollment(false)`](https://developer.android.com/reference/android/security/keystore/KeyGenParameterSpec.Builder#setInvalidatedByBiometricEnrollment(boolean))
 
-Because authentication is not required at the Keystore level, the key can be initialized and used outside of a biometric flow. The cryptographic operation is tied to the prompt instance, but the key itself is not protected by mandatory user presence.
+Because authentication isn't required at the Keystore level, the key can be initialized and used outside of a biometric flow. The cryptographic operation is tied to the prompt instance, but the key itself isn't protected by mandatory user presence.
 
 ### Test 2b: Decrypt with `CryptoObject`
 

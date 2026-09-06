@@ -23,7 +23,7 @@ In particular, avoid logging:
 
 ## Use Logging APIs with Privacy Controls
 
-When logging is required, prefer the APIs that use [Apple's Unified Logging system](https://developer.apple.com/documentation/os/logging): [`Logger`](https://developer.apple.com/documentation/os/logger) in Swift or [`os_log`](https://developer.apple.com/documentation/os/os_log) in Objective-C. Avoid ad hoc logging through `print`, `NSLog`, or third-party SDKs that do not support structured logging and privacy controls.
+When logging is required, prefer the APIs that use [Apple's Unified Logging system](https://developer.apple.com/documentation/os/logging): [`Logger`](https://developer.apple.com/documentation/os/logger) in Swift or [`os_log`](https://developer.apple.com/documentation/os/os_log) in Objective-C. Avoid ad hoc logging through `print`, `NSLog`, or third-party SDKs that don't support structured logging and privacy controls.
 
 ### Privacy Modifiers
 
@@ -34,7 +34,7 @@ Apple's Unified Logging system provides [privacy modifiers](https://developer.ap
 - **`.sensitive`** behaves like `.private`, but remains redacted even when private data logging is enabled.
 - **`.public` (not recommended)** explicitly marks a value as safe to display in logs. Use this only for non-sensitive operational information.
 
-Privacy modifiers help protect individual values, but they do not make verbose logging safe by themselves. The principle of minimal logging still applies.
+Privacy modifiers help protect individual values, but they don't make verbose logging safe by themselves. The principle of minimal logging still applies.
 
 ### Log Levels
 
@@ -45,7 +45,7 @@ Apple's Unified Logging system supports multiple [log levels](https://developer.
 - **`error`** for failures the app can recover from.
 - **`fault`** for serious failures that require immediate attention.
 
-Use these levels carefully. Higher quality logging is not about emitting more detail, it is about emitting only the detail that is appropriate for the environment. In production, avoid using log levels as a reason to include sensitive values or internal implementation details.
+Use these levels carefully. Higher quality logging isn't about emitting more detail, it is about emitting only the detail that is appropriate for the environment. In production, avoid using log levels as a reason to include sensitive values or internal implementation details.
 
 ## Use Macros or Build Flags to Disable Verbose Logging in Production
 

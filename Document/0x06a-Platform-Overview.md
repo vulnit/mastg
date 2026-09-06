@@ -12,7 +12,7 @@ Like the Apple desktop operating system macOS (formerly OS X), iOS is based on D
 
 However, iOS apps run in a more restricted environment than their desktop counterparts do. iOS apps are isolated from each other at the file system level and are significantly limited in terms of system API access.
 
-To protect users from malicious applications, Apple restricts and controls access to the apps that are allowed to run on iOS devices. Apple's App Store is the only official application distribution platform. There developers can offer their apps and consumers can buy, download, and install apps. This distribution style differs from Android, which supports several app stores and sideloading (installing an app on your iOS device without using the official App Store). In iOS, sideloading typically refers to the app installation method via USB, although there are other enterprise iOS app distribution methods that do not use the App Store under the [Apple Developer Enterprise Program](https://developer.apple.com/programs/enterprise/ "Apple Developer Enterprise Program").
+To protect users from malicious applications, Apple restricts and controls access to the apps that are allowed to run on iOS devices. Apple's App Store is the only official application distribution platform. There developers can offer their apps and consumers can buy, download, and install apps. This distribution style differs from Android, which supports several app stores and sideloading (installing an app on your iOS device without using the official App Store). In iOS, sideloading typically refers to the app installation method via USB, although there are other enterprise iOS app distribution methods that don't use the App Store under the [Apple Developer Enterprise Program](https://developer.apple.com/programs/enterprise/ "Apple Developer Enterprise Program").
 
 In the past, sideloading was possible only with a jailbreak or complicated workarounds. With iOS 9 or higher, it is possible to [sideload via Xcode](https://forums.developer.apple.com/forums/thread/91370).
 
@@ -99,7 +99,7 @@ iOS implements address space layout randomization (ASLR) and eXecute Never (XN) 
 
 ASLR randomizes the memory location of the program's executable file, data, heap, and stack every time the program is executed. Because the shared libraries must be static to be accessed by multiple processes, the addresses of shared libraries are randomized every time the OS boots instead of every time the program is invoked. This makes specific function and library memory addresses hard to predict, thereby preventing attacks such as the return-to-libc attack, which involves the memory addresses of basic libc functions.
 
-The XN mechanism allows iOS to mark selected memory segments of a process as non-executable. On iOS, the process stack and heap of user-mode processes is marked non-executable. Pages that are writable cannot be marked executable at the same time. This prevents attackers to execute machine code injected into the stack or heap.
+The XN mechanism allows iOS to mark selected memory segments of a process as non-executable. On iOS, the process stack and heap of user-mode processes is marked non-executable. Pages that are writable can't be marked executable at the same time. This prevents attackers to execute machine code injected into the stack or heap.
 
 ## Software Development on iOS
 
@@ -174,7 +174,7 @@ The following APIs [require user permission](https://www.apple.com/business/docs
 
 The DeviceCheck framework, including its components DeviceCheck and App Attest, helps you prevent fraudulent use of your services. It consists of a framework that you use from your app and an Apple server which is accessible only to your own server. DeviceCheck allows you to persistently store information on the device and on Apple servers. The stored information remains intact across app reinstallation, device transfers, or resets, with the option to reset this data periodically.
 
-DeviceCheck is typically used to mitigate fraud by restricting access to sensitive resources. For example, limiting promotions to once per device, identify and flag fraudulent devices, etc. However, it definitely cannot prevent all fraud. For example, it is [not meant to detect compromised operating systems](https://swiftrocks.com/app-attest-apple-protect-ios-jailbreak "App Attest: How to prevent an iOS app's APIs from being abused") (aka. jailbreak detection).
+DeviceCheck is typically used to mitigate fraud by restricting access to sensitive resources. For example, limiting promotions to once per device, identify and flag fraudulent devices, etc. However, it definitely can't prevent all fraud. For example, it is [not meant to detect compromised operating systems](https://swiftrocks.com/app-attest-apple-protect-ios-jailbreak "App Attest: How to prevent an iOS app's APIs from being abused") (aka. jailbreak detection).
 
 For more information, refer to the [DeviceCheck documentation](https://developer.apple.com/documentation/devicecheck "DeviceCheck documentation").
 
@@ -182,6 +182,6 @@ For more information, refer to the [DeviceCheck documentation](https://developer
 
 App Attest, available under the DeviceCheck framework, helps you verify instances of the app running on a device by enabling apps to attach a hardware-backed assertion to requests, ensuring they originate from the legitimate app on a genuine Apple device. This feature aids in preventing modified apps from communicating with your server.
 
-The process involves generating and validating cryptographic keys, along with a set of verifications performed by your server, ensuring the authenticity of the request. It is important to note that while App Attest enhances security, it does not guarantee complete protection against all forms of fraudulent activities.
+The process involves generating and validating cryptographic keys, along with a set of verifications performed by your server, ensuring the authenticity of the request. It is important to note that while App Attest enhances security, it doesn't guarantee complete protection against all forms of fraudulent activities.
 
 For more detailed information, refer to the [WWDC 2021](https://developer.apple.com/videos/play/wwdc2021/10244 "WWDC 2021") session, along with the ["DeviceCheck documentation"](https://developer.apple.com/documentation/devicecheck/) and ["Validating apps that connect to your server"](https://developer.apple.com/documentation/devicecheck/validating-apps-that-connect-to-your-server).

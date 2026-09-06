@@ -13,7 +13,7 @@ The sample code demonstrates an Android app that performs a root detection routi
 
 {{ MastgTest.kt # AndroidManifest.xml }}
 
-Regardless of whether this protection mechanism is sufficient to detect root in a real-world scenario, the purpose of this demo is to show that the obfuscation applied to the Java/Kotlin layer is not enough to prevent an attacker from reverse engineering the root detection logic with reasonable effort.
+Regardless of whether this protection mechanism is sufficient to detect root in a real-world scenario, the purpose of this demo is to show that the obfuscation applied to the Java/Kotlin layer isn't enough to prevent an attacker from reverse engineering the root detection logic with reasonable effort.
 
 The app is obfuscated with R8, which applies identifier renaming and some code shrinking. However, no string encryption or control flow obfuscation is applied. See @MASTG-KNOW-0033 for reference on common obfuscation techniques.
 
@@ -31,7 +31,7 @@ The output contains the reverse-engineered Java/Kotlin code.
 
 The test case fails because when performing reverse engineering on the minified Java/Kotlin layer it is possible to identify and understand the security-relevant root detection logic with little effort.
 
-In `MastgTest_reversed.java`, lines 21, 24, and 32 show that R8 shortened member names (`f7310a`, `f7311b`, and `a()`), so some identifier renaming was clearly applied. However, lines 29, 47, 50, 52, 59, and 64 still reveal the monitored package names, the `PackageManager` lookups, the root detection message, and the `finishAffinity()` call, as the strings are not encrypted.
+In `MastgTest_reversed.java`, lines 21, 24, and 32 show that R8 shortened member names (`f7310a`, `f7311b`, and `a()`), so some identifier renaming was clearly applied. However, lines 29, 47, 50, 52, 59, and 64 still reveal the monitored package names, the `PackageManager` lookups, the root detection message, and the `finishAffinity()` call, as the strings aren't encrypted.
 
 {{ MastgTest_reversed.java }}
 

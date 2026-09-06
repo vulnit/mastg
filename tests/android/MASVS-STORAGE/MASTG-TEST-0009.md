@@ -65,7 +65,7 @@ After executing all available app functions, attempt to back up via `adb`. If th
 adb backup -apk -nosystem <package-name>
 ```
 
-ADB should respond now with "Now unlock your device and confirm the backup operation" and you should be asked on the Android phone for a password. This is an optional step and you don't need to provide one. If the phone does not prompt this message, try the following command including the quotes:
+ADB should respond now with "Now unlock your device and confirm the backup operation" and you should be asked on the Android phone for a password. This is an optional step and you don't need to provide one. If the phone doesn't prompt this message, try the following command including the quotes:
 
 ```bash
 adb backup "-apk -nosystem <package-name>"

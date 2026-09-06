@@ -7,7 +7,7 @@ platform: ios
 
 ## Overview
 
-This chapter covers defense-in-depth measures recommended for apps that process, or give access to, sensitive data or functionality. Research shows that [many App Store apps often include these measures](https://seredynski.com/articles/a-security-review-of-1-300-appstore-applications "A security review of 1,300 AppStore applications - 5 April 2020").
+This chapter covers defense-in-depth measures recommended for apps that process, or give access to, sensitive data or functionality. Research shows that [many App Store apps often include these measures](https://seredynski.com/articles/a-security-review-of-1-300-appstore-applications "A security review of 1,300 App Store applications - 5 April 2020").
 
 These measures should be applied as needed, based on an assessment of the risks caused by unauthorized tampering with the app and/or reverse engineering of the code.
 
@@ -22,7 +22,7 @@ You can learn more about principles and technical risks of reverse engineering a
 
 **General Disclaimer:**
 
-The **lack of any of these measures does not cause a vulnerability** - instead, they are meant to increase the app's resilience against reverse engineering and specific client-side attacks.
+The **lack of any of these measures doesn't cause a vulnerability** - instead, they are meant to increase the app's resilience against reverse engineering and specific client-side attacks.
 
 None of these measures can assure a 100% effectiveness, as the reverse engineer will always have full access to the device and will therefore always win (given enough time and resources)!
 

@@ -158,7 +158,7 @@ Instead of just printing the disassembly to the console, you may want to enter t
 
 <img src="Images/Chapters/0x05b/r2_visualmode_hex.png" width="100%" />
 
-By default, you will see the hexadecimal view. By typing `p`, you can switch to different views, such as the disassembly view:
+By default, you'll see the hexadecimal view. By typing `p`, you can switch to different views, such as the disassembly view:
 
 <img src="Images/Chapters/0x05b/r2_visualmode_disass.png" width="100%" />
 

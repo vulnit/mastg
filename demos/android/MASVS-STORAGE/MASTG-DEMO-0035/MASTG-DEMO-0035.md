@@ -37,4 +37,4 @@ The test fails because `secret.txt` is part of the backup and it contains sensit
 
 {{ apps/org.owasp.mastestapp/f/secret.txt }}
 
-Note that `backup_excluded_secret.txt` file is not part of the backup, which is expected as it was marked as `exclude` in the `backup_rules.xml` file.
+Note that `backup_excluded_secret.txt` file isn't part of the backup, which is expected as it was marked as `exclude` in the `backup_rules.xml` file.

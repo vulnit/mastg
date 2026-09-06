@@ -30,7 +30,7 @@ The script collects two complementary log sources:
 
 ## Observation
 
-The following output includes both `idevicesyslog` and Frida results to show how the two collection methods differ. `idevicesyslog` shows rendered iOS unified logging records, such as `NSLog` and `os.Logger`, but may miss stdout based Swift `print` and `debugPrint` messages. Therefore, absence from `idevicesyslog` alone does not prove that the app did not log sensitive data.
+The following output includes both `idevicesyslog` and Frida results to show how the two collection methods differ. `idevicesyslog` shows rendered iOS unified logging records, such as `NSLog` and `os.Logger`, but may miss stdout based Swift `print` and `debugPrint` messages. Therefore, absence from `idevicesyslog` alone doesn't prove that the app didn't log sensitive data.
 
 {{ unified.log }}
 

@@ -11,11 +11,11 @@ knowledge: [MASTG-KNOW-0077]
 
 ## Overview
 
-Entitlements are signed rights or privileges that enable an iOS app or app extension to use specific platform services, capabilities, or system integrations. Unlike purpose strings, entitlements are not limited to protected resources or user-facing privacy prompts. Some entitlements are mainly functional or security-related, while others may affect privacy by enabling access to personal data, shared containers, cloud data, home data, network capabilities, or system entry points.
+Entitlements are signed rights or privileges that enable an iOS app or app extension to use specific platform services, capabilities, or system integrations. Unlike purpose strings, entitlements aren't limited to protected resources or user-facing privacy prompts. Some entitlements are mainly functional or security-related, while others may affect privacy by enabling access to personal data, shared containers, cloud data, home data, network capabilities, or system entry points.
 
-If an app enables entitlements or capabilities that it does not need, it may gain unnecessary capability exposure outside the default sandbox model.
+If an app enables entitlements or capabilities that it doesn't need, it may gain unnecessary capability exposure outside the default sandbox model.
 
-Capabilities configured in Xcode are signed into the app as entitlements, but the entitlement itself is not a runtime API call. The associated runtime surface depends on the service. Some examples of entitlements and their related APIs or entry points include:
+Capabilities configured in Xcode are signed into the app as entitlements, but the entitlement itself isn't a runtime API call. The associated runtime surface depends on the service. Some examples of entitlements and their related APIs or entry points include:
 
 | Entitlement or capability | Associated APIs or entry points |
 | --- | --- |
@@ -29,7 +29,7 @@ Capabilities configured in Xcode are signed into the app as entitlements, but th
 
 Other security-relevant or platform-service entitlements include Keychain Sharing, Data Protection, Push Notifications, Apple Pay, Network Extensions, NFC Tag Reading, and App Sandbox related entitlements.
 
-An unused entitlement is not usually a direct privacy violation by itself. The risk is latent capability exposure. The app is signed with a right or privilege that can enable access to a service or capability if the app, an extension, bundled framework, feature flag, compromised code path, or later update starts using the related APIs. The clearest framing is least privilege: unneeded entitlements expand what the signed executable is allowed to do, even when the current test does not observe active use.
+An unused entitlement isn't usually a direct privacy violation by itself. The risk is latent capability exposure. The app is signed with a right or privilege that can enable access to a service or capability if the app, an extension, bundled framework, feature flag, compromised code path, or later update starts using the related APIs. The clearest framing is least privilege: unneeded entitlements expand what the signed executable is allowed to do, even when the current test doesn't observe active use.
 
 See @MASTG-KNOW-0077 for the relationship between Xcode capabilities, signed entitlements, and the framework APIs or entry points that use the corresponding service.
 
@@ -62,7 +62,7 @@ Consider the following when evaluating:
 
 - Is the entitlement and its related API surface reasonably connected to the app's stated purpose or visible functionality?
 - Does the entitlement create a personal data access, shared storage, cross-app communication, or system integration surface that is broader or more sensitive than the feature requires?
-- Could the app use a narrower alternative instead, such as local app storage instead of an App Group container when cross-app or app-extension sharing is not required?
+- Could the app use a narrower alternative instead, such as local app storage instead of an App Group container when cross-app or app-extension sharing isn't required?
 
 Static analysis can find unused code, SDK code, dead code, weak-linked frameworks, or APIs that only check availability and never use the entitlement-backed service. Treat an entitlement without matching API references as a failure only when the tester can reasonably connect the entitlement to an unnecessary capability or privacy-relevant data access path. Otherwise, treat it as requiring further validation.
 

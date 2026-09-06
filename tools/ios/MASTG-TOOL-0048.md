@@ -4,7 +4,7 @@ platform: ios
 source: https://github.com/DerekSelander/dsdump
 ---
 
-dsdump is a tool to dump Objective-C classes and Swift type descriptors (classes, structs, enums). It only supports Swift version 5 or higher and does not support ARM 32-bit binaries.
+dsdump is a tool to dump Objective-C classes and Swift type descriptors (classes, structs, enums). It only supports Swift version 5 or higher and doesn't support ARM 32-bit binaries.
 
 The following example shows how you can dump Objective-C classes and Swift type descriptors of an iOS application.
 
@@ -20,7 +20,7 @@ Mach header
 MH_MAGIC_64   ARM64        ALL  0x00     EXECUTE    38       5728   NOUNDEFS DYLDLINK TWOLEVEL PIE
 ```
 
-If yes, then we specify the "--arch" parameter to "arm64", otherwise it is not needed if the binary only contains an ARM64 binary.
+If yes, then we specify the "--arch" parameter to "arm64", otherwise it isn't needed if the binary only contains an ARM64 binary.
 
 ```bash
 # Dump the Objective-C classes to a temporary file

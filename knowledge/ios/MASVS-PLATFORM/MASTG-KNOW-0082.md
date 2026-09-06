@@ -30,26 +30,26 @@ For example, the user selects text in the _host app_, taps the "Share" button, a
 
 An app extension runs as its own process, separate from both its containing app and the host app, and each has its own sandbox:
 
-- An app extension never communicates directly with its containing app. Typically, the containing app is not even running while the extension is. Shared state is usually handled through an [App Group shared container](https://developer.apple.com/documentation/xcode/configuring-app-groups), and shared keychain items through a [Keychain Access Group](https://developer.apple.com/documentation/security/sharing-access-to-keychain-items-among-a-collection-of-apps).
+- An app extension never communicates directly with its containing app. Typically, the containing app isn't even running while the extension is. Shared state is usually handled through an [App Group shared container](https://developer.apple.com/documentation/xcode/configuring-app-groups), and shared keychain items through a [Keychain Access Group](https://developer.apple.com/documentation/security/sharing-access-to-keychain-items-among-a-collection-of-apps).
 - An app extension and the host app communicate through system mediated inter-process communication, using the higher level APIs provided by the extension point and the system. See Apple's [App Extension Programming Guide](https://developer.apple.com/library/archive/documentation/General/Conceptual/ExtensibilityPG/ExtensionOverview.html) and [Apple Platform Security](https://support.apple.com/guide/security/supporting-extensions-secabd3504cd/web).
-- An app extension's containing app and the host app do not communicate at all.
+- An app extension's containing app and the host app don't communicate at all.
 
 The platform also restricts what extensions can do. For example:
 
-- app extensions cannot access some APIs, such as APIs marked unavailable to extensions or unavailable frameworks like HealthKit in the older iOS app extension model
-- cannot receive data through AirDrop, although they can send it
-- cannot run long running background tasks, although they can start uploads and downloads with `URLSession`
-- cannot access the camera or microphone on iOS, except for iMessage app extensions with the required usage descriptions. See Apple's ["Some APIs Are Unavailable to App Extensions"](https://developer.apple.com/library/archive/documentation/General/Conceptual/ExtensibilityPG/ExtensionOverview.html) and ["Creating an App Extension"](https://developer.apple.com/library/archive/documentation/General/Conceptual/ExtensibilityPG/ExtensionCreation.html).
+- app extensions can't access some APIs, such as APIs marked unavailable to extensions or unavailable frameworks like HealthKit in the older iOS app extension model
+- can't receive data through AirDrop, although they can send it
+- can't run long running background tasks, although they can start uploads and downloads with `URLSession`
+- can't access the camera or microphone on iOS, except for iMessage app extensions with the required usage descriptions. See Apple's ["Some APIs Are Unavailable to App Extensions"](https://developer.apple.com/library/archive/documentation/General/Conceptual/ExtensibilityPG/ExtensionOverview.html) and ["Creating an App Extension"](https://developer.apple.com/library/archive/documentation/General/Conceptual/ExtensibilityPG/ExtensionCreation.html).
 
 There used to be a special type of app extension called a "Today" extension, also known as a "Today widget", that could run in Today View, but in iOS 18 Apple has [removed](https://developer.apple.com/documentation/ios-ipados-release-notes/ios-ipados-18-release-notes) this model in favor of WidgetKit widgets. This extension was the only one that could ask the system to open its containing app by calling [`openURL:completionHandler:`](https://developer.apple.com/documentation/foundation/nsextensioncontext/open%28_%3Acompletionhandler%3A%29) on its `NSExtensionContext`. In WidgetKit, widgets declare [`Link` or `widgetURL(_:)`](https://developer.apple.com/documentation/widgetkit/adding-interactivity-to-widgets-and-live-activities), and when the user taps it, the system opens the corresponding app URL. Apple describes this as the way to [open the app from a widget or Live Activity](https://developer.apple.com/documentation/widgetkit/linking-to-specific-app-scenes-from-your-widget-or-live-activity).
 
 ## Code Signing and Distribution
 
-An app extension is not an independent, separately installable app. It is embedded in the `PlugIns/` directory of its containing app (each extension bundle uses the `.appex` suffix) and is distributed, signed, and provisioned together with that containing app. Both the containing app and its extensions are signed under the same Apple Developer Team and, for App Store distribution, go through Apple's app review. As a result, a containing app and its bundled extensions belong to the same developer.
+An app extension isn't an independent, separately installable app. It is embedded in the `PlugIns/` directory of its containing app (each extension bundle uses the `.appex` suffix) and is distributed, signed, and provisioned together with that containing app. Both the containing app and its extensions are signed under the same Apple Developer Team and, for App Store distribution, go through Apple's app review. As a result, a containing app and its bundled extensions belong to the same developer.
 
 ## Sharing Data via App Groups
 
-By default, an app extension and its containing app have separate containers and cannot read each other's data. They can opt into a shared container through [App Groups](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_application-groups). The following figure from the [Apple App Extension Programming Guide](https://developer.apple.com/library/archive/documentation/General/Conceptual/ExtensibilityPG/ExtensionScenarios.html#//apple_ref/doc/uid/TP40014214-CH21-SW11 "An app extension's container is distinct from its containing app's container") illustrates the default separation:
+By default, an app extension and its containing app have separate containers and can't read each other's data. They can opt into a shared container through [App Groups](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_security_application-groups). The following figure from the [Apple App Extension Programming Guide](https://developer.apple.com/library/archive/documentation/General/Conceptual/ExtensibilityPG/ExtensionScenarios.html#//apple_ref/doc/uid/TP40014214-CH21-SW11 "An app extension's container is distinct from its containing app's container") illustrates the default separation:
 
 <img src="Images/Chapters/0x06h/app_extensions_container_restrictions.png" width="400px" />
 
@@ -92,4 +92,4 @@ Share and action extensions declare the data they can receive through the [`NSEx
 </dict>
 ```
 
-More complex matching is possible with a predicate string evaluated against the offered UTIs. `NSExtensionActivationRule` determines whether the extension is _offered_ to the user for a given item (for example, whether it appears in the share sheet); it filters availability in the host app's UI and is not an access-control boundary on the data itself.
+More complex matching is possible with a predicate string evaluated against the offered UTIs. `NSExtensionActivationRule` determines whether the extension is _offered_ to the user for a given item (for example, whether it appears in the share sheet); it filters availability in the host app's UI and isn't an access-control boundary on the data itself.

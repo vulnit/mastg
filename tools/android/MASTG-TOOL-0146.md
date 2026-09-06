@@ -10,7 +10,7 @@ RootBeer is an Android library for detecting root access on devices. It implemen
 RootBeer provides a sample app to demonstrate its capabilities, see @MASTG-APP-0032.
 
 !!! info "Limitations"
-    Root detection cannot be 100% reliable since root access provides elevated privileges that can be used to hide root indicators. RootBeer can be bypassed by determined attackers, especially when using multiple root cloaking tools simultaneously. For critical security decisions, consider combining RootBeer with server-side validation using Google Play Integrity API.
+    Root detection can't be 100% reliable since root access provides elevated privileges that can be used to hide root indicators. RootBeer can be bypassed by determined attackers, especially when using multiple root cloaking tools simultaneously. For critical security decisions, consider combining RootBeer with server-side validation using Google Play Integrity API.
 
 !!! warning "OWASP MAS Disclaimer"
-    The OWASP Mobile Application Security Testing Guide (MASTG) does not endorse specific tools or libraries, which are included as examples. It is the responsibility of the tester to evaluate its suitability for their specific use case and to stay informed about any limitations or vulnerabilities associated with it. Always refer to the official repository for the latest information and updates.
+    The OWASP Mobile Application Security Testing Guide (MASTG) doesn't endorse specific tools or libraries, which are included as examples. It is the responsibility of the tester to evaluate its suitability for their specific use case and to stay informed about any limitations or vulnerabilities associated with it. Always refer to the official repository for the latest information and updates.

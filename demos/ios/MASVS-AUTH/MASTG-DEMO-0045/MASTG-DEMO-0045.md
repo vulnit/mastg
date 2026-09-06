@@ -8,7 +8,7 @@ test: MASTG-TEST-0270
 
 ## Sample
 
-The following sample uses the `kSecAccessControlBiometryAny` flag, which is part of the biometric authentication API and can allow unauthorized access. This flag does not ensure that the associated keychain item becomes inaccessible when changes are made to the biometric database (e.g., when a new fingerprint or face is added). Consequently, users who enroll their biometric data after the item is created can unlock it.
+The following sample uses the `kSecAccessControlBiometryAny` flag, which is part of the biometric authentication API and can allow unauthorized access. This flag doesn't ensure that the associated keychain item becomes inaccessible when changes are made to the biometric database (e.g., when a new fingerprint or face is added). Consequently, users who enroll their biometric data after the item is created can unlock it.
 
 {{ MastgTest.swift }}
 

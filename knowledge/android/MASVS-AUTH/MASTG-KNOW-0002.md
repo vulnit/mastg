@@ -104,7 +104,7 @@ if (mode == Cipher.ENCRYPT_MODE) {
     cipher.init(mode, keyspec);
 ```
 
-Keep in mind, a new key cannot be used immediately - it has to be authenticated through the `FingerprintManager` first. This involves wrapping the `Cipher` object into `FingerprintManager.CryptoObject` which is passed to `FingerprintManager.authenticate` before it will be recognized.
+Keep in mind, a new key can't be used immediately - it has to be authenticated through the `FingerprintManager` first. This involves wrapping the `Cipher` object into `FingerprintManager.CryptoObject` which is passed to `FingerprintManager.authenticate` before it will be recognized.
 
 ```java
 cryptoObject = new FingerprintManager.CryptoObject(cipher);

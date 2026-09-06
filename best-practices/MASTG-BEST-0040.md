@@ -22,7 +22,7 @@ These mechanisms prevent overlays from appearing or block touch events when over
 
 ## Detection Mechanisms
 
-These mechanisms detect when overlays are present but do not automatically prevent them. They allow the app to respond accordingly:
+These mechanisms detect when overlays are present but don't automatically prevent them. They allow the app to respond accordingly:
 
 - **Check motion event flags** such as [`FLAG_WINDOW_IS_OBSCURED`](https://developer.android.com/reference/android/view/MotionEvent#FLAG_WINDOW_IS_OBSCURED) (API level 9+) or [`FLAG_WINDOW_IS_PARTIALLY_OBSCURED`](https://developer.android.com/reference/android/view/MotionEvent#FLAG_WINDOW_IS_PARTIALLY_OBSCURED) (API level 29+) in touch event handlers to detect obscured windows and respond appropriately. Note that this approach requires custom implementation to decide how to handle detected overlays.
 
@@ -36,8 +36,8 @@ Apply these protections selectively to security-sensitive UI elements where user
 
 ## Caveats and Considerations
 
-- Touch filtering is not a complete solution on older Android versions that have system-level vulnerabilities. Apps should target modern API levels when possible.
-- Some attacks, particularly those exploiting system-level vulnerabilities (for example, Toast Overlay on Android versions before 8.0), cannot be fully mitigated at the app level.
+- Touch filtering isn't a complete solution on older Android versions that have system-level vulnerabilities. Apps should target modern API levels when possible.
+- Some attacks, particularly those exploiting system-level vulnerabilities (for example, Toast Overlay on Android versions before 8.0), can't be fully mitigated at the app level.
 - Applying touch filtering too broadly may impact legitimate use cases where overlays are expected (for example, system dialogs, accessibility features).
 - Users can still be tricked through social engineering even with touch filtering enabled. Apps should combine these protections with user education and clear UI indicators.
 - For maximum protection, apps targeting older API levels should consider upgrading their `targetSdkVersion` to benefit from platform-level protections introduced in newer Android versions.

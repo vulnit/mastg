@@ -25,7 +25,7 @@ SecretKey secretKey = keyGenerator.generateKey();
 
 The `KeyGenParameterSpec` indicates that the key can be used for encryption and decryption, but not for other purposes, such as signing or verifying. It further specifies the block mode (CBC), padding (PKCS #7), and explicitly specifies that randomized encryption is required (this is the default). Next, we enter `AndroidKeyStore` as the name of the provider in the `KeyGenerator.getInstance` call to ensure that the keys are stored in the Android KeyStore.
 
-GCM is an AES mode that provides [authenticated encryption](https://en.wikipedia.org/wiki/Authenticated_encryption "Authenticated encryption"), enhancing security by integrating encryption and data authentication into a single process, unlike older modes such as CBC that require separate mechanisms such as HMACs. In addition, GCM does not require padding, which simplifies implementation and minimizes vulnerabilities.
+GCM is an AES mode that provides [authenticated encryption](https://en.wikipedia.org/wiki/Authenticated_encryption "Authenticated encryption"), enhancing security by integrating encryption and data authentication into a single process, unlike older modes such as CBC that require separate mechanisms such as HMACs. In addition, GCM doesn't require padding, which simplifies implementation and minimizes vulnerabilities.
 
 Attempting to use the generated key in violation of the above spec would result in a security exception.
 
@@ -48,7 +48,7 @@ byte[] iv = cipher.getIV();
 // save both the IV and the encryptedBytes
 ```
 
-Both the IV (initialization vector) and the encrypted bytes need to be stored; otherwise decryption is not possible.
+Both the IV (initialization vector) and the encrypted bytes need to be stored; otherwise decryption isn't possible.
 
 Here's how that cipher text would be decrypted. The `input` is the encrypted byte array and `iv` is the initialization vector from the encryption step:
 
@@ -66,7 +66,7 @@ byte[] result = cipher.doFinal(input);
 
 Since the IV is randomly generated each time, it should be saved along with the cipher text (`encryptedBytes`) in order to decrypt it later.
 
-Prior to Android 6.0 (API level 23), AES key generation was not supported. As a result, many implementations chose to use RSA and generated a public-private key pair for asymmetric encryption using `KeyPairGeneratorSpec` or used `SecureRandom` to generate AES keys.
+Prior to Android 6.0 (API level 23), AES key generation wasn't supported. As a result, many implementations chose to use RSA and generated a public-private key pair for asymmetric encryption using `KeyPairGeneratorSpec` or used `SecureRandom` to generate AES keys.
 
 Here's an example of `KeyPairGenerator` and `KeyPairGeneratorSpec` used to create the RSA key pair:
 
@@ -91,7 +91,7 @@ keyPairGenerator.initialize(keyPairGeneratorSpec);
 KeyPair keyPair = keyPairGenerator.generateKeyPair();
 ```
 
-This sample creates the RSA key pair with a key size of 4096-bit (i.e. modulus size). Elliptic Curve (EC) keys can also be generated in a similar way. However as of Android 11 (API level 30), [AndroidKeyStore does not support encryption or decryption with EC keys](https://developer.android.com/guide/topics/security/cryptography#SupportedCipher). They can only be used for signatures.
+This sample creates the RSA key pair with a key size of 4096-bit (i.e. modulus size). Elliptic Curve (EC) keys can also be generated in a similar way. However as of Android 11 (API level 30), [AndroidKeyStore doesn't support encryption or decryption with EC keys](https://developer.android.com/guide/topics/security/cryptography#SupportedCipher). They can only be used for signatures.
 
 A symmetric encryption key can be generated from the passphrase by using the Password Based Key Derivation Function version 2 (PBKDF2). This cryptographic protocol is designed to generate cryptographic keys, which can be used for cryptography purpose. Input parameters for the algorithm are adjusted according to [improper key generation function](../../../Document/0x04g-Testing-Cryptography.md#improper-key-derivation-functions) section. The code listing below illustrates how to generate a strong encryption key based on a password.
 
@@ -118,4 +118,4 @@ The above method requires a character array containing the password and the need
     If you take a rooted device or a patched (e.g. repackaged) application into account as a threat to the data, it might be better to encrypt the salt with a key that is placed in the `AndroidKeystore`. The Password-Based Encryption (PBE) key is generated using the recommended `PBKDF2WithHmacSHA1` algorithm until Android 8.0 (API level 26). For higher API levels, it is best to use `PBKDF2withHmacSHA256`, which yields a longer hash value.
 
 !!! note
-    There is a widespread false belief that the NDK should be used to hide cryptographic operations and hardcoded keys. However, this mechanism is ineffective. Attackers can still use tools to identify the mechanism in use and dump the key from memory. Next, the control flow can be analyzed with e.g. radare2, and the keys extracted with Frida or in combination with both: @MASTG-TOOL-0036 (see @MASTG-TECH-0018 and @MASTG-TECH-0044 for more details). From Android 7.0 (API level 24) onward, it is not allowed to use private APIs. Instead, public APIs need to be called, which further impacts the effectiveness of hiding it away as described in the [Android Developers Blog](https://android-developers.googleblog.com/2016/06/android-changes-for-ndk-developers.html "Android changes for NDK developers")
+    There is a widespread false belief that the NDK should be used to hide cryptographic operations and hardcoded keys. However, this mechanism is ineffective. Attackers can still use tools to identify the mechanism in use and dump the key from memory. Next, the control flow can be analyzed with e.g. radare2, and the keys extracted with Frida or in combination with both: @MASTG-TOOL-0036 (see @MASTG-TECH-0018 and @MASTG-TECH-0044 for more details). From Android 7.0 (API level 24) onward, it isn't allowed to use private APIs. Instead, public APIs need to be called, which further impacts the effectiveness of hiding it away as described in the [Android Developers Blog](https://android-developers.googleblog.com/2016/06/android-changes-for-ndk-developers.html "Android changes for NDK developers")

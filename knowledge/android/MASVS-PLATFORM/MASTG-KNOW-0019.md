@@ -27,9 +27,9 @@ In order to solve the deep link collision issue, Android 6.0 (API Level 23) intr
 
 There are some key differences from unverified deep links:
 
-- App Links only use `http://` and `https://` schemes, any other custom URL schemes are not allowed.
+- App Links only use `http://` and `https://` schemes, any other custom URL schemes aren't allowed.
 - App Links require a live domain to serve a [Digital Asset Links file](https://developers.google.com/digital-asset-links/v1/getting-started "Digital Asset Link") via HTTPS.
-- App Links do not suffer from deep link collision since they don't show a disambiguation dialog when a user opens them.
+- App Links don't suffer from deep link collision since they don't show a disambiguation dialog when a user opens them.
 
 ## Declaring Deep Links
 

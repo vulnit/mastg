@@ -56,4 +56,4 @@ For the `getActivity()` instance, the base intent uses `Intent.ACTION_VIEW` with
 
 For the `getService()` instance, `FLAG_MUTABLE` is explicitly specified. If an attacker obtains a reference to the `PendingIntent`, mutable intent fields such as extras, actions, or data URIs may be modified before the intent is delivered to the target service.
 
-For the `getBroadcast()` instance, the broadcast uses an implicit action and does not specify `FLAG_IMMUTABLE`. An attacker-controlled application could register a receiver for the same action and potentially receive or influence the broadcast when the `PendingIntent` is sent.
+For the `getBroadcast()` instance, the broadcast uses an implicit action and doesn't specify `FLAG_IMMUTABLE`. An attacker-controlled application could register a receiver for the same action and potentially receive or influence the broadcast when the `PendingIntent` is sent.

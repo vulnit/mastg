@@ -22,7 +22,7 @@ if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 
 **Note:** Disabling WebView debugging this way helps protect an app already running on a device. For an attacker to exploit WebView debugging, they must have physical access to the device (e.g., a stolen or test device) or remote access through malware or other malicious means. Additionally, the device must typically be unlocked, and the attacker would need to know the device PIN, password, or biometric authentication to gain full control and connect debugging tools like @MASTG-TOOL-0004 or Chrome DevTools.
 
-However, disabling WebView debugging does not eliminate all attack vectors. An attacker could:
+However, disabling WebView debugging doesn't eliminate all attack vectors. An attacker could:
 
 1. Patch the app to add calls to these APIs (see @MASTG-TECH-0038), then repackage and re-sign it (see @MASTG-TECH-0039).
 2. Use runtime method hooking (see @MASTG-TECH-0043) to enable WebView debugging dynamically at runtime.

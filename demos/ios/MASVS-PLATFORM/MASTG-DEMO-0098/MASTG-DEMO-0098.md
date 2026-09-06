@@ -25,7 +25,7 @@ Using KVC, `allowFileAccessFromFileURLs` is set to `true` and `allowUniversalAcc
 - `XMLHttpRequest` to `../other/other.html`: reads a file from the sibling `other/` directory.
 - `<iframe src="../other/other.html">`: embeds the sibling file directly.
 
-The `allowingReadAccessTo: demoRoot` choice is intentional: it shows that simply setting `allowFileAccessFromFileURLs = true` is not enough for JavaScript to reach any local `file://` URL via `fetch` or XHR. The `allowingReadAccessTo` parameter is not the target of this demo but it's required to demonstrate the impact in terms of the sandbox boundary. If the WebView were loaded with `allowingReadAccessTo: indexURL` instead, then JavaScript would only be able to read `index.html` and not `api-key.txt`, even with `allowFileAccessFromFileURLs = true`.
+The `allowingReadAccessTo: demoRoot` choice is intentional: it shows that simply setting `allowFileAccessFromFileURLs = true` isn't enough for JavaScript to reach any local `file://` URL via `fetch` or XHR. The `allowingReadAccessTo` parameter isn't the target of this demo but it's required to demonstrate the impact in terms of the sandbox boundary. If the WebView were loaded with `allowingReadAccessTo: indexURL` instead, then JavaScript would only be able to read `index.html` and not `api-key.txt`, even with `allowFileAccessFromFileURLs = true`.
 
 The app logs would show:
 

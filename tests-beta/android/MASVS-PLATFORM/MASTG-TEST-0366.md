@@ -11,7 +11,7 @@ knowledge: [MASTG-KNOW-0134, MASTG-KNOW-0017, MASTG-KNOW-0020]
 
 ## Overview
 
-If an exported receiver does not define [`android:permission`](https://developer.android.com/guide/topics/manifest/receiver-element#prmsn) with a proper protection level and performs or grants access to sensitive functionality, another third-party app outside the intended trust boundary can send a broadcast to it and invoke that functionality. See @MASTG-KNOW-0134 for details on broadcast receivers, @MASTG-KNOW-0017 for permissions and protection levels, and @MASTG-KNOW-0020 for the IPC model of Android.
+If an exported receiver doesn't define [`android:permission`](https://developer.android.com/guide/topics/manifest/receiver-element#prmsn) with a proper protection level and performs or grants access to sensitive functionality, another third-party app outside the intended trust boundary can send a broadcast to it and invoke that functionality. See @MASTG-KNOW-0134 for details on broadcast receivers, @MASTG-KNOW-0017 for permissions and protection levels, and @MASTG-KNOW-0020 for the IPC model of Android.
 
 This test checks whether the app exposes sensitive functionality through exported and unprotected broadcast receivers.
 
@@ -28,7 +28,7 @@ The output should contain a list of exported broadcast receivers and the relevan
 
 ## Evaluation
 
-The test case fails if any exported broadcast receiver is not protected by an appropriate `android:permission` that restricts which apps can send broadcasts to it and exposes or performs sensitive functionality, for example by performing a security-relevant action or disclosing sensitive data when it receives a broadcast.
+The test case fails if any exported broadcast receiver isn't protected by an appropriate `android:permission` that restricts which apps can send broadcasts to it and exposes or performs sensitive functionality, for example by performing a security-relevant action or disclosing sensitive data when it receives a broadcast.
 
 **Further Validation Required:**
 
@@ -41,5 +41,5 @@ Then determine whether external access to the receiver is appropriately restrict
 
 - Determine whether the receiver has a legitimate reason to accept broadcasts from third-party apps. If it doesn't, it shouldn't be exported.
 - If external access is required, determine whether the receiver is protected by an appropriate `android:permission` or an equivalent access control. Appropriate means the control matches the sensitivity of the receiver action and the set of apps that should be allowed to send broadcasts to it.
-- Verify that the permission is effective for that trust boundary, for example by using a `signature` protection level or another control that is not broadly grantable to untrusted apps.
+- Verify that the permission is effective for that trust boundary, for example by using a `signature` protection level or another control that isn't broadly grantable to untrusted apps.
 - Determine whether context-registered receivers are registered with `RECEIVER_NOT_EXPORTED` when they don't need to receive broadcasts from other apps.

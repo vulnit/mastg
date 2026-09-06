@@ -13,16 +13,16 @@ The scenario with a separate access point requires access to the configuration o
 - has a span or mirror port.
 
 **Option 2: Your host as the access point**: Your host computer itself acts as the access point, directly controlling network traffic. This can be configured in different ways:
-     - Using **your host's built-in WiFi card** as the access point while connecting to the target network via a wired connection.
-     - Using an **external USB WiFi adapter** as the access point while your built-in WiFi connects to the target network (or vice versa).
+     - Using **your host's built-in Wi-Fi card** as the access point while connecting to the target network via a wired connection.
+     - Using an **external USB Wi-Fi adapter** as the access point while your built-in Wi-Fi connects to the target network (or vice versa).
 
-First, if you're going to use an external USB WiFi card, ensure that the card has the capability to create an access point. You can verify if your WiFi card has AP capabilities by using the command `iwconfig` on Kali Linux:
+First, if you're going to use an external USB Wi-Fi card, ensure that the card has the capability to create an access point. You can verify if your Wi-Fi card has AP capabilities by using the command `iwconfig` on Kali Linux:
 
 ```bash
 iw list | grep AP
 ```
 
-In both cases the AP needs to be configured to point to your host computer's IP. Your host computer must be connected to the AP (via wired connection or WiFi) and you need to have connection to the target network (can be the same connection as to the AP). Some additional configuration may be required on your host computer to route traffic to the target network.
+In both cases the AP needs to be configured to point to your host computer's IP. Your host computer must be connected to the AP (via wired connection or Wi-Fi) and you need to have connection to the target network (can be the same connection as to the AP). Some additional configuration may be required on your host computer to route traffic to the target network.
 
 <img src="Images/Chapters/0x04f/architecture_MITM_AP.png" width="100%" />
 
@@ -30,7 +30,7 @@ In both cases the AP needs to be configured to point to your host computer's IP.
 
 The following procedure is setting up a MITM position using an access point and an additional network interface:
 
-Create a WiFi network either through a separate access point or through an external USB WiFi card or through the built-in card of your host computer.
+Create a Wi-Fi network either through a separate access point or through an external USB Wi-Fi card or through the built-in card of your host computer.
 
 This can be done by using the built-in utilities on macOS. You can use [share the internet connection on Mac with other network users](https://support.apple.com/en-ke/guide/mac-help/mchlp1540/mac "Share the internet connection on Mac with other network users").
 
@@ -51,16 +51,16 @@ apt-get install hostapd dnsmasq aircrack-ng
 
 > iptables and wpa_supplicant are installed by default on Kali Linux.
 
-In case of a separate access point, route the traffic to your host computer. In case of an external USB WiFi card or built-in WiFi card the traffic is already available on your host computer.
+In case of a separate access point, route the traffic to your host computer. In case of an external USB Wi-Fi card or built-in Wi-Fi card the traffic is already available on your host computer.
 
-Route the incoming traffic coming from the WiFi to the additional network interface where the traffic can reach the target network. Additional network interface can be wired connection or other WiFi card, depending on your setup.
+Route the incoming traffic coming from the Wi-Fi to the additional network interface where the traffic can reach the target network. Additional network interface can be wired connection or other Wi-Fi card, depending on your setup.
 
 ## Configuration
 
 We focus on the configuration files for Kali Linux. Following values need to be defined:
 
 - wlan1 - id of the AP network interface (with AP capabilities),
-- wlan0 - id of the target network interface (this can be wired interface or other WiFi card)
+- wlan0 - id of the target network interface (this can be wired interface or other Wi-Fi card)
 - 10.0.0.0/24 - IP addresses and mask of AP network
 
 The following configuration files need to be changed and adjusted accordingly:

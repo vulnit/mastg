@@ -24,11 +24,11 @@ Android Studio has a [built-in Device File Explorer](https://developer.android.c
 
 <img src="Images/Chapters/0x05b/android-studio-file-device-explorer.png" width="400px" />
 
-If you're using a rooted device, you can now start exploring the whole file system. However, when using a non-rooted device, accessing the app sandboxes won't work unless the app is debuggable, and even then, you are "jailed" within the app sandbox.
+If you're using a rooted device, you can now start exploring the whole file system. However, when using a non-rooted device, accessing the app sandboxes won't work unless the app is debuggable, and even then, you're "jailed" within the app sandbox.
 
 ## Using objection
 
-This option is useful when you are working on a specific app and want to copy files you might encounter inside its sandbox (notice that you'll only have access to the files that the target app has access to). This approach works without having to set the app as debuggable, which is otherwise required when using Android Studio's Device File Explorer.
+This option is useful when you're working on a specific app and want to copy files you might encounter inside its sandbox (notice that you'll only have access to the files that the target app has access to). This approach works without having to set the app as debuggable, which is otherwise required when using Android Studio's Device File Explorer.
 
 First, connect to the app with Objection as explained in @MASTG-TOOL-0038. Then, use `ls` and `cd` as you normally would on your terminal to explore the available files:
 
@@ -72,7 +72,7 @@ Writing bytes to destination...
 Successfully downloaded ... to sg.vp.owasp_mobile.omtg_android_preferences.xml
 ```
 
-As per objection v1.12.0, objection does support downloading folders by using the strict syntax `filesystem download <remote folder> <local destination> --folder`. However this only applies to folders and does not allow specifying multiple individual files directly.
+As per objection v1.12.0, objection does support downloading folders by using the strict syntax `filesystem download <remote folder> <local destination> --folder`. However this only applies to folders and doesn't allow specifying multiple individual files directly.
 
 ```bash
 ...[usb] # filesystem download databases dbs --folder

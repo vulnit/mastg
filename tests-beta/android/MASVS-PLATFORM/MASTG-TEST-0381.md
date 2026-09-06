@@ -51,4 +51,4 @@ The test case fails if any of the following conditions are met:
 
 - A `PendingIntent` is created without `FLAG_IMMUTABLE` when the app's `minSdkVersion` is below 31, unless there is a specific need for mutability that is properly justified and the app takes other precautions.
 - A `PendingIntent` is created with `FLAG_MUTABLE` without a valid use case requiring mutability (e.g., inline reply actions).
-- The base intent is implicit (does not specify the target component using `setClass()`, `setClassName()`, or `setComponent()`), allowing potential hijacking by malicious apps.
+- The base intent is implicit (doesn't specify the target component using `setClass()`, `setClassName()`, or `setComponent()`), allowing potential hijacking by malicious apps.

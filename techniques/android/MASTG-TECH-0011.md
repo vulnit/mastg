@@ -94,7 +94,7 @@ Each certificate can be one of the following:
 - `"system"` for the pre-installed system CA certificates
 - `"user"` for user-added CA certificates
 
-The CA certificates trusted by the app can be a system-trusted CA as well as a user CA. Usually, you will have added the certificate of your interception proxy already as an additional CA in Android. Therefore, we will focus on the "user" setting, which allows you to force the Android app to trust this certificate with the following Network Security Configuration below:
+The CA certificates trusted by the app can be a system-trusted CA as well as a user CA. Usually, you'll have added the certificate of your interception proxy already as an additional CA in Android. Therefore, we will focus on the "user" setting, which allows you to force the Android app to trust this certificate with the following Network Security Configuration below:
 
 ```xml
 <network-security-config>
@@ -206,11 +206,11 @@ By following the steps described above, you allow any application to trust the p
 
 Applications often implement security controls that make it more difficult to perform a security review of the application, such as root detection and certificate pinning. Ideally, you would acquire both a version of the application that has these controls enabled and one where the controls are disabled. This allows you to analyze the proper implementation of the controls, after which you can continue with the less-secure version for further tests.
 
-Of course, this is not always possible, and you may need to perform a black-box assessment on an application where all security controls are enabled. The section below shows you how you can circumvent certificate pinning for different applications.
+Of course, this isn't always possible, and you may need to perform a black-box assessment on an application where all security controls are enabled. The section below shows you how you can circumvent certificate pinning for different applications.
 
 ### Client Isolation in Wireless Networks
 
-Once you have set up an interception proxy and have a MITM position, you might still not be able to see anything. This might be due to restrictions in the app (see next section), but it can also be due to so-called client isolation in the Wi-Fi that you are connected to.
+Once you have set up an interception proxy and have a MITM position, you might still not be able to see anything. This might be due to restrictions in the app (see next section), but it can also be due to so-called client isolation in the Wi-Fi that you're connected to.
 
 [Wireless Client Isolation](https://documentation.meraki.com/MR/Firewall_and_Traffic_Shaping/Wireless_Client_Isolation "Wireless Client Isolation") is a security feature that prevents wireless clients from communicating with one another. This feature is useful for guest and BYOD SSIDs, adding a level of security to limit attacks and threats between devices connected to the wireless networks.
 
@@ -222,14 +222,14 @@ You can configure the proxy on your Android device to point to 127.0.0.1:8080, c
 adb reverse tcp:8080 tcp:8080
 ```
 
-Once you have done this, all proxy traffic on your Android phone will be going to port 8080 on 127.0.0.1, and it will be redirected via adb to 127.0.0.1:8080 on your host computer, and you will see the traffic in your Burp. With this trick, you are able to test and intercept traffic also in Wi-Fis networks that have client isolation.
+Once you have done this, all proxy traffic on your Android phone will be going to port 8080 on 127.0.0.1, and it will be redirected via adb to 127.0.0.1:8080 on your host computer, and you'll see the traffic in your Burp. With this trick, you're able to test and intercept traffic also in Wi-Fis networks that have client isolation.
 
 ### Non-Proxy Aware Apps
 
 Even after setting up an interception proxy and achieving a MITM position, you may still not be able to see any HTTP requests. This is mainly for the following reasons:
 
-- The app uses a cross-platform framework that does not use the Android OS proxy settings.
-- The app you are testing may also be verifying whether a proxy is set and not allowing any communication.
+- The app uses a cross-platform framework that doesn't use the Android OS proxy settings.
+- The app you're testing may also be verifying whether a proxy is set and not allowing any communication.
 
 In both scenarios, additional steps are required to view the traffic. The sections below describe two solutions: `bettercap` and `iptables`.
 
@@ -291,7 +291,7 @@ bettercap v2.22 (built for darwin amd64 with go1.12.1) [type 'help' for a list o
 
 ### Proxy Detection
 
-Some mobile apps are trying to detect if a proxy is set. If that's the case, they will assume that this is malicious and will not work properly.
+Some mobile apps are trying to detect if a proxy is set. If that's the case, they will assume that this is malicious and won't work properly.
 
 In order to bypass such a protection mechanism, you could either set up bettercap or configure iptables so that you don't need a proxy setup on your Android phone. A third option we didn't mention before, and that is applicable in this scenario, is using Frida. It is possible on Android to detect if a system proxy is set by querying the [`ProxyInfo`](https://developer.android.com/reference/android/net/ProxyInfo "ProxyInfo") class and checking the getHost() and getPort() methods. There might be various other methods to achieve the same task, and you would need to decompile the APK in order to identify the actual class and method name.
 

@@ -53,4 +53,4 @@ Using the backtraces from the hook output, inspect the code locations using @MAS
 For the identified WebViews, determine whether attacker-controlled JavaScript could execute in the local file context, for example through HTML injection, JavaScript injection, or other untrusted content. Also determine whether the attacker could exfiltrate local files or other sensitive data accessible via `file://` URLs.
 
 !!! note
-    `AllowFileAccess` being `true` does not represent a security vulnerability by itself, but it can be used in combination with other vulnerabilities to escalate the impact of an attack.
+    `AllowFileAccess` being `true` doesn't represent a security vulnerability by itself, but it can be used in combination with other vulnerabilities to escalate the impact of an attack.

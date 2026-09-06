@@ -27,7 +27,7 @@ The steps below work for both a regular Apple account and an Apple Developer acc
 
 ## Creating a signing identity
 
-Install @MASTG-TOOL-0070 and create a new iOS application with any language and configuration. Configure the project for automatic signing, then deploy the application to your iOS device. During this flow, you will need to accept the Developer certificate on the device and enable Developer mode.
+Install @MASTG-TOOL-0070 and create a new iOS application with any language and configuration. Configure the project for automatic signing, then deploy the application to your iOS device. During this flow, you'll need to accept the Developer certificate on the device and enable Developer mode.
 
 After these steps, you can use the @MASTG-TOOL-0063 command to list your signing identities:
 

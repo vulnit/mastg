@@ -56,7 +56,7 @@ This is the current method for handling incoming URLs. The `options` dictionary 
 | `UIApplication.OpenURLOptionsKey.annotation` | Property-list value supplied by the originating app (optional). |
 | `UIApplication.OpenURLOptionsKey.openInPlace` | Boolean indicating whether the URL refers to a file that should be opened in place. |
 
-The `sourceApplication` key provides the caller's bundle identifier. It is populated by UIKit when the caller used `openURL:options:completionHandler:`. It may be `nil` when the URL is opened by the system (for example, from a web browser or a universal link redirect) or when the originating app did not supply an identifier. See [application(_:open:options:)](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623112-application) in the Apple developer documentation.
+The `sourceApplication` key provides the caller's bundle identifier. It is populated by UIKit when the caller used `openURL:options:completionHandler:`. It may be `nil` when the URL is opened by the system (for example, from a web browser or a universal link redirect) or when the originating app didn't supply an identifier. See [application(_:open:options:)](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623112-application) in the Apple developer documentation.
 
 ### Deprecated Delegate Methods
 
@@ -79,7 +79,7 @@ Before opening a URL in another app, an app can call [`canOpenURL:`](https://dev
 </array>
 ```
 
-Up to 50 schemes may be declared. `canOpenURL:` returns `NO` for any scheme not listed, regardless of whether a handler app is installed. The `openURL:options:completionHandler:` method is not subject to this restriction and will attempt to open any URL.
+Up to 50 schemes may be declared. `canOpenURL:` returns `NO` for any scheme not listed, regardless of whether a handler app is installed. The `openURL:options:completionHandler:` method isn't subject to this restriction and will attempt to open any URL.
 
 ## URL Structure and Parameters
 

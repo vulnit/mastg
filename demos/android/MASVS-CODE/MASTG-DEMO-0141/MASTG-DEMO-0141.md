@@ -13,7 +13,7 @@ The following attacker app responds to the custom implicit intent `org.owasp.mas
 
 {{ MastgTest.kt # AndroidManifest.xml }}
 
-Note that this app is not inherently malicious in isolation. The vulnerability lies in the victim app trusting and using the filename returned by an external `ContentProvider` without sanitization.
+Note that this app isn't inherently malicious in isolation. The vulnerability lies in the victim app trusting and using the file name returned by an external `ContentProvider` without sanitization.
 
 ## Steps
 
@@ -37,6 +37,6 @@ The test case fails because @MASTG-DEMO-0139 accepts provider-controlled data re
 
 The output confirms that the attacker app returned a `content://` URI and supplied `../private/secret.txt` as `OpenableColumns.DISPLAY_NAME`.
 
-When the victim app receives this result, it queries the returned provider, trusts the provider-controlled filename, and uses it to build a destination `File` under its `filesDir/public/` directory. Because the filename contains `../`, the resulting path escapes the intended `public/` directory and points to `files/private/secret.txt`.
+When the victim app receives this result, it queries the returned provider, trusts the provider-controlled file name, and uses it to build a destination `File` under its `filesDir/public/` directory. Because the file name contains `../`, the resulting path escapes the intended `public/` directory and points to `files/private/secret.txt`.
 
-The attacker app therefore controls both the file content served through the returned URI and the filename metadata that drives the victim app's write location.
+The attacker app therefore controls both the file content served through the returned URI and the file name metadata that drives the victim app's write location.

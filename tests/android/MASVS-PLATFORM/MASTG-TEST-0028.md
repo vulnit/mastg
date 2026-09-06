@@ -23,7 +23,7 @@ Any existing [deep links](../../../Document/0x05h-Testing-Platform-Interaction.m
 
 All deep links must be enumerated and verified for correct website association. The actions they perform must be well tested, especially all input data, which should be deemed untrustworthy and thus should always be validated.
 
-None of the input from these sources can be trusted; it must be validated and/or sanitized. Validation ensures processing of data that the app is expecting only. If validation is not enforced, any input can be sent to the app, which may allow an attacker or malicious app to exploit app functionality.
+None of the input from these sources can be trusted; it must be validated and/or sanitized. Validation ensures processing of data that the app is expecting only. If validation isn't enforced, any input can be sent to the app, which may allow an attacker or malicious app to exploit app functionality.
 
 ## Static Analysis
 
@@ -144,7 +144,7 @@ com.example.package:
 
 #### Manual Verification
 
-This section details a few, of potentially many, reasons why the verification process failed or was not actually triggered. See more information in the [Android Developers Documentation](https://developer.android.com/training/app-links/verify-android-applinks#fix-errors) and in the white paper ["Measuring the Insecurity of Mobile Deep Links of Android"](https://people.cs.vt.edu/gangwang/deep17.pdf).
+This section details a few, of potentially many, reasons why the verification process failed or wasn't actually triggered. See more information in the [Android Developers Documentation](https://developer.android.com/training/app-links/verify-android-applinks#fix-errors) and in the white paper ["Measuring the Insecurity of Mobile Deep Links of Android"](https://people.cs.vt.edu/gangwang/deep17.pdf).
 
 **Check the [Digital Asset Links file](https://developers.google.com/digital-asset-links/v1/getting-started "Digital Asset Link"):**
 
@@ -240,7 +240,7 @@ In addition, we recommend to search and read public reports (search term: `"deep
 
 ## Dynamic Analysis
 
-Here you will use the list of deep links from the static analysis to iterate and determine each handler method and the processed data, if any. You will first start a @MASTG-TOOL-0031 hook and then begin invoking the deep links.
+Here you'll use the list of deep links from the static analysis to iterate and determine each handler method and the processed data, if any. You'll first start a @MASTG-TOOL-0031 hook and then begin invoking the deep links.
 
 The following example assumes a target app that accepts this deep link: `deeplinkdemo://load.html`. However, we don't know the corresponding handler method yet, nor the parameters it potentially accepts.
 

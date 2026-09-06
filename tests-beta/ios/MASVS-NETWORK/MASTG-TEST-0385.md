@@ -29,13 +29,13 @@ This test checks whether the app configures `NSPinnedDomains` for relevant first
 
 ## Observation
 
-The output should contain the ATS configuration, if present, including whether `NSPinnedDomains` is defined with one or more pinned domains and their associated public key hashes. The output should also identify any relevant first-party domains that were found in the app but are not listed under `NSPinnedDomains`.
+The output should contain the ATS configuration, if present, including whether `NSPinnedDomains` is defined with one or more pinned domains and their associated public key hashes. The output should also identify any relevant first-party domains that were found in the app but aren't listed under `NSPinnedDomains`.
 
 ## Evaluation
 
-The test case fails if the app uses URL Loading System connections to relevant first-party domains, but the app's `Info.plist` does not contain an `NSAppTransportSecurity` dictionary with a `NSPinnedDomains` key, or if `NSPinnedDomains` is defined but does not include entries for those domains.
+The test case fails if the app uses URL Loading System connections to relevant first-party domains, but the app's `Info.plist` doesn't contain an `NSAppTransportSecurity` dictionary with a `NSPinnedDomains` key, or if `NSPinnedDomains` is defined but doesn't include entries for those domains.
 
-The test case should not fail only because unrelated third-party domains are not pinned.
+The test case should not fail only because unrelated third-party domains aren't pinned.
 
 If another certificate pinning implementation is identified for the same domains, such as custom server trust evaluation, the result should be treated as not covered by ATS pinning rather than as a confirmed absence of certificate pinning.
 
@@ -46,4 +46,4 @@ Before reporting a missing pin, confirm that the app actually establishes URL Lo
 - Statically, follow the data references from the hardcoded URLs to the code that initiates the network connections (@MASTG-TECH-0076).
 - Dynamically, capture and analyze the network traffic (@MASTG-TECH-0063) or hook the relevant network APIs at runtime to log the domains the app connects to.
 
-Determining which domains are first-party and security-relevant typically requires information that is not present in the app binary and may require contact with the developers.
+Determining which domains are first-party and security-relevant typically requires information that isn't present in the app binary and may require contact with the developers.

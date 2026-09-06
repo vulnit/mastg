@@ -13,7 +13,7 @@ knowledge: [MASTG-KNOW-0076]
 
 ## Overview
 
-In this test, we look for references to `UIWebView` (@MASTG-KNOW-0076), a deprecated component since iOS 12.0, in favor of `WKWebView`. `UIWebView` presents security and performance risks: it does not allow JavaScript to be fully disabled, lacks process isolation (which `WKWebView` provides), and doesn't support modern web security features like Content Security Policy (CSP).
+In this test, we look for references to `UIWebView` (@MASTG-KNOW-0076), a deprecated component since iOS 12.0, in favor of `WKWebView`. `UIWebView` presents security and performance risks: it doesn't allow JavaScript to be fully disabled, lacks process isolation (which `WKWebView` provides), and doesn't support modern web security features like Content Security Policy (CSP).
 
 ## Steps
 

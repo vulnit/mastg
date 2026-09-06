@@ -33,5 +33,5 @@ The test case fails if one or more content providers are exported (`android:expo
 
 Inspect the permission configuration of each reported provider to determine whether the enforced permission provides adequate protection:
 
-- Determine whether the declared permission uses `android:protectionLevel="normal"` or `android:protectionLevel="dangerous"`, which does not guarantee that only trusted apps can access the provider.
+- Determine whether the declared permission uses `android:protectionLevel="normal"` or `android:protectionLevel="dangerous"`, which doesn't guarantee that only trusted apps can access the provider.
 - Determine whether the data exposed through the provider is sensitive.

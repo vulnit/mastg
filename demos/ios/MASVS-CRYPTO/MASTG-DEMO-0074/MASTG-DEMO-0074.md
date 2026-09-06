@@ -35,4 +35,4 @@ This output contains both insecure and secure APIs. For this test case the inter
 
 The test fails because insecure PRNGs are used in a security relevant context. See the evaluation section in @MASTG-DEMO-0073 for more details.
 
-The same output also shows calls to secure sources such as `SecRandomCopyBytes`, `CCRandomGenerateBytes`, `SystemRandomNumberGenerator`, and the Swift standard library's `FixedWidthInteger.random` implementation. These are present in the sample for contrast, but they are not the reason the test fails.
+The same output also shows calls to secure sources such as `SecRandomCopyBytes`, `CCRandomGenerateBytes`, `SystemRandomNumberGenerator`, and the Swift standard library's `FixedWidthInteger.random` implementation. These are present in the sample for contrast, but they aren't the reason the test fails.

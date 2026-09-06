@@ -18,7 +18,7 @@ Combine multiple signal types from @MASTG-KNOW-0085 instead of depending on one 
 - Use process-state checks such as Apple's archived [`sysctl` debugger detection example](https://developer.apple.com/library/archive/qa/qa1361/_index.html "Detecting the Debugger") as one reactive signal.
 - Add parent-process or Mach exception port checks where they fit the app's threat model.
 
-Validate the implementation against the app's distribution requirements. Some low-level APIs used by anti-debugging implementations are not part of the public iOS SDK, and apps distributed through the App Store must comply with Apple's public API and review requirements.
+Validate the implementation against the app's distribution requirements. Some low-level APIs used by anti-debugging implementations aren't part of the public iOS SDK, and apps distributed through the App Store must comply with Apple's public API and review requirements.
 
 ## Check Sensitive Flows
 

@@ -61,7 +61,7 @@ All the features are enabled in these examples:
 - ARC (Automatic Reference Counting): indicated by symbols such as `objc_autorelease` or `objc_retainAutorelease`.
     - Important for binaries containing Objective-C code.
     - For binaries written purely in Swift, ARC is enabled by default.
-    - ARC is not relevant for binaries written purely in C/C++, as it's a memory management feature specific to Objective-C and Swift.
+    - ARC isn't relevant for binaries written purely in C/C++, as it's a memory management feature specific to Objective-C and Swift.
 
 ## Dynamic Analysis
 

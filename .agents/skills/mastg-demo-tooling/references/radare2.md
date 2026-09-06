@@ -3,8 +3,8 @@ This guide defines how to write and use radare2 scripts in MASTG demos. Scripts 
 ## Scope and terminology
 
 - "r2 scripts" refers to radare2 command files executed with `-i <file>`.
-- The repo uses `.r2` as the primary extension (for example, `cchash.r2`); variations like `.jr2` are not used in this repository.
-- Tools background lives under @MASTG-TOOL-0073 (radare2) and @MASTG-TOOL-0129 (rabin2). Do not duplicate setup or installation steps—link to Tools pages.
+- The repo uses `.r2` as the primary extension (for example, `cchash.r2`); variations like `.jr2` aren't used in this repository.
+- Tools background lives under @MASTG-TOOL-0073 (radare2) and @MASTG-TOOL-0129 (rabin2). Don't duplicate setup or installation steps—link to Tools pages.
 
 ## Location and naming
 
@@ -75,7 +75,7 @@ pd-- 5 @ 0x10000456c
 
 ## Safety and troubleshooting
 
-- If a symbol or address is not present across versions, add a preceding discovery block to compute it:
+- If a symbol or address isn't present across versions, add a preceding discovery block to compute it:
     - Example: `afl~CC_MD5[0]` to list and then `s <addr>` before `pd`.
 - For fat binaries or stripped symbols:
     - Specify arch with `-a`/`-b` or `-n` as needed.
@@ -84,5 +84,5 @@ pd-- 5 @ 0x10000456c
 
 ## Alignment with Tools
 
-- Installation and deeper usage guides are in Tools: @MASTG-TOOL-0073 (radare2), @MASTG-TOOL-0129 (rabin2), and related entries. Do not duplicate installation or environment requirements in demos.
+- Installation and deeper usage guides are in Tools: @MASTG-TOOL-0073 (radare2), @MASTG-TOOL-0129 (rabin2), and related entries. Don't duplicate installation or environment requirements in demos.
 - When relevant, mention GUI options like Iaito @MASTG-TOOL-0098 for interactive exploration, but keep demo scripts CLI-focused and reproducible.

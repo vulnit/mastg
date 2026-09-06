@@ -41,7 +41,7 @@ The system provides a set of built-in activity types defined in [`UIActivity.Act
 - `markupAsPDF`
 - `print`
 
-Several legacy social activity types should no longer be relied on on modern iOS. The types `postToFacebook`, `postToTwitter`, `postToWeibo`, `postToVimeo`, `postToFlickr`, and `postToTencentWeibo` were tied to the older system level Social framework and account integration. The relevant service constants in `<Social/SLServiceTypes.h>` were [deprecated in the iOS 11 SDK](https://developer.apple.com/forums/thread/93415), and iOS 11 removed the Settings level social account integration. As a result, these legacy built in social activities generally do not appear as system provided sharing destinations on modern iOS. Social sharing today is usually exposed through share extensions supplied by installed apps, and those extensions use their own activity types rather than the old `UIActivity.ActivityType.postTo...` constants.
+Several legacy social activity types should no longer be relied on on modern iOS. The types `postToFacebook`, `postToTwitter`, `postToWeibo`, `postToVimeo`, `postToFlickr`, and `postToTencentWeibo` were tied to the older system level Social framework and account integration. The relevant service constants in `<Social/SLServiceTypes.h>` were [deprecated in the iOS 11 SDK](https://developer.apple.com/forums/thread/93415), and iOS 11 removed the Settings level social account integration. As a result, these legacy built in social activities generally don't appear as system provided sharing destinations on modern iOS. Social sharing today is usually exposed through share extensions supplied by installed apps, and those extensions use their own activity types rather than the old `UIActivity.ActivityType.postTo...` constants.
 
 ## Excluding Activity Types
 
@@ -55,14 +55,14 @@ activityVC.excludedActivityTypes = [
 ]
 ```
 
-If `excludedActivityTypes` is not set or is `nil`, all available activity types are presented.
+If `excludedActivityTypes` isn't set or is `nil`, all available activity types are presented.
 
 This control has important limitations and is **not a security boundary**:
 
-- It only affects the **built-in** system activity types listed in `UIActivity.ActivityType`. As [confirmed by an Apple Frameworks Engineer](https://developer.apple.com/forums/thread/689062), apps "are not allowed to exclude extension activities that come from other apps" — so third-party share extensions (for example, third-party messengers or cloud-storage apps), which are the dominant sharing channels on modern iOS, cannot be excluded.
-- The built-in set can grow between iOS releases, and newly introduced types are not excluded automatically, so an exclusion list is never exhaustive.
+- It only affects the **built-in** system activity types listed in `UIActivity.ActivityType`. As [confirmed by an Apple Frameworks Engineer](https://developer.apple.com/forums/thread/689062), apps "aren't allowed to exclude extension activities that come from other apps" — so third-party share extensions (for example, third-party messengers or cloud-storage apps), which are the dominant sharing channels on modern iOS, can't be excluded.
+- The built-in set can grow between iOS releases, and newly introduced types aren't excluded automatically, so an exclusion list is never exhaustive.
 
-In practice, `excludedActivityTypes` is useful for hiding destinations that make no sense for a given item (for example, hiding "Save to Camera Roll" for a text document), not for protecting sensitive data. When an app presents a Share Sheet, the user deliberately chooses where the data goes, and the most common destinations (third-party share extensions) cannot be excluded at all. Deciding whether to share a given item at all is therefore a user-consent concern rather than something the app can technically enforce through this API.
+In practice, `excludedActivityTypes` is useful for hiding destinations that make no sense for a given item (for example, hiding "Save to Camera Roll" for a text document), not for protecting sensitive data. When an app presents a Share Sheet, the user deliberately chooses where the data goes, and the most common destinations (third-party share extensions) can't be excluded at all. Deciding whether to share a given item at all is therefore a user-consent concern rather than something the app can technically enforce through this API.
 
 ## Receiving Items
 
@@ -71,7 +71,7 @@ Apps can also be on the receiving end of the Share Sheet and of inter-app file s
 The relevant declarations live in the app's `Info.plist`:
 
 - **`UTExportedTypeDeclarations` / `UTImportedTypeDeclarations`**: declare custom [Uniform Type Identifiers (UTIs)](https://developer.apple.com/library/archive/documentation/Miscellaneous/Reference/UTIRef/Articles/System-DeclaredUniformTypeIdentifiers.html "System-Declared Uniform Type Identifiers") that the app exports or imports.
-- **`CFBundleDocumentTypes`**: declares which document types the app can open. Each entry consists of a name and one or more UTIs representing the data type (for example, `public.png` for PNG files). iOS uses this to determine whether the app is eligible to open a given document — declaring UTIs alone via `UTExportedTypeDeclarations` / `UTImportedTypeDeclarations` is not sufficient.
+- **`CFBundleDocumentTypes`**: declares which document types the app can open. Each entry consists of a name and one or more UTIs representing the data type (for example, `public.png` for PNG files). iOS uses this to determine whether the app is eligible to open a given document — declaring UTIs alone via `UTExportedTypeDeclarations` / `UTImportedTypeDeclarations` isn't sufficient.
 
 When another app or the system hands a file to the app, iOS delivers it via:
 

@@ -11,7 +11,7 @@ If you encounter either of the following files during static analysis, hermes-de
 - index.android.bundle
 - main.jsbundle
 
-Use `file` to check the type and confirm you are dealing with actual Hermes bytecode:
+Use `file` to check the type and confirm you're dealing with actual Hermes bytecode:
 
 ```bash
 $ file main.jsbundle
@@ -25,4 +25,4 @@ $ file main.jsbundle
 main.jsbundle: Unicode text, UTF-8 text
 ```
 
-You can try using hermes-dec in situations where you are doing static analysis on a React Native mobile app, and [react-native-decompiler](https://github.com/numandev1/react-native-decompiler) fails.
+You can try using hermes-dec in situations where you're doing static analysis on a React Native mobile app, and [react-native-decompiler](https://github.com/numandev1/react-native-decompiler) fails.

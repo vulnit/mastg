@@ -2,7 +2,7 @@
 
 ## Overview
 
-**IMPORTANT DISCLAIMER:** The MASTG is not a legal handbook and it will not go into the specifics of the GDPR or other possibly relevant legislation here. Instead, this chapter will introduce you to the topics related to user privacy protection, provide you with essential references for your own research efforts, and give you tests or guidelines that determine whether an app adheres to the privacy-related requirements listed in the OWASP MASVS.
+**IMPORTANT DISCLAIMER:** The MASTG isn't a legal handbook and it won't go into the specifics of the GDPR or other possibly relevant legislation here. Instead, this chapter will introduce you to the topics related to user privacy protection, provide you with essential references for your own research efforts, and give you tests or guidelines that determine whether an app adheres to the privacy-related requirements listed in the OWASP MASVS.
 
 ### The Main Problem
 
@@ -42,11 +42,11 @@ Like the classic triad of security protection goals: confidentiality, integrity,
 
 > For more details, see Section 5.1.1 "Introduction to data protection goals" in ENISA's ["Privacy and data protection in mobile applications"](https://www.enisa.europa.eu/publications/privacy-and-data-protection-in-mobile-applications "ENISA - Privacy and data protection in mobile applications").
 
-Since it is very challenging (if not impossible in many cases) to address both security and privacy protection goals at the same time, it is worth examining an visualization in IEEE's publication [Protection Goals for Privacy Engineering](https://ieeexplore.ieee.org/document/7163220) called ["The Three Axes"](https://ieeexplore.ieee.org/document/7163220#sec2e) which helps us understand why we cannot reach 100% of each of all six goals simultaneously.
+Since it is very challenging (if not impossible in many cases) to address both security and privacy protection goals at the same time, it is worth examining an visualization in IEEE's publication [Protection Goals for Privacy Engineering](https://ieeexplore.ieee.org/document/7163220) called ["The Three Axes"](https://ieeexplore.ieee.org/document/7163220#sec2e) which helps us understand why we can't reach 100% of each of all six goals simultaneously.
 
-Though a privacy policy traditionally protects most of the these processes, that approach is not always optimal because:
+Though a privacy policy traditionally protects most of the these processes, that approach isn't always optimal because:
 
-- Developers are not legal experts but still need to be compliant with legislation.
+- Developers aren't legal experts but still need to be compliant with legislation.
 - Users almost always have to read long and wordy policies.
 
 ### The New Approach (Google and Apple)
@@ -68,7 +68,7 @@ As part of the process to provide more transparency into the app's security arch
 
 > If you are a developer and would like to participate, complete the [Independent Security Review form](https://docs.google.com/forms/d/e/1FAIpQLSdBl_eCNcUeUVDiB2duiJLZ5s4AV5AhDVuOz_1u8S9qhcXF5g/viewform "Google Play - Independent Security Review form").
 
-Of course the testing is limited and it does not guarantee complete safety of the application. The independent review may not be scoped to verify the accuracy and completeness of a developer's Data Safety declarations, and developers remain solely responsible for making complete and accurate declarations in their app's Play Store listing.
+Of course the testing is limited and it doesn't guarantee complete safety of the application. The independent review may not be scoped to verify the accuracy and completeness of a developer's Data Safety declarations, and developers remain solely responsible for making complete and accurate declarations in their app's Play Store listing.
 
 ### References
 
@@ -84,12 +84,12 @@ You can learn more about this and other privacy related topics here:
 
 ## Testing for Privacy in Mobile Apps
 
-Security testers should be aware of Google Play's list of [common privacy violations](https://support.google.com/googleplay/android-developer/answer/10144311?hl=en-GB#1&2&3&4&5&6&7&87&9&zippy=%2Cexamples-of-common-violations) though it is not exhaustive. Some of the examples are below:
+Security testers should be aware of Google Play's list of [common privacy violations](https://support.google.com/googleplay/android-developer/answer/10144311?hl=en-GB#1&2&3&4&5&6&7&87&9&zippy=%2Cexamples-of-common-violations) though it isn't exhaustive. Some of the examples are below:
 
 - Example 1: An app that accesses a user's inventory of installed apps and doesn't treat this data as personal or sensitive data by sending it over the network (violating MSTG-STORAGE-4) or to another app via IPC mechanisms (violating MSTG-STORAGE-6).
 - Example 2: An app displays sensitive data such as credit card details or user passwords without user authorization e.g. biometrics (violating MSTG-AUTH-10).
 - Example 3: An app that accesses a user's phone or contact book data and doesn't treat this data as personal or sensitive data, additionally sending it over an unsecured network connection (violating MSTG-NETWORK-1).
-- Example 4: An app collects device location (which is apparently not required for its proper functioning) and does not have a prominent disclosure explaining which feature uses this data (violating MSTG-PLATFORM-1).
+- Example 4: An app collects device location (which is apparently not required for its proper functioning) and doesn't have a prominent disclosure explaining which feature uses this data (violating MSTG-PLATFORM-1).
 
 > You can find more [common violations in Google Play Console Help](https://support.google.com/googleplay/android-developer/answer/10144311?hl=en-GB#1&2&3&4&5&6&7&87&9&zippy=%2Cexamples-of-common-violations "Google Play Console Help - Examples of Common Privacy Violations") by going to **Policy Centre -> Privacy, deception and device abuse -> User data**.
 

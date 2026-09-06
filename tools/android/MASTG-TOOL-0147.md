@@ -10,7 +10,7 @@ Android RASP (Runtime Application Self-Protection) is a library written in Kotli
 Android RASP provides a sample app to demonstrate its capabilities, see @MASTG-APP-0033.
 
 !!! info "Limitations"
-    Like all client-side security measures, Android RASP can be bypassed by skilled attackers. Implement multiple checks throughout your app and consider server-side validation for critical security decisions. The native Rust implementation provides additional protection against common hooking frameworks but is not foolproof.
+    Like all client-side security measures, Android RASP can be bypassed by skilled attackers. Implement multiple checks throughout your app and consider server-side validation for critical security decisions. The native Rust implementation provides additional protection against common hooking frameworks but isn't foolproof.
 
 !!! warning "OWASP MAS Disclaimer"
-    The OWASP Mobile Application Security Testing Guide (MASTG) does not endorse specific tools or libraries, which are included as examples. It is the responsibility of the tester to evaluate its suitability for their specific use case and to stay informed about any limitations or vulnerabilities associated with it. Always refer to the official repository for the latest information and updates.
+    The OWASP Mobile Application Security Testing Guide (MASTG) doesn't endorse specific tools or libraries, which are included as examples. It is the responsibility of the tester to evaluate its suitability for their specific use case and to stay informed about any limitations or vulnerabilities associated with it. Always refer to the official repository for the latest information and updates.

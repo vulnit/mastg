@@ -25,7 +25,7 @@ The output should contain a list of files that were created on the external stor
 
 ## Evaluation
 
-The test case fails if the files found above are not encrypted and leak sensitive data.
+The test case fails if the files found above aren't encrypted and leak sensitive data.
 
 **Further Validation Required:**
 

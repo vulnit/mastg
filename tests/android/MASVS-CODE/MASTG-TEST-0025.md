@@ -26,7 +26,7 @@ To test for [injection flaws](../../../Document/0x04h-Testing-Code-Quality.md#in
 
 An example of a vulnerable IPC mechanism is shown below.
 
-You can use _ContentProviders_ to access database information, and you can probe services to see if they return data. If data is not validated properly, the content provider may be prone to SQL injection while other apps are interacting with it. See the following vulnerable implementation of a _ContentProvider_.
+You can use _ContentProviders_ to access database information, and you can probe services to see if they return data. If data isn't validated properly, the content provider may be prone to SQL injection while other apps are interacting with it. See the following vulnerable implementation of a _ContentProvider_.
 
 ```xml
 <provider

@@ -15,7 +15,7 @@ An _injection flaw_ describes a class of security vulnerability occurring when u
 
 Vulnerabilities of this class are most prevalent in server-side web services. Exploitable instances also exist within mobile apps, but occurrences are less common, plus the attack surface is smaller.
 
-For example, while an app might query a local SQLite database, such databases usually do not store sensitive data (assuming the developer followed basic security practices). This makes SQL injection a non-viable attack vector. Nevertheless, exploitable injection vulnerabilities sometimes occur, meaning proper input validation is a necessary best practice for programmers.
+For example, while an app might query a local SQLite database, such databases usually don't store sensitive data (assuming the developer followed basic security practices). This makes SQL injection a non-viable attack vector. Nevertheless, exploitable injection vulnerabilities sometimes occur, meaning proper input validation is a necessary best practice for programmers.
 
 ### SQL Injection
 
@@ -100,7 +100,7 @@ We will cover details related to input sources and potentially vulnerable APIs f
 
 Cross-site scripting (XSS) issues allow attackers to inject client-side scripts into web pages viewed by users. This type of vulnerability is prevalent in web applications. When a user views the injected script in a browser, the attacker gains the ability to bypass the same origin policy, enabling a wide variety of exploits (e.g. stealing session cookies, logging key presses, performing arbitrary actions, etc.).
 
-In the context of _native apps_, XSS risks are far less prevalent for the simple reason these kinds of applications do not rely on a web browser. However, apps using WebView components, such as `WKWebView` or the deprecated `UIWebView` on iOS and `WebView` on Android, are potentially vulnerable to such attacks.
+In the context of _native apps_, XSS risks are far less prevalent for the simple reason these kinds of applications don't rely on a web browser. However, apps using WebView components, such as `WKWebView` or the deprecated `UIWebView` on iOS and `WebView` on Android, are potentially vulnerable to such attacks.
 
 An older but well-known example is the [local XSS issue in the Skype app for iOS, first identified by Phil Purviance](https://superevr.com/blog/2011/xss-in-skype-for-ios "XSS in Skype for iOS"). The Skype app failed to properly encode the name of the message sender, allowing an attacker to inject malicious JavaScript to be executed when a user views the message. In this proof-of-concept, Phil showed how to exploit the issue and steal a user's address book.
 
@@ -217,7 +217,7 @@ Memory corruption bugs are a popular mainstay with hackers. This class of bug re
 
 - **Out-of-bounds-access**: Buggy pointer arithmetic may cause a pointer or index to reference a position beyond the bounds of the intended memory structure (e.g. buffer or list). When an app attempts to write to an out-of-bounds address, a crash or unintended behavior occurs. If the attacker can control the target offset and manipulate the content written to some extent, [code execution exploit is likely possible](https://www.zerodayinitiative.com/advisories/ZDI-17-110/ "Adobe Flash Mediaplayer example").
 
-- **Dangling pointers**: These occur when an object with an incoming reference to a memory location is deleted or deallocated, but the object pointer is not reset. If the program later uses the _dangling_ pointer to call a virtual function of the already deallocated object, it is possible to hijack execution by overwriting the original vtable pointer. Alternatively, it is possible to read or write object variables or other memory structures referenced by a dangling pointer.
+- **Dangling pointers**: These occur when an object with an incoming reference to a memory location is deleted or deallocated, but the object pointer isn't reset. If the program later uses the _dangling_ pointer to call a virtual function of the already deallocated object, it is possible to hijack execution by overwriting the original vtable pointer. Alternatively, it is possible to read or write object variables or other memory structures referenced by a dangling pointer.
 
 - **Use-after-free**: This refers to a special case of dangling pointers referencing released (deallocated) memory. After a memory address is cleared, all pointers referencing the location become invalid, causing the memory manager to return the address to a pool of available memory. When this memory location is eventually re-allocated, accessing the original pointer will read or write the data contained in the newly allocated memory. This usually leads to data corruption and undefined behavior, but crafty attackers can set up the appropriate memory locations to leverage control of the instruction pointer.
 
@@ -259,9 +259,9 @@ Also, look for instances of copy operations implemented as "for" or "while" loop
 Verify that the following best practices have been followed:
 
 - When using integer variables for array indexing, buffer length calculations, or any other security-critical operation, verify that unsigned integer types are used and perform precondition tests are performed to prevent the possibility of integer wrapping.
-- The app does not use unsafe string functions such as `strcpy`, most other functions beginning with the "str" prefix, `sprint`, `vsprintf`, `gets`, etc.;
+- The app doesn't use unsafe string functions such as `strcpy`, most other functions beginning with the "str" prefix, `sprint`, `vsprintf`, `gets`, etc.;
 - If the app contains C++ code, ANSI C++ string classes are used;
-- In case of `memcpy`, make sure you check that the target buffer is at least of equal size as the source and that both buffers are not overlapping.
+- In case of `memcpy`, make sure you check that the target buffer is at least of equal size as the source and that both buffers aren't overlapping.
 - iOS apps written in Objective-C use NSString class. C apps on iOS should use CFString, the Core Foundation representation of a string.
 - No untrusted data is concatenated into format strings.
 
@@ -281,7 +281,7 @@ For more information on fuzzing, refer to the [OWASP Fuzzing Guide](https://owas
 
 ### Position Independent Code
 
-[PIC (Position Independent Code)](https://en.wikipedia.org/wiki/Position-independent_code) is code that, being placed somewhere in the primary memory, executes properly regardless of its absolute address. PIC is commonly used for shared libraries, so that the same library code can be loaded in a location in each program address space where it does not overlap with other memory in use (for example, other shared libraries).
+[PIC (Position Independent Code)](https://en.wikipedia.org/wiki/Position-independent_code) is code that, being placed somewhere in the primary memory, executes properly regardless of its absolute address. PIC is commonly used for shared libraries, so that the same library code can be loaded in a location in each program address space where it doesn't overlap with other memory in use (for example, other shared libraries).
 
 PIE (Position Independent Executable) are executable binaries made entirely from PIC. PIE binaries are used to enable [ASLR (Address Space Layout Randomization)](https://en.wikipedia.org/wiki/Address_space_layout_randomization) which randomly arranges the address space positions of key data areas of a process, including the base of the executable and the positions of the stack, heap and libraries.
 
@@ -291,7 +291,7 @@ PIE (Position Independent Executable) are executable binaries made entirely from
 
 [ARC (Automatic Reference Counting)](https://en.wikipedia.org/wiki/Automatic_Reference_Counting) is a memory management feature of the Clang compiler exclusive to [Objective-C](https://developer.apple.com/library/content/releasenotes/ObjectiveC/RN-TransitioningToARC/Introduction/Introduction.html) and [Swift](https://docs.swift.org/swift-book/LanguageGuide/AutomaticReferenceCounting.html). ARC automatically frees up the memory used by class instances when those instances are no longer needed. ARC differs from tracing garbage collection in that there is no background process that deallocates the objects asynchronously at runtime.
 
-Unlike tracing garbage collection, ARC does not handle reference cycles automatically. This means that as long as there are "strong" references to an object, it will not be deallocated. Strong cross-references can accordingly create deadlocks and memory leaks. It is up to the developer to break cycles by using weak references. You can learn more about how it differs from Garbage Collection [in this Fragmented Podcast episode](https://fragmentedpodcast.com/episodes/064/).
+Unlike tracing garbage collection, ARC doesn't handle reference cycles automatically. This means that as long as there are "strong" references to an object, it won't be deallocated. Strong cross-references can accordingly create deadlocks and memory leaks. It is up to the developer to break cycles by using weak references. You can learn more about how it differs from Garbage Collection [in this Fragmented Podcast episode](https://fragmentedpodcast.com/episodes/064/).
 
 #### Garbage Collection
 
@@ -299,7 +299,7 @@ Unlike tracing garbage collection, ARC does not handle reference cycles automati
 
 #### Manual Memory Management
 
-[Manual memory management](https://en.wikipedia.org/wiki/Manual_memory_management) is typically required in native libraries written in C/C++ where ARC and GC do not apply. The developer is responsible for doing proper memory management. Manual memory management is known to enable several major classes of bugs into a program when used incorrectly, notably violations of [memory safety](https://en.wikipedia.org/wiki/Memory_safety) or [memory leaks](https://en.wikipedia.org/wiki/Memory_leak).
+[Manual memory management](https://en.wikipedia.org/wiki/Manual_memory_management) is typically required in native libraries written in C/C++ where ARC and GC don't apply. The developer is responsible for doing proper memory management. Manual memory management is known to enable several major classes of bugs into a program when used incorrectly, notably violations of [memory safety](https://en.wikipedia.org/wiki/Memory_safety) or [memory leaks](https://en.wikipedia.org/wiki/Memory_leak).
 
 More information can be found in ["Memory Corruption Bugs"](#memory-corruption-bugs).
 

@@ -21,13 +21,13 @@ $ ios hooking list class_methods <ClassName>
 $ ios bundles list_bundles
 ```
 
-If you have a jailbroken device with frida-server installed, Objection can connect directly to the running Frida server to provide all its functionality without needing to repackage the application. However, it is not always possible to jailbreak the latest version of iOS, or you may have an application with advanced jailbreak detection mechanisms.
+If you have a jailbroken device with frida-server installed, Objection can connect directly to the running Frida server to provide all its functionality without needing to repackage the application. However, it isn't always possible to jailbreak the latest version of iOS, or you may have an application with advanced jailbreak detection mechanisms.
 
-The ability to **perform advanced dynamic analysis on non-jailbroken devices** is one of the features that makes Objection incredibly useful. After following the repackaging process (@MASTG-TECH-0092) you will be able to run all the aforementioned commands which make it very easy to quickly analyze an application, or get around basic security controls.
+The ability to **perform advanced dynamic analysis on non-jailbroken devices** is one of the features that makes Objection incredibly useful. After following the repackaging process (@MASTG-TECH-0092) you'll be able to run all the aforementioned commands which make it very easy to quickly analyze an application, or get around basic security controls.
 
 ## Using Objection on iOS
 
-Starting up Objection depends on whether you've patched the IPA or whether you are using a jailbroken device running Frida-server.
+Starting up Objection depends on whether you've patched the IPA or whether you're using a jailbroken device running Frida-server.
 For running a patched IPA, the name Gadget should be specified using `-n Gadget`. Whereas when using frida-server, you need to specify which application you want to attach to or spawn.
 
 ```bash
@@ -52,7 +52,7 @@ $ objection --spawn -n "org.telegram.messenger"
 $ objection -s -p -n "org.telegram.messenger
 ```
 
-Once you are in the Objection REPL, you can execute any of the available commands. Below is an overview of some of the most useful ones:
+Once you're in the Objection REPL, you can execute any of the available commands. Below is an overview of some of the most useful ones:
 
 ```bash
 # Show the different storage locations belonging to the app

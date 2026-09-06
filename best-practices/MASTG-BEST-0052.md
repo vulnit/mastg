@@ -20,7 +20,7 @@ Setting `android:exported="false"` (for manifest-declared components) or `RECEIV
 
 If a component must be exported but should only be accessible to specific apps, protect it with `android:permission` and use a permission with a protection level appropriate for the intended callers. A custom permission with `signature` protection is usually appropriate when access should be limited to apps signed with the same key.
 
-Do not treat the presence of `android:permission` as sufficient by itself: a broadly grantable protection level (`normal` or `dangerous`) may still allow untrusted apps to invoke sensitive components. See @MASTG-KNOW-0017 for Android permission protection levels and custom permissions.
+Don't treat the presence of `android:permission` as sufficient by itself: a broadly grantable protection level (`normal` or `dangerous`) may still allow untrusted apps to invoke sensitive components. See @MASTG-KNOW-0017 for Android permission protection levels and custom permissions.
 
 For context-registered receivers, when registering an exported receiver that should only accept broadcasts from specific apps, pass an appropriate permission in the `broadcastPermission` parameter. This restricts which apps can send broadcasts to the receiver. The permission should resolve to a trusted `<permission>` declaration with an appropriate protection level, usually `signature`.
 

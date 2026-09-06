@@ -27,7 +27,7 @@ The output should contain a list of files that the app wrote to the external sto
 
 ## Evaluation
 
-The test case fails if the files found above are not encrypted and leak sensitive data.
+The test case fails if the files found above aren't encrypted and leak sensitive data.
 
 **Further Validation Required:**
 

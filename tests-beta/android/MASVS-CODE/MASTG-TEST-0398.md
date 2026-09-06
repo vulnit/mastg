@@ -16,7 +16,7 @@ This test checks for references to `WebViewClient` URL interception methods that
 
 The following interception callback methods are relevant:
 
-- [`shouldOverrideUrlLoading`](https://developer.android.com/reference/android/webkit/WebViewClient#shouldOverrideUrlLoading(android.webkit.WebView,%20android.webkit.WebResourceRequest)): allows the application to either abort loading WebViews with suspicious content by returning `true` or allow the WebView to load the URL by returning `false`. Note that this method is not called for POST requests, XmlHttpRequests, iFrames, "src" attributes in HTML, or `<script>` tags.
+- [`shouldOverrideUrlLoading`](https://developer.android.com/reference/android/webkit/WebViewClient#shouldOverrideUrlLoading(android.webkit.WebView,%20android.webkit.WebResourceRequest)): allows the application to either abort loading WebViews with suspicious content by returning `true` or allow the WebView to load the URL by returning `false`. Note that this method isn't called for POST requests, XmlHttpRequests, iFrames, "src" attributes in HTML, or `<script>` tags.
 - [`shouldInterceptRequest`](https://developer.android.com/reference/android/webkit/WebViewClient#shouldInterceptRequest(android.webkit.WebView,%20android.webkit.WebResourceRequest)): allows the application to return custom data from resource requests. This callback is invoked for various URL schemes (e.g., `http(s):`, `data:`, `file:`), but not for `javascript:` or `blob:` URLs, or for assets accessed via `file:///android_asset/` or `file:///android_res/`.
 
 If these methods are implemented without proper URL validation, the app may load content from untrusted sources or navigate users to malicious websites.
@@ -43,8 +43,8 @@ The test case fails if a `WebViewClient` URL interception method is implemented 
 
 Inspect each reported code location using @MASTG-TECH-0023, looking for cases such as:
 
-- **No validation:** the method does not check the URL against an allowlist or denylist before allowing navigation or returning resource data.
-- **Weak validation:** the method performs validation that does not reliably prevent navigation to untrusted domains (for example, substring checks instead of validating the host).
+- **No validation:** the method doesn't check the URL against an allowlist or denylist before allowing navigation or returning resource data.
+- **Weak validation:** the method performs validation that doesn't reliably prevent navigation to untrusted domains (for example, substring checks instead of validating the host).
 - **Missing client implementation:** a `WebViewClient` is assigned to a `WebView` via `setWebViewClient` without overriding any interception method, leaving the default (unrestricted) navigation behavior in place for an app that intended to restrict it.
 
-Note that using a `WebViewClient` is not inherently insecure. The test fails only when the URL handling logic does not properly restrict navigation to trusted content.
+Note that using a `WebViewClient` isn't inherently insecure. The test fails only when the URL handling logic doesn't properly restrict navigation to trusted content.

@@ -50,7 +50,7 @@ Financial donations are **not** part of the eligibility criteria for MAS Advocat
 
 #### Non-Endorsement
 
-Advocate companies may use the OWASP MAS logo and reference MASVS/MASTG resources in their communications. However, they **cannot** present this as an **endorsement by OWASP** or imply that they are a **preferred provider** of software or services.
+Advocate companies may use the OWASP MAS logo and reference MASVS/MASTG resources in their communications. However, they **can't** present this as an **endorsement by OWASP** or imply that they are a **preferred provider** of software or services.
 
 #### Revocation of MAS Advocate Status
 
@@ -61,15 +61,15 @@ MAS Advocate status will be **revoked immediately** if a company fails to comply
 
 #### Non-Certification & Non-Vetting Disclaimer
 
-OWASP **does not certify, validate, or vet** any vendors, software, or trust marks. Claims of MASVS/MASTG/MASWE compliance **are not officially recognized** by OWASP or the OWASP MAS project. Organizations should exercise caution when relying on such claims.
+OWASP **doesn't certify, validate, or vet** any vendors, software, or trust marks. Claims of MASVS/MASTG/MASWE compliance **aren't officially recognized** by OWASP or the OWASP MAS project. Organizations should exercise caution when relying on such claims.
 
 #### Vendor Neutrality
 
-The **OWASP Foundation** is strictly vendor-neutral and **does not endorse** any of its supporters.
+The **OWASP Foundation** is strictly vendor-neutral and **doesn't endorse** any of its supporters.
 
 #### Governance and Editorial Independence
 
-MAS Advocates may contribute to discussions, provide feedback, and suggest improvements to the OWASP MAS resources. However, they **do not have decision-making authority** over the final content, which remains under the control of the OWASP MAS project leaders.
+MAS Advocates may contribute to discussions, provide feedback, and suggest improvements to the OWASP MAS resources. However, they **don't have decision-making authority** over the final content, which remains under the control of the OWASP MAS project leaders.
 
 ## Our MAS Advocates
 

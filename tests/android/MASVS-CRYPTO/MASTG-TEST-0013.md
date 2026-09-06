@@ -28,11 +28,11 @@ Check also the [list of common cryptographic configuration issues](../../../Docu
 
 For each identified instance verify if the used symmetric keys:
 
-- are not part of the application resources
-- cannot be derived from known values
-- are not hardcoded in code
+- aren't part of the application resources
+- can't be derived from known values
+- aren't hardcoded in code
 
-For each hardcoded symmetric key, verify that is not used in security-sensitive contexts as the only method of encryption.
+For each hardcoded symmetric key, verify that isn't used in security-sensitive contexts as the only method of encryption.
 
 As an example we illustrate how to locate the use of a hardcoded encryption key. First disassemble and decompile (@MASTG-TECH-0017) the app to obtain Java code, e.g. by using @MASTG-TOOL-0018.
 

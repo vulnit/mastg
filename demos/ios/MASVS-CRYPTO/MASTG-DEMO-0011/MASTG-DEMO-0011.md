@@ -29,7 +29,7 @@ The output contains the disassembled code of the function using `SecKeyCreateRan
 
 {{ output.txt }}
 
-This function is pretty big so we just included the relevant part of the code that's right before the call to `SecKeyCreateRandomKey`. Note that we can see attributes being set in the `parameters` dictionary such as `kSecAttrKeySizeInBits` as `reloc.kSecAttrKeySizeInBits`. In radare2, this means that the symbol `kSecAttrKeySizeInBits` is not directly referenced by an absolute address but rather through a relocation entry. This entry will be resolved by the dynamic linker at runtime to the actual address where `kSecAttrKeySizeInBits` is located in memory.
+This function is pretty big so we just included the relevant part of the code that's right before the call to `SecKeyCreateRandomKey`. Note that we can see attributes being set in the `parameters` dictionary such as `kSecAttrKeySizeInBits` as `reloc.kSecAttrKeySizeInBits`. In radare2, this means that the symbol `kSecAttrKeySizeInBits` isn't directly referenced by an absolute address but rather through a relocation entry. This entry will be resolved by the dynamic linker at runtime to the actual address where `kSecAttrKeySizeInBits` is located in memory.
 
 ## Evaluation
 

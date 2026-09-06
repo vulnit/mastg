@@ -23,12 +23,12 @@ There are various keywords to look for: check the libraries mentioned in the ove
 
 Always make sure that:
 
-- keys are not synchronized over devices if it is used to protect high-risk data.
-- keys are not stored without additional protection.
-- keys are not hardcoded.
-- keys are not derived from stable features of the device.
-- keys are not hidden by use of lower level languages (e.g. C/C++).
-- keys are not imported from unsafe locations.
+- keys aren't synchronized over devices if it is used to protect high-risk data.
+- keys aren't stored without additional protection.
+- keys aren't hardcoded.
+- keys aren't derived from stable features of the device.
+- keys aren't hidden by use of lower level languages (e.g. C/C++).
+- keys aren't imported from unsafe locations.
 
 Check also the [list of common cryptographic configuration issues](../../../Document/0x04g-Testing-Cryptography.md#common-configuration-issues).
 

@@ -34,7 +34,7 @@ val input = EditText(context).apply {
 
 **Using Jetpack Compose:**
 
-If you are developing with [Jetpack Compose](https://developer.android.com/develop/ui/compose/text/user-input), you do not use `EditText` directly. Instead, you use composable functions such as `TextField` or `OutlinedTextField` along with parameters like `keyboardOptions` and `visualTransformation` to achieve similar behavior. For example, to create a password field without suggestions:
+If you're developing with [Jetpack Compose](https://developer.android.com/develop/ui/compose/text/user-input), you don't use `EditText` directly. Instead, you use composable functions such as `TextField` or `OutlinedTextField` along with parameters like `keyboardOptions` and `visualTransformation` to achieve similar behavior. For example, to create a password field without suggestions:
 
 ```kotlin
 OutlinedTextField(
@@ -73,7 +73,7 @@ Regardless of the method used, the app can use the following `inputType` attribu
 | [`numberPassword`](https://developer.android.com/reference/android/widget/TextView#attr_android:inputType:~:text=_DECIMAL.-,numberPassword,-12) | [`TYPE_NUMBER_VARIATION_PASSWORD`](https://developer.android.com/reference/android/text/InputType#TYPE_NUMBER_VARIATION_PASSWORD "A numeric password field") | 11 |
 | [`textWebPassword`](https://developer.android.com/reference/android/widget/TextView#attr_android:inputType:~:text=_ADDRESS.-,textWebPassword,-e1) | [`TYPE_TEXT_VARIATION_WEB_PASSWORD`](https://developer.android.com/reference/android/text/InputType#TYPE_TEXT_VARIATION_WEB_PASSWORD "Text web password input type") | 11 |
 
-**Note:** In the MASTG tests we won't be checking the minimum required SDK version in the Android Manifest `minSdkVersion` because we are considering testing modern apps. If you are testing an older app, you should check it. For example, Android API level 11 is required for `textWebPassword`. Otherwise, the compiled app would not honor the used input type constants allowing keyboard caching.
+**Note:** In the MASTG tests we won't be checking the minimum required SDK version in the Android Manifest `minSdkVersion` because we are considering testing modern apps. If you're testing an older app, you should check it. For example, Android API level 11 is required for `textWebPassword`. Otherwise, the compiled app wouldn't honor the used input type constants allowing keyboard caching.
 
 The `inputType` attribute is a bitwise combination of flags and classes. The `InputType` class contains constants for both flags and classes. The flags are defined as `TYPE_TEXT_FLAG_*` and the classes are defined as `TYPE_CLASS_*`. The values of these constants are defined in the Android source code. You can find the source code for the `InputType` class [in the Android source code](http://cs.android.com/android/platform/superproject/main/+/main:frameworks/base/core/java/android/text/InputType.java "Android InputType class").
 
@@ -94,7 +94,7 @@ Where:
 - `TYPE_CLASS_TEXT` = 1
 - `TYPE_TEXT_VARIATION_PASSWORD` = 128
 
-Results in `1 or 128 = 129`, which is the value you will see in the decompiled code.
+Results in `1 or 128 = 129`, which is the value you'll see in the decompiled code.
 
 **How to decode input type attributes after reverse engineering:**
 
@@ -113,7 +113,7 @@ You can quickly decode `inputType` values using the masks and the bitwise AND op
 
 **How to find cached data:**
 
-If you write e.g. "OWASPMAS" in the passphrase field a couple of times, the app will cache it and you will be able to find it in the cache database:
+If you write e.g. "OWASPMAS" in the passphrase field a couple of times, the app will cache it and you'll be able to find it in the cache database:
 
 ```bash
 adb shell 'strings /data/data/com.google.android.inputmethod.latin/databases/trainingcachev3.db' | grep -i "OWASPMAS"

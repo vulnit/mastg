@@ -31,7 +31,7 @@ The output reveals the `webpageURL` the user accessed, the `activityType` (`NSUs
 
 ## Checking How the Links Are Opened
 
-The receiver method often does not open the URL itself but rather delegates it to another method. Extend the trace to include any function that opens a URL:
+The receiver method often doesn't open the URL itself but rather delegates it to another method. Extend the trace to include any function that opens a URL:
 
 ```bash
 frida-trace -U <App Name> -m "*[* *continueUserActivity*]" -i "*open*Url*"

@@ -57,7 +57,7 @@ adb install ./myRepackagedApp.apk
 
 ## Installing to a Specific Profile
 
-To install an APK into a specific profile, the APK first has to be pushed to the device, as it is not possible to do this directly using `adb install`. Note that pushing to `/sdcard/` may result in permission issues, so use `/data/local/tmp` to be sure. After pushing the APK to the device, it can be installed using `pm install` with the `--user XX` option:
+To install an APK into a specific profile, the APK first has to be pushed to the device, as it isn't possible to do this directly using `adb install`. Note that pushing to `/sdcard/` may result in permission issues, so use `/data/local/tmp` to be sure. After pushing the APK to the device, it can be installed using `pm install` with the `--user XX` option:
 
 ```bash
 # Get an overview of available profiles

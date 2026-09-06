@@ -36,7 +36,7 @@ The test passes because the output confirms the app implements root detection ch
 - **`java.io.File.<init>` calls for `su` path checks:**
     - From `MastgTest.checkForSuBinary()` at line 61.
     - The app checks for 10 `su` binary locations such as `/system/app/Superuser.apk`, `/sbin/su`, `/system/bin/su`, `/system/xbin/su`, etc.
-    - Additional constructor calls from libraries like `androidx.profileinstaller.ProfileInstaller` may appear in the trace but are not related to root detection.
+    - Additional constructor calls from libraries like `androidx.profileinstaller.ProfileInstaller` may appear in the trace but aren't related to root detection.
 
 - **`Runtime.exec` calls for `which su` command:**
     - From `MastgTest.checkForWhichSu()` at line 81.

@@ -217,7 +217,7 @@ $ adb shell content query --uri content://com.mwr.example.sieve.DBContentProvide
 Row: 0 email=user@tedt.com, username=owasp, password=BLOB
 ```
 
-You are able now to retrieve all database entries (see all lines starting with "Row:" in the output).
+You're able now to retrieve all database entries (see all lines starting with "Row:" in the output).
 
 ### Activities
 
@@ -456,7 +456,7 @@ Extra: phonenumber=07123456789 (java.lang.String)
 Extra: newpass=12345 (java.lang.String)`
 ```
 
-You can also use the following command to sniff the intents. However, the content of the extras passed will not be displayed:
+You can also use the following command to sniff the intents. However, the content of the extras passed won't be displayed:
 
 ```bash
 $ adb shell dumpsys activity broadcasts | grep "theBroadcast"

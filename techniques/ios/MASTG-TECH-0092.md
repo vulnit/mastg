@@ -3,7 +3,7 @@ title: Signing IPA files
 platform: ios
 ---
 
-To install an IPA file on a non-jailbroken device, the IPA must have a valid signature. On a jailbroken device, this is not required after installing @MASTG-TOOL-0127.
+To install an IPA file on a non-jailbroken device, the IPA must have a valid signature. On a jailbroken device, this isn't required after installing @MASTG-TOOL-0127.
 
 First, you need to get a developer provisioning profile and certificate, as explained in @MASTG-TECH-0079.
 
@@ -87,4 +87,4 @@ More information can be found in the official documentation: ["Codesign an exist
 
 ## Using Sideloadly
 
-Sideloadly can handle getting a valid certificate for your app, but it is not possible to sign an existing IPA file in-place. Sideloadly will sign the provided IPA file and install it directly on the connected device. When using a standard Apple account, Sideloadly will modify the original package name by appending your team identifier (e.g. `sg.vp.UnCrackable1` becomes `sg.vp.UnCrackable1.QH868V5764`)
+Sideloadly can handle getting a valid certificate for your app, but it isn't possible to sign an existing IPA file in-place. Sideloadly will sign the provided IPA file and install it directly on the connected device. When using a standard Apple account, Sideloadly will modify the original package name by appending your team identifier (e.g. `sg.vp.UnCrackable1` becomes `sg.vp.UnCrackable1.QH868V5764`)

@@ -12,7 +12,7 @@ The app shows a 3-second countdown popup when the **Start** button is tapped. Th
 
 Despite that, the app requests location access and collects coarse location coordinates (kilometer-level accuracy) in the background for the full duration of the countdown. When the countdown ends, the coordinates are written to `location_capture.txt` in the app's Documents directory. The user sees a "3s Timer started" popup with no mention of location at any point.
 
-The `Info.plist` declares a single purpose string, `NSLocationWhenInUseUsageDescription`, with the text "We use your location to show you nearby content and recommendations." This is **deceptive**: it describes a feature that does not exist in the app, and the purpose string shown in the system prompt is inconsistent with the only observable behavior (a countdown).
+The `Info.plist` declares a single purpose string, `NSLocationWhenInUseUsageDescription`, with the text "We use your location to show you nearby content and recommendations." This is **deceptive**: it describes a feature that doesn't exist in the app, and the purpose string shown in the system prompt is inconsistent with the only observable behavior (a countdown).
 
 {{ MastgTest.swift # Info.plist }}
 
@@ -52,8 +52,8 @@ The runtime trace shows that tapping **Start**:
 
 ## Evaluation
 
-The test case fails because the declared purpose string is deceptive. It tells the user that location is used to show nearby content and recommendations, but the app does not provide any nearby content, recommendations, map, search, or other location-based feature.
+The test case fails because the declared purpose string is deceptive. It tells the user that location is used to show nearby content and recommendations, but the app doesn't provide any nearby content, recommendations, map, search, or other location-based feature.
 
-The only user-visible feature is a 3-second countdown popup. The runtime trace confirms that location authorization and collection APIs are reached during that countdown flow, so the purpose string is not merely unused or stale. It is shown for reachable location access that is inconsistent with the app's observable behavior.
+The only user-visible feature is a 3-second countdown popup. The runtime trace confirms that location authorization and collection APIs are reached during that countdown flow, so the purpose string isn't merely unused or stale. It is shown for reachable location access that is inconsistent with the app's observable behavior.
 
-The user must still grant location permission before the app can access the protected resource. However, the issue remains valid because the authorization prompt is based on an inaccurate explanation, and the observed location access is not justified by the app's visible functionality.
+The user must still grant location permission before the app can access the protected resource. However, the issue remains valid because the authorization prompt is based on an inaccurate explanation, and the observed location access isn't justified by the app's visible functionality.

@@ -14,9 +14,9 @@ Since Android 4.2 (API level 17), the `MODE_WORLD_READABLE` and `MODE_WORLD_WRIT
 
 Use `SharedPreferences` in private mode by calling `getSharedPreferences` with `Context.MODE_PRIVATE`. See ["Use SharedPreferences in private mode"](https://developer.android.com/privacy-and-security/security-best-practices#sharedpreferences).
 
-When private mode is used, the XML file containing the key-value data is stored with permissions that restrict access to the app's own Linux user ID. Under the normal Android app sandbox, other apps cannot read this file directly.
+When private mode is used, the XML file containing the key-value data is stored with permissions that restrict access to the app's own Linux user ID. Under the normal Android app sandbox, other apps can't read this file directly.
 
-However, private mode does not encrypt the data. The values are still written in plaintext in the XML file.
+However, private mode doesn't encrypt the data. The values are still written in plaintext in the XML file.
 
 Consider the following example:
 

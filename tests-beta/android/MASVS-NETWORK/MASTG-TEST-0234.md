@@ -11,11 +11,11 @@ profiles: [L1, L2]
 
 This test checks whether an Android app uses [`SSLSocket`](https://developer.android.com/reference/javax/net/ssl/SSLSocket) without a [`HostnameVerifier`](https://developer.android.com/reference/javax/net/ssl/HostnameVerifier), allowing connections to servers presenting certificates with **wrong or invalid hostnames**.
 
-By default, `SSLSocket` [does not perform hostname verification](https://developer.android.com/privacy-and-security/security-ssl#WarningsSslSocket). To enforce it, the app must explicitly invoke [`HostnameVerifier.verify()`](https://developer.android.com/reference/javax/net/ssl/HostnameVerifier#verify%28java.lang.String,%20javax.net.ssl.SSLSession%29) and implement proper checks.
+By default, `SSLSocket` [doesn't perform hostname verification](https://developer.android.com/privacy-and-security/security-ssl#WarningsSslSocket). To enforce it, the app must explicitly invoke [`HostnameVerifier.verify()`](https://developer.android.com/reference/javax/net/ssl/HostnameVerifier#verify%28java.lang.String,%20javax.net.ssl.SSLSession%29) and implement proper checks.
 
 Such unsafe implementations can allow an attacker to run a [MITM attack](../../../Document/0x04f-Testing-Network-Communication.md#intercepting-network-traffic-through-mitm) with a valid (or self-signed) certificate and intercept or tamper with the app's traffic.
 
-**Note:** The connection succeeds even if the app has a fully secure Network Security Configuration (NSC) in place because `SSLSocket` is not affected by it.
+**Note:** The connection succeeds even if the app has a fully secure Network Security Configuration (NSC) in place because `SSLSocket` isn't affected by it.
 
 ## Steps
 

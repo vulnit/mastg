@@ -8,7 +8,7 @@ Many apps emit runtime messages through more than one output path. On iOS, it is
 - **System logs / Unified Logging**, such as messages emitted through `NSLog`, `os_log`, or `Logger`.
 - **Process console output**, such as messages written to standard output or standard error, for example through `print`, `debugPrint`, or `dump`.
 
-These outputs may overlap in development tools, but they are not equivalent. In practice, Xcode can show both app console output and system log entries, while system log collection tools generally only show messages that reach the Unified Logging pipeline. Apple documents Unified Logging and its log viewing tools separately, and also documents that Simulator launch can attach an app's standard input, output, and error to a terminal with `simctl launch --console-pty`.
+These outputs may overlap in development tools, but they aren't equivalent. In practice, Xcode can show both app console output and system log entries, while system log collection tools generally only show messages that reach the Unified Logging pipeline. Apple documents Unified Logging and its log viewing tools separately, and also documents that Simulator launch can attach an app's standard input, output, and error to a terminal with `simctl launch --console-pty`.
 
 ## Using @MASTG-TOOL-0070
 
@@ -84,6 +84,6 @@ When testing for verbose logging or sensitive log exposure on iOS:
 - Use **app console capture** when you want to observe standard output and error, for example `print`, `debugPrint`, and `dump`.
 - Use **Xcode** when you want a convenient interactive view that may surface both during development.
 
-In other words, do not assume that one collection method captures every log source. If a message appears in Xcode but not in a `log stream` capture, it may be coming from the app's console output rather than the system log.
+In other words, don't assume that one collection method captures every log source. If a message appears in Xcode but not in a `log stream` capture, it may be coming from the app's console output rather than the system log.
 
 This update makes the main missing point explicit, system logs and app console output are related but not identical, so different tools can legitimately show different subsets of messages.

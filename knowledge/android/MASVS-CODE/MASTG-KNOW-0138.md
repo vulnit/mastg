@@ -41,7 +41,7 @@ If the caller copies content from a returned URI to another location, the destin
 
 ### ContentProvider Metadata
 
-When the responding app returns a `content://` URI, the calling app can query [`OpenableColumns.DISPLAY_NAME`](https://developer.android.com/reference/android/provider/OpenableColumns#DISPLAY_NAME) to get a human-readable filename:
+When the responding app returns a `content://` URI, the calling app can query [`OpenableColumns.DISPLAY_NAME`](https://developer.android.com/reference/android/provider/OpenableColumns#DISPLAY_NAME) to get a human-readable file name:
 
 ```kotlin
 fun getDisplayName(uri: Uri): String? {

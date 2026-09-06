@@ -33,4 +33,4 @@ Inspect each reported code location using @MASTG-TECH-0023, looking for cases su
 - **Always accepting hostnames:** overriding `verify(...)` to unconditionally return `true`, regardless of the actual hostname or certificate.
 - **Overly broad matching rules:** using permissive wildcard logic that matches unintended domains.
 - **Incomplete verification coverage:** failing to invoke hostname verification on all SSL/TLS channels, such as those created via `SSLSocket`, or during renegotiation.
-- **Missing manual verification:** not performing hostname verification when it is not done automatically, such as when using the low-level `SSLSocket` API.
+- **Missing manual verification:** not performing hostname verification when it isn't done automatically, such as when using the low-level `SSLSocket` API.

@@ -34,17 +34,17 @@ com.example.package:
       example.org: 1026
 ```
 
-A state of `verified` confirms the association. Any other value (for example, `legacy_failure` or a numeric error code) means the domain is not verified, so the corresponding links are not handled as App Links. The same information appears in the output of `adb shell dumpsys package com.example.package`.
+A state of `verified` confirms the association. Any other value (for example, `legacy_failure` or a numeric error code) means the domain isn't verified, so the corresponding links aren't handled as App Links. The same information appears in the output of `adb shell dumpsys package com.example.package`.
 
 You can also [invoke domain verification manually](https://developer.android.com/training/app-links/verify-android-applinks#support-updated-domain-verification), [reset the verification state](https://developer.android.com/training/app-links/verify-android-applinks#reset-state), and [review the results](https://developer.android.com/training/app-links/verify-android-applinks#review-results) to test the logic regardless of whether the app targets Android 12.
 
 ## Common Reasons Verification Fails
 
-When a domain is not verified, inspect the [Digital Asset Links file](https://developers.google.com/digital-asset-links/v1/getting-started) and the hosting setup for these common causes (see also the [Android documentation on fixing errors](https://developer.android.com/training/app-links/verify-android-applinks#fix-errors)):
+When a domain isn't verified, inspect the [Digital Asset Links file](https://developers.google.com/digital-asset-links/v1/getting-started) and the hosting setup for these common causes (see also the [Android documentation on fixing errors](https://developer.android.com/training/app-links/verify-android-applinks#fix-errors)):
 
 - **Missing file**: there is no file at `https://<host>/.well-known/assetlinks.json` (also queryable via `https://digitalassetlinks.googleapis.com/v1/statements:list?source.web.site=<host>`).
 - **Served over HTTP** instead of HTTPS.
-- **Invalid file**: the JSON is malformed or does not list the target app's package and signing fingerprint.
+- **Invalid file**: the JSON is malformed or doesn't list the target app's package and signing fingerprint.
 - **Redirects**: the server redirects the request (for example, `http` to `https` or `example.com` to `www.example.com`).
-- **Subdomains**: each declared host needs its own file; a file on `www.example.com` does not cover `mobile.example.com`.
+- **Subdomains**: each declared host needs its own file; a file on `www.example.com` doesn't cover `mobile.example.com`.
 - **Wildcards**: a wildcard host such as `*.example.com` is verified against the file at the root domain `https://example.com/.well-known/assetlinks.json`.

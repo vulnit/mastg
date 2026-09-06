@@ -38,4 +38,4 @@ The output should include:
 
 ## Evaluation
 
-The test case fails if there are any fields handling sensitive data for which the app does not use non-caching input types.
+The test case fails if there are any fields handling sensitive data for which the app doesn't use non-caching input types.

@@ -5,7 +5,7 @@ platform: generic
 
 Depending on your goal while testing the app, sometimes it is enough to monitor the traffic before it reaches the network layer or when the responses are received in the app.
 
-This means that you don't need to deploy a fully fledged MITM attack (including ARP Spoofing attacks, etc.) if you simply want to determine if certain sensitive data is being transmitted to the network. With this approach, you will not interfere with any TLS verification or pinning.
+This means that you don't need to deploy a fully fledged MITM attack (including ARP Spoofing attacks, etc.) if you simply want to determine if certain sensitive data is being transmitted to the network. With this approach, you won't interfere with any TLS verification or pinning.
 
 You can use [Frida as an alternative](https://gaiaslastlaugh.medium.com/frida-as-an-alternative-to-network-tracing-5173cfbd7a0b)
 

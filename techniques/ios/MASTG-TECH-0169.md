@@ -3,7 +3,7 @@ title: Opening Deep Links
 platform: ios
 ---
 
-To test how an iOS app handles deep links, you can open a URL through Apple tooling, through another app such as Safari or Notes, or through dynamic instrumentation. The best method depends on whether you are testing a simulator, a physical non jailbroken device, or a jailbroken device.
+To test how an iOS app handles deep links, you can open a URL through Apple tooling, through another app such as Safari or Notes, or through dynamic instrumentation. The best method depends on whether you're testing a simulator, a physical non jailbroken device, or a jailbroken device.
 
 ## Using `xcrun devicectl`
 
@@ -32,7 +32,7 @@ On a jailbroken device shell (see @MASTG-TECH-0052), you can use `uiopen` to ask
 uiopen 'mastgtest://import?session=<payload>'
 ```
 
-This is useful when you are already working from the device shell and want a quick way to trigger the app's URL handler.
+This is useful when you're already working from the device shell and want a quick way to trigger the app's URL handler.
 
 ## Using Safari
 
@@ -62,7 +62,7 @@ You can paste deep links into the Notes app and open them from there. Exit editi
 mastgtest://import?session=<payload>
 ```
 
-This is a simple way to test user initiated deep links without writing a webpage. If the URL is not recognized as a link, check that the target app is installed, that the scheme is registered, and that the URL is properly encoded.
+This is a simple way to test user initiated deep links without writing a webpage. If the URL isn't recognized as a link, check that the target app is installed, that the scheme is registered, and that the URL is properly encoded.
 
 ## Triggering Universal Links
 
@@ -72,7 +72,7 @@ Universal links (@MASTG-KNOW-0080) use `https://` URLs and are routed to the app
 - **Notes app**: paste the `https://` link, leave editing mode, then long press it and choose the option to open it in the app (a single tap may open it in Safari instead, and the chosen option becomes the default for later taps).
 - **`xcrun devicectl`**: pass an `https://` URL to `--payload-url` to open it on a connected device, for example `--payload-url 'https://www.example.com/transfer?amount=9999999'`. The app opens only if its associated domain is verified on the device.
 
-If the domain is not verified on your test device (for example, because the Apple App Site Association file is not reachable from your build), you can still exercise the handler with @MASTG-TOOL-0039 by constructing an `NSUserActivity` with an `activityType` of `NSUserActivityTypeBrowsingWeb` and a crafted `webpageURL`, then invoking the app's continuation entry point. This is useful for fuzzing the path and query parameters without depending on live domain verification.
+If the domain isn't verified on your test device (for example, because the Apple App Site Association file isn't reachable from your build), you can still exercise the handler with @MASTG-TOOL-0039 by constructing an `NSUserActivity` with an `activityType` of `NSUserActivityTypeBrowsingWeb` and a crafted `webpageURL`, then invoking the app's continuation entry point. This is useful for fuzzing the path and query parameters without depending on live domain verification.
 
 ```js
 function triggerUniversalLink(urlString) {
@@ -103,7 +103,7 @@ This calls `scene:continueUserActivity:` directly on the `UIWindowSceneDelegate`
 
 ## Using @MASTG-TOOL-0039
 
-If you are instrumenting the device with Frida, you can also trigger a URL programmatically. This is useful during dynamic analysis, especially when testing many payloads.
+If you're instrumenting the device with Frida, you can also trigger a URL programmatically. This is useful during dynamic analysis, especially when testing many payloads.
 
 The following example runs inside the target app process and asks `UIApplication` to open the URL:
 
@@ -135,4 +135,4 @@ openURL("mastgtest://import?session=<payload>");
 This style is useful for black box URL scheme testing because SpringBoard is responsible for dispatching the URL to the registered app.
 
 !!! note
-   `LSApplicationWorkspace` is a non-public API. Do not use it in App Store apps. For security testing and dynamic analysis on a test device, it can be useful to trigger URL handling paths that are otherwise difficult to exercise repeatedly.
+   `LSApplicationWorkspace` is a non-public API. Don't use it in App Store apps. For security testing and dynamic analysis on a test device, it can be useful to trigger URL handling paths that are otherwise difficult to exercise repeatedly.

@@ -13,7 +13,7 @@ This sample collects the following [sensitive user data](https://support.google.
 - User ID (**Data type:** User IDs, **Category:** Personal info)
 - Blood type (**Data type:** Health info, **Category:** Health and fitness)
 
-For the sake of this demo, we pretend that the app is published on Google Play and that the data types collected are not disclosed in the [Data safety section](https://support.google.com/googleplay/android-developer/answer/10787469?hl=en#types&zippy=%2Cdata-types).
+For the sake of this demo, we pretend that the app is published on Google Play and that the data types collected aren't disclosed in the [Data safety section](https://support.google.com/googleplay/android-developer/answer/10787469?hl=en#types&zippy=%2Cdata-types).
 
 {{ MainActivity.kt # MastgTest.kt # build.gradle.kts.libs }}
 
@@ -36,4 +36,4 @@ The output shows all instances of `logEvent` calls to the Firebase Analytics SDK
 
 ## Evaluation
 
-This test **fails** because sensitive data (`blood_type` parameter) is being sent to Firebase Analytics via the `logEvent` method for a particular user (`user_id` parameter) and this data collection is not disclosed in the Data safety section on Google Play (as we indicated in the sample description).
+This test **fails** because sensitive data (`blood_type` parameter) is being sent to Firebase Analytics via the `logEvent` method for a particular user (`user_id` parameter) and this data collection isn't disclosed in the Data safety section on Google Play (as we indicated in the sample description).

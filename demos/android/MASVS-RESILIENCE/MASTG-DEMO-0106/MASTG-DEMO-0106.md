@@ -9,7 +9,7 @@ kind: fail
 
 ## Sample
 
-This sample encrypts and decrypts a sensitive API key using AES/GCM via the Android KeyStore. The app does not implement any runtime hook detection mechanisms. On the contrary, @MASTG-DEMO-0107 demonstrates a runtime hook detection mechanism.
+This sample encrypts and decrypts a sensitive API key using AES/GCM via the Android KeyStore. The app doesn't implement any runtime hook detection mechanisms. On the contrary, @MASTG-DEMO-0107 demonstrates a runtime hook detection mechanism.
 
 !!! note
     This is a series of correlated tests.

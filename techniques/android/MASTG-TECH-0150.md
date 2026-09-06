@@ -40,7 +40,7 @@ Example output when the flag is set:
 application-debuggable
 ```
 
-If the line is absent, the flag is not set (defaults to `false`).
+If the line is absent, the flag isn't set (defaults to `false`).
 
 ## Using xmllint or xmlstarlet
 
