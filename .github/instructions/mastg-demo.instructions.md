@@ -26,7 +26,7 @@ Demos are required to be **fully self-contained** and should **not rely on exter
 
 **Don't create demos for outdated OS versions** that aren't supported by the MASTG. The MASTestApp is always intended to be up to date and aligned with the versions supported by the MASTG, thereby avoiding additional maintenance of the MASTestApp. However, you can include demos showcasing the "good case" in the metadata using `kind: pass` in certain cases where it can be helpful or educational. This is permitted as long as the demos work with the current version of the MASTestApp. For demos that act as a standalone attacker app targeting a victim app, use `kind: attack` (see [kind](#kind) for details).
 
-Please specify the mobile platform version, IDE version, and device.
+Every demo **MUST** include `verified-with` metadata that records the environment used for validation. If you validate a demo on an emulator or simulator, state this explicitly in the pull request description.
 
 Android Example:
 
@@ -172,6 +172,51 @@ title: Common Uses of Insecure Random APIs
 ### platform
 
 The mobile platform. One of: `ios`, `android`.
+
+### verified-with
+
+Required. Records the exact environment used to validate the demo.
+
+Valid `environment` values are `physical`, `emulator`, `simulator`, and `host`.
+
+- `device`: the physical device or virtual device profile. Required unless `environment` is `host`.
+- `os`: the exact operating system version used for validation.
+- `tools`: the exact versions of tools used to build, execute, or produce the observation. Include the IDE when applicable.
+
+Physical Android device example:
+
+```yaml
+verified-with:
+  environment: physical
+  device: Google Pixel 8
+  os: Android 15 (API level 35)
+  tools:
+    Frida: 17.2.17
+```
+
+Android emulator example:
+
+```yaml
+verified-with:
+  environment: emulator
+  device: Pixel 8 API 35 AVD
+  os: Android 15 (API level 35)
+  tools:
+    Frooky: 1.4.0
+    Frida: 17.2.17
+```
+
+Host-only static analysis example:
+
+```yaml
+verified-with:
+  environment: host
+  os: macOS 15.5
+  tools:
+    Semgrep: 1.125.0
+```
+
+Record the versions used for validation, not the minimum supported versions.
 
 ### code
 
