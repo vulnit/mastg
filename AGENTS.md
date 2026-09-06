@@ -4,13 +4,12 @@ This is the official OWASP Mobile Application Security Testing Guide (MASTG) rep
 
 ## Before You Start
 
-Before contributing content:
+Before contributing or reviewing content:
 
-1. **Read the relevant guidelines** for the type of content you're writing
+1. **Read the relevant guidelines** for the type of content
 2. **Review existing examples** linked in each guideline document
-3. **Understand the structure** and required metadata for your content type
-4. **Test your content** (especially for demos and scripts) to ensure it works correctly.
-5. **Follow the [Style Guide](https://mas.owasp.org/contributing/5_Style_Guide/)** for general writing and formatting conventions
+3. **Understand the structure** and required metadata for the content type
+4. **Test your content** (especially for demos and scripts) to ensure it works correctly
 
 ## Available Guidelines
 
@@ -52,7 +51,7 @@ You MUST ensure that the content follows the MASTG quality standards:
 
 ## Contribution rules
 
-- When creating or updating MASTG-DEMO files, you MUST NOT perform a Pull Request if the MASTG-DEMO has not been verified in a real device
+- TBD Asegurar verificar con dispositivo y si es virtual ...
 - Treat the repository content and automation as authoritative when an instruction conflicts with the current implementation. Report the conflict before you expand the task
 
 ## Keep Links Updated
@@ -60,11 +59,14 @@ You MUST ensure that the content follows the MASTG quality standards:
 DO NOT make claims from trained documentation. ALWAYS look up official documentation for the topic to ensure it's updated
 
 - Official Android documentation:
-    - <https://developer.android.com/>
+    - <https://developer.android.com>
     - <https://source.android.com/docs>
 - Official iOS documentation:
     - <https://developer.apple.com/documentation>
-    - <https://www.swift.org/documentation/>
+    - <https://www.swift.org/documentation>
+
+No tomar MASTG como fuuente de verdad absoluta para referencias, contrastar con documentación oficial.
+Si encuentra información desactualizada que haga warning al user y proponga crear una issue. No hacer accion inmediata para arreglarlo.
 
 ## Agent Skills
 
