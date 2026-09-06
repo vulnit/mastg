@@ -8,7 +8,7 @@ Use the following guidance for decisions that require editorial or technical con
 ## Formatting and Structure
 
 - **Headings**: Recommend restructuring when content includes H4 headings, and make a stronger recommendation for H5 headings.
-- **Links**: Use descriptive link text and verify that the URL is valid.
+- **Links**: Use descriptive link text.
 
 ## Images
 
