@@ -77,7 +77,6 @@ Best practices are flexible in structure and adapt to the content. They typicall
 - Reference related MASTG content with @ notation (e.g., @MASTG-TOOL-0022, @MASTG-KNOW-0018)
 - Keep explanations concise and focused on the practice itself
 - Include minimal code examples when helpful to illustrate the recommendation. Prefer to link to MASTG-DEMOs that have metadata `kind: pass`.
-- Use **Note** or **Warning** Admonitions for important caveats or clarifications
 
 Examples of good structure:
 

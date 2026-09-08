@@ -71,14 +71,9 @@ Common patterns that match existing pages in `tools/`:
 - Add sections only when they add value for that tool. Typical headings are `## Installation`, `## Usage`, and tool-specific headings (for example, `## Installing Frida on iOS`).
 - Include copyable commands when relevant. If usage is extensive, keep only the most common commands and link to a technique or upstream docs.
 - **Don't add step-by-step usage examples or multi-step walkthroughs to tool pages.** These belong in a technique page (for example, @MASTG-TECH-0031). The website will automatically list any techniques that reference the tool as examples of use on the rendered tool page, so adding them to the right technique page is the correct way to surface them.
-- Add caveats as `!!! note` / `!!! warning` admonitions when needed (version pinning, jailbreak/root requirements, security warnings).
 - Link to related techniques/tests/demos where it helps the reader complete a workflow.
 
 If you're editing an existing tool page, keep its current structure unless there is a clear benefit to reorganizing it.
-
-MkDocs callouts:
-
-- You can use MkDocs Material admonitions such as `!!! note`, `!!! warning`, and collapsible blocks (`??? info`) for version caveats and long side-notes.
 
 ## Cross-linking
 

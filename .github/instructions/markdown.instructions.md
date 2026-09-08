@@ -54,23 +54,34 @@ Example:
 See the section "[App Bundles](0x05a-Platform-Overview.md#app-bundles)" in the chapter "Platform Overview".
 ```
 
-## Comments
+## MkDocs Admonitions
 
-Use MkDocs admonition comments to annotate special content:
+Use a MkDocs admonition when a note, warning, caveat, or clarification needs to be visually separated from the main content. Typical examples include version limitations, root or jailbreak requirements, security warnings, and long side notes.
+
+Use `!!!` for content that is initially expanded:
 
 ```markdown
-!!! note "Note Title"
+!!! note
     Note body text.
 ```
 
-or
+Add a title when it helps identify the subject:
 
 ```markdown
-??? info "Info Title"
-    Info body text.
+!!! warning "Jailbroken Devices"
+    This procedure requires a jailbroken device.
 ```
 
-See [MkDocs admonitions documentation](https://squidfunk.github.io/mkdocs-material/reference/admonitions/) for details.
+Use `???` for content that is initially collapsed:
+
+```markdown
+??? info "Additional Information"
+    Additional details.
+```
+
+Write the admonition type in lowercase and indent its body with four spaces.
+
+See the [MkDocs Material admonitions documentation](https://squidfunk.github.io/mkdocs-material/reference/admonitions/) for supported types and options.
 
 ## Code and Shell Commands
 

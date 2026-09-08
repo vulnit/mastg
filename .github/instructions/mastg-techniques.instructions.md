@@ -74,10 +74,6 @@ Cross-linking rules:
 - In body text, reference project identifiers with a leading `@` (for example, @MASTG-TEST-0204, @MASTG-TOOL-0031).
 - In YAML front matter, always use bare identifiers (no `@`).
 
-MkDocs callouts:
-
-- You can use MkDocs Material admonitions for long notes, version caveats, and collapsible content (for example, `??? info` and `??? note`). Follow existing patterns in the catalog.
-
 ## Writing conventions
 
 - Prefer imperative voice in steps ("Run", "Attach", "Export").
