@@ -1,213 +1,282 @@
-# Mobile Application Security Workshop 
+# Mobile Application Security Workshop Setup Guide
 
-# Prerequisites
+## Prerequisites
 
- This workshop has been tested in these platforms:
+This workshop was tested on these platforms:
 
-*  x86\_64 Linux          
-* Apple Silicon Mac
+- Linux on x86_64
+- macOS on Apple silicon
 
 Requirements:
 
-* At least **8GB** of **RAM**.  
-* **32 GB** of free **disk** space.  
-* On Linux, **Intel VT-x** or **AMD-V** virtualization enabled and access to KVM.
+- At least **8 GB** of **RAM**
+- **32 GB** of free **disk** space
+- Intel VT-x or AMD-V virtualization and access to KVM on Linux
 
-# 
+## Install Android Studio
 
-# Setup
+!!! note
+    These steps were documented and reproduced in September 2026. The steps can
+    change after that date.
 
-**Note**: These steps have been documented and reproduced in September 2026\.   
-Steps may vary depending on time passed.
-
-1. Open the [official Android Studio](https://developer.android.com/studio) download page.   
+1. Open the [official Android Studio](https://developer.android.com/studio)
+   download page.
 2. Download the installer for your computer.
 
-### MacOS
+### macOS
 
-1.  Select the Mac **with Apple chip** download**.**  
-2.  Open the .dmg file.  
-3.  Drag Android Studio into Applications.  
-4.  Open Android Studio from Applications.  
-5.  Confirm that you want to open it if macOS displays a warning.
+1. Select the **Mac with Apple chip** download.
+2. Open the DMG file.
+3. Drag Android Studio into **Applications**.
+4. Open Android Studio from **Applications**.
+5. If macOS displays a warning, confirm that you want to open Android Studio.
 
-###  Linux x86\_64
+### Linux x86_64
 
-1. Download the Linux .tar.gz file.  
-2. Open Downloads in your file manager.  
-3. Extract the archive into a directory where you have write permission.  
-4. Open a terminal in android-studio/bin.  
-5. Run the included launcher: ./studio or ./studio.sh, depending on the downloaded version.
+1. Download the Linux TAR.GZ file.
+2. Open **Downloads** in your file manager.
+3. Extract the archive into a directory where you have write permission.
+4. Open a terminal in the `android-studio/bin` directory.
+5. Run `studio` or `studio.sh`, as applicable to the downloaded version.
 
-##  Initial setup wizard
+### Complete the Initial Setup Wizard
 
-1. Select “Do not import settings” if this is a new installation.  
-2. Continue to Install Type.  
-3. Select Standard.  
-4. Accept the licenses.  
-5. Click Finish.  
-6. Wait for the downloads to complete.  
-7. Do not create an Android project.
+1. For a new installation, select **Don't import settings**.
+2. Continue to **Install Type**.
+3. Select **Standard**.
+4. Accept the licenses.
+5. Select **Finish**.
+6. Wait for the downloads to finish.
+7. Don't create an Android project.
 
-## TBD
+## Configure an Android Virtual Device
 
-VIA DE CREACION MANUAL DEL DISPOSITIVO \+ ROOT  
-O   
-VIA INSTALANDO EL DISPOSITIVO CON ROOT YA
+For the simplest setup, use the provided pre-rooted Android 16 firmware image.
+Otherwise, [configure and root the device manually](#configure-and-root-the-device-manually).
 
-## Virtual device creation
+### Import a Pre-Rooted Firmware Image
 
-1. Return to the welcome screen.  
-2. Click “More Actions → Virtual Device Manager”.  
-3. Click “Create Device”  
-4. Select Phone.  
-5. Select Pixel 8\.  
-6. Click Next.  
-7. Find **Android 16.0, API 36\.**  
-8.  Select a **Google Play system image** with the correct architecture:  
-   1. Linux x86\_64 \- **x86\_64**  
-   2. macOS with Apple Silicon \- **arm64-v8a**
+Follow these steps to import the firmware image and create an Android Virtual
+Device (AVD):
 
-9\. Download the image and accept its license.  
-10\. Click Next.  
-11\. Name the device.  
-12\. In the advanced settings, select **Cold boot** if the boot option is available.  
-13\. Click Finish.
+1. Select `workshop_<arch>_image.zip` for your host architecture.
+2. Extract the archive into `$ANDROID_HOME/system-images/android-36/`.
 
-## Preparing Android SDK Paths
+    ![Firmware image directory layout](attachments/images/android-studio-system-image-directory.png)
 
- Run only the commands for your platform.
+3. Restart Android Studio and open **Virtual Device Manager**.
+4. Select **Create Device**.
+5. Select **Phone**.
+6. Select **Pixel 8**, and then select **Next**.
 
- **macOS:**  
- 	`export ANDROID_HOME="$HOME/Library/Android/sdk"`  
- 	`export PATH="$ANDROID_HOME/platform-tools:$PATH"`  
-  **Linux:**  
-   `export ANDROID_HOME="$HOME/Android/Sdk"`  
- `export PATH="$ANDROID_HOME/platform-tools:$PATH"`
+    ![Pixel 8 device profile selected in Android Studio](attachments/images/android-studio-pixel-8-device-profile.png)
 
- Run the following command to verify that ADB detects the device:  
-   	`adb devices`  
- Run the following command to verify the Android version of the device:  
-`adb shell getprop ro.build.version.release`
+7. Enter `Pixel8workshop` as the device name.
+8. Select **API 36.0**.
+9. Select **MASTG <arch> System Image**, and then select **Finish**.
 
-## Root the device using Magisk via rootAVD
+    ![MASTG system image selected in Android Studio](attachments/images/android-studio-mastg-system-image.png)
 
-### Download rootAVD
+10. Start the AVD.
 
-1. Navigate to the [GitLab rootAVD repository.](https://gitlab.com/newbit/rootAVD)  Do not use the old GitHub repository as the source for the current version.  
-2. Download the ZIP archive for the revision specified by the organizers TBD version.  
-3. Extract the archive.  
-4. Locate the directory containing rootAVD.sh.
+    ![Android 16 About emulated device screen](attachments/images/android-16-about-emulated-device.png)
 
-###  Select the image to modify
+11. Install Magisk Manager 30.6.
+12. If Magisk requests a reboot, reboot the AVD to finish the installation.
 
-1. Keep the emulator running and unlocked.  
-2. In the terminal window, navigate to the rootAVD directory.  
-3. Execute the following command:
+    ![Magisk installation status](attachments/images/magisk-installed-status.png)
 
-`bash ./rootAVD.sh ListAllAVDs`
+### Configure and Root the Device Manually
 
-4. Find the entry matching Android 36, Google Play, and your architecture.
+#### Create a Virtual Device
 
-###  Start the installation
+1. Return to the Android Studio welcome screen.
+2. Select **More Actions** -> **Virtual Device Manager**.
+3. Select **Create Device**.
+4. Select **Phone**.
+5. Select **Pixel 8**.
+6. Select **Next**.
+7. Find **Android 16 (API level 36)**.
+8. Select a Google Play system image for your host architecture:
 
- Run only the command for your platform.
+    1. On Linux x86_64, select **x86_64**.
+    2. On macOS with Apple silicon, select **arm64-v8a**.
 
-*  Linux x86\_64:
+9. Download the image and accept its license.
+10. Select **Next**.
+11. Name the device.
+12. In the advanced settings, select **Cold boot** if this option is available.
+13. Select **Finish**.
 
-`bash ./rootAVD.sh system-images/android-36/google_apis_playstore/x86_64/ramdisk.img FAKEBOOTIMG`
+#### Prepare the Android SDK Paths
 
-*  macOS:
+Run only the commands for your platform.
 
-`bash ./rootAVD.sh system-images/android-36/google_apis_playstore/arm64-v8a/ramdisk.img FAKEBOOTIMG`
+On macOS, run:
 
-1. When the version menu appears, select the TBD Magisk version.  
-2.  Wait for rootAVD to open Magisk inside the emulator.
+```shell
+export ANDROID_HOME="$HOME/Library/Android/sdk"
+export PATH="$ANDROID_HOME/platform-tools:$PATH"
+```
 
-###  Patch the image in Magisk
+On Linux, run:
 
- 1\. In the Magisk section, tap Install.  
- 2\. Select Select and Patch a File.  
- 3\. Open Downloads.  
- 4\. Select fakeboot.img.  
- 5\. Tap Let’s Go.  
- 6\. Wait for patching to finish.  
- 7\. Return to the terminal.  
- 8\. Press Enter once patching has finished and rootAVD prompts you.  
- 9\. Wait for rootAVD to finish copying the modified image.  
-TBD DE QUE NO DEBE DE HABER MAS DE 1 DISPOSITIVO POR ADB, SI NO EL ROOTAVD FALLA.   
- **Do not close the terminal or emulator while the image is being modified.**
+```shell
+export ANDROID_HOME="$HOME/Android/Sdk"
+export PATH="$ANDROID_HOME/platform-tools:$PATH"
+```
 
-###  Restart and check Magisk
+Verify that Android Debug Bridge (ADB) detects the device:
 
- 1\. After rootAVD finishes, stop the emulator if it is still running.  
- 2\. In Device Manager, open the device’s menu.  
- 3\. Select Cold Boot or Cold Boot Now.  
- 4\. Wait for Android to start.  
- 5\. Open Magisk.  
- 6\. If prompted to complete additional setup, accept and allow the restart.  
- 7\. Check that Magisk displays “Yes” on “Zygisk” and “Ramdisk”:  
-![][image1]
+```shell
+adb devices
+```
 
-#### Install Frida Server in the device
+!!! important
+    Connect only the workshop emulator. The rootAVD script doesn't support
+    multiple ADB devices at the same time.
 
-We will use a Magisk Module called MagiskFrida.   
-This module starts frida-server when Android boots.  
-**Note**: The pinned frida-server version for this laboratory is **17.18.0-1.**
+#### Download rootAVD
 
-1. Download the [MagiskFrida ZIP release](https://github.com/ViRb3/magisk-frida/releases/tag/17.18.0-1) for the pinned version. Do not unzip the file.  
-2. Drag the ZIP file from your computer into the mobile emulator window.  
-3. Wait for the transfer to finish. The file will appear in the Download directory of the device.  
-4. Open Magisk \> Open Modules Tap Install from storage.  
-5. Open Download and select the MagiskFrida ZIP file.
+1. Clone the [rootAVD GitLab repository](https://gitlab.com/newbit/rootAVD).
+2. Don't use the old GitHub repository as the source for the current version.
 
-![][image2]
+#### Select the Image to Modify
 
-6. Wait for installation to finish.
+1. Keep the emulator running and unlocked.
+2. In the terminal, go to the rootAVD directory.
+3. List all AVD images:
 
-![][image3]
+    ```shell
+    bash ./rootAVD.sh ListAllAVDs
+    ```
 
-7. Tap Reboot.  
-8. After restarting, open Magisk → Modules.  
-9. Check that MagiskFrida is installed and enabled **and shows “active”. If “active” does not show, click on “Action” or reboot the device until it appears “active”** .
+4. Find the entry for Android 16, Google Play, and your host architecture.
+5. On Linux x86_64, use the entry that ends with this path:
+   `system-images/android-36/google_apis_playstore/x86_64/ramdisk.img`.
 
-![][image4]
+#### Start the Installation
 
-#### Install the Frida tools on your computer
+Run only the command for your platform.
 
-The previously installed module installs the server inside Android. You also need the Frida client tools on your computer.
+On Linux x86_64, run:
 
-1. Download and install **Python 3.9.6** for your machine.  
-2. Create a virtual environment using Python and activate it: 
+```shell
+bash ./rootAVD.sh system-images/android-36/google_apis_playstore/x86_64/ramdisk.img FAKEBOOTIMG
+```
 
-`python3 -m venv "$HOME/mobile-workshop-venv"`  
-`source "$HOME/mobile-workshop-venv/bin/activate"`
+On macOS, run:
 
-3. Install the tools and the Frida version matching the Magisk module:
+```shell
+bash ./rootAVD.sh system-images/android-36/google_apis_playstore/arm64-v8a/ramdisk.img FAKEBOOTIMG
+```
 
-   `python -m pip install frida-tools "frida==17.18.0"`
+1. When the version menu appears, select Magisk 30.6.
 
-In this case, MagiskFrida-17.18.0-1.zip corresponds to frida==17.18.0. The \-1 suffix belongs to the module release.  
-Do not confuse the frida-tools version with the frida version. They use different version numbers.
+    ![Magisk 30.6 selected in rootAVD](attachments/images/rootavd-magisk-version-selection.png)
 
-### Check the Frida connection
+2. Wait for rootAVD to open Magisk in the emulator.
 
-With the emulator running and the Python environment activated, run the following command to verify that Frida client and server are able to communicate:  
-`frida -U -f com.android.settings`  
-The Android settings application should spawn in the device. The Frida CLI (REPL) should appear in the console.  
-![][image5]
+#### Patch the Image in Magisk
 
-## Additional notes
+1. In the Magisk section, select **Install**.
 
-* Once your environment passes these checks, do not update the Android system image, Magisk, or Frida before the workshop.  
-* If any of the steps fail, send the organizers your platform, installed versions, and the complete error message.
+    ![Magisk Install button](attachments/images/magisk-install-button.png)
 
-[image1]: <attachments/images/image1.png>
+2. Select **Select and Patch a File**.
+3. Open **Downloads**.
+4. Select `fakeboot.img`.
+5. Select **Let's Go**.
+6. Wait for the patch operation to finish.
+7. Return to the terminal.
+8. When rootAVD prompts you, press Enter.
+9. Wait for rootAVD to copy the modified image.
 
-[image2]: <attachments/images/image2.png>
+    ![Successful rootAVD image installation](attachments/images/rootavd-installation-success.png)
 
-[image3]: <attachments/images/image3.png>
+!!! warning
+    Keep the terminal and emulator open while rootAVD modifies the image.
+    Closing either application can interrupt the modification.
 
-[image4]: <attachments/images/image4.png>
+#### Restart and Check Magisk
 
-[image5]: <attachments/images/image5.png>
+1. After rootAVD finishes, stop the emulator if it is still running.
+2. In **Device Manager**, open the device menu.
+3. Select **Cold Boot** or **Cold Boot Now**.
+4. Wait for Android to start.
+5. Open Magisk.
+6. If Magisk requests additional setup, accept it and permit the restart.
+7. Confirm that Magisk displays **Yes** for **Zygisk** and **Ramdisk**.
+
+    ![Magisk root status](attachments/images/magisk-root-status.png)
+
+## Install Frida
+
+### Install MagiskFrida on the Android Virtual Device
+
+MagiskFrida is a Magisk module that starts `frida-server` when Android boots.
+The workshop pins MagiskFrida to release `17.18.0-1`.
+
+1. Download the
+   [MagiskFrida ZIP release](https://github.com/ViRb3/magisk-frida/releases/tag/17.18.0-1).
+2. Don't extract the ZIP file.
+3. Drag the ZIP file from your computer into the emulator window.
+4. Wait for the transfer to finish.
+5. Open Magisk, and then select **Modules** -> **Install from storage**.
+6. Open **Download** and select the MagiskFrida ZIP file.
+
+    ![MagiskFrida ZIP file in the device Downloads directory](attachments/images/magiskfrida-zip-in-downloads.png)
+
+7. Wait for the installation to finish.
+
+    ![MagiskFrida module installation log](attachments/images/magiskfrida-installation-log.png)
+
+8. Select **Reboot**.
+9. After the restart, open Magisk, and then select **Modules**.
+10. Confirm that MagiskFrida is installed, enabled, and active.
+11. If **active** doesn't appear, select **Action** or reboot the device.
+
+    ![Active MagiskFrida module](attachments/images/magiskfrida-active-module.png)
+
+### Install Frida Client Tools on the Host Computer
+
+The MagiskFrida module installs the server on Android. You must also install the
+Frida client tools on your computer.
+
+1. Download and install Python 3.9.6 for your computer.
+2. Create and activate a Python virtual environment:
+
+    ```shell
+    python3 -m venv "$HOME/mobile-workshop-venv"
+    source "$HOME/mobile-workshop-venv/bin/activate"
+    ```
+
+3. Install the client tools and the Frida version that matches MagiskFrida:
+
+    ```shell
+    python -m pip install frida-tools "frida==17.18.0"
+    ```
+
+MagiskFrida release `17.18.0-1` uses Frida `17.18.0`. The `-1` suffix
+identifies the module release. The `frida-tools` and `frida` packages use
+different version numbers.
+
+### Check the Frida Connection
+
+With the emulator running and the Python environment active, run:
+
+```shell
+frida -U -f com.android.settings
+```
+
+Android Settings should start on the device. The Frida command-line interface
+(CLI) should appear in the terminal.
+
+![Successful Frida connection test](attachments/images/frida-connection-test.png)
+
+## Additional Notes
+
+- After the checks pass, don't update the Android system image, Magisk, or Frida
+  before the workshop.
+- If a step fails, send the organizers your platform, installed versions, and
+  the complete error message.
