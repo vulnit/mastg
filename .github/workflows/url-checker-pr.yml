@@ -4,27 +4,24 @@ on: [pull_request]
 
 jobs:
   markdown-link-check:
-    # Checks http(s) links over the network, but only in the files the PR added
-    # or modified: check-modified-files-only resolves to
-    # 'git diff --diff-filter=AM'.
+    # Checks HTTP(S) links in added or modified Markdown files.
+    # Checks local file links across all Markdown files.
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: URL Link Check
-        uses: tcort/github-action-markdown-link-check@v1.1.3
         with:
-          use-quiet-mode: 'yes'
-          config-file: '.github/workflows/config/url-checker-config.json'
-          check-modified-files-only: 'yes'
-  internal-link-check:
-    # Checks links to files inside this repository, across all markdown files.
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Check internal links
-        uses: tcort/github-action-markdown-link-check@v1.1.3
+          fetch-depth: 0
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          use-quiet-mode: 'yes'
-          config-file: '.github/workflows/config/internal-links-config.json'
+          node-version: 22.23.2
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Test link check runner
+        run: npm run test:links
+      - name: Check links for the pull request
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: npm run check:links -- --base "$BASE_SHA"

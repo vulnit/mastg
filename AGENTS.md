@@ -24,6 +24,13 @@ Before contributing or reviewing content:
 - Use `npm ci` to install the pinned lint dependencies
 - Run `npm run lint:markdown` to run the lint checks before creating a pull request or merging changes.
 
+## Link Validation
+
+- Run `npm run check:links` before pushing changes or creating a pull request. This uses the same partial check as PR CI: general links in added or modified Markdown and internal links in all Markdown.
+- The default comparison base is `origin/master`. Fetch the target branch first. For another target, run `npm run check:links -- --base <target-ref>` using that branch's fetched ref. Local untracked Markdown files are included.
+- Use `npm run check:links -- --all` for the complete check used on pushes to `master` and manual CI runs.
+- Resolve reported failures before pushing. If a failure is unrelated to the changes or caused by an external service, report it to the user rather than claiming validation passed.
+
 ## Available Guidelines
 
 The following writing guidelines are available:
