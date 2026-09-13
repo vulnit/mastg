@@ -38,7 +38,7 @@ When creating a new knowledge page (whether during porting or writing from scrat
 
 Once your pull request is reviewed and ready to merge, the team will assign real IDs (for example, `MASTG-KNOW-0112`) before the content is published.
 
-Follow the global Markdown rules (see `.github/instructions/markdown.instructions.md`). Use `##` and `###` headings in the body.
+Use `##` and `###` headings in the body.
 
 ## Markdown: Metadata
 
@@ -84,7 +84,6 @@ Considerations for writing the content:
 
 - Use American spelling, second person, and active voice.
 - Prefer short paragraphs and bullet lists for scannability.
-- Use HTML `<img>` for images as per the markdown instructions.
 
 ## Edge cases and guidance
 

@@ -22,7 +22,6 @@ Once your pull request is reviewed and ready to merge, the team will assign real
 
 ## Markdown structure
 
-- Follow the global Markdown rules in `.github/instructions/markdown.instructions.md`
 - Headings in the body start at `##`. Use `##` and `###` only
 
 ## Metadata

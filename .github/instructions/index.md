@@ -28,7 +28,6 @@ The following writing guidelines are available:
 
 ### General Guidelines
 
-- **[Markdown](markdown.instructions.md)** - General markdown formatting guidelines for MASTG content
 - **[Porting MASTG v1 Tests to v2](porting-mastg-v1-tests-to-v2.instructions.md)** - Guidelines for migrating legacy tests to the new format
 
 ## Before You Start

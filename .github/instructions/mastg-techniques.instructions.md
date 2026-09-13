@@ -21,7 +21,7 @@ When creating a new technique (whether during porting or writing from scratch), 
 
 Once your pull request is reviewed and ready to merge, the team will assign real IDs (for example, `MASTG-TECH-0018`) before the content is published.
 
-Follow the global Markdown rules (see `.github/instructions/markdown.instructions.md`). Use `##` for top-level sections inside the page.
+Use `##` for top-level sections inside the page.
 
 Note: YAML front matter uses `---` delimiters. Don't use `---` as a horizontal rule in the body.
 
@@ -79,7 +79,6 @@ Cross-linking rules:
 - Prefer imperative voice in steps ("Run", "Attach", "Export").
 - Keep commands copyable and self-contained. Where platform prompts or additional context are needed, explain in one short sentence.
 - Favor official sources for installation instructions; avoid endorsing third-party distributions.
-- Use HTML `<img>` tags for images, per the markdown instructions.
 
 ## Examples
 

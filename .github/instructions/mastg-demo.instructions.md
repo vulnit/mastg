@@ -12,6 +12,7 @@ Code samples (`*.kt`, `*.swift`, `*.cpp`, `*.xml`, `*.plist`, `*.proto`)
 - Build customization files (`build.gradle.kts.*`, `proguard-rules.pro`, `CMakeLists.txt`, `entitlements.plist`)
 - Testing code (e.g. `*.sh`, `*.py`)
 - Output files (e.g. `*.txt`, `*.json`, `*.sarif`)
+- Image assets (e.g. `*.png`, `*.jpg`, `*.svg`, `*.webp`)
 
 **Language:** The samples are written in **Kotlin** or **Swift**, depending on the platform. In some cases, the samples will also include configuration files such as `AndroidManifest.xml` or `Info.plist`.
 
@@ -64,6 +65,22 @@ MastgTest_reversed.java
 native-root-check.cpp
 output.txt
 run.sh*
+```
+
+## Images
+
+Store images introduced for a demo in that demo's directory. Reference them with a relative path so that the demo remains self-contained.
+
+For example, `implicit-intent-choose-app.png` is stored in `demos/android/MASVS-CODE/MASTG-DEMO-0136/`. From the Markdown file in that directory, reference it as:
+
+```html
+<img src="implicit-intent-choose-app.png" width="50%" />
+```
+
+You can reuse images from other demos to avoid duplication. For example, @MASTG-DEMO-0140 references the same image as:
+
+```html
+<img src="../MASTG-DEMO-0136/implicit-intent-choose-app.png" width="50%" />
 ```
 
 ## Android: App Customization Files

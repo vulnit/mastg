@@ -24,7 +24,6 @@ Once your pull request is reviewed and ready to merge, the team will assign real
 
 ## Markdown structure
 
-- Follow the global Markdown rules in `.github/instructions/markdown.instructions.md`
 - Headings in the body start at `##`. Use `##` and `###` only
 
 ### Metadata
@@ -85,7 +84,6 @@ If you're editing an existing tool page, keep its current structure unless there
 
 - Prefer official sources for installation steps. Avoid advertising or endorsing third-party distributions
 - Favor commands that work across supported hosts when possible. Otherwise, clearly label host-specific commands
-- For images, use HTML `<img>` tags per the markdown instructions (store assets in an appropriate images folder if needed)
 - Keep examples minimal and verifiable. Longer walkthroughs belong in demos with runnable scripts
 
 ## How tests and demos should reference tools

@@ -1,9 +1,16 @@
 ---
-name: 'Style and Formatting for MASTG Markdown Files'
-applyTo: '**/*.md'
+name: markdown-writing
+description: Write and review Markdown using the repository's contextual formatting rules. Use whenever creating, editing, or reviewing Markdown files.
 ---
 
 Use the following guidance for decisions that require editorial or technical context.
+
+## Workflow
+
+- Before editing Markdown, read [`.markdownlint.jsonc`](../../../.markdownlint.jsonc) and [`.markdownlint-cli2.jsonc`](../../../.markdownlint-cli2.jsonc) to understand the repository's enforced Markdown writing and formatting rules.
+- Follow [`AGENTS.md`](../../../AGENTS.md) and the applicable component instructions for image locations and link validation scope.
+- Run commands from the repository root (`../../..`). Use `npm ci` to install the pinned lint dependencies.
+- Run `npm run lint:markdown` and `npm run check:links` before pushing changes, creating a pull request, or merging changes.
 
 ## Formatting and Structure
 
@@ -12,19 +19,16 @@ Use the following guidance for decisions that require editorial or technical con
 
 ## Images
 
-- Store images in the appropriate directory, such as `Document/Images/Chapters` for MASTG chapters.
 - Provide descriptive context for images in the surrounding text when it improves accessibility.
 
 ## External References
 
 ### Web Links
 
-Use Markdown inline link format:
+Prefer Markdown inline link format:
 
 - `[TEXT](URL "TITLE")`, or
 - `[TEXT](URL)`.
-
-If you use the optional title form, escape special characters inside the title, especially apostrophes and backticks, to avoid broken rendering.
 
 ### Books and Papers
 
