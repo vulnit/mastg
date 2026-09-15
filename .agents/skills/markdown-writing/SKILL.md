@@ -19,7 +19,18 @@ Use the following guidance for decisions that require editorial or technical con
 
 ## Images
 
-- Provide descriptive context for images in the surrounding text when it improves accessibility.
+Use HTML `<img>` elements instead of Markdown image syntax.
+
+- Put `src` first.
+- Include descriptive `alt` text.
+- Set `width` when needed for readability.
+- Provide context in the surrounding text.
+
+Example:
+
+```html
+<img src="Images/Chapters/0x05f/biometricprompt-architecture.png" alt="Android biometric authentication architecture" width="70%" />
+```
 
 ## External References
 

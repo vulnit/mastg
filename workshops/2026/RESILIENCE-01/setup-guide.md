@@ -1,13 +1,15 @@
-# Mobile Application Security Workshop Setup Guide
+# Mobile Application Resilience Workshop Setup Guide
 
-## Prerequisites
+This guide explains how to prepare your computer and Android emulator for the workshop. Complete the setup before attending so we can spend more time on the hands-on exercises.
+
+If you get stuck, we're happy to help! Send the organizers your platform, installed versions, and the complete error message.
 
 This workshop was tested on these platforms:
 
 - Linux on x86_64
 - macOS on Apple silicon
 
-Requirements:
+## Requirements
 
 - At least **8 GB** of **RAM**
 - **32 GB** of free **disk** space
@@ -23,68 +25,47 @@ Requirements:
    download page.
 2. Download the installer for your computer.
 
-### macOS
+## Configure a Rooted Android Virtual Device
 
-1. Select the **Mac with Apple chip** download.
-2. Open the DMG file.
-3. Drag Android Studio into **Applications**.
-4. Open Android Studio from **Applications**.
-5. If macOS displays a warning, confirm that you want to open Android Studio.
+Choose one of these two setup options:
 
-### Linux x86_64
-
-1. Download the Linux TAR.GZ file.
-2. Open **Downloads** in your file manager.
-3. Extract the archive into a directory where you have write permission.
-4. Open a terminal in the `android-studio/bin` directory.
-5. Run `studio` or `studio.sh`, as applicable to the downloaded version.
-
-### Complete the Initial Setup Wizard
-
-1. For a new installation, select **Don't import settings**.
-2. Continue to **Install Type**.
-3. Select **Standard**.
-4. Accept the licenses.
-5. Select **Finish**.
-6. Wait for the downloads to finish.
-7. Don't create an Android project.
-
-## Configure an Android Virtual Device
-
-For the simplest setup, use the provided pre-rooted Android 16 firmware image.
-Otherwise, [configure and root the device manually](#configure-and-root-the-device-manually).
+- [Import a pre-rooted firmware image](#import-a-pre-rooted-firmware-image) for the simplest setup.
+- [Configure and root the device manually](#configure-and-root-the-device-manually).
 
 ### Import a Pre-Rooted Firmware Image
 
-Follow these steps to import the firmware image and create an Android Virtual
-Device (AVD):
+Follow these steps to import the firmware image and create an Android Virtual Device (AVD):
 
-1. Select `workshop_<arch>_image.zip` for your host architecture.
+1. Download the firmware image for your host architecture:
+
+    - **macOS with Apple silicon:** [workshop_arm64_image.zip](https://github.com/vulnit/mastg/releases/download/v0.1.0/workshop_arm64_image.zip)
+    - **Linux x86_64:** [workshop_x86_64_image.zip](https://github.com/vulnit/mastg/releases/download/v0.1.0/workshop_x86_64_image.zip)
+
 2. Extract the archive into `$ANDROID_HOME/system-images/android-36/`.
 
-    ![Firmware image directory layout](attachments/images/android-studio-system-image-directory.png)
+    <img src="Images/android-studio-system-image-directory.png" alt="Firmware image directory layout" width="50%" />
 
 3. Restart Android Studio and open **Virtual Device Manager**.
 4. Select **Create Device**.
 5. Select **Phone**.
 6. Select **Pixel 8**, and then select **Next**.
 
-    ![Pixel 8 device profile selected in Android Studio](attachments/images/android-studio-pixel-8-device-profile.png)
+    <img src="Images/android-studio-pixel-8-device-profile.png" alt="Pixel 8 device profile selected in Android Studio" width="50%" />
 
 7. Enter `Pixel8workshop` as the device name.
 8. Select **API 36.0**.
 9. Select **MASTG <arch> System Image**, and then select **Finish**.
 
-    ![MASTG system image selected in Android Studio](attachments/images/android-studio-mastg-system-image.png)
+    <img src="Images/android-studio-mastg-system-image.png" alt="MASTG system image selected in Android Studio" width="50%" />
 
 10. Start the AVD.
 
-    ![Android 16 About emulated device screen](attachments/images/android-16-about-emulated-device.png)
+    <img src="Images/android-16-about-emulated-device.png" alt="Android 16 About emulated device screen" width="50%" />
 
 11. Install Magisk Manager 30.6.
 12. If Magisk requests a reboot, reboot the AVD to finish the installation.
 
-    ![Magisk installation status](attachments/images/magisk-installed-status.png)
+    <img src="Images/magisk-installed-status.png" alt="Magisk installation status" width="50%" />
 
 ### Configure and Root the Device Manually
 
@@ -173,7 +154,7 @@ bash ./rootAVD.sh system-images/android-36/google_apis_playstore/arm64-v8a/ramdi
 
 1. When the version menu appears, select Magisk 30.6.
 
-    ![Magisk 30.6 selected in rootAVD](attachments/images/rootavd-magisk-version-selection.png)
+    <img src="Images/rootavd-magisk-version-selection.png" alt="Magisk 30.6 selected in rootAVD" width="50%" />
 
 2. Wait for rootAVD to open Magisk in the emulator.
 
@@ -181,7 +162,7 @@ bash ./rootAVD.sh system-images/android-36/google_apis_playstore/arm64-v8a/ramdi
 
 1. In the Magisk section, select **Install**.
 
-    ![Magisk Install button](attachments/images/magisk-install-button.png)
+    <img src="Images/magisk-install-button.png" alt="Magisk Install button" width="50%" />
 
 2. Select **Select and Patch a File**.
 3. Open **Downloads**.
@@ -192,7 +173,7 @@ bash ./rootAVD.sh system-images/android-36/google_apis_playstore/arm64-v8a/ramdi
 8. When rootAVD prompts you, press Enter.
 9. Wait for rootAVD to copy the modified image.
 
-    ![Successful rootAVD image installation](attachments/images/rootavd-installation-success.png)
+    <img src="Images/rootavd-installation-success.png" alt="Successful rootAVD image installation" width="50%" />
 
 !!! warning
     Keep the terminal and emulator open while rootAVD modifies the image.
@@ -208,7 +189,7 @@ bash ./rootAVD.sh system-images/android-36/google_apis_playstore/arm64-v8a/ramdi
 6. If Magisk requests additional setup, accept it and permit the restart.
 7. Confirm that Magisk displays **Yes** for **Zygisk** and **Ramdisk**.
 
-    ![Magisk root status](attachments/images/magisk-root-status.png)
+    <img src="Images/magisk-root-status.png" alt="Magisk root status" width="50%" />
 
 ## Install Frida
 
@@ -225,18 +206,15 @@ The workshop pins MagiskFrida to release `17.18.0-1`.
 5. Open Magisk, and then select **Modules** -> **Install from storage**.
 6. Open **Download** and select the MagiskFrida ZIP file.
 
-    ![MagiskFrida ZIP file in the device Downloads directory](attachments/images/magiskfrida-zip-in-downloads.png)
+    <img src="Images/magiskfrida-zip-in-downloads.png" alt="MagiskFrida ZIP file in the device Downloads directory" width="50%" />
 
 7. Wait for the installation to finish.
-
-    ![MagiskFrida module installation log](attachments/images/magiskfrida-installation-log.png)
-
 8. Select **Reboot**.
 9. After the restart, open Magisk, and then select **Modules**.
 10. Confirm that MagiskFrida is installed, enabled, and active.
 11. If **active** doesn't appear, select **Action** or reboot the device.
 
-    ![Active MagiskFrida module](attachments/images/magiskfrida-active-module.png)
+    <img src="Images/magiskfrida-active-module.png" alt="Active MagiskFrida module" width="50%" />
 
 ### Install Frida Client Tools on the Host Computer
 
@@ -272,11 +250,9 @@ frida -U -f com.android.settings
 Android Settings should start on the device. The Frida command-line interface
 (CLI) should appear in the terminal.
 
-![Successful Frida connection test](attachments/images/frida-connection-test.png)
+<img src="Images/frida-connection-test.png" alt="Successful Frida connection test" width="50%" />
 
 ## Additional Notes
 
-- After the checks pass, don't update the Android system image, Magisk, or Frida
+- After performing the setup, don't update the Android system image, Magisk, or Frida
   before the workshop.
-- If a step fails, send the organizers your platform, installed versions, and
-  the complete error message.
