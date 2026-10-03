@@ -27,42 +27,33 @@ See @MASTG-KNOW-0030 and @MASTG-KNOW-0032 for more context on bypassing runtime 
 
 ## Steps
 
-1. Install the app on a rooted device using @MASTG-TECH-0005.
-2. Spawn the app normally, tap **Start** and observe the result.
-3. Close the app.
-4. Setup @MASTG-TOOL-0001 and run `run.sh` to spawn the app while tracing calls to `open()`.
-5. Tap **Start** and observe the result.
-6. Close the app and stop @MASTG-TOOL-0001.
-7. Setup @MASTG-TOOL-0x02 and run `run.sh` to spawn the app while tracing calls to `open()`.
-8. Repeat steps 5 and 6.
+1. Install the app on a clean, unrooted device using @MASTG-TECH-0005.
+2. Install the app on a rooted device using @MASTG-TECH-0005 and ensure @MASTG-TOOL-0x02 is available.
+3. In the rooted device, run `run.sh` to spawn the app with Frida attached and tracing calls to `open()`.
+4. Tap **Start** in both devices and compare the app's response between the two.
+5. Stop Frida by pressing `Ctrl+C`.
 
 {{ run.sh }}
 
 ## Observation
 
-### Clean Run
+### Clean Device
 
 No frida indicators were found in the device.
 
 {{ output-clean.txt }}
 
-### Instrumented Run (Regular Frida)
-
-The output contains injection-related traces inside `/proc/self/maps` left by @MASTG-TOOL-0001.
-
-{{ app-output-frida.txt # frida-output.txt}}
-
-### Instrumented Run (Stealth Frida)
+### Instrumented Device
 
 The output does not contain injection-related detections inside `/proc/self/maps` due to the use of a stealthier Frida build (@MASTG-TOOL-0x02) that patches common sources of detection, such as the inspected `frida` and `gadget` indicators inside the demo code. 
 
-Nevertheless, more advanced detections such as the integrity checks over the `bionic` library were triggered, causing the demo to abort sensitive operations in native code.
+Nevertheless, more advanced detections such as the integrity checks over the `libc` library were triggered, causing the demo to abort sensitive operations in native code.
 
-{{ app-output-frida-stealth.txt # frida-output.txt }}
+{{ output-instrumented.txt # frida-output-instrumented.txt }}
 
 ## Evaluation
 
-The test passes because the multi-layered detection approach implemented in the demo successfully detected the attack. Although `/proc/self/maps`-based checks failed to detect the stealthier @MASTG-TOOL-0x02 hooking solution, later checks in native code successfully detected the hooking attempt due to the manipulations performed to Bionic, Android's libc.
+The test passes because the multi-layered detection approach implemented in the demo successfully detected the attack. Although `/proc/self/maps` based detections were not sufficient due to the use of @MASTG-TOOL-0x02, later checks in native code successfully detected Frida due to its manipulation over Bionic, Android's libc.
 
 !!! note "Frida Instrumentation Internals"
     Frida automatically hooks different bionic functions on spawn or attach as part of its setup process, causing any checks over bionic's code integrity to fail just by having Frida inside an application. As a result, the integrity checks present in this demo would also fail without needing to hook `open()`. These are Frida internals that may change in the future, reducing the tool's detection surface and thus, the test intentionally hooks a common symbol such as `open()` to create a controlled detection point. Some of the symbols hooked by Frida during startup on Android are `exit`, `_exit` and `abort`. See [Frida's sourcecode](https://github.com/frida/frida-core/blob/ea9efa1e2459e62acf8463b6ad2b178c01f3c64f/lib/payload/exit-monitor.vala#L29-L51) for more implementation details.
