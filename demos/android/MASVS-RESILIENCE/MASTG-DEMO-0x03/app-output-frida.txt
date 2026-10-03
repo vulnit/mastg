@@ -1,0 +1,3 @@
+[DETECTED] Frida agent found in / proc/self/maps:
+72e1079000-72e2749000 r-xp 0000000000:01 1325 memfd: frida-agent-64.so (deleted)
+[BLOCKED] Skipping all encryption steps
