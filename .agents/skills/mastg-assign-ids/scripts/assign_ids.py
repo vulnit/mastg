@@ -9,6 +9,7 @@ from pathlib import Path
 import re
 import subprocess
 import sys
+import tempfile
 
 
 BASE = "origin/master"
@@ -87,6 +88,8 @@ def index_content(path: str) -> bytes | None:
 
 def worktree_content(path: str) -> bytes | None:
     try:
+        if Path(path).is_symlink():
+            return os.fsencode(os.readlink(path))
         return Path(path).read_bytes()
     except (OSError, ValueError):
         return None
@@ -345,7 +348,15 @@ def command_fix_ids(args: argparse.Namespace) -> int:
             replacement = old.sub(new, replacement)
         if replacement == data:
             continue
-        Path(path).write_bytes(replacement)
+        target_path = Path(path)
+        # Keep symlinks valid after assigning IDs without rewriting their shared source.
+        if target_path.is_symlink():
+            with tempfile.TemporaryDirectory(dir=target_path.parent) as directory:
+                replacement_link = Path(directory) / "link"
+                replacement_link.symlink_to(os.fsdecode(replacement))
+                replacement_link.replace(target_path)
+        else:
+            target_path.write_bytes(replacement)
         updated.append(path)
         if path in staged:
             restage.append(path)
