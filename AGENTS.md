@@ -18,7 +18,7 @@ Before contributing or reviewing content:
 
 - Use `.agents/skills/markdown-writing/SKILL.md` whenever creating, editing, or reviewing Markdown.
 - Before editing Markdown, read `.markdownlint.jsonc` and `.markdownlint-cli2.jsonc` to understand the repository's enforced Markdown writing and formatting rules
-- Use `npm ci` to install the pinned lint dependencies
+- Use the Node.js version in `.nvmrc` and run `npm ci` to install the pinned lint dependencies
 - Run `npm run lint:markdown` to run the lint checks before creating a pull request or merging changes.
 
 ## Images
